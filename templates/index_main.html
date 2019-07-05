@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	<!-- Bootstrap Styles-->
+    <link href="../static/assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="../static/assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+   
+        <!-- Custom Styles-->
+    <link href="../static/assets/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="../static/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body class="body">
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">实验耗材审批管理平台</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index/"><i class="fa fa-gear"></i> <strong>&nbsp
+                        &nbsp东北电力大学实验耗材审批管理平台</strong></a>
+            </div>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li class="admin1">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>创建新表<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/add_hc_view/" target="main">创建新耗材表</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/add_yq_view/" target="main">创建新仪器表</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin1">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>查看提交状态<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/show_hc_creator/" target="main">耗材提交状态</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/show_yq_creator/" target="main">仪器提交状态</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin2">
+                        <a style="color: #EFF42D" class="main-text2" href="/request_list/" target="main"><i class="fa fa-sitemap"></i><strong>查看申请列表</strong></a>
+                    </li>
+                    <li class="admin2">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>学院审核<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/examine_hc1_view/" target="main">审核耗材</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/examine_yq1_view/" target="main">审核仪器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin2">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>学院审核结果<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/show_hc_examine/" target="main">耗材审核结果</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/show_yq_examine/" target="main">仪器审核结果</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin3">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>教务处审核<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/examine_hc2_view/" target="main">审核耗材</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/examine_yq2_view/" target="main">审核仪器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin3">
+                        <a href="#" class="main-text2" ><i class="fa fa-sitemap"></i><strong>查看审核结果<span class="fa arrow"></span></strong></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="main-text2" href="/show_hc_admin/" target="main">耗材审核结果</a>
+                            </li>
+                            <li>
+                                <a class="main-text2" href="/show_yq_admin/" target="main">仪器审核结果</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="admin3">
+                        <a class="main-text2" href="/show_admin/" target="main"><i class="fa fa-sitemap"></i><strong>用户管理<span class="fa arrow"></span></strong></a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <main>
+                    <iframe id="main" name="main" frameborder="0" width="100%"  scrolling="auto" height="800px"
+                        src=""></iframe>
+                    <footer>
+                        <p>Copyright &copy; 2019.因特雷工作室.wxs and syf All rights
+                    </footer>
+                </main>
+            </div>
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="../static/assets/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="../static/assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="../static/assets/js/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="../static/assets/js/dataTables/jquery.dataTables.js"></script>
+      <!-- Morris.js-->
+    <script src="../static/assets/js/morris/morris.js"></script>
+         <!-- Custom Js -->
+    <script src="../static/assets/js/custom-scripts.js"></script>
+
+    <script src="../static/JS/Cookies.js"></script>
+
+<script>
+
+    //console.log(localStorage.getItem('user_login'));
+    var cookie = getCookie('admin_state');
+    alert(cookie);
+    if(cookie == "admin1")
+    {
+        $('.admin2').remove();
+        $('.admin3').remove();
+        console.log("普通老师");
+    }
+    else if (cookie =="admin2"){
+        $('.admin1').remove();
+        $('.admin3').remove();
+        console.log("学院领导");
+    }
+    else if(cookie =="admin3"){
+        $('.admin1').remove();
+        $('.admin2').remove();
+        console.log("教务处老师");
+    }
+</script>
+
+</body>
+</html>

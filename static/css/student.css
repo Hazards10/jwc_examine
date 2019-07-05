@@ -1,0 +1,16 @@
+/* CSS Document */
+/* STUDENT CSS */
+.guide{ color:#999;
+       font-size:15px;}
+.maintable{
+	margin-top:80px;
+	}
+	table {
+	border:0px solid;
+	padding:0px;
+	margin:0px;
+	border:1px
+}
+ td {
+	border:1px solid #03C;
+}

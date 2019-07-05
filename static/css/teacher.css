@@ -1,0 +1,22 @@
+/* CSS Document */
+/* TEACHER CSS */
+.guide{ color:#999;
+       font-size:15px;}
+.maintable{
+	margin-left:200px;
+	margin-top:50px;
+	}
+.boder_style {
+	border-bottom:1px dotted #999;
+}
+.title {
+	height:25px;
+	margin:0px;
+	padding:0px;
+}
+.title ul li{
+	 text-align:center;
+	 display:inline;
+	 line-height:24px;
+	 margin:0px;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script href="../../static/assets/js/jquery-2.0.3.min.js"></script>
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="frame_body">
+<div class="row">
+					      <div class="col-md-12">
+					          <nav class="navbar navbar-default">
+					              <div class="container-fluid">
+					                  <!-- Brand and toggle get grouped for better mobile display -->
+					                  <div class="navbar-header">
+					                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					                              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					                          <span class="sr-only">Toggle navigation</span>
+					                          <span class="icon-bar"></span>
+					                          <span class="icon-bar"></span>
+					                          <span class="icon-bar"></span>
+					                      </button>
+					                      <a class="navbar-brand" href="#">添加用户</a>
+					                  </div>
+                                  </div>
+					          </nav>
+					      </div>
+					  </div>
+						</div>
+                
+        <div class="panel panel-default">
+                <div class="panel-body">
+                    <form action="/add_admin/" method="post">
+                    <div class="row">
+						<div class="col-lg-4">
+						</div>	
+                        <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>教师工号</label>
+                                    <input id="number" name="number" class="form-control" placeholder="教师工号">
+                                    <p id="note" style="color: deeppink"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label>教师姓名</label>
+                                    <input id="name" name="name" class="form-control" placeholder="教师姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label>所属单位</label>
+                                    <input id="unit" name="unit" class="form-control" placeholder="所属单位">
+                                </div>
+                                <div class="form-group">
+                                    <label>用户等级</label>
+                                    <select id="rank" name="rank" class="form-control">
+                                        <option value="普通老师">普通老师</option>
+                                        <option value="学院领导">学院领导</option>
+										<option value="教务处老师">教务处老师</option>
+                                    </select>
+                                </div>
+					 <div class="form-group">
+					    <button type="submit" class="btn btn-success btn-lg">提交</button>
+					    <button type="reset" class="btn btn-danger btn-lg">重置</button>
+					</div>																	  
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                        
+
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                        </form>
+                    
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+<script src="../../static/assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+    //DOM加载后执行
+    $(document).ready(function () {
+       //教师工号失去聚焦后，ajax获取姓名和单位
+        $('#number').blur(function () {
+            var number = $('#number').val();
+            $('#note').text('');    //设置提示字为空
+            $.post("/get_admin_detail/",{ number:number },function (data,status) {
+                if(data.message===false){
+                    $('#note').text(data.note);
+                }
+                else if(status!='success'){
+                    $('#note').text('请求失败，检查网络！');
+                }
+                else {
+                    $('#name').val(data.TeacherName);
+                    $('#unit').val(data.InstituteName);
+                }
+                console.log(data);
+                console.log(status);
+            })
+        })
+    }
+    );
+</script>
+<script type="text/javascript">
+        //接受Django视图函数返回的消息
+        {{script}} ('{{wrong}}')
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* CSS Document */
+@charset "utf-8"; 
+* {
+	padding:0px;
+	margin:0px;
+}
+body.ziye_style{
+	background-color:#BCCCDD; 
+	padding-left:25px; 
+	padding-top:45px;
+}
+body.bgc {
+	background-color:#BCCCDD; 
+}
+body.bgcc {
+	background-color:#BCCCDD;
+	margin-left:25px; 
+	margin-top:25px;
+}
+.formstyle{
+	width:250px;
+	height:18px;
+}
+.selectstyle{
+	width:255px;
+	height:20px;
+}
+.trstyle{
+	line-height:30px;
+}
+
+
+
+.course_left tr td {
+	border-width:1px; 
+	border-style:solid; 
+	border-color:#000;
+	border-right:none; 
+	border-bottom:none;
+	
+}
+#course_left1 {
+	border-right:1px solid;
+}
+.course_right tr td {
+	border-width:1px; 
+	border-color:#000;
+	border-style:solid;
+	border-left:none;
+   border-bottom:none;
+}
+.course_bottom tr td{
+	border-width:0px;
+	border:solid;
+	border-color:#000;
+	border-top:none;
+	}
+.span{
+	padding-right:70px;
+	}
+.caption{
+		font-size:20px;
+		font-weight:bold;
+}
+.title{
+	
+	font-size:13px;
+	margin:7px;
+	float:left;
+	display:block;
+}

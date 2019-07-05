@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet" />
+    <script src="../../static/JS/Cookies.js"></script>
+    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+</head>
+
+<body class="frame_body">
+	<div class="row">
+	      <div class="col-md-12">
+	          <nav class="navbar navbar-default">
+	              <div class="container-fluid">
+	                  <!-- Brand and toggle get grouped for better mobile display -->
+	                  
+	                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+	                              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                          <span class="sr-only">Toggle navigation</span>
+	                          <span class="icon-bar"></span>
+	                          <span class="icon-bar"></span>
+	                          <span class="icon-bar"></span>
+	                      </button>
+	                      <a class="navbar-brand" href="#">仪器设备学院审核</a>
+                  </div>
+	          </nav>
+	      </div>
+	  </div>
+		</div>
+    <!-- /. ROW  -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <style>
+                        .dataTable th {
+                            white-space: nowrap !important;
+                        }
+
+                        .div_full_private {
+                            width: 100%;
+                        }
+
+                        .xftb table tbody th:first-child td:first-child {
+                            width: 400px;
+                        }
+                    </style>
+                    <table class="table table-striped table-bordered table-hover div_full_private xftb" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>材料名称</th>
+                                <th>规格型号</th>
+                                <th>单位</th>
+                                <th>数量</th>
+                                <th>单价(元)</th>
+                                <th>金额(元)</th>
+                                <th>使用日期</th>
+                                <th>验收领用人</th>
+                                <th width="10%">学期</th>
+                                <th>备注</th>
+                                <th id="user_a">创建人</th>
+                                <th>审核状态&nbsp&nbsp<input id="checkAll" class="checkAll" type="button" value="一键全部批准"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+    <script>
+        var final_data;
+        var examine = getCookie('user');
+        console.log(examine);
+        $(document).ready(function () {
+            //获取页面数据
+            $.ajax({
+                type: 'POST',
+                url: "/get_examine_list_hc/",
+                data: {
+                    examine_name: examine
+                },
+                "async": false,
+                dataType: "json",
+                success: function (data) {
+                    final_data = data;
+                    console.log(final_data);
+                }
+            });
+            for (var i = 0; i < final_data.length; i++) {
+                final_data[i]['index'] = i;
+            }
+            console.log(final_data);
+            //获取页面数据并显示
+            var table = $('#dataTables-example').DataTable({
+                "data": final_data,
+                "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
+                    {
+                        "data": "data_id"
+                    },
+                    {
+                        "data": "data_name"
+                    },
+                    {
+                        "data": "data_parameter"
+                    },
+                    {
+                        "data": "data_company"
+                    },
+                    {
+                        "data": "data_count"
+                    },
+                    {
+                        "data": "data_price"
+                    },
+                    {
+                        "data": "data_price2"
+                    },
+                    {
+                        "data": "data_usedate"
+                    },
+                    {
+                        "data": "data_person"
+                    },
+                    {
+                        "data": "term"
+                    },
+                    {
+                        "data": "data_remark"
+                    },
+                    {
+                        "data": "creator"
+                    }
+                ],
+                "columnDefs": [{
+                    // 定义操作列,######以下是重点########
+                    "targets": 12, //操作按钮目标列
+                    "data": "check_1",
+                    "ordering": true,
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已批准";
+                        } else {
+                            text = "未批准"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                }],
+                "createdRow": function (row, data, dataIndex) {
+                    if (data['check_1'] == true) {
+                        $(row).addClass('success');
+                    } else {
+                        $(row).addClass('danger');
+                    }
+                }
+            });
+            //单个行审核
+            $('#dataTables-example tbody').on('click', 'tr', function () {
+                var row_data = table.row(this).data();
+                var user_b = getCookie('user');
+                var user_a = row_data["creator"];
+                var i = row_data['index'];
+                //console.log(final_data[i]["check_1"]);
+                final_data[i]["check_1"] = !final_data[i]["check_1"];
+                var post_check = final_data[i]["check_1"];
+                console.log(post_check);
+                var return_code;
+                $.ajax({
+                    type: 'POST',
+                    url: "/commit_check1_hc/",
+                    data: {
+                        data_id: row_data["data_id"],
+                        user_b:user_b ,
+                        user_a:user_a ,
+                        check_1: post_check
+                    },
+                    "async": false,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) alert('成功更改编号 ' + row_data['data_id'] + '的数据');
+                        return_code = data;
+                    }
+                });
+                if (return_code) {
+                    if (post_check) {
+                        $(this).removeClass('danger');
+                        $(this).addClass('success');
+                        $(this).find('#text').text('已批准');
+                    } else {
+                        $(this).removeClass('success');
+                        $(this).addClass('danger');
+                        $(this).find('#text').text('未批准');
+                    }
+                }
+            });
+            //一键全部审核
+            $('#checkAll').on('click', function () {
+                var id_array = [];
+                $('tr').children().each(function () {
+                    if($(this).text()=='未批准'){
+                        var user_b = getCookie('user');
+                        var user_a = $(this).parent().children().eq(11).text();
+                        var data_id = $(this).parent().children().first().text();
+                        $.ajax({
+                            type: 'POST',
+                            url: "/commit_check1_hc/",
+                            data: {
+                                data_id:data_id,
+                                user_b:user_b ,
+                                user_a:user_a ,
+                                check_1: 'true'
+                            },
+                            "async": false,
+                            dataType: "json",
+                            success: function (data) {
+                                if (data) id_array.push(data_id);
+                            }
+                        });
+                    }
+                });
+                if (id_array.length>0){
+                    alert('成功更改序号 ' + id_array + '的数据');
+                    location.reload();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
