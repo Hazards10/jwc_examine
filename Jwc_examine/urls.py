@@ -54,8 +54,8 @@ urlpatterns = [
     path('show_yq_creator/', views_router.show_yq_creator),  # 显示创建者仪器提交的结果(single)
     path('show_yq_examine/', views_router.show_yq_examine),  # 显示通过二级审核(single)
     path('show_yq_admin/', views_router.show_yq_admin),  # 显示教务处审核结果(全部)
-    path('show_yq_admin_buy/', views_router.show_yq_admin_buy), #显示教务处审核购买结果（全部）
-    path('show_yq_admin_deposit/', views_router.show_yq_admin_deposit), #显示教务处审核入库结果（结果）
+    path('show_yq_admin_buy/', views_router.show_yq_admin_buy),  #显示教务处审核购买结果（全部）
+    path('show_yq_admin_deposit/', views_router.show_yq_admin_deposit),  #显示教务处审核入库结果（结果）
 
     # 操作地址
     path('login/', views_login.login),  # 登陆验证
@@ -103,7 +103,7 @@ urlpatterns = [
     path('get_admin_all/',views_get.show_all_admin),    # 获取用户数据接口
     path('add_admin_router/', views_router.add_admin_view),    # 跳转添加用户界面
     path('get_admin_detail/', views_get.get_teacher_info),  # ajax 获取教师详细信息
-    path('delete_admin/', views_add.del_admin),     #删除用户
+    path('delete_admin/', views_add.del_admin),     # 删除用户
 
     # 耗材、仪器ajax获取接口
     path('get_examine/', views_get.get_examine),  # 获取耗材表单提交的下级审核人数据

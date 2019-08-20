@@ -44,30 +44,30 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label>材料名称</label>
+                        <label>材料名称*</label>
                         <input name="data_name" class="form-control" placeholder="材料名称">
                     </div>
                     <div class="form-group">
-                        <label>规格型号</label>
+                        <label>规格型号*</label>
                         <input name="data_parameter" class="form-control" placeholder="规格型号">
                     </div>
                     <div class="form-group">
-                        <label>单位</label>
+                        <label>单位*</label>
                         <input name="data_company" class="form-control" placeholder="单位">
                     </div>
 
                     <div class="form-group">
-                        <label>数量</label>
+                        <label>数量*</label>
                         <input name="data_count" class="form-control" placeholder="数量">
                     </div>
 
                     <div class="form-group">
-                        <label>单价(元)</label>
+                        <label>单价(元)*</label>
                         <input name="data_price" class="form-control" placeholder="单价(元)">
                     </div>
 
                     <div class="form-group">
-                        <label>金额(元)</label>
+                        <label>金额(元)*</label>
                         <input name="data_price2" class="form-control" placeholder="金额(元)">
                     </div>
 
@@ -89,9 +89,7 @@
                     </div>
                     <div class="form-group">
                         <label>使用学期</label>
-                        <select name="term" class="form-control">
-                            <option value="2019-2020上">2019-2020上</option>
-                            <option value="2019-2020下">2019-2020下</option>
+                        <select name="term" class="form-control" id="term">
                         </select>
                     </div>
                     <div class="form-group">
@@ -150,11 +148,13 @@
     $(document).ready(function () {
         $.get("/get_examine/",function(data,status){
 			//alert("数据: " + data + "\n状态: " + status);
+            var term = data[0]["term"];
+            $("#term").append("<option value=" + term + ">" + term +"</option>");
 			if(status=='success'&&data.length>0){
 			    // 获得数据后，添加选择项
 			    $("#examine").append("<option value=\"务必选择正确的下级审核人\">务必选择正确的下级审核人</option>")
 			    for (var i=0; i<data.length; i++){
-			        var text = data[i];
+			        var text = data[i]["admin_name"];
 			        $("#examine").append("<option value="+text+">"+text+"</option>")
                 }
             }
@@ -173,18 +173,18 @@
             data_count = $("input[name='data_count']").val(),
             data_price = $("input[name='data_price']").val(),
             data_price2 = $("input[name='data_price2']").val(),
-            data_usedate = $("input[name='data_usedate']").val(),
-            data_person = $("input[name='data_person']").val(),
+            //data_usedate = $("input[name='data_usedate']").val(),
+            //data_person = $("input[name='data_person']").val(),
             //data_remark = $("input[name='data_remark']").val(),
-            term = $("select[name='term']").val(),
+            //term = $("select[name='term']").val(),
             examine = $("select[name='examine']").val(),
             data_type = $("input[name='data_type']").val(),
             creator = $("input[name='creator']").val()
-        var test_list = [data_time,data_company,data_count,data_parameter,data_person,data_price,data_price2
-            ,data_type,data_usedate,term,creator,examine];
+        var test_list = [data_time,data_company,data_count,data_parameter,data_price,data_price2
+            ,data_type,creator,examine];
         for (var i=0; i<test_list.length; i++){
             if(test_list[i]==""){
-                alert("提交的表单除备注项外，不能含有空数据！");
+                alert("提交的信息中，*号项不能为空！");
                 return;
             }
         }

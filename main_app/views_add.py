@@ -12,7 +12,7 @@ from utils.execute_sql import execute_sql_11  # 引入操作11数据库方法
 # 创建admin用户
 def add_admin(request):
     if request.method == 'POST':
-        number = request.POST.get('number') # 工号
+        number = request.POST.get('number')  # 工号
         name = request.POST.get('name')     # 姓名
         unit = request.POST.get('unit')     # 单位
         rank = request.POST.get('rank')     # 用户等级

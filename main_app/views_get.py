@@ -4,6 +4,7 @@ from django.http import JsonResponse
 
 from main_app import models     # 引入项目中的模型表
 from utils.execute_sql import  execute_sql_11   # 引入连接11数据库的方法
+from utils.date_tool import get_term
 
 
 def model_to_dic(data_info):
@@ -119,6 +120,8 @@ def get_second_examine_buy_list_hc(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
+        filter_dic['is_deposit'] = True
+        filter_dic['is_buy'] = False
         check_data = models.CheckFormHC.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
@@ -128,7 +131,8 @@ def get_second_examine_deposit_list_hc(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
-        filter_dic['is_buy'] = True
+        filter_dic['is_deposit'] = False
+        filter_dic['is_buy'] = False
         check_data = models.CheckFormHC.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
@@ -144,6 +148,8 @@ def get_second_examine_buy_list_yq(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
+        filter_dic['is_buy'] = False
+        filter_dic['is_deposit'] = True
         check_data = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
@@ -153,7 +159,8 @@ def get_second_examine_deposit_list_yq(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
-        filter_dic['is_buy'] = True
+        filter_dic['is_deposit'] = False
+        filter_dic['is_buy'] = False
         check_data = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
@@ -236,6 +243,7 @@ def show_check_all_hc_buy(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
+        filter_dic['is_deposit'] = True
         filter_dic['is_buy'] = True
         data_info = models.CheckFormHC.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(data_info), safe=False)
@@ -247,8 +255,8 @@ def show_check_all_hc_deposit(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
-        filter_dic['is_buy'] = True
         filter_dic['is_deposit'] = True
+        filter_dic['is_buy'] = False
         data_info = models.CheckFormHC.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(data_info), safe=False)
 
@@ -263,8 +271,10 @@ def show_check_all_yq(request):
 def show_check_all_yq_buy(request):
     if request.is_ajax():
         filter_dic = dict()
+        filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
+        filter_dic['is_deposit'] = True
         filter_dic['is_buy'] = True
         data_info = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(data_info), safe=False)
@@ -276,8 +286,8 @@ def show_check_all_yq_deposit(request):
         filter_dic = dict()
         filter_dic['check_1'] = True
         filter_dic['check_2'] = True
-        filter_dic['is_buy'] = True
         filter_dic['is_deposit'] = True
+        filter_dic['is_buy'] = False
         data_info = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(data_info), safe=False)
 
@@ -323,14 +333,15 @@ def get_teacher_info(request):
         return JsonResponse(data, safe=False)
 
 
-# 获取耗材、仪器下级审核人（学院领导）
+# 获取耗材、仪器下级审核人和当前学期（学院领导）
 def get_examine(request):
     if request.method == "GET":
         examine = models.AdminForm.objects.filter(admin_rank="学院领导")
         examine = model_to_dic(examine)
         examine_list = []
         for name in examine:
-            examine_list.append(name.get("admin_name"))
+            examine_list.append({"admin_name": name.get("admin_name"),
+                                 "term": get_term().get("now_term")})
         return JsonResponse(examine_list, safe=False)
 
 

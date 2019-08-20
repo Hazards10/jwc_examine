@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
-from datetime import datetime #引入datatime包，获取系统时间
+from datetime import datetime  #引入datatime包，获取系统时间
 # Create your models here.
 
 

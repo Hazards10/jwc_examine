@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <title>打印表单</title>
+
+   <link href="../static/assets/css/bootstrap.css" rel="stylesheet" />
+
+  <!-- hiprint -->
+  <link href="../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
+  <link href="../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
+  <!-- jQuery (hiprint 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+  <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+     <script src="../static/assets/js/bootstrap.min.js"></script>
+  <!-- polyfill.min.js解决浏览器兼容性问题v6.26.0-->
+  <script src="../static/assets/hiprint/polyfill.min.js"></script>
+  <!-- hiprint 核心js-->
+  <script src="../static/assets/hiprint/hiprint.bundle.js"></script>
+  <!-- 调用浏览器打印窗口helper类，可自行替换-->
+  <script src="../static/assets/hiprint/plugins/jquery.hiwprint.js"></script>
+   <style> table tr td { text-align:center}</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="hiprint-printTemplate" class="hiprint-printTemplate" style="margin-top:10px;">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div style="padding:15px 0;">
+                <button type="button" class="btn btn-danger" id="batchPrint2">预览</button>
+                <button type="button" class="btn btn-danger" id="print2">打印</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+</div>
+<div style="display: none">
+    <table id="printTable" width="100%" border="1" cellspacing="1" cellpadding="4" style="margin-top: 120px;">
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr><tr>
+                    <td style="text-align:center">编号</td>
+                    <td>耗材名称</td>
+                    <td>规格型号</td>
+                    <td>单位</td>
+                    <td>数量</td>
+                    <td>单价(元)</td>
+                    <td>金额(元)</td>
+                    <td>使用日期</td>
+                    <td>验收领用人</td>
+                    <td >学期</td>
+                    <td>备注</td>
+                    <td>创建者</td>
+                    <td>下级审核人</td>
+                    <td>审核状态</td>
+                </tr>
+            </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        console.log($('#printTable').html());     //初始化打印插件
+      //  hiprint.init();
+      //     var hiprintTemplate = new hiprint.PrintTemplate({
+      //         template: JSON.parse($('#barcodeJson1').val()),
+      //         settingContainer: '#PrintElementOptionSetting'
+      //     });
+      //     //打印设计
+      //     hiprintTemplate.design('#hiprint-printTemplate');
+      //     $('#print1').click(function () {
+      //         hiprintTemplate.print(printData);
+      //     });
+      //     $('#batchPrint1').click(function () {
+      //         hiprintTemplate.print([printData, printData, printData]);
+      //     });
+
+      //初始化打印插件
+        hiprint.init();
+        // 实例化打印模板
+        var hiprintTemplate = new hiprint.PrintTemplate({settingContainer:'#PrintElementOptionSetting'});
+        // 创建新面板,默认A4纸大小
+        //paperHeader	number	页眉线top值(单位pt)，默认0，可空	0
+        //paperFooter	number	页尾线top值(单位pt)，默认等于纸张高度对应的pt值，可空	纸张高pt
+        //paperNumberLeft	number	页码left(pt) 默认纸张宽pt-20 可空	张宽pt-20
+        //paperNumberTop	number	页码top(pt) 默认纸张高pt-20 可空	高pt-20
+        //paperNumberDisabled	boolean	禁用页码。默认false 可空	false
+        var panel = hiprintTemplate.addPrintPanel({rotate: true,});
+        // 标题文本
+        panel.addPrintText({
+            options: {
+                left: 297,
+                top: 15,
+                height: 25.5,
+                width: 193.5,
+                title: "申请实验消耗耗材表",
+                fontFamily: "SimSun",
+                fontSize: 19.5,
+                fontWeight: "900",
+                letterSpacing: 0.75,
+                textAlign: "center",
+                showInPage: "first",
+                fixed: true,
+                //paperNumberDisabled: false,
+                //paperHeader: 0,
+                //paperFooter: 0
+            }
+        });
+        // 学院主管签字
+        panel.addPrintText({
+            options: {
+                left: 0,
+                top: 346.5,
+                height: 18,
+                width: 129,
+                title: "学院主管院长（签字）:",
+                fontFamily: "SimSun",
+                fontSize: 11.25,
+                fontWeight: "bold",
+                fixed: true
+            }
+        });
+         panel.addPrintText({
+            options: {
+                left: 228,
+                top: 346.5,
+                height: 18,
+                width: 129,
+                title: "主管系主任（签字）:",
+                fontFamily: "SimSun",
+                fontSize: 11.25,
+                fontWeight: "bold",
+                fixed: true
+            }
+        });
+          panel.addPrintText({
+            options: {
+                left: 451,
+                top: 346.5,
+                height: 18,
+                width: 129,
+                title: "申报人（签字）:",
+                fontFamily: "SimSun",
+                fontSize: 11.25,
+                fontWeight: "bold",
+                fixed: true
+            }
+        });
+        panel.addPrintText({
+            options: {
+                left: 699,
+                top: 346.5,
+                height: 18,
+                width: 129,
+                title: "学院、系（加盖公章）：",
+                fontFamily: "SimSun",
+                fontSize: 11.25,
+                fontWeight: "bold",
+                fixed: true
+            }
+        });
+        // 表格
+        panel.addPrintTable({ options:
+                {
+                    "left": 16.5,
+                    "top": 57,
+                    "height": 38,
+                    "width": 562.5,
+                    "textAlign": "center",
+                    "field": "table",
+                    "columns": [[{
+                        "title": "姓名",
+                        "field": "name",
+                        "width": 99.87127733295982,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "title": "性别",
+                        "field": "gender",
+                        "width": 95.65764630289445,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "title": "爱好",
+                        "field": "like",
+                        "width": 104.71872050066564,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "width": 101.99066954092144,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "width": 81.6409089895988,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "width": 89.12077733295979,
+                        "colspan": 1,
+                        "rowspan": 1
+                    }]]
+                }
+            });
+        // //Html
+        // panel.addPrintHtml({ options: { width: 140, height: 35, top: 180, left: 20, content: '' } });
+
+        //打印设计
+        hiprintTemplate.design('#hiprint-printTemplate');
+    });
+  </script>
+</body>
+
+</html>
