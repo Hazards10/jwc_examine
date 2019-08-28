@@ -1,6 +1,6 @@
 ﻿(function ($) {
     $.fn.hiwprint = function (options) {
-        let usedFrame = document.getElementById('hiwprint_iframe');
+        var usedFrame = document.getElementById('hiwprint_iframe');
         if (usedFrame) usedFrame.parentNode.removeChild(usedFrame);
         var opt = $.extend({}, $.fn.hiwprint.defaults, options);
         var $element = this;
@@ -18,8 +18,8 @@
                 });
             }
         }
-        $iframe[0].srcdoc = '<!DOCTYPE html><html><head><title></title><meta charset="UTF-8">' + css+'</head><body></body></html>';
-      
+        $iframe[0].srcdoc = '<!DOCTYPE html><html><head><title></title><meta charset="UTF-8">' + css + '</head><body></body></html>';
+
         $iframe[0].onload = function () {
             var printDocument = $iframe[0].contentWindow || $iframe[0].contentDocument;
             if (printDocument.document) printDocument = printDocument.document;
@@ -32,10 +32,13 @@
             else {
                 printDocument.body.innerHTML = $element.html();
             }
-          
-            performPrint($iframe[0]);
+            loadAllImages(printDocument, function () {
+
+                performPrint($iframe[0]);
+            });
+
         };
-        
+
         $iframe.appendTo("body");
 
     };
@@ -63,7 +66,7 @@
         }
     }
 
-  
+
     function isIE() {
         return navigator.userAgent.indexOf('MSIE') !== -1 || !!document.documentMode;
     }
@@ -72,4 +75,39 @@
     function isEdge() {
         return !isIE() && !!window.StyleMedia;
     }
+
+
+
+    function loadAllImages(printDocument, callback, time) {
+        
+        if (time === undefined) {
+            time = 0;
+        }
+        var images = printDocument.getElementsByTagName('img');
+        var allLoaded = true;
+        for (var i = 0; i < images.length; i++) {
+            var image = images[i];
+            if (image.src && image.src !== window.location.href && image.src.indexOf('base64') == -1) {
+               
+                if (!image || typeof image.naturalWidth === 'undefined' || image.naturalWidth === 0 || !image.complete) {
+                    console.log(image.complete);
+                    if (!image.complete) {
+                        allLoaded = false;
+                    }
+                    
+                }
+            }
+        }
+        time++;
+        if (!allLoaded && time < 10) {
+            
+            setTimeout(function () {
+               loadAllImages(printDocument, callback, time);
+            }, 500);
+        } else {
+            callback();
+        }
+    }
+
+
 })(jQuery);

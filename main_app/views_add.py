@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from main_app import models
 from django.http import JsonResponse
+
 import time
 import json
+
+from main_app import models
 import operator  # 用来判断两个列表是否相等
 import pymssql  # 引入SqlServer数据库操作
 
@@ -30,7 +32,7 @@ def add_admin(request):
 def del_admin(request):
     if request.method == 'POST':
         delete_array = request.POST.get('delete_array')
-        delete_array = delete_array.split(',')  #将字符串分割成数组
+        delete_array = delete_array.split(',')  # 将字符串分割成数组
         for id in delete_array:
             models.AdminForm.objects.filter(admin_id=id).delete()
         return render(request, 'show/show_admin.html', {'script': "alert", 'wrong': '操作成功！删除%s个用户！'%len(delete_array)})
@@ -99,7 +101,10 @@ def add_hc(request):
                                           data_company=data_company, data_count=data_count, data_price=data_price,
                                           data_price2=data_price2, data_usedate=data_usedate, data_person=data_person,
                                           data_remark=data_remark, creator=creator, examine=examine)
-        return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
+        if request.is_ajax():
+            return JsonResponse({"message": True}, safe=False)
+        else:
+            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
 
 
 # excel导入hc

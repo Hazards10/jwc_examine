@@ -6,11 +6,11 @@ var customElementTypeProvider = (function () {
                 "testModule",
                 [
                     new hiprint.PrintElementTypeGroup("常规", [
-                        { tid: 'testModule.text', title: '文本', data: '测试文本', type: 'text' },
-                        { tid: 'testModule.image', title: '图片', data: '/Content/assets/hi.png', type: 'image' },
-                        { tid: 'testModule.longText', title: '长文', data: '155123456789', type: 'longText' },
+                        { tid: 'testModule.text', text: '文本', data: '', type: 'text' },
+                        { tid: 'testModule.image', text: '图片', data: '/Content/assets/hi.png', type: 'image' },
+                        { tid: 'testModule.longText', text: '长文', data: '', type: 'longText' },
                         {
-                            tid: 'testModule.table', field: 'table', title: '表格',
+                            tid: 'testModule.table', field: 'table', text: '表格',
                             type: 'table',
                             groupFields: ['name'],
                             groupFooterFormatter: function (group, option) {
@@ -36,27 +36,32 @@ var customElementTypeProvider = (function () {
                         {
                             tid: 'testModule.html', title: 'html',
                             formatter: function (data, options) {
-                                return $('div style="height:50pt;width:50pt;background:red;border-radius: 50%;"></div>');
+                                return $('<div style="height:50pt;width:50pt;background:red;border-radius: 50%;"></div>');
                             },
                             type: 'html'
                         },
-                        { tid: 'testModule.customText', title: '自定义文本', customText: '自定义文本', custom: true, type: 'text' }
+                        { tid: 'testModule.customText', text: '自定义文本', customText: '自定义文本', custom: true, type: 'text' }
                     ]),
                     new hiprint.PrintElementTypeGroup("辅助", [
                         {
                             tid: 'testModule.hline',
-                            title: '横线',
+                            text: '横线',
                             type: 'hline'
                         },
                         {
                             tid: 'testModule.vline',
-                            title: '竖线',
+                            text: '竖线',
                             type: 'vline'
                         },
                         {
                             tid: 'testModule.rect',
-                            title: '矩形',
+                            text: '矩形',
                             type: 'rect'
+                        },
+                        {
+                            tid: 'testModule.oval',
+                            text: '椭圆',
+                            type: 'oval'
                         }
                     ])
                 ]

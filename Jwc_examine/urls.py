@@ -17,17 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.static import serve
 from Jwc_examine.settings import MEDIA_ROOT
-from main_app import views_router
-from main_app import views_add
-from main_app import views_commit
-from main_app import views_get
-from main_app import views_login
+from main_app import views_router, views_add, views_commit, views_get, views_login, views_delete
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/<path:path>', serve, {'document_root':MEDIA_ROOT}),   # 文件映射路径
     # 路由地址
-    path('page_login/', views_router.page_login),  # 登陆界面
+    path('', views_router.page_login),  # 登陆界面
     path('index/', views_router.home),  # 首页
     path('request_list/', views_router.apply_list),  # 请求列表
     # HC
@@ -62,6 +59,9 @@ urlpatterns = [
     path('get_request_list/', views_get.get_sender),  # 得到请求列表
     path('add_hc/', views_add.add_hc),  # 创建hc
     path('add_yq/', views_add.add_yq),  # 创建yq
+    path('del_hc/', views_delete.del_hc),  # 删除hc
+    path('del_yq/', views_delete.del_yq),  # 删除yq
+    path('edit_hc_creator/', views_get.GetEditHcCreator.as_view()),  # 获取或编辑一条hc数据(普通老师)
     path('excel_add_hc/', views_add.excel_commit_hc),  # excel导入耗材数据
     path('excel_add_yq/', views_add.excel_commit_yq),  # excel导入仪器数据
     path('add_admin/', views_add.add_admin),    #创建用户

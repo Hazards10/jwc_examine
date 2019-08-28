@@ -1,5 +1,5 @@
 /**
- * jQuery Hiprint 2.2.5
+ * jQuery Hiprint 2.3.5
  * 
  * Copyright (c) 2016-2019 www.hinnn.com. All rights reserved.
  *
@@ -7,7 +7,6 @@
  * To use it on other terms please contact us: hinnn.com@gmail.com
  *
  */
-"use strict";
 
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
 
@@ -183,8 +182,8 @@ var hiprint = function (t) {
                         p = e.pageY - o.top,
                         s = o.left + r - e.pageX,
                         l = o.top + a - e.pageY,
-                        h = e.pageX - o.left;
-                    return Math.min(p, s, l, h) > n.options.edge;
+                        u = e.pageX - o.left;
+                    return Math.min(p, s, l, u) > n.options.edge;
                 }
 
                 t.data(this, "hidraggable", {
@@ -334,8 +333,8 @@ var hiprint = function (t) {
                 for (var a = {}, p = 0; p < e.length; p++) {
                     var s = e[p];
                     if ("string" == typeof s) a[s] = "width" == s || "height" == s || "left" == s || "top" == s ? parseInt(t.style[s]) || void 0 : i.attr(s); else for (var l in s) {
-                        var h = s[l];
-                        "boolean" == h ? a[l] = i.attr(l) ? "true" == i.attr(l) : void 0 : "number" == h && (a[l] = "0" == i.attr(l) ? 0 : parseFloat(i.attr(l)) || void 0);
+                        var u = s[l];
+                        "boolean" == u ? a[l] = i.attr(l) ? "true" == i.attr(l) : void 0 : "number" == u && (a[l] = "0" == i.attr(l) ? 0 : parseFloat(i.attr(l)) || void 0);
                     }
                 }
 
@@ -409,27 +408,27 @@ var hiprint = function (t) {
                             name: "ne",
                             target: n('<div class="ne resizebtn" style="cursor: ne-resize;top: -12px;right: -12px;"></div>')
                         },
-                        h = {
+                        u = {
                             name: "nw",
                             target: n('<div class="nw resizebtn" style=" cursor: nw-resize;top: -12px;left:-12px;"></div>')
                         },
-                        u = {
+                        h = {
                             name: "se",
                             target: n('<div class="se resizebtn" style="cursor: se-resize;bottom:-12px;right: -12px;"></div>')
                         },
-                        c = {
+                        d = {
                             name: "sw",
                             target: n('<div class="sw resizebtn" style="cursor: sw-resize;bottom: -12px;left: -12px;"></div>')
                         },
-                        d = function d() {
+                        c = function c() {
                             var t = [],
                                 i = e.options.showPoints;
-                            return n.each([r, a, p, s, l, h, u, c], function (e, o) {
+                            return n.each([r, a, p, s, l, u, h, d], function (e, o) {
                                 n.inArray(o.name, i) > -1 && t.push(o.target);
                             }), t;
                         };
 
-                    e.addHandlerCss(d()), e.appendHandler(d(), o), e.bindResizeEvent(o, n(this));
+                    e.addHandlerCss(c()), e.appendHandler(c(), o), e.bindResizeEvent(o, n(this));
                     var f = n(this);
                     n(o).on("mousedown", ".resizebtn", function () {
                         f.addClass("resizeing");
@@ -469,101 +468,101 @@ var hiprint = function (t) {
                     p = t.height(),
                     s = t.offset().left,
                     l = t.offset().top,
-                    h = i.options.noContainer ? n(e) : t.parent(),
-                    u = !1;
+                    u = i.options.noContainer ? n(e) : t.parent(),
+                    h = !1;
                 t.on("mousedown", ".e", function (e) {
-                    o = e.pageX, a = t.width(), u = !0;
-                });
-                var c = !1;
-                t.on("mousedown", ".s", function (e) {
-                    r = e.pageY, p = t.height(), c = !0;
+                    o = e.pageX, a = t.width(), h = !0;
                 });
                 var d = !1;
+                t.on("mousedown", ".s", function (e) {
+                    r = e.pageY, p = t.height(), d = !0;
+                });
+                var c = !1;
                 t.on("mousedown", ".w", function (e) {
-                    o = e.pageX, a = t.width(), d = !0, s = h.offset().left;
+                    o = e.pageX, a = t.width(), c = !0, s = u.offset().left;
                 });
                 var f = !1;
                 t.on("mousedown", ".n", function (e) {
-                    r = e.pageY, p = t.height(), f = !0, l = h.offset().top;
+                    r = e.pageY, p = t.height(), f = !0, l = u.offset().top;
                 });
                 var g = !1;
                 t.on("mousedown", ".ne", function (e) {
-                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), g = !0, l = h.offset().top;
-                });
-                var m = !1;
-                t.on("mousedown", ".nw", function (e) {
-                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), l = h.offset().top, s = h.offset().left, m = !0;
+                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), g = !0, l = u.offset().top;
                 });
                 var v = !1;
+                t.on("mousedown", ".nw", function (e) {
+                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), l = u.offset().top, s = u.offset().left, v = !0;
+                });
+                var m = !1;
                 t.on("mousedown", ".se", function (e) {
-                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), v = !0;
+                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), m = !0;
                 });
                 var y = !1;
                 t.on("mousedown", ".sw", function (e) {
-                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), y = !0, s = h.offset().left;
+                    o = e.pageX, r = e.pageY, a = t.width(), p = t.height(), y = !0, s = u.offset().left;
                 });
                 var b = !1;
                 t.on("mousedown", function (t) {
-                    o = t.pageX, r = t.pageY, l = h.offset().top, s = h.offset().left, b = !1;
+                    o = t.pageX, r = t.pageY, l = u.offset().top, s = u.offset().left, b = !1;
                 }), n(i.options.stage).on("mousemove", function (e) {
-                    if (u) {
+                    if (h) {
                         var n = e.pageX - o;
                         t.css({
                             width: "100%"
-                        }), h.css({
+                        }), u.css({
                             width: i.numHandlerText(a + n)
                         }), i.options.onResize(e, void 0, i.numHandler(a + n), void 0, void 0);
-                    } else if (c) {
-                        var w = e.pageY - r;
+                    } else if (d) {
+                        var T = e.pageY - r;
                         t.css({
                             height: "100%"
-                        }), h.css({
-                            height: i.numHandlerText(p + w)
-                        }), i.options.onResize(e, i.numHandler(p + w), void 0, void 0, void 0);
-                    } else d ? (n = e.pageX - o, t.css({
+                        }), u.css({
+                            height: i.numHandlerText(p + T)
+                        }), i.options.onResize(e, i.numHandler(p + T), void 0, void 0, void 0);
+                    } else c ? (n = e.pageX - o, t.css({
                         width: "100%"
-                    }), h.css({
+                    }), u.css({
                         width: i.numHandlerText(a - n),
                         left: i.numHandlerText(i.options.noDrag ? void 0 : i.numHandler(s + n))
-                    }), i.options.onResize(e, void 0, i.numHandler(a - n), void 0, i.options.noDrag ? void 0 : i.numHandler(s + n))) : f ? (w = e.pageY - r, t.css({
+                    }), i.options.onResize(e, void 0, i.numHandler(a - n), void 0, i.options.noDrag ? void 0 : i.numHandler(s + n))) : f ? (T = e.pageY - r, t.css({
                         height: "100%"
-                    }), h.css({
-                        height: i.numHandlerText(p - w),
-                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + w)
-                    }), i.options.onResize(e, i.numHandler(p - w), void 0, i.options.noDrag ? void 0 : i.numHandler(l + w), void 0)) : g ? (n = e.pageX - o, w = e.pageY - r, t.css({
+                    }), u.css({
+                        height: i.numHandlerText(p - T),
+                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + T)
+                    }), i.options.onResize(e, i.numHandler(p - T), void 0, i.options.noDrag ? void 0 : i.numHandler(l + T), void 0)) : g ? (n = e.pageX - o, T = e.pageY - r, t.css({
                         height: "100%",
                         width: "100%"
-                    }), h.css({
-                        height: i.numHandlerText(p - w),
-                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + w),
+                    }), u.css({
+                        height: i.numHandlerText(p - T),
+                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + T),
                         width: i.numHandlerText(a + n)
-                    }), i.options.onResize(e, i.numHandler(p - w), i.numHandler(a + n), i.options.noDrag ? void 0 : i.numHandler(l + w), void 0)) : m ? (n = e.pageX - o, w = e.pageY - r, t.css({
+                    }), i.options.onResize(e, i.numHandler(p - T), i.numHandler(a + n), i.options.noDrag ? void 0 : i.numHandler(l + T), void 0)) : v ? (n = e.pageX - o, T = e.pageY - r, t.css({
                         height: "100%",
                         width: "100%"
-                    }), h.css({
-                        height: i.numHandlerText(p - w),
-                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + w),
+                    }), u.css({
+                        height: i.numHandlerText(p - T),
+                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + T),
                         width: i.numHandlerText(a - n),
                         left: i.numHandlerText(i.options.noDrag ? void 0 : s + n)
-                    }), i.options.onResize(e, i.numHandler(p - w), i.numHandler(a - n), i.options.noDrag ? void 0 : i.numHandler(l + w), i.options.noDrag ? void 0 : i.numHandler(s + n))) : v ? (n = e.pageX - o, w = e.pageY - r, t.css({
+                    }), i.options.onResize(e, i.numHandler(p - T), i.numHandler(a - n), i.options.noDrag ? void 0 : i.numHandler(l + T), i.options.noDrag ? void 0 : i.numHandler(s + n))) : m ? (n = e.pageX - o, T = e.pageY - r, t.css({
                         width: "100%",
                         height: "100%"
-                    }), h.css({
+                    }), u.css({
                         width: i.numHandlerText(a + n),
-                        height: i.numHandlerText(p + w)
-                    }), i.options.onResize(e, i.numHandler(p + w), i.numHandler(a + n), void 0, void 0)) : y ? (n = e.pageX - o, w = e.pageY - r, t.css({
+                        height: i.numHandlerText(p + T)
+                    }), i.options.onResize(e, i.numHandler(p + T), i.numHandler(a + n), void 0, void 0)) : y ? (n = e.pageX - o, T = e.pageY - r, t.css({
                         width: "100%",
                         height: "100%"
-                    }), h.css({
+                    }), u.css({
                         width: i.numHandlerText(a - n),
                         left: i.numHandlerText(i.options.noDrag ? void 0 : s + n),
-                        height: i.numHandlerText(p + w)
-                    }), i.options.onResize(e, i.numHandler(p + w), i.numHandler(a - n), i.numHandler(otundefinedop), i.options.noDrag ? void 0 : i.numHandler(s + n))) : b && (n = e.pageX - o, w = e.pageY - r, h.css({
+                        height: i.numHandlerText(p + T)
+                    }), i.options.onResize(e, i.numHandler(p + T), i.numHandler(a - n), i.numHandler(otundefinedop), i.options.noDrag ? void 0 : i.numHandler(s + n))) : b && (n = e.pageX - o, T = e.pageY - r, u.css({
                         left: i.numHandlerText(i.options.noDrag ? void 0 : s + n),
-                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + w)
-                    }), i.options.onResize(e, void 0, void 0, i.options.noDrag ? void 0 : i.numHandler(l + w), i.options.noDrag ? void 0 : i.numHandler(s + n)));
+                        top: i.numHandlerText(i.options.noDrag ? void 0 : l + T)
+                    }), i.options.onResize(e, void 0, void 0, i.options.noDrag ? void 0 : i.numHandler(l + T), i.options.noDrag ? void 0 : i.numHandler(s + n)));
                 }).on("mouseup", function (t) {
-                    u = !1, c = !1, d = !1, f = !1, g = !1, m = !1, y = !1, v = !1, b = !1;
+                    h = !1, d = !1, c = !1, f = !1, g = !1, v = !1, y = !1, m = !1, b = !1, i.options.onStopResize();
                 });
             },
             bindTrigger: function bindTrigger(t) {
@@ -591,7 +590,8 @@ var hiprint = function (t) {
                         options: e
                     }), new o({
                         target: this,
-                        onResize: function onResize(t, e, n, i, o) { }
+                        onResize: function onResize(t, e, n, i, o) { },
+                        onStopResize: function onStopResize(t, e, n, i, o) { }
                     });
                 });
             }
@@ -602,6 +602,7 @@ var hiprint = function (t) {
             showPoints: ["s", "e"],
             noContainer: !1,
             onResize: function onResize(t, e, n, i, o) { },
+            onStopResize: function onStopResize(t, e, n, i, o) { },
             noDrag: !1
         };
 }, function (t, e) {
@@ -740,10 +741,10 @@ var hiprint = function (t) {
         }(),
         s = null,
         l = 0,
-        h = [],
-        u = n(10);
+        u = [],
+        h = n(10);
 
-    function c(t, e) {
+    function d(t, e) {
         for (var n = 0; n < t.length; n++) {
             var i = t[n],
                 o = r[i.id];
@@ -774,7 +775,7 @@ var hiprint = function (t) {
         }
     }
 
-    function d(t, e) {
+    function c(t, e) {
         for (var n = [], i = {}, o = 0; o < t.length; o++) {
             var r = t[o],
                 a = e.base ? r[0] + e.base : r[0],
@@ -795,8 +796,8 @@ var hiprint = function (t) {
     function f(t, e) {
         var n = p(t.insertInto);
         if (!n) throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-        var i = h[h.length - 1];
-        if ("top" === t.insertAt) i ? i.nextSibling ? n.insertBefore(e, i.nextSibling) : n.appendChild(e) : n.insertBefore(e, n.firstChild), h.push(e); else if ("bottom" === t.insertAt) n.appendChild(e); else {
+        var i = u[u.length - 1];
+        if ("top" === t.insertAt) i ? i.nextSibling ? n.insertBefore(e, i.nextSibling) : n.appendChild(e) : n.insertBefore(e, n.firstChild), u.push(e); else if ("bottom" === t.insertAt) n.appendChild(e); else {
             if ("object" != _typeof(t.insertAt) || !t.insertAt.before) throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
             var o = p(t.insertAt.before, n);
             n.insertBefore(e, o);
@@ -806,11 +807,11 @@ var hiprint = function (t) {
     function g(t) {
         if (null === t.parentNode) return !1;
         t.parentNode.removeChild(t);
-        var e = h.indexOf(t);
-        e >= 0 && h.splice(e, 1);
+        var e = u.indexOf(t);
+        e >= 0 && u.splice(e, 1);
     }
 
-    function m(t) {
+    function v(t) {
         var e = document.createElement("style");
 
         if (void 0 === t.attrs.type && (t.attrs.type = "text/css"), void 0 === t.attrs.nonce) {
@@ -822,10 +823,10 @@ var hiprint = function (t) {
             i && (t.attrs.nonce = i);
         }
 
-        return v(e, t.attrs), f(t, e), e;
+        return m(e, t.attrs), f(t, e), e;
     }
 
-    function v(t, e) {
+    function m(t, e) {
         Object.keys(e).forEach(function (n) {
             t.setAttribute(n, e[n]);
         });
@@ -841,15 +842,15 @@ var hiprint = function (t) {
 
         if (e.singleton) {
             var a = l++;
-            n = s || (s = m(e)), i = T.bind(null, n, a, !1), o = T.bind(null, n, a, !0);
+            n = s || (s = v(e)), i = w.bind(null, n, a, !1), o = w.bind(null, n, a, !0);
         } else t.sourceMap && "function" == typeof URL && "function" == typeof URL.createObjectURL && "function" == typeof URL.revokeObjectURL && "function" == typeof Blob && "function" == typeof btoa ? (n = function (t) {
             var e = document.createElement("link");
-            return void 0 === t.attrs.type && (t.attrs.type = "text/css"), t.attrs.rel = "stylesheet", v(e, t.attrs), f(t, e), e;
+            return void 0 === t.attrs.type && (t.attrs.type = "text/css"), t.attrs.rel = "stylesheet", m(e, t.attrs), f(t, e), e;
         }(e), i = function (t, e, n) {
             var i = n.css,
                 o = n.sourceMap,
                 r = void 0 === e.convertToAbsoluteUrls && o;
-            (e.convertToAbsoluteUrls || r) && (i = u(i));
+            (e.convertToAbsoluteUrls || r) && (i = h(i));
             o && (i += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(o)))) + " */");
             var a = new Blob([i], {
                 type: "text/css"
@@ -858,7 +859,7 @@ var hiprint = function (t) {
             t.href = URL.createObjectURL(a), p && URL.revokeObjectURL(p);
         }.bind(null, n, e), o = function o() {
             g(n), n.href && URL.revokeObjectURL(n.href);
-        }) : (n = m(e), i = function (t, e) {
+        }) : (n = v(e), i = function (t, e) {
             var n = e.css,
                 i = e.media;
             i && t.setAttribute("media", i);
@@ -884,14 +885,14 @@ var hiprint = function (t) {
     t.exports = function (t, e) {
         if ("undefined" != typeof DEBUG && DEBUG && "object" != (typeof document === "undefined" ? "undefined" : _typeof(document))) throw new Error("The style-loader cannot be used in a non-browser environment");
         (e = e || {}).attrs = "object" == _typeof(e.attrs) ? e.attrs : {}, e.singleton || "boolean" == typeof e.singleton || (e.singleton = a()), e.insertInto || (e.insertInto = "head"), e.insertAt || (e.insertAt = "bottom");
-        var n = d(t, e);
-        return c(n, e), function (t) {
+        var n = c(t, e);
+        return d(n, e), function (t) {
             for (var i = [], o = 0; o < n.length; o++) {
                 var a = n[o];
                 (p = r[a.id]).refs-- , i.push(p);
             }
 
-            t && c(d(t, e), e);
+            t && d(c(t, e), e);
 
             for (o = 0; o < i.length; o++) {
                 var p;
@@ -908,13 +909,13 @@ var hiprint = function (t) {
     };
 
     var b,
-        w = (b = [], function (t, e) {
+        T = (b = [], function (t, e) {
             return b[t] = e, b.filter(Boolean).join("\n");
         });
 
-    function T(t, e, n, i) {
+    function w(t, e, n, i) {
         var o = n ? "" : i.css;
-        if (t.styleSheet) t.styleSheet.cssText = w(e, o); else {
+        if (t.styleSheet) t.styleSheet.cssText = T(e, o); else {
             var r = document.createTextNode(o),
                 a = t.childNodes;
             a[e] && t.removeChild(a[e]), a.length ? t.insertBefore(r, a[e]) : t.appendChild(r);
@@ -1091,8 +1092,8 @@ var hiprint = function (t) {
             var l = _.now();
 
             p || !1 !== n.leading || (p = l);
-            var h = e - (l - p);
-            return i = this, o = arguments, h <= 0 || h > e ? (a && (clearTimeout(a), a = null), p = l, r = t.apply(i, o), a || (i = o = null)) : a || !1 === n.trailing || (a = setTimeout(s, h)), r;
+            var u = e - (l - p);
+            return i = this, o = arguments, u <= 0 || u > e ? (a && (clearTimeout(a), a = null), p = l, r = t.apply(i, o), a || (i = o = null)) : a || !1 === n.trailing || (a = setTimeout(s, u)), r;
         };
     }, hinnn.debounce = function (t, e, n) {
         var i,
@@ -1162,10 +1163,23 @@ var hiprint = function (t) {
 
         return this.orderBy(o, e).concat([i], this.orderBy(r, e));
     };
-    n(5), n(6), n(11);
+    var o;
+    n(5);
+    window.hiLocalStorage = (o = window.localStorage || null, {
+        saveLocalData: function saveLocalData(t, e) {
+            return !(!o || !e || (o.setItem(t, e), 0));
+        },
+        getLocalData: function getLocalData(t) {
+            return o ? o.getItem(t) : null;
+        },
+        removeItem: function removeItem(t) {
+            o && o.removeItem(t);
+        }
+    });
+    n(6), n(11);
 
-    var _o,
-        r = function () {
+    var _r,
+        a = function () {
             function t() {
                 this.allElementTypes = [];
             }
@@ -1192,7 +1206,7 @@ var hiprint = function (t) {
                 return t || "_default";
             }, t;
         }(),
-        a = function () {
+        p = function () {
             function t() {
                 this.providers = [], this.movingDistance = 1.5, this.text = {
                     supportOptions: [{
@@ -1226,6 +1240,9 @@ var hiprint = function (t) {
                         name: "textAlign",
                         hidden: !1
                     }, {
+                        name: "textContentVerticalAlign",
+                        hidden: !1
+                    }, {
                         name: "lineHeight",
                         hidden: !1
                     }, {
@@ -1241,10 +1258,52 @@ var hiprint = function (t) {
                         name: "showInPage",
                         hidden: !1
                     }, {
+                        name: "unShowInPage",
+                        hidden: !1
+                    }, {
                         name: "fixed",
                         hidden: !1
                     }, {
                         name: "axis",
+                        hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "optionsGroup",
+                        hidden: !1
+                    }, {
+                        name: "borderLeft",
+                        hidden: !1
+                    }, {
+                        name: "borderTop",
+                        hidden: !1
+                    }, {
+                        name: "borderRight",
+                        hidden: !1
+                    }, {
+                        name: "borderBottom",
+                        hidden: !1
+                    }, {
+                        name: "borderWidth",
+                        hidden: !1
+                    }, {
+                        name: "borderColor",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingLeft",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingTop",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingRight",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingBottom",
+                        hidden: !1
+                    }, {
+                        name: "backgroundColor",
                         hidden: !1
                     }],
                     default: {
@@ -1275,6 +1334,9 @@ var hiprint = function (t) {
                     }, {
                         name: "axis",
                         hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
                     }],
                     default: {}
                 }, this.longText = {
@@ -1283,6 +1345,9 @@ var hiprint = function (t) {
                         hidden: !1
                     }, {
                         name: "field",
+                        hidden: !1
+                    }, {
+                        name: "testData",
                         hidden: !1
                     }, {
                         name: "fontFamily",
@@ -1303,10 +1368,10 @@ var hiprint = function (t) {
                         name: "lineHeight",
                         hidden: !1
                     }, {
-                        name: "hideTitle",
+                        name: "color",
                         hidden: !1
                     }, {
-                        name: "color",
+                        name: "hideTitle",
                         hidden: !1
                     }, {
                         name: "longTextIndent",
@@ -1318,6 +1383,9 @@ var hiprint = function (t) {
                         name: "showInPage",
                         hidden: !1
                     }, {
+                        name: "unShowInPage",
+                        hidden: !1
+                    }, {
                         name: "fixed",
                         hidden: !1
                     }, {
@@ -1325,6 +1393,45 @@ var hiprint = function (t) {
                         hidden: !1
                     }, {
                         name: "lHeight",
+                        hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "optionsGroup",
+                        hidden: !1
+                    }, {
+                        name: "borderLeft",
+                        hidden: !1
+                    }, {
+                        name: "borderTop",
+                        hidden: !1
+                    }, {
+                        name: "borderRight",
+                        hidden: !1
+                    }, {
+                        name: "borderBottom",
+                        hidden: !1
+                    }, {
+                        name: "borderWidth",
+                        hidden: !1
+                    }, {
+                        name: "borderColor",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingLeft",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingTop",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingRight",
+                        hidden: !1
+                    }, {
+                        name: "contentPaddingBottom",
+                        hidden: !1
+                    }, {
+                        name: "backgroundColor",
                         hidden: !1
                     }],
                     default: {
@@ -1376,10 +1483,13 @@ var hiprint = function (t) {
                         name: "tableHeaderFontWeight",
                         hidden: !1
                     }, {
-                        name: "tableBodyCellBorder",
+                        name: "tableBodyRowHeight",
                         hidden: !1
                     }, {
-                        name: "tableBodyRowHeight",
+                        name: "tableBodyRowBorder",
+                        hidden: !1
+                    }, {
+                        name: "tableBodyCellBorder",
                         hidden: !1
                     }, {
                         name: "axis",
@@ -1440,10 +1550,13 @@ var hiprint = function (t) {
                         name: "tableHeaderBackground",
                         hidden: !1
                     }, {
-                        name: "tableBodyCellBorder",
+                        name: "tableBodyRowHeight",
                         hidden: !1
                     }, {
-                        name: "tableBodyRowHeight",
+                        name: "tableBodyRowBorder",
+                        hidden: !1
+                    }, {
+                        name: "tableBodyCellBorder",
                         hidden: !1
                     }, {
                         name: "axis",
@@ -1485,6 +1598,12 @@ var hiprint = function (t) {
                     }, {
                         name: "axis",
                         hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "borderStyle",
+                        hidden: !1
                     }],
                     default: {
                         borderWidth: .75,
@@ -1506,6 +1625,12 @@ var hiprint = function (t) {
                         hidden: !1
                     }, {
                         name: "axis",
+                        hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "borderStyle",
                         hidden: !1
                     }],
                     default: {
@@ -1529,6 +1654,12 @@ var hiprint = function (t) {
                     }, {
                         name: "axis",
                         hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "borderStyle",
+                        hidden: !1
                     }],
                     default: {
                         borderWidth: void 0,
@@ -1551,6 +1682,12 @@ var hiprint = function (t) {
                     }, {
                         name: "axis",
                         hidden: !1
+                    }, {
+                        name: "transform",
+                        hidden: !1
+                    }, {
+                        name: "borderStyle",
+                        hidden: !1
                     }],
                     default: {
                         borderWidth: void 0,
@@ -1560,6 +1697,9 @@ var hiprint = function (t) {
                 }, this.html = {
                     supportOptions: [{
                         name: "showInPage",
+                        hidden: !1
+                    }, {
+                        name: "unShowInPage",
                         hidden: !1
                     }, {
                         name: "fixed",
@@ -1585,7 +1725,7 @@ var hiprint = function (t) {
                 configurable: !0
             }), t;
         }(),
-        p = function () {
+        s = function () {
             function t(t) {
                 this.printElement = t;
             }
@@ -1594,9 +1734,9 @@ var hiprint = function (t) {
                 this.left = t, this.top = e;
             }, t;
         }(),
-        s = function () {
+        l = function () {
             function t() {
-                this.A1 = {
+                this.printTemplateContainer = {}, this.A1 = {
                     width: 841,
                     height: 594
                 }, this.A2 = {
@@ -1656,15 +1796,36 @@ var hiprint = function (t) {
             }), t.prototype.getDragingPrintElement = function () {
                 return t.instance.dragingPrintElement;
             }, t.prototype.setDragingPrintElement = function (e) {
-                t.instance.dragingPrintElement = new p(e);
+                t.instance.dragingPrintElement = new s(e);
             }, t.prototype.guid = function () {
                 return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (t) {
                     var e = 16 * Math.random() | 0;
                     return ("x" == t ? e : 3 & e | 8).toString(16);
                 });
+            }, t.prototype.imageToBase64 = function (t) {
+                if (-1 == $(t).attr("src").indexOf("base64")) try {
+                    var e = document.createElement("canvas"),
+                        n = new Image();
+                    n.src = t.attr("src"), e.width = n.width, e.height = n.height, e.getContext("2d").drawImage(n, 0, 0), t.attr("src", e.toDataURL("image/png"));
+                } catch (e) {
+                    try {
+                        this.xhrLoadImage(t);
+                    } catch (t) {
+                        console.log(t);
+                    }
+                }
+            }, t.prototype.xhrLoadImage = function (t) { }, t.prototype.transformImg = function (t) {
+                var e = this;
+                t.map(function (t, n) {
+                    e.imageToBase64($(n));
+                });
+            }, t.prototype.getPrintTemplateById = function (e) {
+                return t.instance.printTemplateContainer[e];
+            }, t.prototype.setPrintTemplateById = function (e, n) {
+                return t.instance.printTemplateContainer[e] = n;
             }, t;
         }(),
-        l = function () {
+        u = function () {
             function t() { }
 
             return t.prototype.createPrintElementTypeHtml = function (t, e) {
@@ -1674,7 +1835,7 @@ var hiprint = function (t) {
                     e.append('<span class="title">' + t.name + "</span>");
                     var i = $("<ul></ul>");
                     e.append(i), t.printElementTypes.forEach(function (t) {
-                        i.append('<li><a class="ep-draggable-item" tid="' + t.tid + '">  ' + t.title + " </a></li>");
+                        i.append('<li><a class="ep-draggable-item" tid="' + t.tid + '">  ' + t.getText() + " </a></li>");
                     }), n.append(e);
                 }), $(t).append(n), n.find(".ep-draggable-item");
             }, t;
@@ -1692,7 +1853,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        u = function () {
+        d = function () {
             function t() {
                 this.text = new h();
             }
@@ -1710,21 +1871,21 @@ var hiprint = function (t) {
 
             return Object.defineProperty(t, "Instance", {
                 get: function get() {
-                    return u._instance || (t._instance = new t()), t._instance;
+                    return d._instance || (t._instance = new t()), t._instance;
                 },
                 enumerable: !0,
                 configurable: !0
             }), t.prototype.createEditor = function (t) {
-                return $.extend({}, u.Instance[t]);
+                return $.extend({}, d.Instance[t]);
             }, t;
         }(),
-        d = function () {
+        f = function () {
             function t() { }
 
             return t.mergeRect = function (t, e) {
                 var n = Math.min(t.x, e.x),
                     i = Math.min(t.y, e.y);
-                return new g({
+                return new v({
                     x: n,
                     y: i,
                     height: Math.max(t.y + t.height, e.y + e.height) - i,
@@ -1732,7 +1893,7 @@ var hiprint = function (t) {
                 });
             }, t;
         }(),
-        f = function () {
+        g = function () {
             function t(t, e) {
                 this.selectedCells = [], this.rows = t, this.tableTatget = e;
             }
@@ -1759,7 +1920,7 @@ var hiprint = function (t) {
                     var i = this.getCellByXY(t, e);
 
                     if (i) {
-                        var o = d.mergeRect(this.startCell.cell.getTableRect(), i.cell.getTableRect());
+                        var o = f.mergeRect(this.startCell.cell.getTableRect(), i.cell.getTableRect());
                         this.selectByRect(new m(o), n);
                     }
                 }
@@ -1769,7 +1930,7 @@ var hiprint = function (t) {
                 this.rows.forEach(function (n, i) {
                     var o = [];
                     n.columns.forEach(function (e) {
-                        e.isInRect(t) && (o.push(new v(i, e)), e.select());
+                        e.isInRect(t) && (o.push(new y(i, e)), e.select());
                     }), o.length && e.push(o);
                 }), t.changed && (t.changed = !1, e.splice(0, e.length), this.selectByRect(t, e));
             }, t.prototype.getSelectedCells = function () {
@@ -1780,11 +1941,11 @@ var hiprint = function (t) {
                     var r = i.columns.filter(function (n) {
                         return n.isXYinCell(t, e);
                     });
-                    r.length && (n = new v(o, r[0]));
+                    r.length && (n = new y(o, r[0]));
                 }), n;
             }, t;
         }(),
-        g = function () {
+        v = function () {
             return function (t) {
                 this.x = t.x, this.y = t.y, this.height = t.height, this.width = t.width;
             };
@@ -1794,19 +1955,19 @@ var hiprint = function (t) {
                 this.rect = t;
             };
         }(),
-        v = function () {
+        y = function () {
             return function (t, e) {
                 this.rowIndex = t, this.cell = e;
             };
         }(),
-        y = function () {
+        b = function () {
             function t() { }
 
             return t.createId = function () {
                 return this.id += 1, this.id;
             }, t.id = 1, t;
         }(),
-        b = function () {
+        T = function () {
             function t() { }
 
             return t.prototype.init = function (t, e) {
@@ -1839,9 +2000,9 @@ var hiprint = function (t) {
                 this.title = t.title, this.field = t.field, this.width = t.width, this.align = t.align, this.vAlign = t.vAlign, this.colspan = t.colspan, this.rowspan = t.rowspan;
             };
         }(),
-        T = function () {
+        P = function () {
             function t() {
-                this.id = y.createId();
+                this.id = b.createId();
             }
 
             return t.prototype.init = function (t, e, n) {
@@ -1866,9 +2027,9 @@ var hiprint = function (t) {
             }, t.prototype.getValue = function () {
                 return this.target.html();
             }, t.prototype.setValue = function (t) { }, t.prototype.initInnerEelement = function () {
-                this.innerElement = new b(), this.innerElement.init(this, this.tableOptions);
+                this.innerElement = new T(), this.innerElement.init(this, this.tableOptions);
             }, t.prototype.initEvent = function () { }, t.prototype.isXYinCell = function (t, e) {
-                var n = new g({
+                var n = new v({
                     x: t,
                     y: e,
                     height: 0,
@@ -1876,7 +2037,7 @@ var hiprint = function (t) {
                 });
                 return this.isOverlap(n);
             }, t.prototype.getTableRect = function () {
-                return new g({
+                return new v({
                     x: this.target.offset().left,
                     y: this.target.offset().top,
                     height: this.target[0].offsetHeight,
@@ -1890,7 +2051,7 @@ var hiprint = function (t) {
                     n = this.getTableRect();
 
                 if (e.x + e.width > n.x && n.x + n.width > e.x && e.y + e.height > n.y && n.y + n.height > e.y) {
-                    var i = d.mergeRect(e, n);
+                    var i = f.mergeRect(e, n);
                     return JSON.stringify(e) == JSON.stringify(i) || (t.changed = !0, t.rect = i, !0);
                 }
 
@@ -1909,8 +2070,8 @@ var hiprint = function (t) {
                 return new w(this);
             }, t;
         }(),
-        E = (_o = function o(t, e) {
-            return (_o = Object.setPrototypeOf || _instanceof({
+        x = (_r = function r(t, e) {
+            return (_r = Object.setPrototypeOf || _instanceof({
                 __proto__: []
             }, Array) && function (t, e) {
                 t.__proto__ = e;
@@ -1924,22 +2085,22 @@ var hiprint = function (t) {
                 this.constructor = t;
             }
 
-            _o(t, e), t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
+            _r(t, e), t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }),
-        P = function (t) {
+        E = function (t) {
             function e(e) {
                 var n = this;
                 return e = e || {}, (n = t.call(this) || this).width = e.width ? parseFloat(e.width.toString()) : 100, n.title = e.title, n.field = e.field, n.fixed = e.fixed, n.rowspan = e.rowspan ? parseInt(e.rowspan) : 1, n.colspan = e.colspan ? parseInt(e.colspan) : 1, n.align = e.align, n.vAlign = e.vAlign, n.formatter = e.formatter, n.styler = e.styler, n.checkbox = e.checkbox, n;
             }
 
-            return E(e, t), e;
-        }(T),
-        x = function () {
+            return x(e, t), e;
+        }(P),
+        C = function () {
             return function (t, e, n) {
                 this.tid = t, this.options = e, this.printElementType = n;
             };
         }(),
-        C = function () {
+        O = function () {
             function t() {
                 this.name = "lineHeight";
             }
@@ -1957,13 +2118,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        O = function () {
+        H = function () {
             function t() {
                 this.name = "fontFamily";
             }
@@ -1980,13 +2141,13 @@ var hiprint = function (t) {
             }, t.prototype.getValue = function () {
                 return this.target.find("select").val();
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        S = function () {
+        I = function () {
             function t() {
                 this.name = "fontSize";
             }
@@ -2004,13 +2165,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        H = function () {
+        S = function () {
             function t() {
                 this.name = "fontWeight";
             }
@@ -2027,7 +2188,7 @@ var hiprint = function (t) {
             }, t.prototype.getValue = function () {
                 return $(this.target.find("select")).val();
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
@@ -2051,13 +2212,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        I = function () {
+        D = function () {
             function t() {
                 this.name = "textAlign";
             }
@@ -2070,7 +2231,7 @@ var hiprint = function (t) {
 
                 return null;
             }, t.prototype.createTarget = function () {
-                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        对齐\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="" >居左</option>\n        <option value="center" >居中</option>\n        <option value="right" >居右</option>\n        <option value="justify" >两端对齐</option>\n        </select>\n        </div>\n    </div>'), this.target;
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        左右对齐\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="" >居左</option>\n        <option value="center" >居中</option>\n        <option value="right" >居右</option>\n        <option value="justify" >两端对齐</option>\n        </select>\n        </div>\n    </div>'), this.target;
             }, t.prototype.getValue = function () {
                 return this.target.find("select").val();
             }, t.prototype.setValue = function (t) {
@@ -2079,7 +2240,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        D = function () {
+        R = function () {
             function t() {
                 this.name = "hideTitle";
             }
@@ -2094,7 +2255,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        R = function () {
+        B = function () {
             function t() {
                 this.name = "textType";
             }
@@ -2109,7 +2270,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        L = function () {
+        z = function () {
             function t() {
                 this.name = "tableBorder";
             }
@@ -2132,7 +2293,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        z = function () {
+        L = function () {
             function t() {
                 this.name = "tableHeaderBorder";
             }
@@ -2140,14 +2301,14 @@ var hiprint = function (t) {
             return t.prototype.css = function (t, e) {
                 if (t.find("thead tr").length) {
                     if ("border" == e) return t.find("thead tr").css("border", "1px solid"), "border:1pt solid";
-                    "noBorder" == e ? t.find("thead tr").css("border", "0px solid") : t.find("thead tr").map(function (t, e) {
+                    "noBorder" == e ? t.find("thead tr").css("border", "0px solid") : "topBorder" == e ? (t.find("thead tr").css("border", "0px solid"), t.find("thead tr").css("border-top", "1px solid")) : "bottomBorder" == e ? (t.find("thead tr").css("border", "0px solid"), t.find("thead tr").css("border-bottom", "1px solid")) : "topBottomBorder" == e ? (t.find("thead tr").css("border", "0px solid"), t.find("thead tr").css("border-top", "1px solid"), t.find("thead tr").css("border-bottom", "1px solid")) : t.find("thead tr").map(function (t, e) {
                         e.style.border = "";
                     });
                 }
 
                 return null;
             }, t.prototype.createTarget = function () {
-                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        表头边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select >\n        <option value="" >默认</option>    \n        <option value="border" >有边框</option>\n            <option value="noBorder" >无边框</option>\n        </select>\n        </div>\n    </div>'), this.target;
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        表头边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select >\n        <option value="" >默认</option>    \n        <option value="border" >有边框</option>\n        <option value="noBorder" >无边框</option>\n        <option value="topBorder" >上边框</option>\n        <option value="bottomBorder" >下边框</option>\n        <option value="topBottomBorder" >上下边框</option>\n        </select>\n        </div>\n    </div>'), this.target;
             }, t.prototype.getValue = function () {
                 var t = this.target.find("select").val();
                 if (t) return t.toString();
@@ -2157,7 +2318,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        B = function () {
+        A = function () {
             function t() {
                 this.name = "tableHeaderCellBorder";
             }
@@ -2172,7 +2333,7 @@ var hiprint = function (t) {
 
                 return null;
             }, t.prototype.createTarget = function () {
-                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        表头单元格边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select >\n        <option value="" >默认</option>    \n        <option value="border" >有边框</option>\n            <option value="noBorder" >无边框</option>\n        </select>\n        </div>\n    </div>'), this.target;
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        表头单元格边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select >\n        <option value="" >默认</option>    \n        <option value="border" >有边框</option>\n        <option value="noBorder" >无边框</option>\n      \n        </select>\n        </div>\n    </div>'), this.target;
             }, t.prototype.getValue = function () {
                 var t = this.target.find("select").val();
                 if (t) return t.toString();
@@ -2182,7 +2343,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        k = function () {
+        N = function () {
             function t() {
                 this.name = "tableHeaderRowHeight";
             }
@@ -2202,13 +2363,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        N = function () {
+        k = function () {
             function t() {
                 this.name = "tableHeaderFontSize";
             }
@@ -2228,13 +2389,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        A = function () {
+        j = function () {
             function t() {
                 this.name = "tableHeaderFontWeight";
             }
@@ -2254,7 +2415,7 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return t;
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
@@ -2285,7 +2446,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        j = function () {
+        W = function () {
             function t() {
                 this.name = "tableBodyRowHeight";
             }
@@ -2305,13 +2466,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        W = function () {
+        M = function () {
             function t() {
                 this.name = "tableHeaderBackground";
             }
@@ -2339,7 +2500,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        M = function () {
+        G = function () {
             function t() {
                 this.name = "borderWidth";
             }
@@ -2356,13 +2517,13 @@ var hiprint = function (t) {
             }, t.prototype.getValue = function () {
                 return this.target.find("select").val();
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        G = function () {
+        X = function () {
             function t() {
                 this.name = "barcodeMode";
             }
@@ -2377,7 +2538,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        X = function () {
+        U = function () {
             function t() {
                 this.name = "color";
             }
@@ -2403,7 +2564,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        Y = function () {
+        q = function () {
             function t() {
                 this.name = "textDecoration";
             }
@@ -2420,23 +2581,36 @@ var hiprint = function (t) {
             }, t.prototype.getValue = function () {
                 return this.target.find("select").val();
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        U = function () {
+        Y = function () {
             function t() {
                 this.name = "field";
             }
 
-            return t.prototype.createTarget = function () {
-                return this.target = $(' <div class="hiprint-option-item hiprint-option-item-row">\n        <div class="hiprint-option-item-label">\n        字段名\n        </div>\n        <div class="hiprint-option-item-field">\n        <input type="text" placeholder="请输入字段名">\n        </div>\n    </div>'), this.target;
+            return t.prototype.createTarget = function (t) {
+                var e = void 0;
+
+                if (t && (e = t.getFields()), e) {
+                    this.isSelect = !0;
+                    var n = ' <div class="hiprint-option-item hiprint-option-item-row">\n            <div class="hiprint-option-item-label">\n            字段名\n            </div>\n            <div class="hiprint-option-item-field">\n            <select>\n                <option value="" >请选择字段</option>';
+                    e.forEach(function (t, e) {
+                        n += ' <option value="' + (t.field || "") + '" >' + (t.text || "") + "</option>";
+                    }), n += " </select>\n            </div>\n        </div>", this.target = $(n);
+                } else {
+                    this.isSelect = !1;
+                    this.target = $(' <div class="hiprint-option-item hiprint-option-item-row">\n            <div class="hiprint-option-item-label">\n            字段名\n            </div>\n            <div class="hiprint-option-item-field">\n            <input type="text" placeholder="请输入字段名">\n            </div>\n        </div>');
+                }
+
+                return this.target;
             }, t.prototype.getValue = function () {
-                return this.target.find("input").val();
+                return this.isSelect ? this.target.find("select").val() : this.target.find("input").val();
             }, t.prototype.setValue = function (t) {
-                this.target.find("input").val(t);
+                this.isSelect ? t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"), this.target.find("select").val(t)) : this.target.find("input").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
@@ -2456,7 +2630,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        K = function () {
+        Q = function () {
             function t() {
                 this.name = "testData";
             }
@@ -2471,7 +2645,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        q = function () {
+        K = function () {
             function t() {
                 this.name = "src";
             }
@@ -2486,7 +2660,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        Q = function () {
+        Z = function () {
             function t() {
                 this.name = "borderColor";
             }
@@ -2512,7 +2686,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        Z = function () {
+        tt = function () {
             function t() {
                 this.name = "paperNumberFormat";
             }
@@ -2527,7 +2701,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        tt = function () {
+        et = function () {
             function t() {
                 this.name = "paperNumberDisabled";
             }
@@ -2542,7 +2716,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        et = function () {
+        nt = function () {
             function t() {
                 this.name = "longTextIndent";
             }
@@ -2555,13 +2729,13 @@ var hiprint = function (t) {
                 var t = this.target.find("select").val();
                 if (t) return parseFloat(t.toString());
             }, t.prototype.setValue = function (t) {
-                t && (this.target.find('select[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
                 this.target.find("select").val(t);
             }, t.prototype.destroy = function () {
                 this.target.remove();
             }, t;
         }(),
-        nt = function () {
+        it = function () {
             function t() {
                 this.name = "showInPage";
             }
@@ -2576,7 +2750,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        it = function () {
+        ot = function () {
             function t() {
                 this.name = "panelPaperRule";
             }
@@ -2591,7 +2765,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        ot = function () {
+        rt = function () {
             function t() {
                 this.name = "leftSpaceRemoved";
             }
@@ -2606,7 +2780,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        rt = function () {
+        at = function () {
             function t() {
                 this.name = "firstPaperFooter";
             }
@@ -2622,7 +2796,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        at = function () {
+        pt = function () {
             function t() {
                 this.name = "lastPaperFooter";
             }
@@ -2638,7 +2812,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        pt = function () {
+        st = function () {
             function t() {
                 this.name = "evenPaperFooter";
             }
@@ -2654,7 +2828,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        st = function () {
+        lt = function () {
             function t() {
                 this.name = "oddPaperFooter";
             }
@@ -2670,7 +2844,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        lt = function () {
+        ut = function () {
             function t() {
                 this.name = "fixed";
             }
@@ -2701,7 +2875,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        ut = function () {
+        dt = function () {
             function t() {
                 this.name = "topOffset";
             }
@@ -2733,7 +2907,7 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        dt = function () {
+        ft = function () {
             function t() {
                 this.name = "lHeight";
             }
@@ -2749,7 +2923,364 @@ var hiprint = function (t) {
                 this.target.remove();
             }, t;
         }(),
-        ft = function () {
+        gt = function () {
+            function t() {
+                this.name = "unShowInPage";
+            }
+
+            return t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        隐藏规则\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n            <option value="first" >首页</option>\n            <option value="last" >尾页</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                return this.target.find("select").val();
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        vt = function () {
+            function t() {
+                this.name = "tableBodyRowBorder";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t.find("tbody tr").length) {
+                    if ("border" == e) return t.find("tbody tr").css("border", "1px solid"), "border:1pt solid";
+                    "noBorder" == e ? t.find("tbody tr").css("border", "0px solid") : "topBorder" == e ? (t.find("tbody tr").css("border", "0px solid"), t.find("tbody tr").css("border-top", "1px solid")) : "bottomBorder" == e ? (t.find("tbody tr").css("border", "0px solid"), t.find("tbody tr").css("border-bottom", "1px solid")) : "topBottomBorder" == e ? (t.find("tbody tr").css("border", "0px solid"), t.find("tbody tr").css("border-top", "1px solid"), t.find("tbody tr").css("border-bottom", "1px solid")) : t.find("tbody tr").map(function (t, e) {
+                        e.style.border = "";
+                    });
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        表体行边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select >\n        <option value="" >默认</option>    \n        <option value="border" >有边框</option>\n        <option value="noBorder" >无边框</option>\n        <option value="topBorder" >上边框</option>\n        <option value="bottomBorder" >下边框</option>\n        <option value="topBottomBorder" >上下边框</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t.toString();
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        mt = function () {
+            function t() {
+                this.name = "transform";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("transform", "rotate(" + e + "deg)"), t.css("-ms-transform", "rotate(" + e + "deg)"), t.css("-moz-transform", "rotate(" + e + "deg)"), t.css("-webkit-transform", "rotate(" + e + "deg)"), t.css("-o-transform", "rotate(" + e + "deg)"), "transform:rotate(" + e + "deg)";
+                    t[0].style.transform = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $('<div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        旋转角度\n        </div>\n        <div class="hiprint-option-item-field">\n        <input type="text" />\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("input").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                this.target.find("input").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        yt = function () {
+            function t() {
+                this.name = "optionsGroup";
+            }
+
+            return t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item hiprint-option-item-row">\n        <div class="hiprint-option-item-label">\n        边框设置\n        </div>\n       \n    </div>'), this.target;
+            }, t.prototype.getValue = function () { }, t.prototype.setValue = function (t) { }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        bt = function () {
+            function t() {
+                this.name = "borderTop";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("border-top-style", e), "border-top:1px";
+                    t[0].style.borderTopStyle = "", t[0].style.borderTopWidth = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        上边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n            <option value="" >否</option>\n            <option value="solid" >实线</option>\n            <option value="dotted" >虚线</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t;
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Tt = function () {
+            function t() {
+                this.name = "borderLeft";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("border-left-style", e), "border-left:1px";
+                    t[0].style.borderLeftStyle = "", t[0].style.borderLeftWidth = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        左边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >否</option>\n        <option value="solid" >实线</option>\n        <option value="dotted" >虚线</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t;
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        wt = function () {
+            function t() {
+                this.name = "borderRight";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("border-right-style", e), "border-right:1px";
+                    t[0].style.borderRightStyle = "", t[0].style.borderRightWidth = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        右边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >否</option>\n        <option value="solid" >实线</option>\n        <option value="dotted" >虚线</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t;
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Pt = function () {
+            function t() {
+                this.name = "borderBottom";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("border-bottom-style", e), "border-bottom-style:1px solid";
+                    t[0].style.borderBottomStyle = "", t[0].style.borderBottomWidth = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        下边框\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >否</option>\n        <option value="solid" >实线</option>\n        <option value="dotted" >虚线</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t;
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        xt = function () {
+            function t() {
+                this.name = "contentPaddingLeft";
+            }
+
+            return t.prototype.css = function (t, e) {
+                var n = t.find(".hiprint-printElement-content");
+
+                if (n && n.length) {
+                    if (e) return n.css("padding-left", e + "pt"), "padding-left";
+                    n[0].style.paddingLeft = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        左内边距\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="0.75" >0.75pt</option>\n        <option value="1.5" >1.5pt</option>\n        <option value="2.25" >2.25pt</option>\n        <option value="3" >3pt</option>\n        <option value="3.75" >3.75pt</option>\n        <option value="4.5" >4.5pt</option>\n        <option value="5.25" >5.25pt</option>\n        <option value="6" >6pt</option>\n        <option value="6.75" >6.75pt</option>\n        <option value="7.5" >7.5pt</option>\n        <option value="8.25" >8.25pt</option>\n        <option value="9" >9pt</option>\n        <option value="9.75" >9.75pt</option>\n        <option value="10.5" >10.5pt</option>\n        <option value="11.25" >11.25pt</option>\n        <option value="12" >12pt</option>\n        <option value="12.75" >12.75pt</option>\n        <option value="13.5" >13.5pt</option>\n        <option value="14.25" >14.25pt</option>\n        <option value="15" >15pt</option>\n        <option value="15.75" >15.75pt</option>\n        <option value="16.5" >16.5pt</option>\n        <option value="17.25" >17.25pt</option>\n        <option value="18" >18pt</option>\n        <option value="18.75" >18.75pt</option>\n        <option value="19.5" >19.5pt</option>\n        <option value="20.25" >20.25pt</option>\n        <option value="21" >21pt</option>\n        <option value="21.75" >21.75pt</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Et = function () {
+            function t() {
+                this.name = "contentPaddingTop";
+            }
+
+            return t.prototype.css = function (t, e) {
+                var n = t.find(".hiprint-printElement-content");
+
+                if (n && n.length) {
+                    if (e) return n.css("padding-top", e + "pt"), "padding-top";
+                    n[0].style.paddingTop = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        上内边距\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="0.75" >0.75pt</option>\n        <option value="1.5" >1.5pt</option>\n        <option value="2.25" >2.25pt</option>\n        <option value="3" >3pt</option>\n        <option value="3.75" >3.75pt</option>\n        <option value="4.5" >4.5pt</option>\n        <option value="5.25" >5.25pt</option>\n        <option value="6" >6pt</option>\n        <option value="6.75" >6.75pt</option>\n        <option value="7.5" >7.5pt</option>\n        <option value="8.25" >8.25pt</option>\n        <option value="9" >9pt</option>\n        <option value="9.75" >9.75pt</option>\n        <option value="10.5" >10.5pt</option>\n        <option value="11.25" >11.25pt</option>\n        <option value="12" >12pt</option>\n        <option value="12.75" >12.75pt</option>\n        <option value="13.5" >13.5pt</option>\n        <option value="14.25" >14.25pt</option>\n        <option value="15" >15pt</option>\n        <option value="15.75" >15.75pt</option>\n        <option value="16.5" >16.5pt</option>\n        <option value="17.25" >17.25pt</option>\n        <option value="18" >18pt</option>\n        <option value="18.75" >18.75pt</option>\n        <option value="19.5" >19.5pt</option>\n        <option value="20.25" >20.25pt</option>\n        <option value="21" >21pt</option>\n        <option value="21.75" >21.75pt</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Ct = function () {
+            function t() {
+                this.name = "contentPaddingRight";
+            }
+
+            return t.prototype.css = function (t, e) {
+                var n = t.find(".hiprint-printElement-content");
+
+                if (n && n.length) {
+                    if (e) return n.css("padding-right", e + "pt"), "padding-right";
+                    n[0].style.paddingRight = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        右内边距\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="0.75" >0.75pt</option>\n        <option value="1.5" >1.5pt</option>\n        <option value="2.25" >2.25pt</option>\n        <option value="3" >3pt</option>\n        <option value="3.75" >3.75pt</option>\n        <option value="4.5" >4.5pt</option>\n        <option value="5.25" >5.25pt</option>\n        <option value="6" >6pt</option>\n        <option value="6.75" >6.75pt</option>\n        <option value="7.5" >7.5pt</option>\n        <option value="8.25" >8.25pt</option>\n        <option value="9" >9pt</option>\n        <option value="9.75" >9.75pt</option>\n        <option value="10.5" >10.5pt</option>\n        <option value="11.25" >11.25pt</option>\n        <option value="12" >12pt</option>\n        <option value="12.75" >12.75pt</option>\n        <option value="13.5" >13.5pt</option>\n        <option value="14.25" >14.25pt</option>\n        <option value="15" >15pt</option>\n        <option value="15.75" >15.75pt</option>\n        <option value="16.5" >16.5pt</option>\n        <option value="17.25" >17.25pt</option>\n        <option value="18" >18pt</option>\n        <option value="18.75" >18.75pt</option>\n        <option value="19.5" >19.5pt</option>\n        <option value="20.25" >20.25pt</option>\n        <option value="21" >21pt</option>\n        <option value="21.75" >21.75pt</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Ot = function () {
+            function t() {
+                this.name = "contentPaddingBottom";
+            }
+
+            return t.prototype.css = function (t, e) {
+                var n = t.find(".hiprint-printElement-content");
+
+                if (n && n.length) {
+                    if (e) return n.css("padding-bottom", e + "pt"), "padding-bottom";
+                    n[0].style.paddingBottom = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        下内边距\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="0.75" >0.75pt</option>\n        <option value="1.5" >1.5pt</option>\n        <option value="2.25" >2.25pt</option>\n        <option value="3" >3pt</option>\n        <option value="3.75" >3.75pt</option>\n        <option value="4.5" >4.5pt</option>\n        <option value="5.25" >5.25pt</option>\n        <option value="6" >6pt</option>\n        <option value="6.75" >6.75pt</option>\n        <option value="7.5" >7.5pt</option>\n        <option value="8.25" >8.25pt</option>\n        <option value="9" >9pt</option>\n        <option value="9.75" >9.75pt</option>\n        <option value="10.5" >10.5pt</option>\n        <option value="11.25" >11.25pt</option>\n        <option value="12" >12pt</option>\n        <option value="12.75" >12.75pt</option>\n        <option value="13.5" >13.5pt</option>\n        <option value="14.25" >14.25pt</option>\n        <option value="15" >15pt</option>\n        <option value="15.75" >15.75pt</option>\n        <option value="16.5" >16.5pt</option>\n        <option value="17.25" >17.25pt</option>\n        <option value="18" >18pt</option>\n        <option value="18.75" >18.75pt</option>\n        <option value="19.5" >19.5pt</option>\n        <option value="20.25" >20.25pt</option>\n        <option value="21" >21pt</option>\n        <option value="21.75" >21.75pt</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                t && (this.target.find('option[value="' + t + '"]').length || this.target.find("select").prepend('<option value="' + t + '" >' + t + "</option>"));
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Ht = function () {
+            function t() {
+                this.name = "borderStyle";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("border-style", e), "border-style:1px";
+                    t[0].style.borderStyle = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n       边框样式\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n            <option value="" >默认</option>\n            <option value="solid" >实线</option>\n            <option value="dotted" >虚线</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return t;
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        It = function () {
+            function t() {
+                this.name = "backgroundColor";
+            }
+
+            return t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return t.css("background-color", e), "background-color:" + e;
+                    t[0].style.backgroundColor = "";
+                }
+
+                return null;
+            }, t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        背景颜色\n        </div>\n        <div class="hiprint-option-item-field">\n        <input type="text" />\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("input").val();
+                if (t) return t.toString();
+            }, t.prototype.setValue = function (t) {
+                this.target.find("input").minicolors({
+                    defaultValue: t || "",
+                    theme: "bootstrap"
+                }), this.target.find("input").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        St = function () {
+            function t() {
+                this.name = "orient";
+            }
+
+            return t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        纸张方向(仅自定义纸质有效)\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="1" >纵向</option>\n        <option value="2" >横向</option>\n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.getValue = function () {
+                var t = this.target.find("select").val();
+                if (t) return parseFloat(t.toString());
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Ft = function () {
+            function t() {
+                this.name = "textContentVerticalAlign";
+            }
+
+            return t.prototype.createTarget = function () {
+                return this.target = $(' <div class="hiprint-option-item">\n        <div class="hiprint-option-item-label">\n        上下对齐\n        </div>\n        <div class="hiprint-option-item-field">\n        <select>\n        <option value="" >默认</option>\n        <option value="middle" >垂直居中</option>\n        <option value="bottom" >底部</option>\n       \n        </select>\n        </div>\n    </div>'), this.target;
+            }, t.prototype.css = function (t, e) {
+                if (t && t.length) {
+                    if (e) return "middle" === e && t.addClass("hiprint-text-content-middle"), "bottom" === e && t.addClass("hiprint-text-content-bottom"), "";
+                    t.removeClass("hiprint-text-content-middle"), t.removeClass("hiprint-text-content-bottom");
+                }
+
+                return null;
+            }, t.prototype.getValue = function () {
+                return this.target.find("select").val();
+            }, t.prototype.setValue = function (t) {
+                this.target.find("select").val(t);
+            }, t.prototype.destroy = function () {
+                this.target.remove();
+            }, t;
+        }(),
+        Dt = function () {
             function t() { }
 
             return t.registerItem = function (e) {
@@ -2763,33 +3294,48 @@ var hiprint = function (t) {
                     return t.name == e;
                 });
                 return n.length ? n[0] : null;
-            }, t.printElementOptionItems = [new O(), new S(), new H(), new F(), new C(), new I(), new D(), new R(), new L(), new z(), new B(), new k(), new N(), new A(), new V(), new j(), new W(), new M(), new G(), new X(), new Y(), new U(), new J(), new K(), new q(), new Q(), new Z(), new tt(), new et(), new nt(), new it(), new ot(), new rt(), new at(), new pt(), new st(), new lt(), new ht(), new ut(), new ct(), new dt()], t;
+            }, t.printElementOptionItems = [new H(), new I(), new S(), new F(), new O(), new D(), new R(), new B(), new z(), new L(), new A(), new N(), new k(), new j(), new V(), new W(), new M(), new G(), new X(), new U(), new q(), new Y(), new J(), new Q(), new K(), new Z(), new tt(), new et(), new nt(), new it(), new ot(), new rt(), new at(), new pt(), new st(), new lt(), new ut(), new ht(), new dt(), new ct(), new ft(), new gt(), new vt(), new mt(), new yt(), new bt(), new Tt(), new wt(), new Pt(), new Et(), new xt(), new Ct(), new Ot(), new Ht(), new It(), new St(), new Ft()], t;
         }(),
-        gt = function () {
+        Rt = function () {
             return function (t) {
                 this.printLine = t.printLine, this.target = t.target, this.referenceElement = t.referenceElement;
             };
         }(),
-        mt = function () {
+        Bt = function () {
             function t(t) {
-                this.printElementType = t, this.id = s.instance.guid();
+                this.top = t.top, this.left = t.left, this.height = t.height, this.width = t.width, this.bottomInLastPaper = t.bottomInLastPaper, this.beginPrintPaperIndex = t.beginPrintPaperIndex, this.printTopInPaper = t.printTopInPaper, this.endPrintPaperIndex = t.endPrintPaperIndex;
             }
 
-            return t.prototype.getProxyTarget = function () {
-                var t = this.getData(),
-                    e = this.createTarget(this.getTitle(), t);
-                return this.updateTargetSize(e), this.css(e, t), e;
+            return t.prototype.isPositionLeftOrRight = function (t) {
+                return this.top <= t && this.top + this.height > t;
+            }, t;
+        }(),
+        zt = function () {
+            function t(t) {
+                this.printElementType = t, this.id = l.instance.guid();
+            }
+
+            return t.prototype.getProxyTarget = function (t) {
+                t && this.SetProxyTargetOption(t);
+                var e = this.getData(),
+                    n = this.createTarget(this.getTitle(), e);
+                return this.updateTargetSize(n), this.css(n, e), n;
+            }, t.prototype.SetProxyTargetOption = function (t) {
+                this.options.getPrintElementOptionEntity();
+                $.extend(this.options, t);
             }, t.prototype.showInPage = function (t, e) {
-                var n = this.options.showInPage;
+                var n = this.options.showInPage,
+                    i = this.options.unShowInPage;
 
                 if (n) {
                     if ("first" == n) return 0 == t;
-                    if ("odd" == n) return t % 2 == 0;
+                    if (t == e - 1 && "last" == i) return !1;
+                    if ("odd" == n) return (0 != t || "first" != i) && t % 2 == 0;
                     if ("even" == n) return t % 2 == 1;
                     if ("last" == n) return t == e - 1;
                 }
 
-                return !0;
+                return (0 != t || "first" != i) && (t != e - 1 || "last" != i);
             }, t.prototype.setTemplateId = function (t) {
                 this.templateId = t;
             }, t.prototype.getField = function () {
@@ -2797,7 +3343,7 @@ var hiprint = function (t) {
             }, t.prototype.getTitle = function () {
                 return this.printElementType.title;
             }, t.prototype.updateSizeAndPositionOptions = function (t, e, n, i) {
-                this.options.setLeft(t), this.options.setTop(e), this.options.setWidth(n), this.options.setHeight(i);
+                this.options.setLeft(t), this.options.setTop(e), this.options.copyDesignTopFromTop(), this.options.setWidth(n), this.options.setHeight(i), hinnn.event.trigger("hiprintTemplateDataChanged_" + this.templateId);
             }, t.prototype.initSizeByHtml = function (t) {
                 if (t && t.length) {
                     this.createTempContainer();
@@ -2815,31 +3361,38 @@ var hiprint = function (t) {
                 }), this.designTarget;
             }, t.prototype.getPrintElementSelectEventKey = function () {
                 return "PrintElementSelectEventKey_" + this.templateId;
-            }, t.prototype.design = function (t) {
-                var e = this;
+            }, t.prototype.design = function (t, e) {
+                var n = this;
                 this.designTarget.hidraggable({
-                    axis: e.options.axis && t && t.axisEnabled ? e.options.axis : void 0,
-                    onDrag: function onDrag(t, n, i) {
-                        e.updateSizeAndPositionOptions(n, i);
+                    axis: n.options.axis && t && t.axisEnabled ? n.options.axis : void 0,
+                    onDrag: function onDrag(t, i, o) {
+                        n.updateSizeAndPositionOptions(i, o), n.createLineOfPosition(e);
                     },
                     moveUnit: "pt",
-                    minMove: a.instance.movingDistance,
-                    onBeforeDrag: function onBeforeDrag(t) { },
-                    onStopDrag: function onStopDrag(t) { }
-                }), this.designTarget.hireizeable({
-                    showPoints: e.getReizeableShowPoints(),
-                    onResize: function onResize(t, n, i, o, r) {
-                        e.onResize(t, n, i, o, r);
+                    minMove: p.instance.movingDistance,
+                    onBeforeDrag: function onBeforeDrag(t) {
+                        n.designTarget.focus(), n.createLineOfPosition(e);
+                    },
+                    onStopDrag: function onStopDrag(t) {
+                        n.removeLineOfPosition();
                     }
-                });
+                }), this.designTarget.hireizeable({
+                    showPoints: n.getReizeableShowPoints(),
+                    onResize: function onResize(t, i, o, r, a) {
+                        n.onResize(t, i, o, r, a), n.createLineOfPosition(e);
+                    },
+                    onStopResize: function onStopResize() {
+                        n.removeLineOfPosition();
+                    }
+                }), this.bingCopyEvent(this.designTarget);
             }, t.prototype.getPrintElementEntity = function (t) {
-                return t ? new x(void 0, this.options.getPrintElementOptionEntity(), this.printElementType.getPrintElementTypeEntity()) : new x(this.printElementType.tid, this.options.getPrintElementOptionEntity());
+                return t ? new C(void 0, this.options.getPrintElementOptionEntity(), this.printElementType.getPrintElementTypeEntity()) : new C(this.printElementType.tid, this.options.getPrintElementOptionEntity());
             }, t.prototype.submitOption = function () {
                 var t = this;
                 this.getPrintElementOptionItems().forEach(function (e) {
                     var n = e.getValue();
                     t.options[e.name] = n || void 0;
-                }), this.updateDesignViewFromOptions();
+                }), this.updateDesignViewFromOptions(), hinnn.event.trigger("hiprintTemplateDataChanged_" + this.templateId);
             }, t.prototype.getReizeableShowPoints = function () {
                 return ["s", "e"];
             }, t.prototype.onResize = function (t, e, n, i, o) {
@@ -2852,15 +3405,43 @@ var hiprint = function (t) {
                 var o = [],
                     r = this.getBeginPrintTopInPaperByReferenceElement(t),
                     a = t.getPaperFooter(i);
-                this.isHeaderOrFooter(t) || r > a && (o.push(new gt({
+                this.isHeaderOrFooter(t) || this.isFixed() || r > a && (o.push(new Rt({
                     target: void 0,
                     printLine: void 0
                 })), r = r - a + t.paperHeader, i++ , a = t.getPaperFooter(i));
                 var p = this.getData(e),
                     s = this.createTarget(this.getTitle(), p, n);
-                return this.updateTargetSize(s), this.css(s, p), s.css("position", "absolute"), s.css("left", this.options.displayLeft()), s.css("top", r + "pt"), o.push(new gt({
+                return this.updateTargetSize(s), this.css(s, p), s.css("position", "absolute"), s.css("left", this.options.displayLeft()), s.css("top", r + "pt"), o.push(new Rt({
                     target: s,
                     printLine: r + this.options.getHeight()
+                })), o;
+            }, t.prototype.getHtml2 = function (t, e, n) {
+                var i = 0;
+                this.setCurrenttemplateData(e);
+                var o = [],
+                    r = this.getBeginPrintTopInPaperByReferenceElement(t),
+                    a = t.getPaperFooter(i);
+                this.isHeaderOrFooter(t) || this.isFixed() || (r > a && (o.push(new Rt({
+                    target: void 0,
+                    printLine: void 0
+                })), r = r - a + t.paperHeader, i++ , a = t.getPaperFooter(i)), r <= a && r + this.options.getHeight() > a && (o.push(new Rt({
+                    target: void 0,
+                    printLine: void 0
+                })), r = t.paperHeader, i++ , a = t.getPaperFooter(i)));
+                var p = this.getData(e),
+                    s = this.createTarget(this.getTitle(), p);
+                return this.updateTargetSize(s), this.css(s, p), s.css("position", "absolute"), s.css("left", this.options.displayLeft()), s.css("top", r + "pt"), o.push(new Rt({
+                    target: s,
+                    printLine: r + this.options.getHeight(),
+                    referenceElement: new Bt({
+                        top: this.options.getTop(),
+                        left: this.options.getLeft(),
+                        height: this.options.getHeight(),
+                        width: this.options.getWidth(),
+                        beginPrintPaperIndex: t.index,
+                        bottomInLastPaper: r + this.options.getHeight(),
+                        printTopInPaper: r
+                    })
                 })), o;
             }, t.prototype.getBeginPrintTopInPaperByReferenceElement = function (t) {
                 var e = this.options.getTop();
@@ -2873,7 +3454,7 @@ var hiprint = function (t) {
                 if (o) {
                     var r = o.supportOptions;
                     r && r.forEach(function (e) {
-                        var o = ft.getItem(e.name);
+                        var o = Dt.getItem(e.name);
 
                         if (o && o.css) {
                             var r = o.css(t, n.options.getValueFromOptionsOrDefault(e.name));
@@ -2902,7 +3483,7 @@ var hiprint = function (t) {
                     n && n.filter(function (t) {
                         return !t.hidden;
                     }).forEach(function (e) {
-                        var n = ft.getItem(e.name);
+                        var n = Dt.getItem(e.name);
                         t.push(n);
                     });
                 }
@@ -2919,21 +3500,45 @@ var hiprint = function (t) {
             }, t.prototype.getTempContainer = function () {
                 return $(".hiprint_temp_Container");
             }, t.prototype.isHeaderOrFooter = function (t) {
-                return this.options.getTop() < t.paperHeader || this.options.getTop() >= t.paperFooter;
+                return this.options.getTopInDesign() < t.paperHeader || this.options.getTopInDesign() >= t.paperFooter;
             }, t.prototype.delete = function () {
                 this.designTarget && this.designTarget.remove();
             }, t.prototype.setCurrenttemplateData = function (t) {
                 this._currenttemplateData = t;
             }, t.prototype.isFixed = function () {
                 return this.options.fixed;
-            }, t;
+            }, t.prototype.onRendered = function (t, e) {
+                this.printElementType && this.printElementType.onRendered && this.printElementType.onRendered(e, this.options, t.getTarget());
+            }, t.prototype.createLineOfPosition = function (t) {
+                var e = $(".toplineOfPosition" + this.id),
+                    n = $(".leftlineOfPosition" + this.id),
+                    i = $(".rightlineOfPosition" + this.id),
+                    o = $(".bottomlineOfPosition" + this.id);
+                if (e.length ? e.css("top", this.options.displayTop()) : ((e = $('<div class="toplineOfPosition' + this.id + '" style="border:0;border-top:1px dashed  rgb(169, 169, 169);position: absolute; width: 100%;"></div>')).css("top", this.options.displayTop()), e.css("width", t.displayWidth()), this.designTarget.parents(".hiprint-printPaper-content").append(e)), n.length) n.css("left", this.options.displayLeft()); else {
+                    var r = $('<div class="leftlineOfPosition' + this.id + '" style="border:0;border-left:1px dashed  rgb(169, 169, 169);position: absolute;height: 100%;"></div>');
+                    r.css("left", this.options.displayLeft()), r.css("height", t.displayHeight()), this.designTarget.parents(".hiprint-printPaper-content").append(r);
+                }
+                if (i.length) i.css("left", this.options.getLeft() + this.options.getWidth() + "pt"); else {
+                    var a = $('<div class="rightlineOfPosition' + this.id + '" style="border:0;border-left:1px dashed  rgb(169, 169, 169);position: absolute;height: 100%;"></div>');
+                    a.css("left", this.options.getLeft() + this.options.getWidth() + "pt"), a.css("height", t.displayHeight()), this.designTarget.parents(".hiprint-printPaper-content").append(a);
+                }
+                if (o.length) o.css("top", this.options.getTop() + this.options.getHeight() + "pt"); else {
+                    var p = $('<div class="bottomlineOfPosition' + this.id + '" style="border:0;border-top:1px dashed  rgb(169, 169, 169);position: absolute;width: 100%;"></div>');
+                    p.css("top", this.options.getTop() + this.options.getHeight() + "pt"), p.css("width", t.displayWidth()), this.designTarget.parents(".hiprint-printPaper-content").append(p);
+                }
+            }, t.prototype.removeLineOfPosition = function () {
+                $(".toplineOfPosition" + this.id).remove(), $(".leftlineOfPosition" + this.id).remove(), $(".rightlineOfPosition" + this.id).remove(), $(".bottomlineOfPosition" + this.id).remove();
+            }, t.prototype.getFields = function () {
+                var t = this.printElementType.getFields();
+                return t || (t = l.instance.getPrintTemplateById(this.templateId).getFields());
+            }, t.prototype.bingCopyEvent = function (t) { }, t;
         }(),
-        vt = function () {
+        Lt = function () {
             return function () {
                 this.rowColumns = [];
             };
         }(),
-        yt = function () {
+        At = function () {
             function t() { }
 
             return t.createTableHead = function (e, n) {
@@ -2948,6 +3553,9 @@ var hiprint = function (t) {
                 }
 
                 return o;
+            }, t.createTableFooter = function (t, e, n, i) {
+                var o = $("<tfoot></tfoot>");
+                return o.append(i.footerFormatter(n)), o;
             }, t.createTableRow = function (e, n, i, o) {
                 var r = t.reconsitutionTableColumnTree(e),
                     a = $("<tbody></tbody>");
@@ -3028,7 +3636,7 @@ var hiprint = function (t) {
                     e += t.fixed ? t.width : 0;
                 }), e;
             }, t.reconsitutionTableColumnTree = function (t, e, n) {
-                var i = e || new vt();
+                var i = e || new Lt();
                 i.colspan = 0;
 
                 for (var o = function o(e) {
@@ -3044,21 +3652,12 @@ var hiprint = function (t) {
                 return i;
             }, t;
         }(),
-        bt = function () {
-            function t(t) {
-                this.top = t.top, this.left = t.left, this.height = t.height, this.width = t.width, this.bottomInLastPaper = t.bottomInLastPaper, this.beginPrintPaperIndex = t.beginPrintPaperIndex, this.printTopInPaper = t.printTopInPaper, this.endPrintPaperIndex = t.endPrintPaperIndex;
-            }
-
-            return t.prototype.isPositionLeftOrRight = function (t) {
-                return this.top <= t && this.top + this.height > t;
-            }, t;
-        }(),
-        wt = function () {
+        Nt = function () {
             return function () { };
         }(),
-        Tt = function () {
+        kt = function () {
             function t(t) {
-                t = t || {}, this.left = t.left, this.top = t.top, this.height = t.height, this.width = t.width, this.init(t);
+                t = t || {}, this.left = t.left, this.top = t.top, this.topInDesign = this.top, this.height = t.height, this.width = t.width, this.init(t);
             }
 
             return t.prototype.setDefault = function (t) {
@@ -3075,10 +3674,14 @@ var hiprint = function (t) {
                 null != t && (this.left = t);
             }, t.prototype.getTop = function () {
                 return this.top;
+            }, t.prototype.getTopInDesign = function () {
+                return this.topInDesign;
             }, t.prototype.displayTop = function () {
                 return this.top + "pt";
             }, t.prototype.setTop = function (t) {
                 null != t && (this.top = t);
+            }, t.prototype.copyDesignTopFromTop = function () {
+                this.topInDesign = this.top;
             }, t.prototype.getHeight = function () {
                 return this.height;
             }, t.prototype.displayHeight = function () {
@@ -3094,9 +3697,11 @@ var hiprint = function (t) {
             }, t.prototype.getValueFromOptionsOrDefault = function (t) {
                 return null == this[t] ? this.defaultOptions[t] : this[t];
             }, t.prototype.getPrintElementOptionEntity = function () {
-                var t = new wt(),
+                var t = new Nt(),
                     e = this;
-                return Object.keys(this).forEach(function (n) {
+                return Object.keys(this).filter(function (t) {
+                    return "topInDesign" != t;
+                }).forEach(function (n) {
                     if ("number" != typeof e[n] && "string" != typeof e[n] && _typeof(e[n]) != _typeof(!0) || (t[n] = e[n]), "style" == n) {
                         t.style = {};
                         var i = e[n];
@@ -3112,7 +3717,7 @@ var hiprint = function (t) {
                 });
             }, t;
         }(),
-        Et = function () {
+        jt = function () {
             var _t4 = function t(e, n) {
                 return (_t4 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3133,14 +3738,14 @@ var hiprint = function (t) {
                 _t4(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Pt = function (t) {
+        Vt = function (t) {
             function e(e) {
                 return t.call(this, e) || this;
             }
 
-            return Et(e, t), e;
-        }(Tt),
-        xt = function () {
+            return jt(e, t), e;
+        }(kt),
+        _t = function () {
             var _t5 = function t(e, n) {
                 return (_t5 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3161,13 +3766,13 @@ var hiprint = function (t) {
                 _t5(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Ct = function (t) {
+        $t = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Pt(n), i.options.setDefault(new Pt(a.instance.table.default).getPrintElementOptionEntity()), i;
+                return i.options = new Vt(n), i.options.setDefault(new Vt(p.instance.table.default).getPrintElementOptionEntity()), i;
             }
 
-            return xt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return _t(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     this.css(this.designTarget, this.getData());
                     var t = this.designTarget.find(".hiprint-printElement-table-content"),
@@ -3191,7 +3796,7 @@ var hiprint = function (t) {
                     }
                 }), this.designTarget;
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.table;
+                return p.instance.table;
             }, e.prototype.createTarget = function (t, e) {
                 var n = $('<div class="hiprint-printElement hiprint-printElement-table" style="position: absolute;"><div class="hiprint-printElement-table-content" style="height:100%;width:100%"></span></div>');
                 return n.find(".hiprint-printElement-table-content").append(this.getTableHtml(e)), n;
@@ -3204,7 +3809,7 @@ var hiprint = function (t) {
                 if (!this.getField() && this.options.content) return (e = $("<div></div>")).append(this.options.content), (n = e.find("table")).addClass("hiprint-printElement-tableTarget"), n;
                 if (this.printElementType.formatter) return (e = $("<div></div>")).append(this.printElementType.formatter(t)), (n = e.find("table")).addClass("hiprint-printElement-tableTarget"), n;
                 var i = $('<table class="hiprint-printElement-tableTarget" style="border-collapse: collapse;"></table>');
-                return i.append(yt.createTableHead(this.printElementType.columns, this.options.getWidth())), i.append(yt.createTableRow(this.printElementType.columns, t, this.options, this.printElementType)), i;
+                return i.append(At.createTableHead(this.printElementType.columns, this.options.getWidth())), i.append(At.createTableRow(this.printElementType.columns, t, this.options, this.printElementType)), this.printElementType.footerFormatter && i.append(At.createTableFooter(this.printElementType.columns, t, this.options, this.printElementType)), i;
             }, e.prototype.getHtml = function (t, e) {
                 this.createTempContainer();
                 var n = this.getPaperHtmlResult(t, e);
@@ -3217,20 +3822,20 @@ var hiprint = function (t) {
                 e ? this.updateTargetWidth(r) : this.updateTargetSize(r), this.css(r, i), this.css(o, i), this.getTempContainer().html(""), this.getTempContainer().append(r);
 
                 for (var a, p = this.getBeginPrintTopInPaperByReferenceElement(t), s = 0, l = !1; !l;) {
-                    var h = 0,
-                        u = t.getPaperFooter(s);
-                    0 == s && p > u && (p = p - u + t.paperHeader, n.push(new gt({
+                    var u = 0,
+                        h = t.getPaperFooter(s);
+                    0 == s && p > h && (p = p - h + t.paperHeader, n.push(new Rt({
                         target: void 0,
                         printLine: void 0
-                    })), h = t.getContentHeight(s) - (p - t.paperHeader), s++ , u = t.getPaperFooter(s));
-                    var c = n.length > 0 ? n[n.length - 1].target : void 0,
-                        d = this.getRowsInSpecificHeight(h > 0 ? h : 0 == s ? u - p : t.getContentHeight(s), r, o, s, c);
-                    l = d.isEnd;
+                    })), u = t.getContentHeight(s) - (p - t.paperHeader), s++ , h = t.getPaperFooter(s));
+                    var d = n.length > 0 ? n[n.length - 1].target : void 0,
+                        c = this.getRowsInSpecificHeight(u > 0 ? u : 0 == s ? h - p : t.getContentHeight(s), r, o, s, d);
+                    l = c.isEnd;
                     var f = void 0;
-                    d.target && (d.target.css("left", this.options.displayLeft()), d.target[0].height = ""), 0 == s || h > 0 ? (d.target && (a = p, d.target.css("top", p + "pt")), f = l && null != this.options.lHeight ? p + (d.height > this.options.lHeight ? d.height : this.options.lHeight) : p + d.height) : (d.target && (a = t.paperHeader, d.target.css("top", t.paperHeader + "pt")), f = t.paperHeader + d.height), n.push(new gt({
-                        target: d.target,
+                    c.target && (c.target.css("left", this.options.displayLeft()), c.target[0].height = ""), 0 == s || u > 0 ? (c.target && (a = p, c.target.css("top", p + "pt")), f = l && null != this.options.lHeight ? p + (c.height > this.options.lHeight ? c.height : this.options.lHeight) : p + c.height) : (c.target && (a = t.paperHeader, c.target.css("top", t.paperHeader + "pt")), f = t.paperHeader + c.height), n.push(new Rt({
+                        target: c.target,
                         printLine: f,
-                        referenceElement: new bt({
+                        referenceElement: new Bt({
                             top: this.options.getTop(),
                             left: this.options.getLeft(),
                             height: this.options.getHeight(),
@@ -3287,44 +3892,50 @@ var hiprint = function (t) {
                 var e = t[this.getField()];
                 return e ? JSON.parse(JSON.stringify(e)) : [];
             }, e.prototype.onResize = function (e, n, i, o, r) {
-                t.prototype.updateSizeAndPositionOptions.call(this, r, o, i, n), yt.resizeTableCellWeight(this.designTarget, this.printElementType.columns, this.options.getWidth());
+                t.prototype.updateSizeAndPositionOptions.call(this, r, o, i, n), At.resizeTableCellWeight(this.designTarget, this.printElementType.columns, this.options.getWidth());
             }, e.prototype.getReizeableShowPoints = function () {
                 return ["s", "e"];
             }, e;
-        }(mt),
-        Ot = function () {
+        }(zt),
+        Wt = function () {
             return function (t) {
                 this.field = t.field, this.title = t.title, this.type = t.type, this.columns = t.columns;
             };
         }(),
-        St = function () {
+        Mt = function () {
             function t(t) {
                 var e = this;
-                this.field = t.field, this.title = t.title, this.tid = t.tid, this.data = t.data, this.styler = t.styler, this.formatter = t.formatter, this.type = t.type, this.options = t.options, this.columns = [], (t.columns || []).forEach(function (t, n) {
+                this.text = t.text, this.field = t.field, this.fields = t.fields, this.title = t.title, this.tid = t.tid, this.data = t.data, this.styler = t.styler, this.formatter = t.formatter, this.type = t.type, this.options = t.options, this.columns = [], (t.columns || []).forEach(function (t, n) {
                     e.columns.push(e.createTableColumnArray(t));
-                }), this.rowStyler = t.rowStyler, this.striped = t.striped, this.groupFields = t.groupFields || [], this.groupFormatter = t.groupFormatter, this.groupFooterFormatter = t.groupFooterFormatter;
+                }), this.rowStyler = t.rowStyler, this.striped = t.striped, this.groupFields = t.groupFields || [], this.groupFormatter = t.groupFormatter, this.groupFooterFormatter = t.groupFooterFormatter, this.footerFormatter = t.footerFormatter;
             }
 
-            return t.prototype.createPrintElement = function (t) {
+            return t.prototype.getText = function () {
+                return this.text || this.title || "";
+            }, t.prototype.createPrintElement = function (t) {
                 var e = this;
                 return this.columns && 0 == this.columns.length && (t.columns || []).forEach(function (t, n) {
                     e.columns.push(e.createTableColumnArray(t));
-                }), new Ct(this, t);
+                }), new $t(this, t);
             }, t.prototype.getData = function () {
                 return [{}];
             }, t.prototype.createTableColumnArray = function (t) {
                 var e = [];
                 return t.forEach(function (t, n) {
-                    e.push(new P(t));
+                    e.push(new E(t));
                 }), e;
             }, t.prototype.getPrintElementTypeEntity = function () {
-                return new Ot({
+                return new Wt({
                     title: this.title,
                     type: this.type
                 });
+            }, t.prototype.getFields = function () {
+                return this.fields;
+            }, t.prototype.getOptions = function () {
+                return this.options || {};
             }, t;
         }(),
-        Ht = function () {
+        Gt = function () {
             var _t6 = function t(e, n) {
                 return (_t6 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3345,13 +3956,13 @@ var hiprint = function (t) {
                 _t6(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Ft = function (t) {
+        Xt = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Tt(n), i.options.setDefault(new Tt(a.instance.image.default).getPrintElementOptionEntity()), i;
+                return i.options = new kt(n), i.options.setDefault(new kt(p.instance.image.default).getPrintElementOptionEntity()), i;
             }
 
-            return Ht(e, t), e.prototype.getReizeableShowPoints = function () {
+            return Gt(e, t), e.prototype.getReizeableShowPoints = function () {
                 return ["se"];
             }, e.prototype.getData = function (t) {
                 var e = "";
@@ -3363,15 +3974,17 @@ var hiprint = function (t) {
             }, e.prototype.initSizeByHtml = function (e) {
                 t.prototype.initSizeByHtml.call(this, e), this.css(e, this.getData());
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.image;
+                return p.instance.image;
             }, e.prototype.updateDesignViewFromOptions = function () {
                 this.designTarget && (this.css(this.designTarget, this.getData()), this.updateTargetImage(this.designTarget, this.getTitle(), this.getData()));
             }, e.prototype.updateTargetImage = function (t, e, n) {
                 var i = t.find(".hiprint-printElement-image-content");
                 i.find("img").length ? i.find("img").attr("src", n) : i.html('<img style="width:100%;height:100%;" src="' + n + '">');
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        It = function () {
+        }(zt),
+        Ut = function () {
             var _t7 = function t(e, n) {
                 return (_t7 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3392,16 +4005,128 @@ var hiprint = function (t) {
                 _t7(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        _t = function (t) {
+        qt = function (t) {
             function e() {
                 return null !== t && t.apply(this, arguments) || this;
             }
 
-            return It(e, t), e.prototype.getHideTitle = function () {
+            return Ut(e, t), e.prototype.getHideTitle = function () {
                 return null == this.hideTitle ? this.defaultOptions.hideTitle : this.hideTitle;
             }, e;
-        }(Tt),
-        Dt = function () {
+        }(kt),
+        Yt = function () {
+            function t(t, e, n, i, o, r, a, p, s, l, u) {
+                this.defaultPaperNumberFormat = "paperNo-paperCount", this.printLine = 0, this.templateId = t, this.width = hinnn.mm.toPt(e), this.height = hinnn.mm.toPt(n), this.mmwidth = e, this.mmheight = n, this.paperHeader = i, this.paperFooter = o, this.contentHeight = o - i, this.createTarget(), this.index = l, this.paperNumberLeft = r || parseInt((this.width - 30).toString()), this.paperNumberTop = a || parseInt((this.height - 22).toString()), this.paperNumberDisabled = p, this.paperNumberFormat = s, this.referenceElement = u ? $.extend({}, u) : new Bt({
+                    top: 0,
+                    left: 0,
+                    height: 0,
+                    width: 0,
+                    bottomInLastPaper: 0,
+                    beginPrintPaperIndex: 0,
+                    printTopInPaper: 0,
+                    endPrintPaperIndex: 0
+                });
+            }
+
+            return t.prototype.subscribePaperBaseInfoChanged = function (t) {
+                this.onPaperBaseInfoChanged = t;
+            }, t.prototype.triggerOnPaperBaseInfoChanged = function () {
+                this.onPaperBaseInfoChanged && this.onPaperBaseInfoChanged({
+                    paperHeader: this.paperHeader,
+                    paperFooter: this.paperFooter,
+                    paperNumberLeft: this.paperNumberLeft,
+                    paperNumberTop: this.paperNumberTop,
+                    paperNumberDisabled: this.paperNumberDisabled,
+                    paperNumberFormat: this.paperNumberFormat
+                });
+            }, t.prototype.setFooter = function (t, e, n, i) {
+                this.firstPaperFooter = t, this.evenPaperFooter = e, this.oddPaperFooter = n, this.lastPaperFooter = i;
+            }, t.prototype.setOffset = function (t, e) {
+                this.setLeftOffset(t), this.setTopOffset(e);
+            }, t.prototype.setLeftOffset = function (t) {
+                t ? this.paperContentTarget.css("left", t + "pt") : this.paperContentTarget[0].style.left = "";
+            }, t.prototype.setTopOffset = function (t) {
+                t ? this.paperContentTarget.css("top", t + "pt") : this.paperContentTarget[0].style.top = "";
+            }, t.prototype.createTarget = function () {
+                this.target = $('<div class="hiprint-printPaper"><div class="hiprint-printPaper-content"></div></div>'), this.paperContentTarget = this.target.find(".hiprint-printPaper-content"), this.target.css("width", this.mmwidth + "mm"), this.target.css("height", this.mmheight - .4 + "mm"), this.target.attr("original-height", this.mmheight);
+            }, t.prototype.createHeaderLine = function () {
+                var t = this;
+                this.headerLinetarget = $('<div class="hiprint-headerLine"  style="position: absolute;width: 100%;border-top: 1px dashed #c9bebe;height: 7pt;"></div>'), this.headerLinetarget.css("top", (this.paperHeader || -1) + "pt"), 0 == this.paperHeader && this.headerLinetarget.addClass("hideheaderLinetarget"), this.paperContentTarget.append(this.headerLinetarget), this.dragHeadLineOrFootLine(this.headerLinetarget, function (e, n) {
+                    t.paperHeader = n, t.triggerOnPaperBaseInfoChanged();
+                });
+            }, t.prototype.createFooterLine = function () {
+                var t = this;
+                this.footerLinetarget = $('<div class="hiprint-footerLine"  style="position: absolute;width: 100%;border-top: 1px dashed #c9bebe;height: 7pt;"></div>'), this.footerLinetarget.css("top", parseInt(this.paperFooter.toString()) + "pt"), this.paperFooter == this.height && (this.footerLinetarget.css("top", this.mmheight - .4 + "mm"), this.footerLinetarget.addClass("hidefooterLinetarget")), this.paperContentTarget.append(this.footerLinetarget), this.dragHeadLineOrFootLine(this.footerLinetarget, function (e, n) {
+                    t.paperFooter = n, t.triggerOnPaperBaseInfoChanged();
+                });
+            }, t.prototype.createPaperNumber = function (t) {
+                var e = this,
+                    n = this.target.find(".hiprint-paperNumber");
+                if (n.length) return n.html(t), n;
+                var i = $('<span class="hiprint-paperNumber"  style="position: absolute">' + t + "</span>");
+                return i.css("top", this.paperNumberTop + "pt"), i.css("left", this.paperNumberLeft + "pt"), this.paperContentTarget.append(i), this.dragHeadLineOrFootLine(i, function (t, n) {
+                    e.paperNumberTop = n, e.paperNumberLeft = t, e.triggerOnPaperBaseInfoChanged();
+                }, !0), i;
+            }, t.prototype.getTarget = function () {
+                return this.target;
+            }, t.prototype.append = function (t) {
+                this.paperContentTarget.append(t);
+            }, t.prototype.updateReferenceElement = function (t) {
+                t && (this.referenceElement = t);
+            }, t.prototype.updatePrintLine = function (t) {
+                t >= this.printLine && (this.printLine = t);
+            }, t.prototype.design = function (t) {
+                var e = this;
+                this.createHeaderLine(), this.createFooterLine(), this.target.addClass("design"), this.paperNumberTarget = this.createPaperNumber(this.formatPaperNumber(1, 1)), this.createRuler(), this.resetPaperNumber(this.paperNumberTarget), $(this.paperNumberTarget).bind("dblclick.hiprint", function () {
+                    null == e.paperNumberDisabled && (e.paperNumberDisabled = !1), e.paperNumberDisabled = !e.paperNumberDisabled, e.resetPaperNumber(e.paperNumberTarget), e.triggerOnPaperBaseInfoChanged();
+                }), $(this.paperNumberTarget).bind("click.hiprint", function () {
+                    hinnn.event.trigger("BuildCustomOptionSettingEventKey_" + e.templateId, {
+                        options: {
+                            paperNumberFormat: e.paperNumberFormat,
+                            paperNumberDisabled: e.paperNumberDisabled
+                        },
+                        callback: function callback(t) {
+                            e.paperNumberDisabled = !!t.paperNumberDisabled || void 0, e.paperNumberFormat = t.paperNumberFormat ? t.paperNumberFormat : void 0, e.createPaperNumber(e.formatPaperNumber(1, 1)), e.resetPaperNumber(e.paperNumberTarget), e.triggerOnPaperBaseInfoChanged();
+                        }
+                    });
+                });
+            }, t.prototype.resetPaperNumber = function (t) {
+                this.paperNumberDisabled ? t.addClass("hiprint-paperNumber-disabled") : t.removeClass("hiprint-paperNumber-disabled");
+            }, t.prototype.updatePaperNumber = function (t, e, n) {
+                var i = this.createPaperNumber(this.formatPaperNumber(t, e));
+                this.paperNumberDisabled ? i.hide() : n && this.index % 2 == 1 && (i[0].style.left = "", i.css("right", this.paperNumberLeft + "pt"));
+            }, t.prototype.formatPaperNumber = function (t, e) {
+                return (this.paperNumberFormat ? this.paperNumberFormat : this.defaultPaperNumberFormat).replace("paperNo", t.toString()).replace("paperCount", e.toString());
+            }, t.prototype.dragHeadLineOrFootLine = function (t, e, n) {
+                var i = this;
+                t.hidraggable({
+                    axis: n ? void 0 : "v",
+                    onDrag: function onDrag(t, n, i) {
+                        e(n, i);
+                    },
+                    moveUnit: "pt",
+                    minMove: p.instance.movingDistance,
+                    onBeforeDrag: function onBeforeDrag(t) { },
+                    onStopDrag: function onStopDrag(t) {
+                        i.footerLinetarget.removeClass("hidefooterLinetarget"), i.headerLinetarget.removeClass("hideheaderLinetarget");
+                    }
+                });
+            }, t.prototype.resize = function (t, e) {
+                this.width = hinnn.mm.toPt(t), this.height = hinnn.mm.toPt(e), this.mmwidth = t, this.mmheight = e, this.target.css("width", t + "mm"), this.target.css("height", e - .4 + "mm"), this.target.attr("original-height", this.mmheight), this.paperFooter = this.height, this.footerLinetarget.css("top", this.height + "pt"), this.contentHeight = this.paperFooter - this.paperHeader, this.paperNumberLeft = parseInt((this.width - 30).toString()), this.paperNumberTop = parseInt((this.height - 22).toString()), this.paperNumberTarget.css("top", this.paperNumberTop + "pt"), this.paperNumberTarget.css("left", this.paperNumberLeft + "pt"), this.triggerOnPaperBaseInfoChanged();
+            }, t.prototype.getPaperFooter = function (t) {
+                var e = this.index + t;
+                return 0 == e ? this.firstPaperFooter ? this.firstPaperFooter : this.oddPaperFooter ? this.oddPaperFooter : this.paperFooter : e % 2 == 0 ? this.oddPaperFooter ? this.oddPaperFooter : this.paperFooter : e % 2 == 1 ? this.evenPaperFooter ? this.evenPaperFooter : this.paperFooter : void 0;
+            }, t.prototype.getContentHeight = function (t) {
+                return this.getPaperFooter(t) - this.paperHeader;
+            }, t.prototype.createRuler = function () {
+                this.target.append('<div class="hiprint_rul_wrapper">\n                     <img class="h_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAAPCAYAAAC891QNAAAKxklEQVR4Xu1dPezlQxQ92yE6opGIaOg2QeWjUVjRSCg24qMgQtBItHazq5XoJBtBgYiCROGz0CBRiGRVdKISoRNKcmIudyfze+/tvL27v/Oc1+yX3/ife2buOXPv/OYdAXASwCnof4xjXRyaD/NREQHPq4qozo9pPuZjV/Gk+aiI6vyY5mM+dhVPmo+KqM6PaT7mY1fxpPmoiOr8mOZjPnYVT5qPiqjOj2k+5mNX8aT5qIjq/JjmYz52FU+aj4qozo9pPuZjV/Gk+aiI6vyY5mM+dhVPmo+KqE6OeQTAXwD4q/rHONbFoPkwHxUR8LyqiOr8mOZjPnYVT5qPiqjOj2k+5mNX8aT5qIjq/JjmYz52FU+aj4qozo9pPuZjV/Gk+aiI6vyY5mM+dhVPmo+KqM6PaT7mY1fxpPmoiOr8mOZjPnYVT5qPiqjOj2k+5mNX8aT5qIjq5JhuoE8GrvAxL5DC4E4MbT4mglb4iPkoDO7E0OZjImiFj5iPwuBODG0+JoJW+Ij5KAzuxNDmYyJohY+Yj8LgTgxtPiaCVviI+SgM7sTQ5mMiaIWPmI/C4E4MbT4mglb4iPkoDO7E0OZjImiFj5iPwuBODG0+JoJW+Ij5KAzu+Q6dG+gPAXgLwBkAzwH483wHu8T/fZ5YtwO4HsDbAK5qvx4DcAeAry7xz7ntfx84go9PAfD3/BCPEo4rALwM4Mk0r/h3ajjihgbOpacBvARAFUfMK84nrofvRfkIHGcBHAfwqyCOmwC8C+BoW98PA/hEEAfXxwsATgNQzlfE0eug6jrnlNqmg2vW/CU9Jy7+3D82Lb+xrSH+PfPAD9sE9iL/+y6+hOuemqjIB+fYly2m4a8UccS0yHNLEUf2u+Hl71+xt99lfZwA8KLo+ghd5PwKbbxHkI/Is/QqyvlqtB9UWOe77AcVcfwG4HIAzwN4BQD/rIgj78+V1kc/r7gnUdTzHgfnUe8V1eeVkp5vyldKet7jYP2H+1w1Pe9xXJ1qD8r5alQXXfs637UuqoiDfQM1Pd/Gh8r6GOG4WVDPRziiH6W0P982r1T0fBsOFT0f4eC+Q03PRziuE9TzbfNq9fXEaKDTTEVjkMW2KE5f5FrzXv+7KMRFwSqLHvGwURgY13w4gDjIB3l4NTVBGBw1HPmrAe5rHNwqjIPifWc7YBLrRGlekY8nALzfClW5wKCEI+crYmAiZlFaeX0EL4o4Mh807PzwAJMaHz0OYlDNu9t08HUAj7XDQGvU/JGeM2/FgawwVzzs91Hj6d7273sZiQv88JIvCT38qTUP3gHwoBgfbPrHh40pziNytGYvucQHcURzjc3arIcq64N8sNHJJsgHjZh86E8JRy6UEMNlgvkqr4/ghc0pxfURfHwL4BEAH4rykXGweKKQd3fZDyro+QjHN63w83M6KL729THC8XvTDCU9H+GInKWk50s41PR8aX2o6fmmfMUXWFT0fNP6UNLzTXwo6fk2HCp6vktdVEHPRzi47eBLIUp6PsLBnMs9oJKej3DECwVKer6EQ03Pl9aHmp5vyldKer5pfSjp+SY+lPR8G47V63k00Lmgo/jcF+AucD25bLilN1miwE4h6ZuHZT/MHgP3VzTEz09+2ChQxMFmzrWt8fyUKA6ui1sAXAngTQCKOPKJn3gb6lFBPpivuC54s4EyjhCQnHNV81W8ofZee1tQEUfWwXh7+xrB9RHzKr+B3vPxHYDbWsN5jZq/yxvoNIvx5tofrbHD3LymA3KbcNAmMPah7Wv2YJtwxNp/pt0EooqD/vCXhoE3mijiyDcC8BApG1SKOJiveJjs7vbGsyqO2ArE3oNFYEU+iIM+/oF20wf/rIgjdDAKo58J6SBjvrQfVNLzjIP72fzGmtL66HGo6nmPQ1XPexyqep5xcD3EjQBqet7nK1U9H61zRT3vcajq+UgHFfV8U11USc8zjv4NdCU973Go6nmPQ1XPexyqep5x5BsB1PS8z1eqej5a54p63uNQ1fORDkrouRvoe3S6ix6NQjWLCnzb7ot2vatiQyqfMFFvSDHBftyKhqoN9EPh49Aanflgj+I6H725rdp4jje3WVjnlaI3uIFepHSbh/0/NNCpiZxvfCtSqdCQD2YEi9EEUWpIZRxxiISNc35UG+iHwodyo7NfH/mAUhyYobdXOrjUv7mtvM75hhQ/XwN4Q6SBvm0/qFJw73GQB8UG+giHop6PcGROVNZ5j0NVzw+VD1U9H/GhqOc9DlU9H61zRT0Pn75UF1XR8x4HbzBR1PMRDkU9H+FQ1PMeBw9Qs+6ruD8nln5PqFgvyTiivivR6ATQv5g6qv3w1j6l/Xnmg7/nja/xUpGKbx+tcxk9P8Qr3PtkFUZR6Ypqvil8CsBr6TtdFXEcypXIxBHf2875xZNjkbCU5tWh8DFqoCvywfwbVyvx6xr4UVzn5ONxACcB8ISl8tXnIejBg+JV9KM30Pt5pXRFXL/5yNc7q1zh3vsSYrqr3dbAf1O5anvJX4VxV7gSeWl9vNUWP281eVbkSv1D5aMvuKvOK/ITX9fAt21V1zkP+nyeNujKfOR8q6CDu+wHVXH0DXT+ee1XuI/4UNTzTfNKSc+XcKjp+SHzoajnIz4U9XyEQ1HPl/hQ0/Nd6nAKej7C0TfQFfR8hIPNKLX9+aZ5paTnSzjU9PyQ+egb6Ar7waV8pbY/H+Hgi15q+/MlPmT0PBro/JVFaSaoM+1q5Py2KgH1JzjW/HdRcCee3Pzk96byOqy1Y2NDiqcwjkY3RxRHnlcsSh8TxhGFHn7/I9eI4rw6JD4iX6nPq3yanTnW8+rS5ef8FQehg6p85Mbakg7yIFBoPgtcvAZ9jdqY9TxyGDe4/P4lrpmzTSePtwNna/UqGccJAKdTw5baqMhHXh/x8yviyE110kKfqIjjUPg4FBycV/mGGeYmz6uLqzM578YekGs8fr92PnbdDyri4PrIb6zxDSNFHIp6vm1eqej5CIeinh8yH4p6vjSv1PT8kOeVop7vWodbuw6OcCjq+QiHop5vm1cqer40r6KmpbQ/31SnVuZDUc+X5pWanh/yOpfS89xAT71aqWZ5/NxrLZr75/tvZpkjrYMonrueu9aFHAGv3zUfnHO+cr5yvnK+WuMhIOcm5ybnJucm56aLe3jGedd513nXedd513nX9WfXr1y/+kcLvBYcA8+DPdeCG+h7BtCJyMm47U0sSBYkC5LzqQt2Lti5YOeCnQt2LtjZE9oT2hPaE9oT2hPaE9oT2hPaE9oT2hPaE9oT2hPaE9oTintCN9CdyJ3IncidyMUTuQ/y+CCPD/L8u4hdpHCRwkUKe1t7W3tbe1t7Wzeu3LiyJ7QntCe0J7QntCe0J7QntCe0J7QntCfcyxO6gW5DaUNpQ2lDaUNpQ2lDaUNpQ7mXofRBHh/k8UEeH+RJdsqaYk2xprjO4DqD6wyuM7jO4DqD6wz2hPaE9oT2hPaE9oTSntANdCcxJzEnMekk5qaNmzZu2rhp46bNOdU5FylcpHCRwv7e/t7+3v7ejSs3rty4sie0J7QntCe0J7QntCe0J7QntCe0J9zDE7qBbjNlM2UzZTNlM2UzZTNlM7WHmfJBHh/k8UEeH+TxQR4f5DnXTsK6al1148q1FtdaXGtxrcW1FtdaXGuxJ7QntCe0J7QnFPaEfwNdvyoPYn5mCwAAAABJRU5ErkJggg==" />\n                     <img class="v_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB9AAAAAPCAYAAAC891QNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAiHSURBVHhe7Z29q21HGYevplLTKSL4UQQkwUYQG1EUtBGba5qkyEeX+NGI9irof2ClvTaCtoqgoEkISAIpTZMiJBCCQsCvSq7vc88emExm7XO2++Tc+S2fB17WmnftzZ3ffWf2b601a+9za8Kdw7bHnDkwZw7MmQNz5sCcOTBnDsyZA3PmwJw5MGcOzJkDc+bAnDkwZw7MmYPlc+897IiIiIiIiIiIiIiIiIiIiPxf4wK6iIiIiIiIiIiIiIiIiIhI4QK6iIiIiIiIiIiIiIiIiIhI4QK6iIiIiIiIiIiIiIiIiIhI4QK6iIiIiIiIiIiIiIiIiIhIkbCA/vmKOxW/rfggieKxCvJJzHTQJl6qeJBEADMd7JOjLinMdDxd8b6L3Rj2XI+96IDbFSlzHPZcj59WkGO74nynT62P7f96poNj5FeGMY+/EQ363I+h1XXM6tHmAvF9EkWiDrZp42prfox9th43w551AP1/6mL3LtbjZtia57SJ1vdkHX09mq5VrwdnOug7/sexRqIO6tD63fw8UQdb2unjivkxzulEHXupx150AP3v/TxRx17q0XyQaPM9WUdfD/b716zGTAd9H/08UUfrM9H8PFEHW9rp42rm59bjZtizDqD/vZ9bj5tha57TJtp8T9bR1+Md64OzBfT3HLY99yr3/oovV3yo4scVX62YvW7GdfflnNyWDuKhit9VvFox45x/97pzMx2PH/Y59kBFG2wjN9G/q+a2dPys4l8V/aQZuYn+XTW393qwz+s/XLF1IXXdfTknN9PRXoeGv17sTrnuvpyTu2xcfboitR5fqHimgtd/s+LfFTOuuy+n5D5TQR/pP3P4YxVb4+oyzu3LyKm5r1U8eojvkRiYvXfGdfSl55TcWA/q0Grwg4o/HPavwin/7si5uVHHJw9b2knjaqaDmyTPVrST4Nl7Z5zbl5FTcnuuR9PxnYonK2bvnXFuX0ZOyc3mObB982J3+t4Z5/Zl5JTcZePq2xWz9844ty8jp+RGHb0Pcvy5w/YqnPLvjpybO6ajn+fEyteDW/Ojh9cRaTpmfk4k6djyDyJNx8zPCevxdt6N3DEdvZ8TafMc2PZ+TiSPq+bnRJKOLT8nUnW0eZ5wH25rfvSk6hj9PFHHzD9SdYx+bj1uLndMR/Pz1HkObJuf72Fc4eeJOmZ+nq6Dvrd5/o71wdW/gY6gNyr+VsHiE4tQiWzpwEi+W/HDiq2FnJU4Vg/6z2Dj2OrMdPy64hsVH6/4VUWqjkZ6PRLZ0tFMI6EWcFk9/l5BfnVmOjBFThg5kW9PJq8GfXyhgjn8jwoMPXF+8LTePyu4CUK/7z/k0hjrQZs5zYkUF+ecKCYw6uhPZtHwi4vd5Rl13FeB1/FwzNcrOJbAXuvR60hi1EEbuJn7l4vdCC6rxyuH7eqMOvDBj1b8vmLVb6fNmOmY+fnq14Nb82MkUcfMz9N0bPlHmo4tP7ceN8MxHT2J8xxGP0+vR/PzNB1bfp6oY+v6nNeseh9ua37MSNMx83NI0rHlH5Ck49j1ufV49zmmYyRJB22YXZ8n16O/Pk/Scez6PE3H6OfT9UH/Bvq9g8FFYY59CzIBBtYTFasuRp3KFyv+dLEbCSeN1IIFQn6WInHBCnodKTdKt+DEMXlMASeLPJX1fMUvK1Y0wqvAIu6PKnjyDLNMH1tyb+AhDJ7e7S/O03irghsMzOk9zANOhDmnevluKw/qwcUTT7nie+NP3qXQ6/gJiWC4uE0eU0A98GzmOR7e3/hJ4/WKz1Xwiyb8usle2Mv1YKqO0c8Tdcz8PHlc9X6eWo/Rz9N1ND9PHVejn6fWY/Tz1HqMfp6qY2Qv90VTdYx+nqhj5ufJ46r389R6jH6erqP5eeq4Gv08tR6jn6fWY/TzVB1bvG19cPUFdCb4RyqYJHz4tp9pAH4OJKUoMx2frfhzBfD3Gzi2OjMdn6j4TQVPl6SwNa74KQcW1lJuls50sLDJT07QfrEi4SJkqx4PV/AtYj6UeRJodWY62O8NPoGZDk4WOZnHHB+p4NjqbI0r4MESFtNXHFf0CX9ofXytYkvHyj7IZ88HKvAI+s0DC+3z6OcV/QM+K+sY6/Gfw5Zv1nNhe7uikaSD9qcqvlIxfj6l6YBvVXDC3pOmg4snzkF4Ur/pgiQdzHMegEMHDyulfF7N6rH18FtaPb5UgXfj4XzDq5Gko39oL8kHRx0zP+f46teDs/kBnBu2m7yJOmZ+nlqP0c9TdUDv56k6Rj9P1DHz89R6jH6eWo/RzxN1zPw8UcfMzxPui87mB/R+nqhj5uep9Rj9PHlc9X6eqmP080QdMz9Prcfo56n1GP08UcfMzxN1bN1vT1sfvAtmztM+TPh2MsUAI9/g+OqMOgj2ybUbWok6GHTtD/C3BZFUHdyAa2MMEnW0NpE8rjjx5WdA0nXQd9pE+1mTRB0E++TajepEHf3n1arjatbHUQdwjHxjNR3Q5nH/kz70uemC1XXM6sE2rR7HxhXR+p6qo+030nT07fRxhUek66Df9J820XwvsR5safefw4k66C/tvXzuNh39WGuvSdBBv5kXHINUHWxpp9ejjSuC/WQdbR8SdfTt9HE1+nmijr7PBJpS68GWdvPzVB178cFRR/8atrQTdND33s9TdbClnV6P0c+TdbR9SNTRt9PH1ejniTrod/MKon1upekAtrSbn6fq2IsPznS088XGajr+Z/YiRB1roY61UMdaqGMt1LEW6lgLdayFOtZCHWuhjrVQx1qoYy3UsRbqWAt1rIU61kIda6GOtVDHWtzxb6CLiIiIiIiIiIiIiIiIiIgU9x22e+CPh2066lgLdayFOtZCHWuhjrVQx1qoYy3UsRbqWAt1rIU61kIda6GOtVDHWqhjLdSxFupYC3WshTqW4dat/wKB2hwSL8nDjQAAAABJRU5ErkJggg==" />\n                    </div>');
+            }, t.prototype.displayHeight = function () {
+                return this.mmheight + "mm";
+            }, t.prototype.displayWidth = function () {
+                return this.mmwidth - .4 + "mm";
+            }, t;
+        }(),
+        Jt = function () {
             var _t8 = function t(e, n) {
                 return (_t8 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3422,15 +4147,20 @@ var hiprint = function (t) {
                 _t8(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Rt = function (t) {
+        Qt = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new _t(n), i.options.setDefault(new _t(a.instance.longText.default).getPrintElementOptionEntity()), i;
+                return i.options = new qt(n), i.options.setDefault(new qt(p.instance.longText.default).getPrintElementOptionEntity()), i;
             }
 
-            return Dt(e, t), e.prototype.getDesignTarget = function (e) {
+            return Jt(e, t), e.prototype.getDesignTarget = function (e) {
                 var n = t.prototype.getDesignTarget.call(this, e);
                 return n.find(".hiprint-printElement-longText-content").css("border", "1px dashed #cebcbc"), n;
+            }, e.prototype.getProxyTarget = function (t) {
+                t && this.SetProxyTargetOption(t);
+                var e = this.getData(),
+                    n = this.createTarget(this.printElementType.getText(!0), e);
+                return this.updateTargetSize(n), this.css(n, e), n;
             }, e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData(),
@@ -3438,69 +4168,85 @@ var hiprint = function (t) {
                     this.designTarget.find(".hiprint-printElement-longText-content").html(e.find(".hiprint-printElement-longText-content").html()), this.css(this.designTarget, t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.longText;
+                return p.instance.longText;
             }, e.prototype.getTitle = function () {
                 return this.options.title || this.printElementType.title;
             }, e.prototype.getData = function (t) {
-                return t ? t[this.getField()] || "" : this.printElementType.getData() || "";
+                return t ? t[this.getField()] || "" : this.options.testData || this.printElementType.getData() || "";
             }, e.prototype.updateTargetText = function (t, e, n) {
                 var i = t.find(".hiprint-printElement-longText-content"),
                     o = this.getText(e, n);
                 i.html(o);
             }, e.prototype.createTarget = function (t, e) {
-                var n = $('<div class="hiprint-printElement hiprint-printElement-longText" style="position: absolute;"><div class="hiprint-printElement-longText-content" style="height:100%;width:100%"></div></div>');
+                var n = $('<div class="hiprint-printElement hiprint-printElement-longText" style="position: absolute;"><div class="hiprint-printElement-longText-content hiprint-printElement-content" style="height:100%;width:100%"></div></div>');
                 return this.updateTargetText(n, t, e), n;
             }, e.prototype.getText = function (t, e) {
                 e && (e = 0 != this.options.leftSpaceRemoved ? e.toString().replace(/^\s*/, "") : e);
-                return (this.getField() ? (this.options.getHideTitle() ? "" : (t || "") + "：") + (this.printElementType.formatter ? this.printElementType.formatter(t, e, this.options, this._currenttemplateData) : e) : this.printElementType.formatter ? this.printElementType.formatter(t, t, this.options, this._currenttemplateData) : t || "") || "";
+                return (this.getField() ? (this.options.getHideTitle() ? "" : t ? t + "：" : "") + (this.printElementType.formatter ? this.printElementType.formatter(t, e, this.options, this._currenttemplateData) : e) : this.printElementType.formatter ? this.printElementType.formatter(t, t, this.options, this._currenttemplateData) : t || "") || "";
             }, e.prototype.getHtml = function (t, e) {
                 this.setCurrenttemplateData(e), this.createTempContainer();
                 var n = this.getPaperHtmlResult(t, e);
                 return this.removeTempContainer(), n;
+            }, e.prototype.getHeightByData = function (t) {
+                this.createTempContainer();
+                var e = this.getPaperHtmlResult(new Yt("", 1e3, 1e3, 0, 25e3, 0, 0, !0, void 0, 0, void 0), {}, t);
+                return this.removeTempContainer(), e[0].referenceElement.bottomInLastPaper - e[0].referenceElement.printTopInPaper;
             }, e.prototype.getLongTextIndent = function () {
                 return this.options.longTextIndent ? '<span class="long-text-indent" style="margin-left:' + this.options.longTextIndent + 'pt"></span>' : '<span class="long-text-indent"></span>';
-            }, e.prototype.getPaperHtmlResult = function (t, e) {
-                var n = this,
-                    i = [],
-                    o = 0,
-                    r = this.getData(e),
-                    a = this.getText(this.getTitle(), r),
-                    p = this.createTarget(this.getTitle(), "");
-                this.css(p, r), e ? this.updateTargetWidth(p) : this.updateTargetSize(p), this.getTempContainer().html(""), this.getTempContainer().append(p);
-                var s = [this.getLongTextIndent()],
-                    l = a.split(new RegExp("\r|\n", "g"));
-                l.forEach(function (t, e) {
-                    var i = 0 != n.options.leftSpaceRemoved ? (t || "").toString().replace(/^\s*/, "") : t;
-                    s = s.concat(i.split("")), e < l.length - 1 && s.push("<br/>" + n.getLongTextIndent());
-                }), 0 == s.length && (s = [""]);
+            }, e.prototype.getPaperHtmlResult = function (t, e, n) {
+                var i = this,
+                    o = [],
+                    r = 0,
+                    a = n || this.getData(e),
+                    p = this.getText(this.getTitle(), a),
+                    s = this.createTarget(this.getTitle(), this.options.testData || "");
+                this.css(s, a), e ? this.updateTargetWidth(s) : this.updateTargetSize(s), this.getTempContainer().html(""), this.getTempContainer().append(s);
+                var l = [this.getLongTextIndent()],
+                    u = p.split(new RegExp("\r|\n", "g"));
+                if (u.forEach(function (t, e) {
+                    var n = 0 != i.options.leftSpaceRemoved ? (t || "").toString().replace(/^\s*/, "") : t;
+                    l = l.concat(n.split("")), e < u.length - 1 && l.push("<br/>" + i.getLongTextIndent());
+                }), 0 == l.length && (l = [""]), this.isHeaderOrFooter(t) || this.isFixed() || !e) return (f = this.getStringBySpecificHeight(l, 25e3, s)).target.css("left", this.options.displayLeft()), f.target.css("top", this.options.displayTop()), f.target[0].height = "", o.push(new Rt({
+                    target: f.target,
+                    printLine: this.options.displayTop() + f.height,
+                    referenceElement: new Bt({
+                        top: this.options.getTop(),
+                        left: this.options.getLeft(),
+                        height: this.options.getHeight(),
+                        width: this.options.getWidth(),
+                        beginPrintPaperIndex: t.index,
+                        bottomInLastPaper: this.options.getTop() + f.height,
+                        printTopInPaper: this.options.getTop()
+                    })
+                })), o;
 
-                for (var h = this.getBeginPrintTopInPaperByReferenceElement(t); s.length > 0;) {
-                    var u = 0,
-                        c = t.getPaperFooter(o);
-                    0 == o && h > c && (h = h - c + t.paperHeader, i.push(new gt({
+                for (var h = this.getBeginPrintTopInPaperByReferenceElement(t); l.length > 0;) {
+                    var d = 0,
+                        c = t.getPaperFooter(r);
+                    0 == r && h > c && (h = h - c + t.paperHeader, o.push(new Rt({
                         target: void 0,
                         printLine: void 0
-                    })), o++ , u = t.getContentHeight(o) - (h - t.paperHeader), c = t.getPaperFooter(o));
-                    var d = this.getStringBySpecificHeight(s, u > 0 ? u : 0 == o ? c - h : t.getContentHeight(o), p);
-                    s.splice(0, d.length);
-                    var f = void 0,
-                        g = void 0;
-                    d.target.css("left", this.options.displayLeft()), d.target[0].height = "", 0 == o || u > 0 ? (g = h, d.target.css("top", g + "pt"), f = s.length > 0 ? h + d.height : null != this.options.lHeight ? h + (d.height > this.options.lHeight ? d.height : this.options.lHeight) : h + d.height) : (g = t.paperHeader, d.target.css("top", g + "pt"), f = g + d.height), i.push(new gt({
-                        target: d.target,
-                        printLine: f,
-                        referenceElement: new bt({
+                    })), r++ , d = t.getContentHeight(r) - (h - t.paperHeader), c = t.getPaperFooter(r));
+                    var f = this.getStringBySpecificHeight(l, d > 0 ? d : 0 == r ? c - h : t.getContentHeight(r), s);
+                    l.splice(0, f.length);
+                    var g = void 0,
+                        v = void 0;
+                    f.target.css("left", this.options.displayLeft()), f.target[0].height = "", 0 == r || d > 0 ? (v = h, f.target.css("top", v + "pt"), g = l.length > 0 ? h + f.height : null != this.options.lHeight ? h + (f.height > this.options.lHeight ? f.height : this.options.lHeight) : h + f.height) : (v = t.paperHeader, f.target.css("top", v + "pt"), g = v + f.height), o.push(new Rt({
+                        target: f.target,
+                        printLine: g,
+                        referenceElement: new Bt({
                             top: this.options.getTop(),
                             left: this.options.getLeft(),
                             height: this.options.getHeight(),
                             width: this.options.getWidth(),
                             beginPrintPaperIndex: t.index,
-                            bottomInLastPaper: f,
-                            printTopInPaper: g
+                            bottomInLastPaper: g,
+                            printTopInPaper: v
                         })
-                    })), o++;
+                    })), r++;
                 }
 
-                return i;
+                return o;
             }, e.prototype.getStringBySpecificHeight = function (t, e, n) {
                 var i = hinnn.pt.toPx(e),
                     o = this.IsPaginationIndex(t, t.length - 1, i, n);
@@ -3541,8 +4287,8 @@ var hiprint = function (t) {
                                     result: 1
                                 };
             }, e;
-        }(mt),
-        Lt = function () {
+        }(zt),
+        Kt = function () {
             function t() { }
 
             return t.replaceEnterAndNewline = function (t, e) {
@@ -3553,7 +4299,7 @@ var hiprint = function (t) {
                 return t.replace(new RegExp("\r|\n|\t|/g", "g"), e);
             }, t;
         }(),
-        zt = function () {
+        Zt = function () {
             var _t9 = function t(e, n) {
                 return (_t9 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3574,13 +4320,13 @@ var hiprint = function (t) {
                 _t9(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Bt = function (t) {
+        te = function (t) {
             function e(e) {
                 var n = t.call(this, e) || this;
-                return n.title && (n.title = Lt.replaceEnterAndNewlineAndTab(n.title, "")), n;
+                return n.title && (n.title = Kt.replaceEnterAndNewlineAndTab(n.title, "")), n;
             }
 
-            return zt(e, t), e.prototype.getHideTitle = function () {
+            return Zt(e, t), e.prototype.getHideTitle = function () {
                 return null == this.hideTitle ? this.defaultOptions.hideTitle : this.hideTitle;
             }, e.prototype.getTextType = function () {
                 return (null == this.textType ? this.defaultOptions.textType : this.textType) || "text";
@@ -3589,8 +4335,8 @@ var hiprint = function (t) {
             }, e.prototype.getbarcodeMode = function () {
                 return (null == this.barcodeMode ? this.defaultOptions.barcodeMode : this.barcodeMode) || "CODE128";
             }, e;
-        }(Tt),
-        $t = function () {
+        }(kt),
+        ee = function () {
             var _t10 = function t(e, n) {
                 return (_t10 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3611,30 +4357,35 @@ var hiprint = function (t) {
                 _t10(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        kt = function (t) {
+        ne = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Bt(n), i.options.setDefault(new Bt(a.instance.text.default).getPrintElementOptionEntity()), i;
+                return i.options = new te(n), i.options.setDefault(new te(p.instance.text.default).getPrintElementOptionEntity()), i;
             }
 
-            return $t(e, t), e.prototype.getDesignTarget = function (e) {
+            return ee(e, t), e.prototype.getDesignTarget = function (e) {
                 return t.prototype.getDesignTarget.call(this, e);
+            }, e.prototype.getProxyTarget = function (t) {
+                t && this.SetProxyTargetOption(t);
+                var e = this.getData(),
+                    n = this.createTarget(this.printElementType.getText(!0), e);
+                return this.updateTargetSize(n), this.css(n, e), n;
             }, e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t), this.updateTargetText(this.designTarget, this.getTitle(), t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.text;
+                return p.instance.text;
             }, e.prototype.getTitle = function () {
                 var t = this.options.title || this.printElementType.title || "";
-                return t && (t = Lt.replaceEnterAndNewlineAndTab(t, "")), t;
+                return t && (t = Kt.replaceEnterAndNewlineAndTab(t, "")), t;
             }, e.prototype.getData = function (t) {
                 return t ? t[this.getField()] || "" : this.options.testData || this.printElementType.getData() || "";
             }, e.prototype.updateTargetText = function (t, e, n, i) {
                 var o = t.find(".hiprint-printElement-text-content"),
                     r = "";
-                r = this.getField() ? (this.options.getHideTitle() ? "" : (e || "") + "：") + (this.printElementType.formatter ? this.printElementType.formatter(e, n, this.options, this._currenttemplateData, t) : n) : n = this.printElementType.formatter ? this.printElementType.formatter(e, e, this.options, this._currenttemplateData, t) : e;
+                r = this.getField() ? (this.options.getHideTitle() ? "" : e ? e + "：" : "") + (this.printElementType.formatter ? this.printElementType.formatter(e, n, this.options, this._currenttemplateData, t) : n) : n = this.printElementType.formatter ? this.printElementType.formatter(e, e, this.options, this._currenttemplateData, t) : e;
                 var a = this.options.getTextType();
                 if ("text" == a) o.html(r); else {
                     if ("barcode" == a) {
@@ -3678,11 +4429,13 @@ var hiprint = function (t) {
                 t.prototype.onResize.call(this, e, n, i, o, r);
                 "barcode" != this.options.getTextType() && "qrcode" != this.options.getTextType() || this.updateTargetText(this.designTarget, this.getTitle(), this.getData());
             }, e.prototype.createTarget = function (t, e, n) {
-                var i = $('<div class="hiprint-printElement hiprint-printElement-text" style="position: absolute;"><div class="hiprint-printElement-text-content" style="height:100%;width:100%"></div></div>');
+                var i = $('<div class="hiprint-printElement hiprint-printElement-text" style="position: absolute;"><div class="hiprint-printElement-text-content hiprint-printElement-content" style="height:100%;width:100%"></div></div>');
                 return this.updateTargetText(i, t, e, n), i;
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        Nt = function () {
+        }(zt),
+        ie = function () {
             var _t11 = function t(e, n) {
                 return (_t11 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3703,14 +4456,14 @@ var hiprint = function (t) {
                 _t11(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        At = function (t) {
+        oe = function (t) {
             function e(e) {
                 return t.call(this, e) || this;
             }
 
-            return Nt(e, t), e;
-        }(Tt),
-        Vt = function () {
+            return ie(e, t), e;
+        }(kt),
+        re = function () {
             var _t12 = function t(e, n) {
                 return (_t12 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3731,13 +4484,13 @@ var hiprint = function (t) {
                 _t12(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        jt = function (t) {
+        ae = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new At(n), i.options.setDefault(new At(a.instance.html.default).getPrintElementOptionEntity()), i;
+                return i.options = new oe(n), i.options.setDefault(new oe(p.instance.html.default).getPrintElementOptionEntity()), i;
             }
 
-            return Vt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return re(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t);
@@ -3751,9 +4504,11 @@ var hiprint = function (t) {
                     n.find(".hiprint-printElement-html-content").append(i);
                 }
                 return n;
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        Wt = function () {
+        }(zt),
+        pe = function () {
             var _t13 = function t(e, n) {
                 return (_t13 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3774,26 +4529,28 @@ var hiprint = function (t) {
                 _t13(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Mt = function (t) {
+        se = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Tt(n), i.options.setDefault(new Tt(a.instance.vline.default).getPrintElementOptionEntity()), i;
+                return i.options = new kt(n), i.options.setDefault(new kt(p.instance.vline.default).getPrintElementOptionEntity()), i;
             }
 
-            return Wt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return pe(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.hline;
+                return p.instance.hline;
             }, e.prototype.createTarget = function (t, e) {
                 return $('<div class="hiprint-printElement hiprint-printElement-vline" style="border-left:1px solid;position: absolute;"></div>');
             }, e.prototype.getReizeableShowPoints = function () {
                 return ["s"];
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        Gt = function () {
+        }(zt),
+        le = function () {
             var _t14 = function t(e, n) {
                 return (_t14 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3814,26 +4571,26 @@ var hiprint = function (t) {
                 _t14(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Xt = function (t) {
+        ue = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Tt(n), i.options.setDefault(new Tt(a.instance.hline.default).getPrintElementOptionEntity()), i;
+                return i.options = new kt(n), i.options.setDefault(new kt(p.instance.hline.default).getPrintElementOptionEntity()), i;
             }
 
-            return Gt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return le(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.hline;
+                return p.instance.hline;
             }, e.prototype.createTarget = function (t, e) {
                 return $('<div class="hiprint-printElement hiprint-printElement-hline" style="border-top:1px solid;position: absolute;"></div>');
             }, e.prototype.getReizeableShowPoints = function () {
                 return ["e"];
             }, e;
-        }(mt),
-        Yt = function () {
+        }(zt),
+        he = function () {
             var _t15 = function t(e, n) {
                 return (_t15 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3854,24 +4611,26 @@ var hiprint = function (t) {
                 _t15(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Ut = function (t) {
+        de = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Tt(n), i.options.setDefault(new Tt(a.instance.rect.default).getPrintElementOptionEntity()), i;
+                return i.options = new kt(n), i.options.setDefault(new kt(p.instance.rect.default).getPrintElementOptionEntity()), i;
             }
 
-            return Yt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return he(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.hline;
+                return p.instance.hline;
             }, e.prototype.createTarget = function (t, e) {
                 return $('<div class="hiprint-printElement hiprint-printElement-rect" style="border:1px solid;position: absolute;"></div>');
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        Jt = function () {
+        }(zt),
+        ce = function () {
             var _t16 = function t(e, n) {
                 return (_t16 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -3892,55 +4651,63 @@ var hiprint = function (t) {
                 _t16(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        Kt = function (t) {
+        fe = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new Tt(n), i.options.setDefault(new Tt(a.instance.oval.default).getPrintElementOptionEntity()), i;
+                return i.options = new kt(n), i.options.setDefault(new kt(p.instance.oval.default).getPrintElementOptionEntity()), i;
             }
 
-            return Jt(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return ce(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     var t = this.getData();
                     this.css(this.designTarget, t);
                 }
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.hline;
+                return p.instance.hline;
             }, e.prototype.createTarget = function (t, e) {
                 return $('<div class="hiprint-printElement hiprint-printElement-oval" style="border:1px solid;position: absolute;border-radius: 50%;"></div>');
+            }, e.prototype.getHtml = function (t, e, n) {
+                return this.getHtml2(t, e, n);
             }, e;
-        }(mt),
-        qt = function () {
+        }(zt),
+        ge = function () {
             function t() { }
 
             return t.createPrintElement = function (t, e) {
-                return "text" == t.type ? new kt(t, e) : "image" == t.type ? new Ft(t, e) : "longText" == t.type ? new Rt(t, e) : "table" == t.type ? new Ct(t, e) : "html" == t.type ? new jt(t, e) : "vline" == t.type ? new Mt(t, e) : "hline" == t.type ? new Xt(t, e) : "rect" == t.type ? new Ut(t, e) : "oval" == t.type ? new Kt(t, e) : void 0;
+                return "text" == t.type ? new ne(t, e) : "image" == t.type ? new Xt(t, e) : "longText" == t.type ? new Qt(t, e) : "table" == t.type ? new $t(t, e) : "html" == t.type ? new ae(t, e) : "vline" == t.type ? new se(t, e) : "hline" == t.type ? new ue(t, e) : "rect" == t.type ? new de(t, e) : "oval" == t.type ? new fe(t, e) : void 0;
             }, t;
         }(),
-        Qt = function () {
+        ve = function () {
             function t(t) {
-                this.field = t.field, this.title = t.title, this.tid = t.tid, this.data = t.data, this.styler = t.styler, this.formatter = t.formatter, this.type = t.type, this.options = t.options;
+                this.field = t.field, this.fields = t.fields, this.title = t.title, this.text = t.text, this.tid = t.tid, this.data = t.data, this.styler = t.styler, this.formatter = t.formatter, this.type = t.type, this.onRendered = t.onRendered, this.options = t.options;
             }
 
-            return t.prototype.getData = function () {
+            return t.prototype.getText = function (t) {
+                return t ? this.title || this.text || "" : this.text || this.title || "";
+            }, t.prototype.getData = function () {
                 return this.data;
             }, t.prototype.createPrintElement = function (t) {
                 var e = {};
-                return $.extend(e, t || {}), qt.createPrintElement(this, e);
+                return $.extend(e, t || {}), ge.createPrintElement(this, e);
             }, t.prototype.getPrintElementTypeEntity = function () {
-                return new Ot({
+                return new Wt({
                     title: this.title,
                     type: this.type
                 });
+            }, t.prototype.getFields = function () {
+                return this.fields;
+            }, t.prototype.getOptions = function () {
+                return this.options || {};
             }, t;
         }(),
-        Zt = function () {
+        me = function () {
             return function (t) {
                 this.table = t.table, this.isEnableEdit = t.isEnableEdit, this.trs = t.trs, this.resizeRow = t.resizeRow, this.resizeColumn = t.resizeColumn;
             };
         }(),
-        te = function () {
+        ye = function () {
             function t(t) {
-                this.options = new Zt(t);
+                this.options = new me(t);
             }
 
             return t.prototype.enableEidt = function () {
@@ -3951,12 +4718,12 @@ var hiprint = function (t) {
                 return this.options.isEnableEdit;
             }, t;
         }(),
-        ee = function () {
+        be = function () {
             return function (t) {
                 this.cell = t.cell, this.link = t.link, this.linkType = t.linkType, this.bottom = t.bottom, this.rightMost = t.rightMost, this.rowLevel = t.rowLevel, this.columnLevel = t.columnLevel, this.indexInTableGridRow = t.indexInTableGridRow, this.indexInTableGridColumn = t.indexInTableGridColumn;
             };
         }(),
-        ne = function () {
+        Te = function () {
             function t() { }
 
             return t.getLeftTableCell = function (t, e) {
@@ -3971,22 +4738,22 @@ var hiprint = function (t) {
                 }), n;
             }, t;
         }(),
-        ie = function () {
+        we = function () {
             return function (t, e) {
                 this.target = t, this.grips = e;
             };
         }(),
-        oe = function () {
+        Pe = function () {
             return function (t) {
                 this.target = t;
             };
         }(),
-        re = function () {
+        xe = function () {
             return function () {
                 this.rowColumns = [];
             };
         }(),
-        ae = function () {
+        Ee = function () {
             function t() { }
 
             return t.getColumnsWidth = function (e, n) {
@@ -4009,7 +4776,7 @@ var hiprint = function (t) {
                     e += t.width;
                 }), e;
             }, t.reconsitutionTableColumnTree = function (t, e, n) {
-                for (var i = e || new re(), o = function o(e) {
+                for (var i = e || new xe(), o = function o(e) {
                     i.totalLayer = e + 1, i[e] = t[e].columns, i.rowColumns = i.rowColumns.concat(i[e].filter(function (n) {
                         return n.rowspan == t.length - e;
                     }));
@@ -4020,7 +4787,7 @@ var hiprint = function (t) {
                 return i;
             }, t;
         }(),
-        pe = function () {
+        Ce = function () {
             function t(t) {
                 this.signature = "HiTresizer", this.hitable = t, this.rows = t.rows, this.target = t.target;
             }
@@ -4028,7 +4795,7 @@ var hiprint = function (t) {
             return t.prototype.init = function () {
                 this.addResizeRowAndColumn(), this.hitable.optionsCoat.options.resizeColumn && this.createColumnGrips(), this.hitable.optionsCoat.options.resizeRow && this.createRowGrips();
             }, t.prototype.resizeTableCellWidth = function () {
-                ae.resizeTableCellWeight(this.rows);
+                Ee.resizeTableCellWeight(this.rows);
             }, t.prototype.addResizeRowAndColumn = function () { }, t.prototype.createColumnGrips = function () {
                 var t = this,
                     e = this,
@@ -4039,7 +4806,7 @@ var hiprint = function (t) {
                         if (o.getTarget().attr("haswidth")) {
                             var a = $('<div class="columngrip"><div class="gripResizer"></div></div>');
                             i.append(a);
-                            var p = new oe(a);
+                            var p = new Pe(a);
                             n.length > 0 && (n[n.length - 1].nextGrip = p), n.push(p), t.syncGrips(o, p), $(a).hidraggable({
                                 axis: "h",
                                 onDrag: function onDrag(t, e, n) { },
@@ -4057,7 +4824,7 @@ var hiprint = function (t) {
                             });
                         }
                     });
-                }), this.target.before(i), this.cgripContariner = new ie(i, n);
+                }), this.target.before(i), this.cgripContariner = new we(i, n);
             }, t.prototype.updateColumnGrips = function () {
                 this.cgripContariner && (this.cgripContariner.target.remove(), this.createColumnGrips());
             }, t.prototype.updateRowGrips = function () {
@@ -4070,7 +4837,7 @@ var hiprint = function (t) {
                 this.rows.forEach(function (o, r) {
                     var a = $('<div class="rowgrip"><div class="gripResizer"></div></div>');
                     i.append(a);
-                    var p = new oe(a);
+                    var p = new Pe(a);
                     n.push(p), r > 0 && r < t.rows.length && $(a).hidraggable({
                         axis: "v",
                         onDrag: function onDrag(t, e, n) { },
@@ -4085,7 +4852,7 @@ var hiprint = function (t) {
                             e.rows[r].columns[0].getTarget().css("height", i + "pt"), e.syncRowGrips(), p.target.removeClass("rowgripDraging");
                         }
                     });
-                }), this.target.before(i), this.rgripContariner = new ie(i, n), this.syncRowGrips();
+                }), this.target.before(i), this.rgripContariner = new we(i, n), this.syncRowGrips();
             }, t.prototype.syncGrips = function (t, e) {
                 var n = t.getTarget();
                 e.cell = t, e.target.css({
@@ -4105,9 +4872,9 @@ var hiprint = function (t) {
                 this.target.find("thead").prepend();
             }, t;
         }(),
-        se = function () {
+        Oe = function () {
             function t() {
-                this.id = y.createId();
+                this.id = b.createId();
             }
 
             return t.prototype.init = function (t, e) {
@@ -4119,14 +4886,14 @@ var hiprint = function (t) {
                 t ? t.forEach(function (t, n) {
                     t.init(e.target.find("td:eq(" + n + ")"), e.tableOptions, e.id);
                 }) : (this.columns = [], this.target.find("td").map(function (t, n) {
-                    var i = new P();
+                    var i = new E();
                     i.init($(n), e.tableOptions, e.id), e.columns.push(i);
                 }));
             }, t.prototype.removeCell = function (t) {
                 var e = this.columns.indexOf(t);
                 this.columns[e].getTarget().remove(), this.columns.splice(e, 1);
             }, t.prototype.createTableCell = function (t, e) {
-                var n = new P();
+                var n = new E();
                 return n.init($("<td></td>"), this.tableOptions, this.id), t > 1 && (n.getTarget().attr("rowspan", t), n.rowspan = t), e > 1 && (n.getTarget().attr("colspan", e), n.colspan = e), n;
             }, t.prototype.insertToTargetCellLeft = function (t, e) {
                 var n = this.columns.indexOf(t);
@@ -4140,9 +4907,9 @@ var hiprint = function (t) {
                 this.columns.push(t), this.target.append(t.getTarget());
             }, t;
         }(),
-        le = function () {
+        He = function () {
             function t(t) {
-                this.id = y.createId(), this.optionsCoat = new te(t), this.handle = t.handle, this.target = t.table, this.initRows(t.rows), this.init(t), this.tableCellSelector = new f(this.rows, this.target), this.resizer = new pe(this), this.resizer.init();
+                this.id = b.createId(), this.optionsCoat = new ye(t), this.handle = t.handle, this.target = t.table, this.initRows(t.rows), this.init(t), this.tableCellSelector = new g(this.rows, this.target), this.resizer = new Ce(this), this.resizer.init();
             }
 
             return t.prototype.insertRow = function (t, e, n) {
@@ -4151,7 +4918,7 @@ var hiprint = function (t) {
                     r = this.rows[i.rowIndex],
                     a = i.rowIndex,
                     p = this.getCellGrid(),
-                    s = new se();
+                    s = new Oe();
                 if (s.init(this.optionsCoat), n && s.getTarget().addClass(n), "above" == t) p[a].forEach(function (t) {
                     var e = t.link ? t.link : t.cell,
                         n = e.width / e.colspan;
@@ -4196,16 +4963,16 @@ var hiprint = function (t) {
                     p = a.cell,
                     s = a.rowIndex,
                     l = this.getCellGrid(r),
-                    h = l[s].filter(function (t) {
+                    u = l[s].filter(function (t) {
                         return t.cell && t.cell.id == p.id || t.link && t.link.id == p.id;
                     });
 
                 if ("left" == t) {
-                    var u = h[0].indexInTableGridRow;
+                    var h = u[0].indexInTableGridRow;
                     l.forEach(function (t, e) {
-                        var a = t[u],
+                        var a = t[h],
                             p = t.filter(function (t, e) {
-                                return e >= u && t.cell;
+                                return e >= h && t.cell;
                             });
 
                         if (0 == a.rowLevel) {
@@ -4213,16 +4980,16 @@ var hiprint = function (t) {
                                 l = r[e].createTableCell();
                             n && l.getTarget().addClass(n), null != i && (l.width = i), p.length ? s.insertToTargetCellLeft(p[0].cell, l) : s.insertCellToLast(l), hinnn.event.trigger("newCell" + o.id, l);
                         } else if ("row" == a.linkType) {
-                            var h = a.link.getTarget();
-                            a.link.colspan += 1, h.attr("colspan", a.link.colspan);
+                            var u = a.link.getTarget();
+                            a.link.colspan += 1, u.attr("colspan", a.link.colspan);
                         }
                     });
                 } else {
-                    var c = h[h.length - 1].indexInTableGridRow;
+                    var d = u[u.length - 1].indexInTableGridRow;
                     l.forEach(function (t, e) {
-                        var a = t[c],
+                        var a = t[d],
                             p = t.filter(function (t, e) {
-                                return e <= c && t.cell;
+                                return e <= d && t.cell;
                             });
 
                         if (a.rightMost) {
@@ -4230,16 +4997,16 @@ var hiprint = function (t) {
                                 l = s.createTableCell();
                             n && l.getTarget().addClass(n), null != i && (l.width = i), p.length ? s.insertToTargetCellRight(p[p.length - 1].cell, l) : s.insertCellToFirst(l), hinnn.event.trigger("newCell" + o.id, l);
                         } else {
-                            var h = a.link || a.cell;
+                            var u = a.link || a.cell;
 
                             if ("row" == a.linkType) {
-                                var u = h.getTarget();
-                                h.colspan += 1, u.attr("colspan", h.colspan);
+                                var h = u.getTarget();
+                                u.colspan += 1, h.attr("colspan", u.colspan);
                             }
 
                             if (a.cell) {
-                                u = h.getTarget();
-                                h.colspan += 1, u.attr("colspan", h.colspan);
+                                h = u.getTarget();
+                                u.colspan += 1, h.attr("colspan", u.colspan);
                             }
                         }
                     });
@@ -4294,11 +5061,11 @@ var hiprint = function (t) {
             }, t.prototype.splitCell = function () {
                 var t = this.tableCellSelector.getSingleSelect(),
                     e = this.getCellGrid(),
-                    n = ne.getIndex(e[t.rowIndex], t.cell.id);
+                    n = Te.getIndex(e[t.rowIndex], t.cell.id);
 
                 if (t) {
                     for (var i = t.rowIndex; i < t.rowIndex + t.cell.rowspan; i++) {
-                        for (var o = this.rows[i], r = i == t.rowIndex ? t.cell : ne.getLeftTableCell(e[i], n), a = 0; a < t.cell.colspan; a++) {
+                        for (var o = this.rows[i], r = i == t.rowIndex ? t.cell : Te.getLeftTableCell(e[i], n), a = 0; a < t.cell.colspan; a++) {
                             i == t.rowIndex && 0 == a || (r ? o.insertToTargetCellRight(r, o.createTableCell()) : o.insertCellToFirst(o.createTableCell()));
                         }
                     }
@@ -4334,7 +5101,7 @@ var hiprint = function (t) {
             }, t.prototype.initRowsByTrs = function (t) {
                 var e = this;
                 return t.map(function (t, n) {
-                    var i = new se();
+                    var i = new Oe();
                     return i.init(e.optionsCoat, $(n)), i;
                 }).get();
             }, t.prototype.enableEidt = function () {
@@ -4350,7 +5117,7 @@ var hiprint = function (t) {
                         for (var r = 0; r < t.colspan; r++) {
                             for (var a = 0, p = !1; a < n && !p;) {
                                 if (i[e] = i[e] || [], i[e][a]); else {
-                                    i[e][a] = new ee({
+                                    i[e][a] = new be({
                                         cell: 0 == r ? t : void 0,
                                         link: 0 != r ? t : void 0,
                                         linkType: r > 0 ? "row" : void 0,
@@ -4363,7 +5130,7 @@ var hiprint = function (t) {
                                     });
 
                                     for (var s = e + 1, l = 1; l < t.rowspan; l++) {
-                                        i[s] = i[s] || [], i[s][a] = new ee({
+                                        i[s] = i[s] || [], i[s][a] = new be({
                                             cell: void 0,
                                             link: t,
                                             linkType: r > 0 ? "rowColumn" : "column",
@@ -4528,7 +5295,7 @@ var hiprint = function (t) {
                 this.resizer.updateRowGrips();
             }, t;
         }(),
-        he = function () {
+        Ie = function () {
             var _t17 = function t(e, n) {
                 return (_t17 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -4549,25 +5316,25 @@ var hiprint = function (t) {
                 _t17(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        ue = function (t) {
+        Se = function (t) {
             function e(e) {
                 var n = t.call(this) || this;
                 (n.columns = [], e && e.constructor === Array) ? (e || []).forEach(function (t) {
-                    n.columns.push(new P(t));
+                    n.columns.push(new E(t));
                 }) : e.columns && (e.columns || []).forEach(function (t) {
-                    n.columns.push(new P(t));
+                    n.columns.push(new E(t));
                 });
                 return n;
             }
 
-            return he(e, t), e.prototype.getPrintElementOptionEntity = function () {
+            return Ie(e, t), e.prototype.getPrintElementOptionEntity = function () {
                 var t = [];
                 return this.columns.forEach(function (e) {
                     t.push(e.getEntity());
                 }), t;
             }, e;
-        }(se),
-        ce = function () {
+        }(Oe),
+        Fe = function () {
             var _t18 = function t(e, n) {
                 return (_t18 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -4588,29 +5355,29 @@ var hiprint = function (t) {
                 _t18(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        de = function (t) {
+        De = function (t) {
             function e(e) {
                 var n = t.call(this, e) || this;
                 (e = e || {}).columns ? (n.columns = [], e.columns.forEach(function (t) {
-                    n.columns.push(new ue(t));
-                })) : n.columns = [new ue({
-                    columns: [new P({
+                    n.columns.push(new Se(t));
+                })) : n.columns = [new Se({
+                    columns: [new E({
                         width: 100
-                    }), new P({
+                    }), new E({
                         width: 100
                     })]
                 })];
                 return n;
             }
 
-            return ce(e, t), e.prototype.getPrintElementOptionEntity = function () {
+            return Fe(e, t), e.prototype.getPrintElementOptionEntity = function () {
                 var e = t.prototype.getPrintElementOptionEntity.call(this);
                 return e.columns = [], this.columns.forEach(function (t) {
                     e.columns.push(t.getPrintElementOptionEntity());
                 }), e;
             }, e;
-        }(Tt),
-        fe = function () {
+        }(kt),
+        Re = function () {
             function t() { }
 
             return t.createTableHead = function (e, n) {
@@ -4625,6 +5392,9 @@ var hiprint = function (t) {
                 }
 
                 return t.syncTargetWidthToOption(e), o;
+            }, t.createTableFooter = function (t, e, n, i) {
+                var o = $("<tfoot></tfoot>");
+                return o.append(i.footerFormatter(n)), o;
             }, t.createTableRow = function (e, n, i, o) {
                 var r = t.reconsitutionTableColumnTree(e),
                     a = $("<tbody></tbody>");
@@ -4705,7 +5475,7 @@ var hiprint = function (t) {
                     e += t.fixed ? t.width : 0;
                 }), e;
             }, t.reconsitutionTableColumnTree = function (t, e, n) {
-                var i = e || new vt();
+                var i = e || new Lt();
                 i.colspan = 0;
 
                 for (var o = function o(e) {
@@ -4727,7 +5497,7 @@ var hiprint = function (t) {
                 });
             }, t;
         }(),
-        ge = function () {
+        Be = function () {
             var _t19 = function t(e, n) {
                 return (_t19 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -4748,13 +5518,13 @@ var hiprint = function (t) {
                 _t19(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        me = function (t) {
+        ze = function (t) {
             function e(e, n) {
                 var i = t.call(this, e) || this;
-                return i.options = new de(n), i.options.setDefault(new de(a.instance.tableCustom.default).getPrintElementOptionEntity()), i.columns = i.options.columns, i;
+                return i.options = new De(n), i.options.setDefault(new De(p.instance.tableCustom.default).getPrintElementOptionEntity()), i.columns = i.options.columns, i;
             }
 
-            return ge(e, t), e.prototype.updateDesignViewFromOptions = function () {
+            return Be(e, t), e.prototype.updateDesignViewFromOptions = function () {
                 if (this.designTarget) {
                     this.css(this.designTarget, this.getData());
                     var t = this.designTarget.find(".hiprint-printElement-table-content"),
@@ -4776,13 +5546,13 @@ var hiprint = function (t) {
                     }
                 }), this.designTarget;
             }, e.prototype.getConfigOptions = function () {
-                return a.instance.table;
+                return p.instance.table;
             }, e.prototype.createTarget = function (t, e) {
                 var n = $('<div class="hiprint-printElement hiprint-printElement-table" style="position: absolute;"><div class="hiprint-printElement-table-handle"></div><div class="hiprint-printElement-table-content" style="height:100%;width:100%"></span></div>');
                 return n.find(".hiprint-printElement-table-content").append(this.getTableHtml(e)), n;
             }, e.prototype.getTableHtml = function (t) {
                 var e = $('<table class="hiprint-printElement-tableTarget" style="border-collapse: collapse;width:100%;"></table>');
-                return e.append(fe.createTableHead(this.columns, this.options.getWidth())), e.append(fe.createTableRow(this.columns, t, this.options, this.printElementType)), e;
+                return e.append(Re.createTableHead(this.columns, this.options.getWidth())), e.append(Re.createTableRow(this.columns, t, this.options, this.printElementType)), this.printElementType.footerFormatter && e.append(Re.createTableFooter(this.printElementType.columns, t, this.options, this.printElementType)), e;
             }, e.prototype.getHtml = function (t, e) {
                 this.setCurrenttemplateData(e), this.createTempContainer();
                 var n = this.getPaperHtmlResult(t, e);
@@ -4795,20 +5565,20 @@ var hiprint = function (t) {
                 e ? this.updateTargetWidth(r) : this.updateTargetSize(r), this.css(r, i), this.css(o, i), this.getTempContainer().html(""), this.getTempContainer().append(r);
 
                 for (var a, p = this.getBeginPrintTopInPaperByReferenceElement(t), s = 0, l = !1; !l;) {
-                    var h = 0,
-                        u = t.getPaperFooter(s);
-                    0 == s && p > u && (p = p - u + t.paperHeader, n.push(new gt({
+                    var u = 0,
+                        h = t.getPaperFooter(s);
+                    0 == s && p > h && (p = p - h + t.paperHeader, n.push(new Rt({
                         target: void 0,
                         printLine: void 0
-                    })), s++ , h = t.getContentHeight(s) - (p - t.paperHeader), u = t.getPaperFooter(s));
-                    var c = n.length > 0 ? n[n.length - 1].target : void 0,
-                        d = this.getRowsInSpecificHeight(h > 0 ? h : 0 == s ? u - p : t.getContentHeight(s), r, o, s, c);
-                    l = d.isEnd;
+                    })), s++ , u = t.getContentHeight(s) - (p - t.paperHeader), h = t.getPaperFooter(s));
+                    var d = n.length > 0 ? n[n.length - 1].target : void 0,
+                        c = this.getRowsInSpecificHeight(u > 0 ? u : 0 == s ? h - p : t.getContentHeight(s), r, o, s, d);
+                    l = c.isEnd;
                     var f = void 0;
-                    d.target && (d.target.css("left", this.options.displayLeft()), d.target[0].height = ""), 0 == s || h > 0 ? (d.target && (a = p, d.target.css("top", p + "pt")), f = l && null != this.options.lHeight ? p + (d.height > this.options.lHeight ? d.height : this.options.lHeight) : p + d.height) : (d.target && (a = t.paperHeader, d.target.css("top", t.paperHeader + "pt")), f = t.paperHeader + d.height), n.push(new gt({
-                        target: d.target,
+                    c.target && (c.target.css("left", this.options.displayLeft()), c.target[0].height = ""), 0 == s || u > 0 ? (c.target && (a = p, c.target.css("top", p + "pt")), f = l && null != this.options.lHeight ? p + (c.height > this.options.lHeight ? c.height : this.options.lHeight) : p + c.height) : (c.target && (a = t.paperHeader, c.target.css("top", t.paperHeader + "pt")), f = t.paperHeader + c.height), n.push(new Rt({
+                        target: c.target,
                         printLine: f,
-                        referenceElement: new bt({
+                        referenceElement: new Bt({
                             top: this.options.getTop(),
                             left: this.options.getLeft(),
                             height: this.options.getHeight(),
@@ -4865,31 +5635,38 @@ var hiprint = function (t) {
                 var e = t[this.getField()];
                 return e ? JSON.parse(JSON.stringify(e)) : [];
             }, e.prototype.onResize = function (e, n, i, o, r) {
-                t.prototype.updateSizeAndPositionOptions.call(this, r, o, i, n), fe.resizeTableCellWidth(this.designTarget, this.columns, this.options.getWidth());
+                t.prototype.updateSizeAndPositionOptions.call(this, r, o, i, n), Re.resizeTableCellWidth(this.designTarget, this.columns, this.options.getWidth());
             }, e.prototype.getReizeableShowPoints = function () {
                 return ["s", "e"];
-            }, e.prototype.design = function (t) {
-                var e = this;
+            }, e.prototype.design = function (t, e) {
+                var n = this;
                 this.designTarget.hidraggable({
                     handle: this.designTarget.find(".hiprint-printElement-table-handle"),
-                    axis: e.options.axis && t && t.axisEnabled ? e.options.axis : void 0,
-                    onDrag: function onDrag(t, n, i) {
-                        e.updateSizeAndPositionOptions(n, i);
+                    axis: n.options.axis && t && t.axisEnabled ? n.options.axis : void 0,
+                    onDrag: function onDrag(t, i, o) {
+                        n.updateSizeAndPositionOptions(i, o), n.createLineOfPosition(e);
                     },
                     moveUnit: "pt",
-                    minMove: a.instance.movingDistance,
-                    onBeforeDrag: function onBeforeDrag(t) { },
-                    onStopDrag: function onStopDrag(t) { }
+                    minMove: p.instance.movingDistance,
+                    onBeforeDrag: function onBeforeDrag(t) {
+                        n.createLineOfPosition(e);
+                    },
+                    onStopDrag: function onStopDrag(t) {
+                        n.removeLineOfPosition();
+                    }
                 }), this.setHireizeable(), this.designTarget.hireizeable({
-                    showPoints: e.getReizeableShowPoints(),
+                    showPoints: n.getReizeableShowPoints(),
                     noContainer: !0,
-                    onResize: function onResize(t, n, i, o, r) {
-                        e.onResize(t, n, i, o, r), e.hitable.updateColumnGrips();
+                    onResize: function onResize(t, i, o, r, a) {
+                        n.onResize(t, i, o, r, a), n.hitable.updateColumnGrips(), n.createLineOfPosition(e);
+                    },
+                    onStopResize: function onStopResize() {
+                        n.removeLineOfPosition();
                     }
                 });
             }, e.prototype.setHireizeable = function () {
                 var t = this;
-                this.hitable = new le({
+                this.hitable = new He({
                     table: this.designTarget.find("table"),
                     rows: this.columns,
                     resizeRow: !1,
@@ -4901,8 +5678,8 @@ var hiprint = function (t) {
                     t.updateDesignViewFromOptions();
                 });
             }, e;
-        }(mt),
-        ve = function () {
+        }(zt),
+        Le = function () {
             var _t20 = function t(e, n) {
                 return (_t20 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -4923,16 +5700,16 @@ var hiprint = function (t) {
                 _t20(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        ye = function (t) {
+        Ae = function (t) {
             function e(e) {
                 return t.call(this, e) || this;
             }
 
-            return ve(e, t), e.prototype.createPrintElement = function (t) {
-                return new me(this, t);
+            return Le(e, t), e.prototype.createPrintElement = function (t) {
+                return new ze(this, t);
             }, e;
-        }(St),
-        be = function () {
+        }(Mt),
+        Ne = function () {
             var _t21 = function t(e, n) {
                 return (_t21 = Object.setPrototypeOf || _instanceof({
                     __proto__: []
@@ -4953,42 +5730,42 @@ var hiprint = function (t) {
                 _t21(e, n), e.prototype = null === n ? Object.create(n) : (i.prototype = n.prototype, new i());
             };
         }(),
-        we = function (t) {
+        ke = function (t) {
             function e(e) {
                 return t.call(this, e) || this;
             }
 
-            return be(e, t), e.prototype.createPrintElement = function (t) {
+            return Ne(e, t), e.prototype.createPrintElement = function (t) {
                 var e = {};
-                return $.extend(e, t || {}), qt.createPrintElement(this, e);
+                return $.extend(e, t || {}), ge.createPrintElement(this, e);
             }, e.prototype.getPrintElementTypeEntity = function () {
-                return new Ot({
+                return new Wt({
                     title: this.title,
                     type: this.type
                 });
             }, e;
-        }(Qt),
-        Te = function () {
+        }(ve),
+        je = function () {
             function t() { }
 
             return t.createPrintElementType = function (t) {
-                return t.type = t.type || "text", "text" == t.type ? new we(t) : "table" == t.type ? new St(t) : "tableCustom" == t.type ? new ye(t) : new Qt(t);
+                return t.type = t.type || "text", "text" == t.type ? new ke(t) : "table" == t.type ? new Mt(t) : "tableCustom" == t.type ? new Ae(t) : new ve(t);
             }, t;
         }(),
-        Ee = function () {
+        Ve = function () {
             function t() { }
 
             return t.getElementTypeGroups = function (e) {
                 var n = t.formatterModule(e);
-                return r.instance[n] || [];
+                return a.instance[n] || [];
             }, t.getElementType = function (t, e) {
-                if (t) return r.instance.getElementType(t);
-                Te.createPrintElementType({
+                if (t) return a.instance.getElementType(t);
+                je.createPrintElementType({
                     type: e
                 });
             }, t.build = function (e, n) {
                 var i = t.formatterModule(n),
-                    o = new l().createPrintElementTypeHtml(e, this.getElementTypeGroups(i));
+                    o = new u().createPrintElementTypeHtml(e, this.getElementTypeGroups(i));
                 this.enableDrag(o);
             }, t.buildByHtml = function (t) {
                 this.enableDrag(t);
@@ -4996,17 +5773,18 @@ var hiprint = function (t) {
                 e.hidraggable({
                     revert: !0,
                     proxy: function proxy(t) {
-                        var e = s.instance.getDragingPrintElement().printElement.getProxyTarget();
-                        return e.appendTo("body"), e;
+                        var e = l.instance.getDragingPrintElement(),
+                            n = e.printElement.getProxyTarget(e.printElement.printElementType.getOptions());
+                        return n.appendTo("body"), n;
                     },
                     moveUnit: "pt",
                     minMove: 4,
                     onBeforeDrag: function onBeforeDrag(e) {
                         var n = t.getElementType($(e.data.target).attr("tid"), $(e.data.target).attr("ptype"));
-                        return s.instance.setDragingPrintElement(n.createPrintElement()), !0;
+                        return l.instance.setDragingPrintElement(n.createPrintElement()), !0;
                     },
                     onDrag: function onDrag(t, e, n) {
-                        s.instance.getDragingPrintElement().updatePosition(e, n);
+                        l.instance.getDragingPrintElement().updatePosition(e, n);
                     },
                     onStopDrag: function onStopDrag(t) { }
                 });
@@ -5014,133 +5792,27 @@ var hiprint = function (t) {
                 return t || "_default";
             }, t;
         }(),
-        Pe = function () {
+        _e = function () {
             return function (t, e) {
                 var n = this;
                 this.name = t, this.printElementTypes = [], e.forEach(function (t) {
-                    n.printElementTypes.push(Te.createPrintElementType(t));
+                    n.printElementTypes.push(je.createPrintElementType(t));
                 });
             };
         }(),
-        xe = function () {
+        $e = function () {
             return function (t) {
                 if (this.index = t.index, this.paperType = t.paperType, this.paperType) {
-                    var e = s.instance[this.paperType];
-                    this.height = e.height, this.width = e.width;
+                    var e = l.instance[this.paperType];
+                    t.height ? (this.height = t.height, this.width = t.width) : (this.height = e.height, this.width = e.width);
                 } else this.height = t.height, this.width = t.width;
 
-                this.paperHeader = t.paperHeader || 0, this.paperFooter = t.paperFooter || hinnn.mm.toPt(this.height), this.printElements = t.printElements || [], this.paperNumberLeft = t.paperNumberLeft, this.paperNumberTop = t.paperNumberTop, this.paperNumberDisabled = t.paperNumberDisabled, this.paperNumberFormat = t.paperNumberFormat, this.panelPaperRule = t.panelPaperRule, this.rotate = t.rotate || void 0, this.firstPaperFooter = t.firstPaperFooter, this.evenPaperFooter = t.evenPaperFooter, this.oddPaperFooter = t.oddPaperFooter, this.lastPaperFooter = t.lastPaperFooter, this.topOffset = t.topOffset, this.leftOffset = t.leftOffset;
+                this.paperHeader = t.paperHeader || 0, this.paperFooter = t.paperFooter || hinnn.mm.toPt(this.height), this.printElements = t.printElements || [], this.paperNumberLeft = t.paperNumberLeft, this.paperNumberTop = t.paperNumberTop, this.paperNumberDisabled = t.paperNumberDisabled, this.paperNumberFormat = t.paperNumberFormat, this.panelPaperRule = t.panelPaperRule, this.rotate = t.rotate || void 0, this.firstPaperFooter = t.firstPaperFooter, this.evenPaperFooter = t.evenPaperFooter, this.oddPaperFooter = t.oddPaperFooter, this.lastPaperFooter = t.lastPaperFooter, this.topOffset = t.topOffset, this.fontFamily = t.fontFamily, this.leftOffset = t.leftOffset, this.orient = t.orient;
             };
         }(),
-        Ce = function () {
-            function t(t, e, n, i, o, r, a, p, s, l, h) {
-                this.defaultPaperNumberFormat = "paperNo-paperCount", this.printLine = 0, this.templateId = t, this.width = hinnn.mm.toPt(e), this.height = hinnn.mm.toPt(n), this.mmwidth = e, this.mmheight = n, this.paperHeader = i, this.paperFooter = o, this.contentHeight = o - i, this.createTarget(), this.index = l, this.paperNumberLeft = r || parseInt((this.width - 30).toString()), this.paperNumberTop = a || parseInt((this.height - 22).toString()), this.paperNumberDisabled = p, this.paperNumberFormat = s, this.referenceElement = h ? $.extend({}, h) : new bt({
-                    top: 0,
-                    left: 0,
-                    height: 0,
-                    width: 0,
-                    bottomInLastPaper: 0,
-                    beginPrintPaperIndex: 0,
-                    printTopInPaper: 0,
-                    endPrintPaperIndex: 0
-                });
-            }
-
-            return t.prototype.subscribePaperBaseInfoChanged = function (t) {
-                this.onPaperBaseInfoChanged = t;
-            }, t.prototype.triggerOnPaperBaseInfoChanged = function () {
-                this.onPaperBaseInfoChanged && this.onPaperBaseInfoChanged({
-                    paperHeader: this.paperHeader,
-                    paperFooter: this.paperFooter,
-                    paperNumberLeft: this.paperNumberLeft,
-                    paperNumberTop: this.paperNumberTop,
-                    paperNumberDisabled: this.paperNumberDisabled,
-                    paperNumberFormat: this.paperNumberFormat
-                });
-            }, t.prototype.setFooter = function (t, e, n, i) {
-                this.firstPaperFooter = t, this.evenPaperFooter = e, this.oddPaperFooter = n, this.lastPaperFooter = i;
-            }, t.prototype.setOffset = function (t, e) {
-                this.setLeftOffset(t), this.setTopOffset(e);
-            }, t.prototype.setLeftOffset = function (t) {
-                t ? this.paperContentTarget.css("left", t + "pt") : this.paperContentTarget[0].style.left = "";
-            }, t.prototype.setTopOffset = function (t) {
-                t ? this.paperContentTarget.css("top", t + "pt") : this.paperContentTarget[0].style.top = "";
-            }, t.prototype.createTarget = function () {
-                this.target = $('<div class="hiprint-printPaper"><div class="hiprint-printPaper-content"></div></div>'), this.paperContentTarget = this.target.find(".hiprint-printPaper-content"), this.target.css("width", this.mmwidth + "mm"), this.target.css("height", this.mmheight - .4 + "mm"), this.target.attr("original-height", this.mmheight);
-            }, t.prototype.createHeaderLine = function () {
-                var t = this;
-                this.headerLinetarget = $('<div class="hiprint-headerLine"  style="position: absolute;width: 100%;border-top: 1px dashed #c9bebe;height: 7pt;"></div>'), this.headerLinetarget.css("top", (this.paperHeader || -1) + "pt"), 0 == this.paperHeader && this.headerLinetarget.addClass("hideheaderLinetarget"), this.paperContentTarget.append(this.headerLinetarget), this.dragHeadLineOrFootLine(this.headerLinetarget, function (e, n) {
-                    t.paperHeader = n, t.triggerOnPaperBaseInfoChanged();
-                });
-            }, t.prototype.createFooterLine = function () {
-                var t = this;
-                this.footerLinetarget = $('<div class="hiprint-footerLine"  style="position: absolute;width: 100%;border-top: 1px dashed #c9bebe;height: 7pt;"></div>'), this.footerLinetarget.css("top", parseInt(this.paperFooter.toString()) + "pt"), this.paperFooter == this.height && (this.footerLinetarget.css("top", this.mmheight - .4 + "mm"), this.footerLinetarget.addClass("hidefooterLinetarget")), this.paperContentTarget.append(this.footerLinetarget), this.dragHeadLineOrFootLine(this.footerLinetarget, function (e, n) {
-                    t.paperFooter = n, t.triggerOnPaperBaseInfoChanged();
-                });
-            }, t.prototype.createPaperNumber = function (t) {
-                var e = this,
-                    n = this.target.find(".hiprint-paperNumber");
-                if (n.length) return n.html(t), n;
-                var i = $('<span class="hiprint-paperNumber"  style="position: absolute">' + t + "</span>");
-                return i.css("top", this.paperNumberTop + "pt"), i.css("left", this.paperNumberLeft + "pt"), this.paperContentTarget.append(i), this.dragHeadLineOrFootLine(i, function (t, n) {
-                    e.paperNumberTop = n, e.paperNumberLeft = t, e.triggerOnPaperBaseInfoChanged();
-                }), i;
-            }, t.prototype.getTarget = function () {
-                return this.target;
-            }, t.prototype.append = function (t) {
-                this.paperContentTarget.append(t);
-            }, t.prototype.updateReferenceElement = function (t) {
-                t && (this.referenceElement = t);
-            }, t.prototype.updatePrintLine = function (t) {
-                t >= this.printLine && (this.printLine = t);
-            }, t.prototype.design = function (t) {
-                var e = this;
-                this.createHeaderLine(), this.createFooterLine(), this.target.addClass("design"), this.paperNumberTarget = this.createPaperNumber(this.formatPaperNumber(1, 1)), this.resetPaperNumber(this.paperNumberTarget), $(this.paperNumberTarget).bind("dblclick.hiprint", function () {
-                    null == e.paperNumberDisabled && (e.paperNumberDisabled = !1), e.paperNumberDisabled = !e.paperNumberDisabled, e.resetPaperNumber(e.paperNumberTarget), e.triggerOnPaperBaseInfoChanged();
-                }), $(this.paperNumberTarget).bind("click.hiprint", function () {
-                    hinnn.event.trigger("BuildCustomOptionSettingEventKey_" + e.templateId, {
-                        options: {
-                            paperNumberFormat: e.paperNumberFormat,
-                            paperNumberDisabled: e.paperNumberDisabled
-                        },
-                        callback: function callback(t) {
-                            e.paperNumberDisabled = !!t.paperNumberDisabled || void 0, e.paperNumberFormat = t.paperNumberFormat ? t.paperNumberFormat : void 0, e.createPaperNumber(e.formatPaperNumber(1, 1)), e.resetPaperNumber(e.paperNumberTarget), e.triggerOnPaperBaseInfoChanged();
-                        }
-                    });
-                });
-            }, t.prototype.resetPaperNumber = function (t) {
-                this.paperNumberDisabled ? t.addClass("hiprint-paperNumber-disabled") : t.removeClass("hiprint-paperNumber-disabled");
-            }, t.prototype.updatePaperNumber = function (t, e, n) {
-                var i = this.createPaperNumber(this.formatPaperNumber(t, e));
-                this.paperNumberDisabled ? i.hide() : n && this.index % 2 == 1 && (i[0].style.left = "", i.css("right", this.paperNumberLeft + "pt"));
-            }, t.prototype.formatPaperNumber = function (t, e) {
-                return (this.paperNumberFormat ? this.paperNumberFormat : this.defaultPaperNumberFormat).replace("paperNo", t.toString()).replace("paperCount", e.toString());
-            }, t.prototype.dragHeadLineOrFootLine = function (t, e) {
-                var n = this;
-                t.hidraggable({
-                    axis: "v",
-                    onDrag: function onDrag(t, n, i) {
-                        e(n, i);
-                    },
-                    moveUnit: "pt",
-                    minMove: a.instance.movingDistance,
-                    onBeforeDrag: function onBeforeDrag(t) { },
-                    onStopDrag: function onStopDrag(t) {
-                        n.footerLinetarget.removeClass("hidefooterLinetarget"), n.headerLinetarget.removeClass("hideheaderLinetarget");
-                    }
-                });
-            }, t.prototype.resize = function (t, e) {
-                this.width = hinnn.mm.toPt(t), this.height = hinnn.mm.toPt(e), this.mmwidth = t, this.mmheight = e, this.target.css("width", t + "mm"), this.target.css("height", e - .4 + "mm"), this.target.attr("original-height", this.mmheight), this.paperFooter = this.height, this.footerLinetarget.css("top", this.height + "pt"), this.contentHeight = this.paperFooter - this.paperHeader, this.paperNumberLeft = parseInt((this.width - 30).toString()), this.paperNumberTop = parseInt((this.height - 22).toString()), this.paperNumberTarget.css("top", this.paperNumberTop + "pt"), this.paperNumberTarget.css("left", this.paperNumberLeft + "pt"), this.triggerOnPaperBaseInfoChanged();
-            }, t.prototype.getPaperFooter = function (t) {
-                var e = this.index + t;
-                return 0 == e ? this.firstPaperFooter ? this.firstPaperFooter : this.oddPaperFooter ? this.oddPaperFooter : this.paperFooter : e % 2 == 0 ? this.oddPaperFooter ? this.oddPaperFooter : this.paperFooter : e % 2 == 1 ? this.evenPaperFooter ? this.evenPaperFooter : this.paperFooter : void 0;
-            }, t.prototype.getContentHeight = function (t) {
-                return this.getPaperFooter(t) - this.paperHeader;
-            }, t;
-        }(),
-        Oe = function () {
+        We = function () {
             function t(t, e) {
-                this.templateId = e, this.index = t.index, this.width = t.width, this.height = t.height, this.paperType = t.paperType, this.paperHeader = t.paperHeader, this.paperFooter = t.paperFooter, this.initPrintElements(t.printElements), this.paperNumberLeft = t.paperNumberLeft, this.paperNumberTop = t.paperNumberTop, this.paperNumberDisabled = t.paperNumberDisabled, this.paperNumberFormat = t.paperNumberFormat, this.panelPaperRule = t.panelPaperRule, this.firstPaperFooter = t.firstPaperFooter, this.evenPaperFooter = t.evenPaperFooter, this.oddPaperFooter = t.oddPaperFooter, this.lastPaperFooter = t.lastPaperFooter, this.topOffset = t.topOffset, this.leftOffset = t.leftOffset, this.target = this.createTarget(), this.rotate = t.rotate;
+                this.templateId = e, this.index = t.index, this.width = t.width, this.height = t.height, this.paperType = t.paperType, this.paperHeader = t.paperHeader, this.paperFooter = t.paperFooter, this.initPrintElements(t.printElements), this.paperNumberLeft = t.paperNumberLeft, this.paperNumberTop = t.paperNumberTop, this.paperNumberDisabled = t.paperNumberDisabled, this.paperNumberFormat = t.paperNumberFormat, this.panelPaperRule = t.panelPaperRule, this.firstPaperFooter = t.firstPaperFooter, this.evenPaperFooter = t.evenPaperFooter, this.oddPaperFooter = t.oddPaperFooter, this.lastPaperFooter = t.lastPaperFooter, this.topOffset = t.topOffset, this.leftOffset = t.leftOffset, this.fontFamily = t.fontFamily, this.orient = t.orient, this.target = this.createTarget(), this.rotate = t.rotate;
             }
 
             return t.prototype.design = function (t) {
@@ -5148,7 +5820,7 @@ var hiprint = function (t) {
                 this.orderPrintElements(), this.designPaper = this.createNewPage(0), this.target.append(this.designPaper.getTarget()), this.droppablePaper(this.designPaper), this.designPaper.design(t), this.designPaper.subscribePaperBaseInfoChanged(function (t) {
                     e.paperHeader = t.paperHeader, e.paperFooter = t.paperFooter, e.paperNumberLeft = t.paperNumberLeft, e.paperNumberTop = t.paperNumberTop, e.paperNumberDisabled = t.paperNumberDisabled, e.paperNumberFormat = t.paperNumberFormat;
                 }), this.printElements.forEach(function (n) {
-                    e.appendDesignPrintElement(e.designPaper, n), n.design(t);
+                    e.appendDesignPrintElement(e.designPaper, n), n.design(t, e.designPaper);
                 }), this.target.bind("click.hiprint", function (t) {
                     hinnn.event.trigger("BuildCustomOptionSettingEventKey_" + e.templateId, {
                         options: {
@@ -5158,13 +5830,17 @@ var hiprint = function (t) {
                             oddPaperFooter: e.oddPaperFooter,
                             lastPaperFooter: e.lastPaperFooter,
                             leftOffset: e.leftOffset,
-                            topOffset: e.topOffset
+                            topOffset: e.topOffset,
+                            fontFamily: e.fontFamily,
+                            orient: e.orient
                         },
                         callback: function callback(t) {
-                            e.panelPaperRule = t.panelPaperRule, e.firstPaperFooter = t.firstPaperFooter, e.evenPaperFooter = t.evenPaperFooter, e.oddPaperFooter = t.oddPaperFooter, e.lastPaperFooter = t.lastPaperFooter, e.leftOffset = t.leftOffset, e.topOffset = t.topOffset, e.designPaper.setOffset(e.leftOffset, e.topOffset);
+                            e.panelPaperRule = t.panelPaperRule, e.firstPaperFooter = t.firstPaperFooter, e.evenPaperFooter = t.evenPaperFooter, e.oddPaperFooter = t.oddPaperFooter, e.lastPaperFooter = t.lastPaperFooter, e.leftOffset = t.leftOffset, e.topOffset = t.topOffset, e.fontFamily = t.fontFamily, e.orient = t.orient, e.designPaper.setOffset(e.leftOffset, e.topOffset), e.css(e.target);
                         }
                     });
                 });
+            }, t.prototype.css = function (t) {
+                this.fontFamily && t.css("fontFamily", this.fontFamily);
             }, t.prototype.getHtml = function (t, e, n) {
                 var i = this;
                 this.orderPrintElements();
@@ -5176,15 +5852,15 @@ var hiprint = function (t) {
                 }).forEach(function (e) {
                     var n = [],
                         p = o[o.length - 1];
-                    p.referenceElement.isPositionLeftOrRight(e.options.getTop()) ? (a = o[p.referenceElement.beginPrintPaperIndex], n = e.getHtml(a, t)) : (a = o[p.referenceElement.endPrintPaperIndex], n = e.getHtml(a, t)), n.forEach(function (t, e) {
-                        t.referenceElement && (t.referenceElement.endPrintPaperIndex = t.referenceElement.beginPrintPaperIndex + n.length - 1), e > 0 && (a.index < o.length - 1 ? a = o[a.index + 1] : (a = i.createNewPage(o.length, a.referenceElement), o.push(a)), r.append(a.getTarget())), t.target && (a.append(t.target), a.updatePrintLine(t.printLine)), e == n.length - 1 && t.referenceElement && a.updateReferenceElement(t.referenceElement);
+                    p.referenceElement.isPositionLeftOrRight(e.options.getTop()) ? (a = o[p.referenceElement.beginPrintPaperIndex], n = e.getHtml(a, t)) : (a = o[p.referenceElement.endPrintPaperIndex], n = e.getHtml(a, t)), n.forEach(function (t, p) {
+                        t.referenceElement && (t.referenceElement.endPrintPaperIndex = t.referenceElement.beginPrintPaperIndex + n.length - 1), p > 0 && (a.index < o.length - 1 ? a = o[a.index + 1] : (a = i.createNewPage(o.length, a.referenceElement), o.push(a)), r.append(a.getTarget())), t.target && (a.append(t.target), a.updatePrintLine(t.printLine), e.onRendered(a, t.target)), p == n.length - 1 && t.referenceElement && a.updateReferenceElement(t.referenceElement);
                     });
                 }), this.lastPaperFooter) && o[o.length - 1].printLine > this.lastPaperFooter && (a = this.createNewPage(o.length, a.referenceElement), o.push(a), r.append(a.getTarget()));
                 return this.panelPaperRule && ("odd" == this.panelPaperRule && o.length % 2 == 0 && (a = this.createNewPage(o.length, a.referenceElement), o.push(a), r.append(a.getTarget())), "even" == this.panelPaperRule && o.length % 2 == 1 && (a = this.createNewPage(o.length, a.referenceElement), o.push(a), r.append(a.getTarget()))), o.forEach(function (n) {
                     n.updatePaperNumber(n.index + 1, o.length, e.paperNumberToggleInEven), i.fillPaperHeaderAndFooter(n, t, o.length), e && (null != e.leftOffset && n.setLeftOffset(e.leftOffset), null != e.topOffset && n.setTopOffset(e.topOffset));
                 }), r.prepend(this.getPrintStyle()), r;
             }, t.prototype.resize = function (t, e, n, i) {
-                this.width = e, this.height = n, this.paperType = t, this.rotate = i, this.designPaper.resize(e, n);
+                this.width = e, this.height = n, console.log(this.height), this.paperType = t, this.rotate = i, this.designPaper.resize(e, n);
             }, t.prototype.rotatePaper = function () {
                 null == this.rotate && (this.rotate = !1), this.rotate = !this.rotate, this.resize(this.paperType, this.height, this.width, this.rotate);
             }, t.prototype.getTarget = function () {
@@ -5197,7 +5873,7 @@ var hiprint = function (t) {
                 var e = [];
                 return this.printElements.forEach(function (n) {
                     e.push(n.getPrintElementEntity(t));
-                }), new xe({
+                }), new $e({
                     index: this.index,
                     width: this.width,
                     height: this.height,
@@ -5216,18 +5892,21 @@ var hiprint = function (t) {
                     oddPaperFooter: this.oddPaperFooter,
                     lastPaperFooter: this.lastPaperFooter,
                     topOffset: this.topOffset,
+                    fontFamily: this.fontFamily,
+                    orient: this.orient,
                     leftOffset: this.leftOffset
                 });
             }, t.prototype.createTarget = function () {
-                return $('<div class="hiprint-printPanel panel-index-' + this.index + '"></div>');
+                var t = $('<div class="hiprint-printPanel panel-index-' + this.index + '"></div>');
+                return this.css(t), t;
             }, t.prototype.droppablePaper = function (t) {
                 var e = this;
                 t.getTarget().hidroppable({
                     accept: ".ep-draggable-item",
-                    onDrop: function onDrop(t, n) {
-                        var i = s.instance.getDragingPrintElement(),
-                            o = i.printElement;
-                        o.updateSizeAndPositionOptions(e.mathroundToporleft(i.left - hinnn.px.toPt(e.target.offset().left)), e.mathroundToporleft(i.top - hinnn.px.toPt(e.target.offset().top))), e.appendDesignPrintElement(e.designPaper, o, !0), o.setTemplateId(e.templateId), e.printElements.push(o), o.design();
+                    onDrop: function onDrop(n, i) {
+                        var o = l.instance.getDragingPrintElement(),
+                            r = o.printElement;
+                        r.updateSizeAndPositionOptions(e.mathroundToporleft(o.left - hinnn.px.toPt(e.target.offset().left)), e.mathroundToporleft(o.top - hinnn.px.toPt(e.target.offset().top))), e.appendDesignPrintElement(e.designPaper, r, !0), r.setTemplateId(e.templateId), e.printElements.push(r), r.design(void 0, t);
                     }
                 });
             }, t.prototype.initPrintElements = function (t) {
@@ -5235,20 +5914,20 @@ var hiprint = function (t) {
                 this.printElements = [], t && t.forEach(function (n) {
                     var i;
 
-                    if (i = n.printElementType ? Te.createPrintElementType(n.printElementType) : r.instance.getElementType(n.tid)) {
+                    if (i = n.printElementType ? je.createPrintElementType(n.printElementType) : a.instance.getElementType(n.tid)) {
                         var o = i.createPrintElement(n.options);
                         o.setTemplateId(e.templateId), e.printElements.push(o);
                     } else console.log("miss " + JSON.stringify(t));
                 });
             }, t.prototype.mathroundToporleft = function (t) {
-                var e = a.instance.movingDistance;
+                var e = p.instance.movingDistance;
                 return Math.round(t / e) * e;
             }, t.prototype.appendDesignPrintElement = function (t, e, n) {
                 e.setCurrenttemplateData(void 0);
                 var i = e.getDesignTarget(t);
                 i.addClass("design"), n && e.initSizeByHtml(i), t.append(i);
             }, t.prototype.createNewPage = function (t, e) {
-                var n = new Ce(this.templateId, this.width, this.height, this.paperHeader, this.paperFooter, this.paperNumberLeft, this.paperNumberTop, this.paperNumberDisabled, this.paperNumberFormat, t, e);
+                var n = new Yt(this.templateId, this.width, this.height, this.paperHeader, this.paperFooter, this.paperNumberLeft, this.paperNumberTop, this.paperNumberDisabled, this.paperNumberFormat, t, e);
                 return n.setFooter(this.firstPaperFooter, this.evenPaperFooter, this.oddPaperFooter, this.lastPaperFooter), n.setOffset(this.leftOffset, this.topOffset), n;
             }, t.prototype.orderPrintElements = function () {
                 this.printElements = hinnn.orderBy(this.printElements, function (t) {
@@ -5261,7 +5940,7 @@ var hiprint = function (t) {
                 this.printElements.filter(function (e) {
                     return e.isFixed() || e.options.getTop() < t.paperHeader || e.options.getTop() >= i.paperFooter;
                 }).forEach(function (i) {
-                    if (i.isFixed() && (console.log(i.showInPage(t.index, n)), console.log(t.index + "-" + n)), i.showInPage(t.index, n)) {
+                    if (i.isFixed(), i.showInPage(t.index, n)) {
                         var o = i.getHtml(t, e);
                         o.length && t.append(o[0].target);
                     }
@@ -5297,30 +5976,42 @@ var hiprint = function (t) {
                 t.printElementType = t.printElementType || {}, t.printElementType.type = "oval", this.insertPrintElementToPanel(t);
             }, t.prototype.getPrintElementTypeByEntity = function (t) {
                 var e;
-                return (e = t.tid ? r.instance.getElementType(t.tid) : Te.createPrintElementType(t.printElementType)) || console.log("miss " + JSON.stringify(t)), e;
+                return (e = t.tid ? a.instance.getElementType(t.tid) : je.createPrintElementType(t.printElementType)) || console.log("miss " + JSON.stringify(t)), e;
             }, t.prototype.getPrintStyle = function () {
                 return " <style printStyle>\n        @page\n        {\n             border:0;\n             padding:0cm;\n             margin:0cm;\n             " + this.getPrintSizeStyle() + "\n        }\n        </style>\n        ";
             }, t.prototype.getPrintSizeStyle = function () {
-                return this.paperType ? "size:" + this.paperType + " " + (this.height > this.width ? "portrait" : "landscape") + ";" : "size:" + this.width + "mm " + this.height + "mm;";
+                return this.paperType ? "size:" + this.paperType + " " + (this.height > this.width ? "portrait" : "landscape") + ";" : "size:" + this.width + "mm " + this.height + "mm " + (this.orient ? 1 == this.orient ? "portrait" : "landscape" : "") + ";";
             }, t.prototype.deletePrintElement = function (t) {
                 var e = this;
                 this.printElements.filter(function (n, i) {
                     n.id == t.id && (t.delete(), e.printElements.splice(i, 1));
                 });
+            }, t.prototype.getElementByTid = function (t) {
+                return this.printElements.filter(function (e) {
+                    return e.printElementType.tid === t;
+                }).map(function (t, e) {
+                    return t;
+                });
+            }, t.prototype.getElementByName = function (t) {
+                return this.printElements.filter(function (e) {
+                    return e.options.name === t;
+                }).map(function (t, e) {
+                    return t;
+                });
             }, t;
         }(),
-        Se = function () {
+        Me = function () {
             return function (t) {
                 if (t) if (t.panels) {
                     this.panels = [];
 
                     for (var e = 0; e < t.panels.length; e++) {
-                        this.panels.push(new xe(t.panels[e]));
+                        this.panels.push(new $e(t.panels[e]));
                     }
                 } else this.panels = [];
             };
         }(),
-        He = function () {
+        Ge = function () {
             function t(t, e) {
                 var n = this;
                 this.printTemplate = t, this.settingContainer = $(e), hinnn.event.on(t.getPrintElementSelectEventKey(), function (t) {
@@ -5338,7 +6029,7 @@ var hiprint = function (t) {
                 this.lastPrintElement = t, this.settingContainer.html("");
                 var n = $('<div class="hiprint-option-items"></div>');
                 t.getPrintElementOptionItems().forEach(function (e) {
-                    n.append(e.createTarget()), e.setValue(t.options[e.name]);
+                    n.append(e.createTarget(t)), e.setValue(t.options[e.name]);
                 });
                 var i = $('<button class="hiprint-option-item-settingBtn hiprint-option-item-submitBtn"\n        type="button">确定</button>'),
                     o = $('<button  class="hiprint-option-item-settingBtn hiprint-option-item-deleteBtn"\n        type="button">删除</button>');
@@ -5360,7 +6051,7 @@ var hiprint = function (t) {
                 var n = [],
                     i = Object.keys(t.options);
                 i.forEach(function (t) {
-                    var e = ft.getItem(t);
+                    var e = Dt.getItem(t);
                     e && n.push(e);
                 }), i = i.concat();
                 var o = $('<div class="hiprint-option-items"></div>');
@@ -5382,7 +6073,7 @@ var hiprint = function (t) {
                 }), e;
             }, t;
         }(),
-        Fe = function () {
+        Xe = function () {
             function t(t, e) {
                 this.paginationContainer = t, this.jqPaginationContainer = $(this.paginationContainer), this.template = e;
             }
@@ -5408,16 +6099,16 @@ var hiprint = function (t) {
                 });
             }, t;
         }(),
-        Ie = function () {
+        Ue = function () {
             function t(t) {
                 var e = this;
-                this.id = s.instance.guid();
+                this.tempimageBase64 = {}, this.id = l.instance.guid(), l.instance.setPrintTemplateById(this.id, this);
                 var n = t || {};
                 this.printPanels = [];
-                var i = new Se(n.template || []);
+                var i = new Me(n.template || []);
                 n.template && i.panels.forEach(function (t) {
-                    e.printPanels.push(new Oe(t, e.id));
-                }), n.settingContainer && new He(this, n.settingContainer), n.paginationContainer && (this.printPaginationCreator = new Fe(n.paginationContainer, this), this.printPaginationCreator.buildPagination());
+                    e.printPanels.push(new We(t, e.id));
+                }), n.fields && (this.fields = n.fields), n.settingContainer && new Ge(this, n.settingContainer), n.paginationContainer && (this.printPaginationCreator = new Xe(n.paginationContainer, this), this.printPaginationCreator.buildPagination()), this.initAutoSave();
             }
 
             return t.prototype.design = function (t, e) {
@@ -5443,19 +6134,19 @@ var hiprint = function (t) {
                 }) : this.printPanels.forEach(function (i, r) {
                     o.append(i.getHtml(t, e, n));
                 });
-                return o;
+                return e && e.imgToBase64 && this.transformImg(o.find("img")), o;
             }, t.prototype.getHtml = function (t, e, n) {
                 return t || (t = {}), this.getSimpleHtml(t, e, n);
             }, t.prototype.setPaper = function (t, e) {
                 if (/^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/.test(t)) this.editingPanel.resize(void 0, parseFloat(t), parseFloat(e), !1); else {
-                    var n = s.instance[t];
+                    var n = l.instance[t];
                     if (!n) throw new Error("not found pagetype:" + (t || ""));
                     this.editingPanel.resize(t, n.width, n.height, !1);
                 }
             }, t.prototype.rotatePaper = function () {
                 this.editingPanel.rotatePaper();
             }, t.prototype.addPrintPanel = function (t, e) {
-                var n = t ? new Oe(new xe(t), this.id) : this.createDefaultPanel();
+                var n = t ? new We(new $e(t), this.id) : this.createDefaultPanel();
                 return t && (t.index = this.printPanels.length), e && (this.container.append(n.getTarget()), n.design()), this.printPanels.push(n), e && this.selectPanel(n.index), n;
             }, t.prototype.selectPanel = function (t) {
                 var e = this;
@@ -5465,7 +6156,7 @@ var hiprint = function (t) {
             }, t.prototype.getPaneltotal = function () {
                 return this.printPanels.length;
             }, t.prototype.createDefaultPanel = function () {
-                return new Oe(new xe({
+                return new We(new $e({
                     index: this.printPanels.length,
                     paperType: "A4"
                 }), this.id);
@@ -5475,14 +6166,14 @@ var hiprint = function (t) {
                 var t = [];
                 return this.printPanels.forEach(function (e) {
                     e.getPanelEntity().printElements.length && t.push(e.getPanelEntity());
-                }), new Se({
+                }), new Me({
                     panels: t
                 });
             }, t.prototype.getJson = function () {
                 var t = [];
                 return this.printPanels.forEach(function (e) {
                     t.push(e.getPanelEntity(!0));
-                }), new Se({
+                }), new Me({
                     panels: t
                 });
             }, t.prototype.getPrintElementSelectEventKey = function () {
@@ -5505,7 +6196,7 @@ var hiprint = function (t) {
             }, t.prototype.print = function (t, e) {
                 t || (t = {}), this.getHtml(t, e).hiwprint();
             }, t.prototype.print2 = function (t, e) {
-                if (this.clientIsOpened()) {
+                if (e || (e = {}), this.clientIsOpened()) {
                     var n = this,
                         i = 0,
                         o = {},
@@ -5523,23 +6214,32 @@ var hiprint = function (t) {
                         }, s.send();
                     });
                 } else alert("连接客户端失败");
-            }, t.prototype.ImageToCanvas = function (t) {
-                var e = document.createElement("canvas"),
-                    n = new Image();
-                return n.src = t.attr("src"), e.width = n.width, e.height = n.height, e.getContext("2d").drawImage(n, 0, 0), e;
-            }, t.prototype.sentToClient = function (t, e, n) {
-                var i = this;
+            }, t.prototype.imageToBase64 = function (t) {
+                var e = $(t).attr("src");
+                if (-1 == e.indexOf("base64")) try {
+                    if (!this.tempimageBase64[e]) {
+                        var n = document.createElement("canvas"),
+                            i = new Image();
+                        i.src = t.attr("src"), n.width = i.width, n.height = i.height, n.getContext("2d").drawImage(i, 0, 0), e && (this.tempimageBase64[e] = n.toDataURL("image/png"));
+                    }
+
+                    t.attr("src", this.tempimageBase64[e]);
+                } catch (e) {
+                    try {
+                        this.xhrLoadImage(t);
+                    } catch (t) {
+                        console.log(t);
+                    }
+                }
+            }, t.prototype.xhrLoadImage = function (t) { }, t.prototype.sentToClient = function (t, e, n) {
                 e || (e = {});
-                var o = this.getHtml(e, n);
-                o.find("img").map(function (t, e) {
-                    var n = i.ImageToCanvas($(e));
-                    $(e).attr("src", n.toDataURL("image/png"));
-                });
-                var r = t + o[0].outerHTML;
+                var i = $.extend({}, n || {});
+                i.imgToBase64 = !0;
+                var o = t + this.getHtml(e, i)[0].outerHTML;
                 hiwebSocket.send({
-                    id: s.instance.guid(),
+                    id: l.instance.guid(),
                     printer: n.printer,
-                    html: r,
+                    html: o,
                     templateId: this.id
                 });
             }, t.prototype.printByHtml = function (t) {
@@ -5547,6 +6247,11 @@ var hiprint = function (t) {
             }, t.prototype.deletePrintElement = function (t) {
                 this.printPanels.forEach(function (e) {
                     e.deletePrintElement(t);
+                });
+            }, t.prototype.transformImg = function (t) {
+                var e = this;
+                t.map(function (t, n) {
+                    e.imageToBase64($(n));
                 });
             }, t.prototype.toPdf = function (t, e, n) {
                 var i = this;
@@ -5570,13 +6275,13 @@ var hiprint = function (t) {
                     this.createTempContainer();
                     var l = this.getTempContainer();
                     this.svg2canvas(s), l.html(s[0]);
-                    var h = l.find(".hiprint-printPanel .hiprint-printPaper").length;
+                    var u = l.find(".hiprint-printPanel .hiprint-printPaper").length;
                     $(s).css("position:fixed"), html2canvas(s[0], a).then(function (t) {
                         var n = t.getContext("2d");
                         n.mozImageSmoothingEnabled = !1, n.webkitImageSmoothingEnabled = !1, n.msImageSmoothingEnabled = !1, n.imageSmoothingEnabled = !1;
 
-                        for (var a = t.toDataURL("image/jpeg"), s = 0; s < h; s++) {
-                            p.addImage(a, "JPEG", 0, 0 - s * r, o, h * r), s < h - 1 && p.addPage();
+                        for (var a = t.toDataURL("image/jpeg"), s = 0; s < u; s++) {
+                            p.addImage(a, "JPEG", 0, 0 - s * r, o, u * r), s < u - 1 && p.addPage();
                         }
 
                         i.removeTempContainer(), e.indexOf(".pdf") > -1 ? p.save(e) : p.save(e + ".pdf");
@@ -5602,23 +6307,50 @@ var hiprint = function (t) {
             }, t.prototype.getPrinterList = function () {
                 var t = hiwebSocket.getPrinterList();
                 return t || [];
+            }, t.prototype.getElementByTid = function (t, e) {
+                return null == e && (e = 0), this.printPanels[e].getElementByTid(t);
+            }, t.prototype.getElementByName = function (t, e) {
+                return null == e && (e = 0), this.printPanels[e].getElementByName(t);
+            }, t.prototype.getPanel = function (t) {
+                return null == t && (t = 0), this.printPanels[t];
+            }, t.prototype.loadAllImages = function (t, e, n) {
+                var i = this;
+                null == n && (n = 0);
+
+                for (var o = t[0].getElementsByTagName("img"), r = !0, a = 0; a < o.length; a++) {
+                    var p = o[a];
+                    p.src && p.src !== window.location.href && -1 == p.src.indexOf("base64") && (p && void 0 !== p.naturalWidth && 0 !== p.naturalWidth && p.complete || (r = !1));
+                }
+
+                n++ , !r && n < 10 ? setTimeout(function () {
+                    i.loadAllImages(t, e, n);
+                }, 500) : e();
+            }, t.prototype.setFields = function (t) {
+                this.fields = t;
+            }, t.prototype.getFields = function () {
+                return this.fields;
+            }, t.prototype.initAutoSave = function () {
+                var t = this;
+                this.autoSave && hinnn.event.on("hiprintTemplateDataChanged_" + this.id, function () {
+                    hiLocalStorage.saveLocalData(t.autoSaveKey || "hiprintAutoSave", JSON.stringify(1 == t.autoSaveMode ? t.getJson() : t.getJsonTid())), console.log(hiLocalStorage.getLocalData(t.autoSaveKey || "hiprintAutoSave"));
+                });
             }, t;
         }();
 
-    function _e(t) {
-        a.instance.init(t), a.instance.providers.forEach(function (t) {
-            t.addElementTypes(r.instance);
+    function qe(t) {
+        p.instance.init(t), p.instance.providers.forEach(function (t) {
+            t.addElementTypes(a.instance);
         });
     }
 
     n.d(e, "init", function () {
-        return _e;
+        return qe;
     }), n.d(e, "PrintElementTypeManager", function () {
-        return Ee;
+        return Ve;
     }), n.d(e, "PrintElementTypeGroup", function () {
-        return Pe;
+        return _e;
     }), n.d(e, "PrintTemplate", function () {
-        return Ie;
+        return Ue;
     }), $(document).ready(function () {
         hiwebSocket.hasIo() && hiwebSocket.start();
     });

@@ -11,15 +11,20 @@
 }
 
 .hiprint-printPaper * {
-    box-sizing: content-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; /* Firefox */
+    -webkit-box-sizing: border-box; /* Safari */
+   
 }
-
+.hiprint-page-break-avoid {
+    page-break-after: avoid;
+}
 .hiprint-printPaper {
     position: relative;
     padding: 0 0 0 0;
     page-break-after: always;
     overflow-x: hidden;
-    overflow:hidden;
+    overflow: hidden;
 }
     .hiprint-printPaper .hiprint-printPaper-content {
         position: relative;
@@ -27,6 +32,8 @@
 .hiprint-printPaper.design {
     overflow: visible;
 }
+
+
 
 .hiprint-printTemplate .hiprint-printPanel {
     page-break-after: always;
@@ -64,15 +71,14 @@
 
 .design .resize-panel {
     box-sizing: border-box;
-    border: 1pt dotted;
+    border: 1px dotted;
 }
 
 .hiprint-printElement-text {
     background-color: transparent;
     background-repeat: repeat;
     padding: 0 0 0 0;
-    border-color: rgb(0,0,0);
-    border-style: none;
+    border: 0.75pt none rgb(0,0,0);
     direction: ltr;
     font-family: 'SimSun';
     font-size: 9pt;
@@ -85,10 +91,9 @@
     text-align: left;
     text-decoration: none;
     line-height: 9.75pt;
-    box-sizing: content-box;
+    box-sizing: border-box;
     word-wrap: break-word;
     word-break: break-all;
-   
 }
 
 .design .hiprint-printElement-text-content {
@@ -99,8 +104,7 @@
 .hiprint-printElement-longText {
     background-color: transparent;
     background-repeat: repeat;
-    border-color: rgb(0,0,0);
-    border-style: none;
+    border: 0.75pt none rgb(0,0,0);
     direction: ltr;
     font-family: 'SimSun';
     font-size: 9pt;
@@ -113,7 +117,7 @@
     text-align: left;
     text-decoration: none;
     line-height: 9.75pt;
-    box-sizing: content-box;
+    box-sizing: border-box;
     word-wrap: break-word;
     word-break: break-all;
     /*white-space: pre-wrap*/
@@ -139,7 +143,7 @@
     text-align: left;
     text-decoration: none;
     padding: 0 0 0 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
     line-height: 9.75pt;
 }
 
@@ -160,7 +164,7 @@
     padding-top: 0pt;
     text-decoration: none;
     vertical-align: middle;
-    box-sizing: content-box;
+    box-sizing: border-box;
     word-wrap: break-word;
     word-break: break-all;
     font-size: 9pt;
@@ -188,8 +192,41 @@
     color: gainsboro !important;
 }
 
-.hiprint-printElement-vline, .hiprint-printElement-hline, .hiprint-printElement-oval, .hiprint-printElement-rect {
-    border: 1px;
+.hiprint-printElement-vline, .hiprint-printElement-hline {
+    border: 0px none rgb(0,0,0);
+    
+}
+.hiprint-printElement-vline {
+    border-left: 0.75pt solid #000;
+    border-right: 0px none rgb(0,0,0) !important;
+    border-bottom: 0px none rgb(0,0,0) !important;
+    border-top: 0px none rgb(0,0,0) !important;
 }
 
+.hiprint-printElement-hline {
+    border-top: 0.75pt solid #000;
+    border-right: 0px none rgb(0,0,0) !important;
+    border-bottom: 0px none rgb(0,0,0) !important;
+    border-left: 0px none rgb(0,0,0) !important;
+}
 
+.hiprint-printElement-oval, .hiprint-printElement-rect {
+    border: 0.75pt solid #000;
+}
+
+.hiprint-text-content-middle {
+    display:table;
+}
+.hiprint-text-content-middle>div {
+    display: table-cell;
+    vertical-align:middle
+}
+
+.hiprint-text-content-bottom {
+    display: table;
+}
+
+    .hiprint-text-content-bottom > div {
+        display: table-cell;
+        vertical-align: bottom
+    }
