@@ -6,30 +6,12 @@
       <change beforePath="$PROJECT_DIR$/Jwc_examine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jwc_examine/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_app/views_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/views_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_delete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_app/views_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_get.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/css/hiprint.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/css/image/hi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/css/image/jquery.minicolors.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/css/print-lock.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/custom.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/custom_test/custom-etype-provider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/custom_test/custom-print-json.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/custom_test/print-data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/hiprint.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/JsBarcode.all.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jq-3.31.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jquery.hiwprint.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jquery.minicolors.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jspdf/canvas2image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jspdf/canvg.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jspdf/html2canvas.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/jspdf/jspdf.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/qrcode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/plugins/socket.io.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hiprint/polyfill.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/commit/commit_hc.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commit/commit_hc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/print_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/print_demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commit/commit_yq.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commit/commit_yq.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/show/show_hc_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_creator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_creator.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,53 +45,43 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="519" column="5" lean-forward="true" selection-start-line="519" selection-start-column="5" selection-end-line="519" selection-end-column="5" />
+              <folding>
+                <element signature="e#10327#11557#0#HTML" />
+                <element signature="e#10115#11378#0#HTML" />
+                <element signature="e#11416#12749#0#HTML" />
+                <element signature="e#15516#15836#0#HTML" />
+                <element signature="e#12784#17252#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="31" column="18" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="18" />
+              <folding>
+                <element signature="e#24#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/show/show_hc_creator.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="486" column="62" lean-forward="true" selection-start-line="486" selection-start-column="62" selection-end-line="486" selection-end-column="62" />
+            <state relative-caret-position="349">
+              <caret line="295" column="28" selection-start-line="295" selection-start-column="28" selection-end-line="295" selection-end-column="45" />
               <folding>
-                <element signature="e#30485#31823#0#HTML" />
-                <element signature="e#31866#32186#0#HTML" />
-                <element signature="e#13936#20960#0#HTML" />
-                <element signature="e#20993#21018#0#HTML" />
-                <element signature="e#32225#32386#0#HTML" />
-                <element signature="e#25977#26101#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="e#73#109#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="59" column="28" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
-              <folding>
-                <element signature="e#635#667#0" expanded="true" />
+                <element signature="e#8766#8913#0#HTML" />
+                <element signature="e#8950#10283#0#HTML" />
+                <element signature="e#18980#20072#0#HTML" />
+                <element signature="e#24915#25489#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -118,15 +90,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="402" column="41" selection-start-line="402" selection-start-column="37" selection-end-line="402" selection-end-column="41" />
+            <state relative-caret-position="452">
+              <caret line="500" selection-start-line="500" selection-end-line="500" />
               <folding>
                 <element signature="e#24#60#0" expanded="true" />
-                <marker date="1566807508215" expanded="true" signature="12559:12615" ph="select Teach... TMBasicInfo" />
-                <marker date="1566807508215" expanded="true" signature="12800:12857" ph="select Insti... BDInstitute" />
-                <marker date="1566807508215" expanded="true" signature="12800:13026" ph="select Insti... BDInstitute" />
-                <marker date="1566807508215" expanded="true" signature="12883:13025" ph="select BDIns... BDStaffRoom" />
-                <marker date="1566807508215" expanded="true" signature="12966:13024" ph="select BDSta... TMBasicInfo" />
+                <marker date="1567068509263" expanded="true" signature="14517:14573" ph="select Teach... TMBasicInfo" />
+                <marker date="1567068509263" expanded="true" signature="14758:14815" ph="select Insti... BDInstitute" />
+                <marker date="1567068509263" expanded="true" signature="14758:14984" ph="select Insti... BDInstitute" />
+                <marker date="1567068509263" expanded="true" signature="14841:14983" ph="select BDIns... BDStaffRoom" />
+                <marker date="1567068509263" expanded="true" signature="14924:14982" ph="select BDSta... TMBasicInfo" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+              <folding>
+                <element signature="e#73#109#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+              <folding>
+                <element signature="e#635#667#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,36 +154,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>show_check_hc_creator</find>
-      <find>hc_ajax_data</find>
-      <find>void</find>
-      <find>load</find>
-      <find>&lt;script src=&quot;../../static/assets/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</find>
-      <find>&lt;script src=&quot;../../static/assets/js/jquery-3.3.1.min.js&quot;&gt;&lt;/script&gt;</find>
-      <find>length</find>
-      <find>customPrintJson</find>
-      <find>printData</find>
-      <find>单位</find>
-      <find>data_usedate</find>
-      <find>admin</find>
-      <find>openAddModel</find>
-      <find>addModal</find>
-      <find>examine_label</find>
-      <find>id=&quot;Modal&quot;</find>
       <find>addFormHc</find>
       <find>openEditModel</find>
-      <find>openModel</find>
       <find>id=&quot;edit_data_id</find>
       <find>Creator</find>
-      <find>Modal</find>
       <find>ModalLabel</find>
       <find>id=&quot;term</find>
+      <find>edit_submit_form_hc</find>
+      <find>show_yq_creator/</find>
+      <find>show_check_hc_creator</find>
+      <find>show_check_yq_creator</find>
+      <find>checkall</find>
+      <find>del_hc</find>
+      <find>add_hc_vie</find>
+      <find>openModal</find>
+      <find>openModel</find>
+      <find>Modal</find>
+      <find>id=&quot;examine</find>
       <find>term</find>
       <find>edit_hc_creator</find>
-      <find>edit_submit_form_hc</find>
-      <find>submit_form_hc</find>
       <find>examine</find>
-      <find>id=&quot;examine</find>
+      <find>data_usedate</find>
+      <find>add_yq</find>
+      <find>add_hc</find>
+      <find>edit_yq_creator</find>
+      <find>submit_form_yq</find>
+      <find>submitYq</find>
+      <find>formYq</find>
+      <find>creator</find>
+      <find>Hc</find>
+      <find>submit_form_hc</find>
     </findStrings>
     <replaceStrings>
       <replace>未审核</replace>
@@ -234,7 +242,6 @@
         <option value="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" />
         <option value="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" />
         <option value="$PROJECT_DIR$/templates/show/show_hc_all.html" />
-        <option value="$PROJECT_DIR$/templates/commit/commit_yq.html" />
         <option value="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" />
@@ -243,25 +250,26 @@
         <option value="$PROJECT_DIR$/templates/check/check_hc_2.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_2.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_yq_creator.html" />
-        <option value="$PROJECT_DIR$/templates/commit/commit_hc.html" />
         <option value="$PROJECT_DIR$/templates/commit/commit_user.html" />
         <option value="$PROJECT_DIR$/utils/model_to_dic.py" />
         <option value="$PROJECT_DIR$/templates/show/show_admin.html" />
-        <option value="$PROJECT_DIR$/main_app/views_delete.py" />
-        <option value="$PROJECT_DIR$/main_app/views_add.py" />
         <option value="$PROJECT_DIR$/static/JS/exportExcel.js" />
         <option value="$PROJECT_DIR$/static/JS/excel-gen.js" />
-        <option value="$PROJECT_DIR$/Jwc_examine/urls.py" />
-        <option value="$PROJECT_DIR$/main_app/views_get.py" />
         <option value="$PROJECT_DIR$/templates/print_demo.html" />
+        <option value="$PROJECT_DIR$/main_app/views_delete.py" />
+        <option value="$PROJECT_DIR$/templates/commit/commit_hc.html" />
+        <option value="$PROJECT_DIR$/templates/commit/commit_yq.html" />
+        <option value="$PROJECT_DIR$/Jwc_examine/urls.py" />
+        <option value="$PROJECT_DIR$/main_app/views_add.py" />
+        <option value="$PROJECT_DIR$/main_app/views_get.py" />
         <option value="$PROJECT_DIR$/templates/show/show_hc_creator.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_yq_creator.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="y" value="-7" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1550" />
     <option name="height" value="840" />
   </component>
@@ -287,7 +295,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -357,6 +364,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -615,7 +623,10 @@
       <workItem from="1566911027902" duration="620000" />
       <workItem from="1566918248809" duration="2261000" />
       <workItem from="1566949220416" duration="9887000" />
-      <workItem from="1566976779713" duration="11766000" />
+      <workItem from="1566976779713" duration="12589000" />
+      <workItem from="1567003520891" duration="2901000" />
+      <workItem from="1567037384286" duration="3571000" />
+      <workItem from="1567051958023" duration="10507000" />
     </task>
     <servers />
   </component>
@@ -625,7 +636,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345009000" />
+    <option name="totallyTimeSpent" value="362811000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -640,13 +651,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20911528" />
-      <window_info id="Structure" order="1" sideWeight="0.49892932" visible="true" weight="0.17857143" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2249467" />
+      <window_info id="Structure" order="1" sideWeight="0.49892932" visible="true" weight="0.18017058" />
       <window_info id="Favorites" order="2" sideWeight="0.5010707" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.16568916" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34743875" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.35412025" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -861,32 +872,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>267</line>
+          <line>315</line>
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>269</line>
+          <line>317</line>
           <option name="timeStamp" value="235" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>268</line>
+          <line>316</line>
           <option name="timeStamp" value="236" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>270</line>
+          <line>318</line>
           <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>271</line>
+          <line>319</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>272</line>
+          <line>320</line>
           <option name="timeStamp" value="239" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1016,27 +1027,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>286</line>
+          <line>334</line>
           <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>285</line>
+          <line>333</line>
           <option name="timeStamp" value="273" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>287</line>
+          <line>335</line>
           <option name="timeStamp" value="274" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>289</line>
+          <line>337</line>
           <option name="timeStamp" value="275" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>290</line>
+          <line>338</line>
           <option name="timeStamp" value="276" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1121,27 +1132,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>159</line>
+          <line>162</line>
           <option name="timeStamp" value="316" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>157</line>
+          <line>160</line>
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>158</line>
+          <line>161</line>
           <option name="timeStamp" value="318" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>163</line>
+          <line>166</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>112</line>
+          <line>115</line>
           <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1161,47 +1172,47 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>298</line>
+          <line>346</line>
           <option name="timeStamp" value="329" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>299</line>
+          <line>347</line>
           <option name="timeStamp" value="330" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>328</line>
+          <line>376</line>
           <option name="timeStamp" value="332" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>330</line>
+          <line>378</line>
           <option name="timeStamp" value="333" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>329</line>
+          <line>377</line>
           <option name="timeStamp" value="334" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>331</line>
+          <line>379</line>
           <option name="timeStamp" value="335" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>332</line>
+          <line>380</line>
           <option name="timeStamp" value="336" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>333</line>
+          <line>381</line>
           <option name="timeStamp" value="337" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>15</line>
+          <line>16</line>
           <option name="timeStamp" value="345" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1216,63 +1227,103 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="354" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="356" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>19</line>
+          <line>20</line>
           <option name="timeStamp" value="387" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
-          <line>18</line>
+          <line>19</line>
           <option name="timeStamp" value="388" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>402</line>
+          <line>451</line>
           <option name="timeStamp" value="405" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>422</line>
+          <line>471</line>
           <option name="timeStamp" value="406" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>421</line>
+          <line>470</line>
           <option name="timeStamp" value="407" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>419</line>
+          <line>468</line>
           <option name="timeStamp" value="408" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>416</line>
+          <line>465</line>
           <option name="timeStamp" value="410" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
-          <line>415</line>
+          <line>464</line>
           <option name="timeStamp" value="411" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="412" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="413" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_delete.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="414" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
+          <line>486</line>
+          <option name="timeStamp" value="416" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
+          <line>497</line>
+          <option name="timeStamp" value="417" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
+          <line>493</line>
+          <option name="timeStamp" value="419" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_get.py</url>
+          <line>500</line>
+          <option name="timeStamp" value="420" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/templates/commit/commit_hc.html</url>
           <line>205</line>
           <option name="timeStamp" value="343" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/show/show_hc_creator.html</url>
+          <line>540</line>
+          <option name="timeStamp" value="415" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1282,13 +1333,6 @@
     <SUITE FILE_PATH="coverage/Jwc_examine$date_tool.coverage" NAME="date_tool Coverage Results" MODIFIED="1566308794420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_2_deposit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="40" column="88" selection-start-line="40" selection-start-column="88" selection-end-line="40" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/check/check_yq_2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5236">
@@ -1334,27 +1378,10 @@
     <entry file="file://$PROJECT_DIR$/templates/check/check_yq_1.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="55" column="28" lean-forward="true" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/forms/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1430">
           <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_router.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1485,20 +1512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/model_to_dic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/commit/commit_hc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4800">
-          <caret line="192" column="38" selection-start-line="192" selection-start-column="13" selection-end-line="192" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/assets/hiprint/css/hiprint.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1576,36 +1589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="41" column="6" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
-          <folding>
-            <element signature="e#24#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="59" column="28" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/db/models/sql/compiler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -1613,42 +1596,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
+    <entry file="file://$PROJECT_DIR$/main_app/views_router.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="402" column="41" selection-start-line="402" selection-start-column="37" selection-end-line="402" selection-end-column="41" />
+        <state relative-caret-position="189">
+          <caret line="22" column="43" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
-            <element signature="e#24#60#0" expanded="true" />
-            <marker date="1566807508215" expanded="true" signature="12559:12615" ph="select Teach... TMBasicInfo" />
-            <marker date="1566807508215" expanded="true" signature="12800:12857" ph="select Insti... BDInstitute" />
-            <marker date="1566807508215" expanded="true" signature="12800:13026" ph="select Insti... BDInstitute" />
-            <marker date="1566807508215" expanded="true" signature="12883:13025" ph="select BDIns... BDStaffRoom" />
-            <marker date="1566807508215" expanded="true" signature="12966:13024" ph="select BDSta... TMBasicInfo" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/commit/commit_hc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="929">
+          <caret line="90" column="26" lean-forward="true" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="675">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
           <folding>
             <element signature="e#73#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/model_to_dic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/commit/commit_yq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="184" column="9" lean-forward="true" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="64" column="49" selection-start-line="64" selection-start-column="49" selection-end-line="64" selection-end-column="49" />
+          <folding>
+            <element signature="e#635#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="500" selection-start-line="500" selection-end-line="500" />
+          <folding>
+            <element signature="e#24#60#0" expanded="true" />
+            <marker date="1567068509263" expanded="true" signature="14517:14573" ph="select Teach... TMBasicInfo" />
+            <marker date="1567068509263" expanded="true" signature="14758:14815" ph="select Insti... BDInstitute" />
+            <marker date="1567068509263" expanded="true" signature="14758:14984" ph="select Insti... BDInstitute" />
+            <marker date="1567068509263" expanded="true" signature="14841:14983" ph="select BDIns... BDStaffRoom" />
+            <marker date="1567068509263" expanded="true" signature="14924:14982" ph="select BDSta... TMBasicInfo" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="18" />
+          <folding>
+            <element signature="e#24#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/show/show_hc_creator.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="486" column="62" lean-forward="true" selection-start-line="486" selection-start-column="62" selection-end-line="486" selection-end-column="62" />
+        <state relative-caret-position="349">
+          <caret line="295" column="28" selection-start-line="295" selection-start-column="28" selection-end-line="295" selection-end-column="45" />
           <folding>
-            <element signature="e#30485#31823#0#HTML" />
-            <element signature="e#31866#32186#0#HTML" />
-            <element signature="e#13936#20960#0#HTML" />
-            <element signature="e#20993#21018#0#HTML" />
-            <element signature="e#32225#32386#0#HTML" />
-            <element signature="e#25977#26101#0#HTML" />
+            <element signature="e#8766#8913#0#HTML" />
+            <element signature="e#8950#10283#0#HTML" />
+            <element signature="e#18980#20072#0#HTML" />
+            <element signature="e#24915#25489#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="519" column="5" lean-forward="true" selection-start-line="519" selection-start-column="5" selection-end-line="519" selection-end-column="5" />
+          <folding>
+            <element signature="e#10327#11557#0#HTML" />
+            <element signature="e#10115#11378#0#HTML" />
+            <element signature="e#11416#12749#0#HTML" />
+            <element signature="e#15516#15836#0#HTML" />
+            <element signature="e#12784#17252#0#HTML" />
           </folding>
         </state>
       </provider>

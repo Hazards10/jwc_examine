@@ -75,7 +75,10 @@ def add_yq(request):
                                           data_count=data_count, data_price=data_price, data_price2=data_price2,
                                           data_company2=data_company2, data_parameter=data_parameter,
                                           creator=creator, examine=examine)
-        return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
+        if request.is_ajax():
+            return JsonResponse({"message": True}, safe=False)
+        else:
+            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
 
 
 # 添加数据(耗材数据)

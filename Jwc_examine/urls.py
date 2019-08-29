@@ -62,6 +62,7 @@ urlpatterns = [
     path('del_hc/', views_delete.del_hc),  # 删除hc
     path('del_yq/', views_delete.del_yq),  # 删除yq
     path('edit_hc_creator/', views_get.GetEditHcCreator.as_view()),  # 获取或编辑一条hc数据(普通老师)
+    path('edit_yq_creator/', views_get.GetEditYqCreator.as_view()),  # 获取或编辑一条hc数据(普通老师)
     path('excel_add_hc/', views_add.excel_commit_hc),  # excel导入耗材数据
     path('excel_add_yq/', views_add.excel_commit_yq),  # excel导入仪器数据
     path('add_admin/', views_add.add_admin),    #创建用户

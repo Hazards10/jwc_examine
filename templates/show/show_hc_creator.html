@@ -10,11 +10,6 @@
     <!-- hiprint -->
     <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
     <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
-    <script src="../../static/JS/Cookies.js"></script>
-    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
-    <script src="../../static/assets/js/bootstrap.min.js"></script>
     <style>
         .dataTable th {
             white-space: nowrap !important;
@@ -91,7 +86,7 @@
         <!--End Advanced Tables -->
     </div>
 </div>
-<!--添加功能模态框 -->
+<!--添加、修改功能模态框 -->
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -179,6 +174,10 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+<!-- cookies读写文件-->
+<script src="../../static/JS/Cookies.js"></script>
+<!-- jquery包 -->
+<script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
 <script src="../../static/JS/xlsx.core.min.js"></script>
 <!-- polyfill.min.js解决浏览器兼容性问题v6.26.0-->
@@ -187,6 +186,11 @@
 <script src="../../static/assets/hiprint/hiprint.bundle.js"></script>
 <!-- 调用浏览器打印窗口helper类，可自行替换-->
 <script src="../../static/assets/hiprint/plugins/jquery.hiwprint.js"></script>
+<!--datatable 插件 -->
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+<!-- 模态框依赖js文件 -->
+<script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
     var final_data;
     var creator = getCookie('user');
@@ -266,11 +270,11 @@
                 "printElements": [
                     {
                         "options": {
-                            "left": 327,
+                            "left": 325,
                             "top": 25,
                             "height": 19.5,
                             "width": 216,
-                            "title": "耗材一级审核进度",
+                            "title": "耗材一级审核进度表",
                             "fontFamily": "SimSun",
                             "fontSize": 15,
                             "fontWeight": "bold",
@@ -435,7 +439,7 @@
         hiprintTemplate.print(printData);
     }
 
-    // 打开添加模态框
+    // 打开添加、修改模态框
     function openModel(id, check_1, flag) {
         if (flag === "添加") {
             $("#ModalLabel").text("添加耗材审核信息");
@@ -446,9 +450,11 @@
             $.get("/get_examine/", function (data, status) {
                 //alert("数据: " + data + "\n状态: " + status);
                 var term = data[0]["term"];
+                // 去除之前添加过的学期选项
                 $("#term").children().remove();
                 $("#term").append("<option value=" + term + ">" + term + "</option>");
                 if (status == 'success' && data.length > 0) {
+                    // 去除之前添加过的下级审核人选项
                     $("#examine").children().remove();
                     // 获得数据后，添加选择项
                     $("#examine").append("<option value=\"务必选择正确的下级审核人\">务必选择正确的下级审核人</option>")
@@ -544,18 +550,18 @@
             creator = $("#creator").val();
         var test_list = [data_name, data_company, data_count, data_parameter, data_price, data_price2
             , data_type, creator, examine];
-        if (flag === "添加") {
-            for (var i = 0; i < test_list.length; i++) {
-                if (test_list[i] == "") {
-                    alert("提交的信息中，*号项不能为空！");
-                    return;
-                }
-            }
-            // ajax获取下级审核人成功或失败后，错误提交信息判断
-            if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
-                alert("请选择下级审核人！");
+        for (var i = 0; i < test_list.length; i++) {
+            if (test_list[i] == "") {
+                alert("提交的信息中，*号项不能为空！");
                 return;
             }
+        }
+        // ajax获取下级审核人成功或失败后，错误提交信息判断
+        if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
+            alert("请选择下级审核人！");
+            return;
+        }
+        if (flag === "添加") {
             $.ajax({
                 async: false,
                 type: "post",
@@ -572,17 +578,6 @@
                 }
             })
         } else if (flag === "修改") {
-            for (var i = 0; i < test_list.length; i++) {
-                if (test_list[i] == "") {
-                    alert("提交的信息中，*号项不能为空！");
-                    return;
-                }
-            }
-            // ajax获取下级审核人成功或失败后，错误提交信息判断
-            if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
-                alert("请选择下级审核人！");
-                return;
-            }
             $.ajax({
                 async: false,
                 url: '/edit_hc_creator/',
@@ -677,6 +672,11 @@
                         return html;
                     },
                     "targets": 15
+                },
+                {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 12
                 },
                 {
                     // 定义操作列,######以下是重点########

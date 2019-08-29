@@ -4,140 +4,603 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet" />
-    <script src="../../static/JS/Cookies.js"></script>
-    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- hiprint -->
+    <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
+    <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
 </head>
 <body class="frame_body">
-	<div class="row">
-	      <div class="col-md-12">
-	          <nav class="navbar navbar-default">
-	              <div class="container-fluid">
-	                  <!-- Brand and toggle get grouped for better mobile display -->
-	                  <div class="navbar-header">
-	                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-	                              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	                          <span class="sr-only">Toggle navigation</span>
-	                          <span class="icon-bar"></span>
-	                          <span class="icon-bar"></span>
-	                          <span class="icon-bar"></span>
-	                      </button>
-	                      <a class="navbar-brand" href="#">仪器一级审核进度查看</a>
-	                  </div>
-                  </div>
-	          </nav>
-	      </div>
-	  </div>
-		</div>
-    
-    <!-- /. ROW  -->
-
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Advanced Tables -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <style>
-                        .dataTable th {
-                            white-space: nowrap !important;
-                        }
-
-                        .div_full_private {
-                            width: 100%;
-                        }
-
-                        .xftb table tbody th:first-child td:first-child {
-                            width: 400px;
-                        }
-                    </style>
-                    <table class="table table-striped table-bordered table-hover div_full_private xftb" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>设备名称</th>
-                                <th>单位</th>
-                                <th>数量</th>
-                                <th>预算单价(万元)</th>
-                                <th>预算金额(万元)</th>
-                                <th>使用单位</th>
-                                <th>规格及技术参数</th>
-                                <th>学期</th>
-                                <th>创建者</th>
-                                <th>下级审核人</th>
-                                <th>审核状态</th>
-                            </tr>
-                        </thead>
-                    </table>
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">仪器一级审核进度查看</a>
+                </div>
+                <div class="navbar-right">
+                    <button type="button" class="btn btn-success navbar-btn" style="margin-right: 15px"
+                            data-toggle="modal"
+                            onclick="openModel(0, false, '添加')">
+                        添加
+                    </button>
+                    <button type="button" class="btn btn-danger navbar-btn" style="margin-right: 15px"
+                            onclick="delItem()">
+                        删除
+                    </button>
+                    <button type="button" class="btn btn-success navbar-btn" style="margin-right: 15px"
+                            onclick="exportExcel()">
+                        导出excel表
+                    </button>
+                    <button type="button" class="btn btn-success navbar-btn" style="margin-right: 30px"
+                            onclick="printNow()">打印
+                    </button>
                 </div>
             </div>
-            <!--End Advanced Tables -->
-        </div>
+        </nav>
     </div>
-    <script>
-        var final_data;
-        var creator = getCookie('user');
-        $(document).ready(function () {
-            $.ajax({
-                type: 'POST',
-                url: "/show_check_yq_creator/",
-                data: {
-                    creator: creator
-                },
-                "async": false,
-                dataType: "json",
-                success: function (data) {
-                    final_data = data;
-                    console.log(final_data);
+</div>
+</div>
+
+<!-- /. ROW  -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <style>
+                    .dataTable th {
+                        white-space: nowrap !important;
+                    }
+
+                    .div_full_private {
+                        width: 100%;
+                    }
+
+                    .xftb table tbody th:first-child td:first-child {
+                        width: 400px;
+                    }
+                </style>
+                <table class="table table-striped table-bordered table-hover div_full_private xftb"
+                       id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th><input id="checkall" type="checkbox" onclick="checkAll()"/></th>
+                        <th>序号</th>
+                        <th>设备名称</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>预算单价(万元)</th>
+                        <th>预算金额(万元)</th>
+                        <th>使用单位</th>
+                        <th>规格及技术参数</th>
+                        <th>学期</th>
+                        <th>创建者</th>
+                        <th>下级审核人</th>
+                        <th>审核状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
+<!--添加、修改功能模态框 -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="ModalLabel">
+                    添加仪器审核信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="formYq">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>设备名称*</label>
+                                <input name="data_name" id="data_name" class="form-control" placeholder="设备名称">
+                            </div>
+                            <div class="form-group">
+                                <label>规格及技术参数*</label>
+                                <textarea class="form-control" name="data_parameter" id="data_parameter"
+                                          placeholder="规格及技术参数"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>单位*</label>
+                                <input name="data_company" id="data_company" class="form-control" placeholder="单位">
+                            </div>
+
+                            <div class="form-group">
+                                <label>数量*</label>
+                                <input name="data_count" id="data_count" class="form-control" placeholder="数量">
+                            </div>
+
+                            <div class="form-group">
+                                <label>预算单价(万元)*</label>
+                                <input name="data_price" id="data_price" class="form-control" placeholder="预算单价(万元)">
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>预算金额(万元)*</label>
+                                <input name="data_price2" id="data_price2" class="form-control" placeholder="预算金额(万元)">
+                            </div>
+
+                            <div class="form-group">
+                                <label>使用单位*</label>
+                                <input name="data_company2" id="data_company2" class="form-control" placeholder="使用单位">
+                            </div>
+                            <div class="form-group">
+                                <label>使用学期</label>
+                                <select name="term" class="form-control" id="term">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label id="examine_label">下级审核人*</label>
+                                <select name="examine" class="form-control" id="examine">
+                                </select>
+                            </div>
+                            <input type="hidden" name="data_type" value="1">
+                            <input type="hidden" name="creator" id="creator" value="">
+                            <input type="hidden" name="data_id" id="edit_data_id" value="">
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="submit_form_yq('添加')" id="submitYq">提交</button>
+                <button type="button" class="btn btn-danger" onclick="document.getElementById('formYq').reset();"
+                        id="resetButton">重置
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- cookies读写文件-->
+<script src="../../static/JS/Cookies.js"></script>
+<!-- jquery包 -->
+<script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
+<!-- excel 导出包-->
+<script src="../../static/JS/xlsx.core.min.js"></script>
+<!-- polyfill.min.js解决浏览器兼容性问题v6.26.0-->
+<script src="../../static/assets/hiprint/polyfill.min.js"></script>
+<!-- hiprint 核心js-->
+<script src="../../static/assets/hiprint/hiprint.bundle.js"></script>
+<!-- 调用浏览器打印窗口helper类，可自行替换-->
+<script src="../../static/assets/hiprint/plugins/jquery.hiwprint.js"></script>
+<!--datatable 插件 -->
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+<!-- 模态框依赖js文件 -->
+<script src="../../static/assets/js/bootstrap.min.js"></script>
+<script>
+    var creator = getCookie('user');
+    // 设置用户值
+    $('#creator').val(creator);
+
+    // 复选框全选或不全选
+    function checkAll() {
+        // 注意 用attr("checked")获取的属性不是bool值
+        var flag = $("#checkall").prop("checked");
+        $(":checkbox").prop("checked", flag);
+    }
+
+    function openModel(id, check_1, flag) {
+        if (flag === "添加") {
+            $.get("/get_examine/", function (data, status) {
+                var term = data[0]["term"];
+                // 去除之前添加过的学期选项
+                $("#term").children().remove();
+                $("#term").append("<option value=" + term + ">" + term + "</option>");
+                if (status == 'success' && data.length > 0) {
+                    // 去除之前添加过的下级审核人选项
+                    $("#examine").children().remove();
+                    // 获得数据后，添加选择项
+                    $("#examine").append("<option value=\"务必选择正确的下级审核人\">务必选择正确的下级审核人</option>")
+                    for (var i = 0; i < data.length; i++) {
+                        var text = data[i]["admin_name"];
+                        $("#examine").append("<option value=" + text + ">" + text + "</option>")
+                    }
+                }
+                // 获取数据失败，下级审核项变填空项
+                else {
+                    $("#examine").remove();
+                    $("#examine_label").after("<input name=\"examine\" class=\"form-control\" placeholder=\"务必填写正确的下级审核人\">");
                 }
             });
-            for (var i = 0; i < final_data.length; i++) {
-                final_data[i]['index'] = i+1;
-            }
-            console.log(final_data);
-            var table = $('#dataTables-example').DataTable({
-                "data": final_data,
-                "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
-                    {
-                        "data": "data_id"
+            $("#ModalLabel").text("添加仪器审核信息");
+            $("#submitYq").attr("onclick", "submit_form_yq('添加')");
+            $("#resetButton").removeClass("hidden");
+            $("#Modal").modal();
+        } else if (flag === "修改") {
+            if (check_1 === true) {
+                alert("不能修改审核信息！");
+                return;
+            } else {
+                $("#ModalLabel").text("修改耗材审核信息");
+                $("#submitYq").attr("onclick", "submit_form_yq('修改')");
+                $("#resetButton").addClass("hidden");
+                // 显示模态框
+                $('#Modal').modal();
+                $('#edit_data_id').val(id);
+                // 获取这一行的数据，显示到修改模态框
+                $.ajax({
+                    async: false, //同步
+                    url: '/edit_yq_creator/',
+                    data: {
+                        id: id
                     },
-                    {
-                        "data": "data_name"
-                    },
-                    {
-                        "data": "data_company"
-                    },
-                    {
-                        "data": "data_count"
-                    },
-                    {
-                        "data": "data_price"
-                    },
-                    {
-                        "data": "data_price2"
-                    },
-                    {
-                        "data": "data_company2"
-                    },
-                    {
-                        "data": "data_parameter"
-                    },
-                    {
-                        "data": "term"
-                    },
-                    {
-                        "data": "creator"
-                    },
-                    {
-                        "data": "examine"
+                    type: "get",
+                    success: function (data) {
+                        if (data.length > 0) {
+                            $("#data_name").val(data[0].data_name);
+                            $("#data_parameter").val(data[0].data_parameter);
+                            $("#data_company").val(data[0].data_company);
+                            $("#data_count").val(data[0].data_count);
+                            $("#data_price").val(data[0].data_price);
+                            $("#data_price2").val(data[0].data_price2);
+                            $("#data_company2").val(data[0].data_company2);
+                            var term = data[0]["term"];
+                            $("#term").children().remove();
+                            $("#term").append("<option value=" + term + ">" + term + "</option>");
+                            $("#examine").children().remove();
+                            $("#examine").append("<option value=" + data[0].examine + ">" + data[0].examine + "</option>")
+                        }
                     }
-                ],
-                "columnDefs": [{
+                });
+            }
+        }
+    }
+
+    // 添加、修改yq数据
+    function submit_form_yq(flag) {
+        var data_name = $("input[name='data_name']").val(),
+            data_parameter = $("input[name='data_parameter']").val(),
+            data_company = $("input[name='data_company']").val(),
+            data_count = $("input[name='data_count']").val(),
+            data_price = $("input[name='data_price']").val(),
+            data_price2 = $("input[name='data_price2']").val(),
+            data_company2 = $("input[name='data_company2']").val(),
+            examine = $("select[name='examine']").val(),
+            data_type = $("input[name='data_type']").val(),
+            creator = $("input[name='creator']").val();
+        var test_list = [data_name, data_parameter, data_company, data_count, data_price, data_price2, data_company2,
+            examine, data_type, creator];
+        for (var i = 0; i < test_list.length; i++) {
+            if (test_list[i] == "") {
+                alert("提交的信息中，*号项不能为空！");
+                return;
+            }
+        }
+        if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
+            alert("请选择下级审核人！");
+            return;
+        }
+        if (flag === "添加") {
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '/add_yq/',
+                contentType: "application/x-www-form-urlencoded",
+                data: $("#formYq").serialize(),
+                success: function (data) {
+                    if (data.message === true) {
+                        // 刷新当前页的表格数据
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                        document.getElementById('formYq').reset();// 清空表单
+                        $("#Modal").modal("hide") // 隐藏模态框
+                    }
+                }
+            })
+        } else if (flag === "修改") {
+            $.ajax({
+                async: false,
+                url: '/edit_yq_creator/',
+                method: 'post',
+                contentType: "application/x-www-form-urlencoded",
+                data: $("#formYq").serialize(),
+                success: function (data) {
+                    if (data.message === true) {
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                        document.getElementById('formYq').reset();// 清空表单
+                        $("#Modal").modal("hide") // 隐藏模态框
+                    }
+                }
+            })
+        }
+    }
+
+    // 删除仪器数据
+    function delItem() {
+        var delStr = "";
+        var delItemLength = 0;
+        var flag = true;
+        $("[name='items']:checkbox").each(function () {
+            if ($(this).prop("checked")) {
+                var check_1 = $(this).attr("data-check_1")
+                if (check_1 == 'true') {
+                    flag = false;
+                    return;
+                }
+                delStr += $(this).data("id").replace(/'/g, "") + ',';
+                delItemLength += 1;
+            }
+        });
+        if (!flag) {
+            alert("不能删除已审核数据！");
+        } else if (delItemLength === 0) {
+            alert("请先选中删除项！");
+        } else if (confirm("确认要删除选中的" + delItemLength + "个数据吗？")) {
+            $.ajax({
+                type: 'post',
+                url: "/del_yq/",
+                data: {
+                    delStr: delStr
+                },
+                "async": false,
+                traditional: true,
+                dataType: "json",
+                success: function (data) {
+                    if (data.message === true) {
+                        alert(data.note);
+                        // 重绘表格
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                    } else {
+                        alert("删除失败！")
+                    }
+                }
+            });
+        }
+    }
+
+    // 导出excel
+    function exportExcel() {
+        var table = $('#dataTables-example').DataTable();
+        // 隐藏0,15列
+        table.columns([0, 13]).visible(false);
+        let workbook = XLSX.utils.table_to_book(table.table().node());
+        XLSX.writeFile(workbook, '耗材一级审核进度查看.xlsx');
+        // 显示0,15列
+        table.columns([0, 13]).visible(true);
+    }
+
+    // 打印Json配置模板
+    var customPrintJson = {
+        "panels": [{
+            "index": 0,
+            "height": 210,
+            "width": 297,
+            "paperHeader": 49.5,
+            "paperFooter": 549,
+            "printElements": [{
+                "options": {
+                    "left": 325,
+                    "top": 25,
+                    "height": 19.5,
+                    "width": 216,
+                    "title": "仪器一级审核进度表",
+                    "fontFamily": "SimSun",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                    "textAlign": "center",
+                    "textContentVerticalAlign": "middle"
+                }, "printElementType": {"type": "text"}
+            }, {
+                "options": {
+                    "left": 16.5,
+                    "top": 51,
+                    "height": 36,
+                    "width": 799.5,
+                    "fontFamily": "SimSun",
+                    "textAlign": "center",
+                    "tableHeaderBackground": "#ffffff",
+                    "field": "table",
+                    "columns": [[{
+                        "title": "序号",
+                        "width": 33.927672661686024,
+                        "field": "data_id",
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "title": "设备名称",
+                        "width": 65.00562678199256,
+                        "field": "data_name",
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "title": "单位",
+                        "width": 37.754901781992565,
+                        "field": "data_company",
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {
+                        "title": "数量",
+                        "width": 42.75590178199257,
+                        "field": "data_count",
+                        "colspan": 1,
+                        "rowspan": 1
+                    },
+                        {
+                            "title": "预算单价（万元）",
+                            "width": 79.50515178199257,
+                            "field": "data_price",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "预算金额（万元）",
+                            "width": 94.36353106963651,
+                            "field": "data_price2",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "使用单位",
+                            "width": 61.505901781992605,
+                            "field": "data_company2",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "规格及技术参数",
+                            "width": 149.75540178199256,
+                            "field": "data_parameter",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "学期",
+                            "width": 42.50540178199256,
+                            "field": "term",
+                            "colspan": 1,
+                            "rowspan": 1},
+                        {
+                            "title": "创建者",
+                            "width": 61.36278106963644,
+                            "field": "creator",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "下级审核人",
+                            "width": 59.88250603766373,
+                            "field": "examine",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "审核状态",
+                            "width": 54.67522168742924,
+                            "field": "check_1",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }]]
+                }, "printElementType": {"title": "表格", "type": "tableCustom"}
+            }],
+            "paperNumberLeft": 811,
+            "paperNumberTop": 573,
+            "rotate": true
+        }]
+    };
+    // 打印的数据
+    var printData = {
+        table: []
+    };
+
+    // 打印当前数据
+    function printNow() {
+        var table = $('#dataTables-example').DataTable();
+        var tableData = [];
+        for (let i = 0; i < table.data().length; i++) {
+            let data = table.data()[i];
+            delete data.is_buy;
+            delete data.is_deposit;
+            delete data.check_2;
+            delete data.date;
+            if (data.check_1 === true) {
+                data["check_1"] = "已审核"
+            } else {
+                data["check_1"] = "未审核"
+            }
+            tableData.push(data)
+        }
+        console.log(tableData);
+        printData.table = tableData;
+        hiprint.init();
+        var hiprintTemplate = new hiprint.PrintTemplate({template: customPrintJson});
+        hiprintTemplate.print(printData);
+    }
+
+    $(document).ready(function () {
+        // 初始化表格
+        var table = $('#dataTables-example').DataTable({
+            "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "全部数据"]], // 更改显示记录数选项
+            "iDisplayLength": 25, // 默认显示的记录数
+            "pagingType": "full_numbers", // 页脚设置
+            "processing": true, // 处理中提示
+            "serverSide": true,// 服务器端分页
+            "orderable": true,// 允许排序
+            "searching": true,// 允许查询
+            "ajax": {
+                "type": "POST",
+                "url": "/show_check_yq_creator/",
+                "data": {creator: creator},
+                "dataSrc": "data" //从json数据中获取key为data的值
+            },
+            "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
+                {
+                    "data": null
+                },
+                {
+                    "data": "data_id"
+                },
+                {
+                    "data": "data_name"
+                },
+                {
+                    "data": "data_company"
+                },
+                {
+                    "data": "data_count"
+                },
+                {
+                    "data": "data_price"
+                },
+                {
+                    "data": "data_price2"
+                },
+                {
+                    "data": "data_company2"
+                },
+                {
+                    "data": "data_parameter"
+                },
+                {
+                    "data": "term"
+                },
+                {
+                    "data": "creator"
+                },
+                {
+                    "data": "examine"
+                },
+                {
+                    "data": null
+                }
+            ],
+            "columnDefs": [
+                {
+                    "render": function (data, type, row, meta) {
+                        var html = '<input type="checkbox" name="items" data-id="' + '\'' + row.data_id + '\'' + '" data-check_1="' + row.check_1 + '"/>';
+                        return html;
+                    },
+                    "targets": 0,
+                    "orderable": false // 取消这一行的排序
+                },
+                {
+                    // 创建人禁止搜索、排序
+                    "targets": 11,
+                    "orderable": false,
+                    "searchable": false
+                },
+                {   // 修改渲染
+                    "render": function (data, type, row, meta) {
+                        var html = '<a href="javascript:void(0)" onclick="openModel(' + '\'' + row.data_id + '\'' + ',' + row.check_1 + ',\'修改\')">修改</a>';//加单引号
+                        return html;
+                    },
+                    "targets": 13
+                },
+                {
                     // 定义操作列,######以下是重点########
-                    "targets": 11, //操作按钮目标列
+                    "targets": 12, //操作按钮目标列
                     "data": "check_1",
                     "render": function (data, type, row) {
                         var text = "";
@@ -150,16 +613,39 @@
                         return html;
                     }
                 }],
-                "createdRow": function (row, data, dataIndex) {
-                    if (data['check_1'] == true) {
-                        $(row).addClass('success');
-                    } else {
-                        $(row).addClass('danger');
-                    }
+            "createdRow": function (row, data, dataIndex) {
+                if (data['check_1'] == true) {
+                    $(row).addClass('success');
+                } else {
+                    $(row).addClass('danger');
                 }
-            });
+            },
+            "language": {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            }
         });
-    </script>
+    });
+</script>
 </body>
-
 </html>

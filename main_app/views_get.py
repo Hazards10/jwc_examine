@@ -219,7 +219,7 @@ def show_check_hc_creator(request):
                                            Q(data_name__contains=new_search) | Q(data_parameter__contains=new_search) |
                                            Q(data_company__contains=new_search) | Q(data_count__contains=new_search) |
                                            Q(data_price__contains=new_search)| Q(data_price2__contains=new_search)|
-                                           Q(data_usedate__contains=new_search) |Q(creator__contains=new_search)|
+                                           Q(data_usedate__contains=new_search) |
                                            Q(examine__contains=new_search) | Q(check_1__contains=new_search))
         # 获取全部数据
         if length == -1:
@@ -254,12 +254,60 @@ def show_check_hc_examine(request):
 
 # 显示当前用户创建的审核表(YQ) for creator
 def show_check_yq_creator(request):
+    result = {}
     if request.is_ajax():
         creator_name = request.POST.get("creator")
-        filter_dic = dict()
-        filter_dic['creator'] = creator_name
-        data_info = models.CheckFormYQ.objects.filter(**filter_dic)
-        return JsonResponse(model_to_dic(data_info), safe=False)
+        # 过滤数据
+        all_result = models.CheckFormYQ.objects.filter(creator=creator_name)
+        # 数据条数
+        recordsTotal = all_result.count()
+        recordsFiltered = recordsTotal
+        # 第一条数据的起始位置
+        start = int(request.POST['start'])
+        # 每页显示的长度，默认为10
+        length = int(request.POST['length'])
+        # 计数器，确保ajax从服务器返回是对应的
+        draw = int(request.POST['draw'])
+        # 全局收索条件
+        new_search = request.POST['search[value]']
+        # 排序列的序号
+        new_order = request.POST['order[0][column]']
+        # 排序列名
+        by_name = request.POST['columns[{0}][data]'.format(new_order)]
+        # 排序类型，升序降序
+        fun_order = request.POST['order[0][dir]']
+        # 排序开启，匹配表格列
+        if by_name:
+            if fun_order == "asc":
+                all_result = all_result.order_by(by_name)
+            else:
+                all_result = all_result.order_by("-{0}".format(by_name))
+        # 模糊查询，包含内容就查询
+        if new_search:
+            all_result = all_result.filter(Q(data_id__contains=new_search) | Q(term__contains=new_search) |
+                                           Q(data_name__contains=new_search) | Q(data_parameter__contains=new_search) |
+                                           Q(data_company__contains=new_search) | Q(data_count__contains=new_search) |
+                                           Q(data_price__contains=new_search) | Q(data_price2__contains=new_search) |
+                                           Q(data_company2__contains=new_search) |
+                                           Q(examine__contains=new_search) | Q(check_1__contains=new_search))
+        # 获取全部数据
+        if length == -1:
+            datas = models.CheckFormHC.objects.filter(creator=creator_name)
+            recordsTotal = recordsFiltered = 1
+        # 切片获取部分数据
+        else:
+            # 获取首页的数据
+            datas = all_result[start:(start + length)]
+        # 转为字典
+        resp = model_to_dic(datas)
+        # 返回计数，总条数，返回数据
+        result = {
+            'draw': draw,
+            'recordsTotal': recordsTotal,
+            'recordsFiltered': recordsFiltered,
+            'data': resp,
+        }
+    return JsonResponse(result, safe=False)
 
 
 # 显示学院审核过的审核表(YQ) for examine
@@ -388,9 +436,10 @@ def get_examine(request):
         return JsonResponse(examine_list, safe=False)
 
 
-# 普通老师 获取提交的一条数据，或编辑这条数据
+# 普通老师 获取提交的一条数据，或编辑这条数据（耗材）
 class GetEditHcCreator(View):
     def get(self, request, *args, **kwargs):
+        data = {}
         if request.is_ajax():
             id = request.GET.get("id", None)
             if id:
@@ -418,11 +467,40 @@ class GetEditHcCreator(View):
                     data_person=data_person, data_price=data_price, data_price2=data_price2, data_usedate=data_usedate,
                     data_remark=data_remark,creator=creator,examine=examine,
                     date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))
-                     )
+                    )
             data["message"] = True
         return JsonResponse(data=data, safe=False)
 
 
+# 普通老师 获取提交的一条数据，或编辑这条数据（仪器）
+class GetEditYqCreator(View):
+    def get(self, request, *args, **kwargs):
+        data = {}
+        if request.is_ajax():
+            id = request.GET.get("id", None)
+            if id:
+               data=models.CheckFormYQ.objects.filter(data_id=id)
+        return JsonResponse(data=model_to_dic(data), safe=False)
 
+    def post(self, request, *args, **kwargs):
+        data = {}
+        if request.is_ajax():
+            data_id = request.POST.get("data_id")
+            term = request.POST.get("term")
+            data_name = request.POST.get("data_name")
+            data_parameter = request.POST.get("data_parameter")
+            data_company = request.POST.get("data_company")
+            data_count = request.POST.get("data_count")
+            data_price = request.POST.get("data_price")
+            data_price2 = request.POST.get("data_price2")
+            creator = request.POST.get("creator")
+            examine = request.POST.get("examine")
+            models.CheckFormYQ.objects.filter(data_id=data_id).update(term=term, data_name=data_name,
+                    data_parameter=data_parameter, data_company=data_company, data_count=data_count,
+                    data_price=data_price, data_price2=data_price2, creator=creator,examine=examine,
+                    date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))
+                     )
+            data["message"] = True
+        return JsonResponse(data=data, safe=False)
 
 

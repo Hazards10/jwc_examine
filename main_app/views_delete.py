@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from main_app import models  # 引入仪器表
 
 
+# 根据id组成的字符串，删除hc数据
 def del_hc(request):
     data = {}
     if request.is_ajax()and request.method == "POST":
@@ -20,5 +21,16 @@ def del_hc(request):
     return JsonResponse(data=data, safe=False)
 
 
+# 根据id组成的字符串，删除yq数据
 def del_yq(request):
-    pass
+    data = {}
+    if request.is_ajax() and request.method == "POST":
+        del_list = request.POST.get("delStr", None)
+        if del_list:
+            del_list = list(filter(None, del_list.split(',')))
+            del_list_length = len(del_list)
+            for id in del_list:
+                models.CheckFormYQ.objects.filter(data_id=id).delete()
+            data["note"] = "删除了%s条数据！" % (str(del_list_length))
+            data["message"] = True
+    return JsonResponse(data=data, safe=False)
