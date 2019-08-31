@@ -65,18 +65,118 @@ def get_pass2_list_yq(request):
 
 # 得到第一级待审核表(HC) for examine
 def get_examine_list_hc(request):
+    result = {}
     if request.is_ajax():
         examine_name = request.POST.get('examine_name')
-        check_data = models.CheckFormHC.objects.filter(examine=examine_name)
-        return JsonResponse(model_to_dic(check_data), safe=False)
+        # 过滤数据
+        all_result = models.CheckFormHC.objects.filter(examine=examine_name)
+        # 数据条数
+        recordsTotal = all_result.count()
+        recordsFiltered = recordsTotal
+        # 第一条数据的起始位置
+        start = int(request.POST['start'])
+        # 每页显示的长度，默认为10
+        length = int(request.POST['length'])
+        # 计数器，确保ajax从服务器返回是对应的
+        draw = int(request.POST['draw'])
+        # 全局收索条件
+        new_search = request.POST['search[value]']
+        # 排序列的序号
+        new_order = request.POST['order[0][column]']
+        # 排序列名
+        by_name = request.POST['columns[{0}][data]'.format(new_order)]
+        # 排序类型，升序降序
+        fun_order = request.POST['order[0][dir]']
+        # 排序开启，匹配表格列
+        if by_name:
+            if fun_order == "asc":
+                all_result = all_result.order_by(by_name)
+            else:
+                all_result = all_result.order_by("-{0}".format(by_name))
+        # 模糊查询，包含内容就查询
+        if new_search:
+            all_result = all_result.filter(Q(data_id__contains=new_search) | Q(term__contains=new_search) |
+                                           Q(data_name__contains=new_search) | Q(data_parameter__contains=new_search) |
+                                           Q(data_company__contains=new_search) | Q(data_count__contains=new_search) |
+                                           Q(data_price__contains=new_search) | Q(data_price2__contains=new_search) |
+                                           Q(data_usedate__contains=new_search) | Q(data_usedate__contains=new_search)|
+                                           Q(examine__contains=new_search) | Q(check_2__contains=new_search))
+        # 获取全部数据
+        if length == -1:
+            datas = models.CheckFormHC.objects.filter(examine=examine_name)
+            recordsTotal = recordsFiltered = 1
+        # 切片获取部分数据
+        else:
+            # 获取首页的数据
+            datas = all_result[start:(start + length)]
+        # 转为字典
+        resp = model_to_dic(datas)
+        # 返回计数，总条数，返回数据
+        result = {
+            'draw': draw,
+            'recordsTotal': recordsTotal,
+            'recordsFiltered': recordsFiltered,
+            'data': resp,
+        }
+    return JsonResponse(result, safe=False)
 
 
 # 得到第一级待审核表(YQ) for examine
 def get_examine_list_yq(request):
+    result = {}
     if request.is_ajax():
         examine_name = request.POST.get('examine_name')
-        check_data = models.CheckFormYQ.objects.filter(examine=examine_name)
-        return JsonResponse(model_to_dic(check_data), safe=False)
+        # 过滤数据
+        all_result = models.CheckFormYQ.objects.filter(examine=examine_name)
+        # 数据条数
+        recordsTotal = all_result.count()
+        recordsFiltered = recordsTotal
+        # 第一条数据的起始位置
+        start = int(request.POST['start'])
+        # 每页显示的长度，默认为10
+        length = int(request.POST['length'])
+        # 计数器，确保ajax从服务器返回是对应的
+        draw = int(request.POST['draw'])
+        # 全局收索条件
+        new_search = request.POST['search[value]']
+        # 排序列的序号
+        new_order = request.POST['order[0][column]']
+        # 排序列名
+        by_name = request.POST['columns[{0}][data]'.format(new_order)]
+        # 排序类型，升序降序
+        fun_order = request.POST['order[0][dir]']
+        # 排序开启，匹配表格列
+        if by_name:
+            if fun_order == "asc":
+                all_result = all_result.order_by(by_name)
+            else:
+                all_result = all_result.order_by("-{0}".format(by_name))
+        # 模糊查询，包含内容就查询
+        if new_search:
+            all_result = all_result.filter(Q(data_id__contains=new_search) | Q(term__contains=new_search) |
+                                           Q(data_name__contains=new_search) | Q(data_parameter__contains=new_search) |
+                                           Q(data_company__contains=new_search) | Q(data_count__contains=new_search) |
+                                           Q(data_price__contains=new_search) | Q(data_price2__contains=new_search) |
+                                           Q(data_company2__contains=new_search) |
+                                           Q(examine__contains=new_search) | Q(check_2__contains=new_search))
+        # 获取全部数据
+        if length == -1:
+            datas = models.CheckFormHC.objects.filter(examine=examine_name)
+            recordsTotal = recordsFiltered = 1
+        # 切片获取部分数据
+        else:
+            # 获取首页的数据
+            datas = all_result[start:(start + length)]
+        # 转为字典
+        resp = model_to_dic(datas)
+        # 返回计数，总条数，返回数据
+        result = {
+            'draw': draw,
+            'recordsTotal': recordsTotal,
+            'recordsFiltered': recordsFiltered,
+            'data': resp,
+        }
+    return JsonResponse(result, safe=False)
 
 
 # 得到第一级待审核表(HC)single
@@ -131,11 +231,13 @@ def get_second_examine_deposit_list_hc(request):
         check_data = models.CheckFormHC.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
+
 # 得到第二级待审核表(YQ)
 def get_final_list_yq(request):
     if request.is_ajax():
         check_data = models.CheckFormYQ.objects.filter(check_1=True)
         return JsonResponse(model_to_dic(check_data), safe=False)
+
 
 # 得到第二级购买待审核（YQ）
 def get_second_examine_buy_list_yq(request):
@@ -148,6 +250,7 @@ def get_second_examine_buy_list_yq(request):
         check_data = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
+
 # 得到第二级入库待审核（YQ）
 def get_second_examine_deposit_list_yq(request):
     if request.is_ajax():
@@ -158,6 +261,7 @@ def get_second_examine_deposit_list_yq(request):
         filter_dic['is_buy'] = False
         check_data = models.CheckFormYQ.objects.filter(**filter_dic)
         return JsonResponse(model_to_dic(check_data), safe=False)
+
 
 # 得到第二级待审核表(HC)single
 def get_final_single_list_hc(request):

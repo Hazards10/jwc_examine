@@ -11,9 +11,9 @@ def commit_check1_hc(request):
         user_b = request.POST.get('user_b')
         check_1 = request.POST.get('check_1')
         if check_1 == "true":
-            models.CheckFormHC.objects.filter(data_id=index).update(check_1=True)
-        else:
             models.CheckFormHC.objects.filter(data_id=index).update(check_1=False)
+        else:
+            models.CheckFormHC.objects.filter(data_id=index).update(check_1=True)
         views_add.add_log_self(user_a, user_b, 0)
         return JsonResponse("true", safe=False)
 
@@ -26,9 +26,9 @@ def commit_check1_yq(request):
         user_a = request.POST.get('user_a')
         check_1 = request.POST.get('check_1')
         if check_1 == "true":
-            models.CheckFormYQ.objects.filter(data_id=index).update(check_1=True)
-        else:
             models.CheckFormYQ.objects.filter(data_id=index).update(check_1=False)
+        else:
+            models.CheckFormYQ.objects.filter(data_id=index).update(check_1=True)
         views_add.add_log_self(user_a, user_b, 0)
         return JsonResponse("true", safe=False)
 

@@ -4,151 +4,677 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet" />
-    <script src="../../static/JS/Cookies.js"></script>
-    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet"/>
+    <!-- hiprint -->
+    <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
+    <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
 </head>
 
 <body class="frame_body">
-	<div class="row">
-	      <div class="col-md-12">
-	          <nav class="navbar navbar-default">
-	              <div class="container-fluid">
-	                  <!-- Brand and toggle get grouped for better mobile display -->
-	                  
-	                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-	                              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	                          <span class="sr-only">Toggle navigation</span>
-	                          <span class="icon-bar"></span>
-	                          <span class="icon-bar"></span>
-	                          <span class="icon-bar"></span>
-	                      </button>
-	                      <a class="navbar-brand" href="#">仪器设备学院审核</a>
-                  </div>
-	          </nav>
-	      </div>
-	  </div>
-		</div>
-    <!-- /. ROW  -->
-
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Advanced Tables -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <style>
-                        .dataTable th {
-                            white-space: nowrap !important;
-                        }
-
-                        .div_full_private {
-                            width: 100%;
-                        }
-
-                        .xftb table tbody th:first-child td:first-child {
-                            width: 400px;
-                        }
-                    </style>
-                    <table class="table table-striped table-bordered table-hover div_full_private xftb" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th>编号</th>
-                                <th>材料名称</th>
-                                <th>规格型号</th>
-                                <th>单位</th>
-                                <th>数量</th>
-                                <th>单价(元)</th>
-                                <th>金额(元)</th>
-                                <th>使用日期</th>
-                                <th>验收领用人</th>
-                                <th width="10%">学期</th>
-                                <th>备注</th>
-                                <th id="user_a">创建人</th>
-                                <th>审核状态&nbsp&nbsp<input id="checkAll" class="checkAll" type="button" value="一键全部批准"></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:void(0)">耗材设备学院审核</a>
             </div>
-            <!--End Advanced Tables -->
-        </div>
+            <div class="navbar-right">
+                <button type="button" class="btn btn-success navbar-btn" style="margin-right: 15px" data-toggle="modal"
+                        onclick="openModel(0, false, '添加')">
+                    添加
+                </button>
+                <button type="button" class="btn btn-danger navbar-btn" style="margin-right: 15px" onclick="delItem()">
+                    删除
+                </button>
+                <button type="button" class="btn btn-success navbar-btn" style="margin-right: 15px"
+                        onclick="examineItem()">
+                    审核
+                </button>
+                <button type="button" class="btn btn-success navbar-btn" style="margin-right: 15px"
+                        onclick="exportExcel()">
+                    导出excel表
+                </button>
+                <button type="button" class="btn btn-success navbar-btn" style="margin-right: 30px"
+                        onclick="printNow()">打印未审核耗材表
+                </button>
+            </div>
+        </nav>
     </div>
-    <script>
-        var final_data;
-        var examine = getCookie('user');
-        console.log(examine);
-        $(document).ready(function () {
-            //获取页面数据
-            $.ajax({
-                type: 'POST',
-                url: "/get_examine_list_hc/",
-                data: {
-                    examine_name: examine
-                },
-                "async": false,
-                dataType: "json",
-                success: function (data) {
-                    final_data = data;
-                    console.log(final_data);
+</div>
+
+<!-- /. ROW  -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <style>
+                    .dataTable th {
+                        white-space: nowrap !important;
+                    }
+
+                    .div_full_private {
+                        width: 100%;
+                    }
+
+                    .xftb table tbody th:first-child td:first-child {
+                        width: 400px;
+                    }
+                </style>
+                <table class="table table-striped table-bordered table-hover div_full_private xftb"
+                       id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th><input id="checkall" type="checkbox" onclick="checkAll()"/></th>
+                        <th>编号</th>
+                        <th>材料名称</th>
+                        <th>规格型号</th>
+                        <th>单位</th>
+                        <th>数量</th>
+                        <th>单价(元)</th>
+                        <th>金额(元)</th>
+                        <th>使用日期</th>
+                        <th>验收领用人</th>
+                        <th>学期</th>
+                        <th>备注</th>
+                        <th>创建人</th>
+                        <th>审核状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
+<!--添加、修改功能模态框 -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="ModalLabel">
+                    添加耗材审核信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="formHc">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>材料名称*</label>
+                                <input name="data_name" id="data_name" class="form-control" placeholder="材料名称">
+                            </div>
+                            <div class="form-group">
+                                <label>规格型号*</label>
+                                <input name="data_parameter" id="data_parameter" class="form-control"
+                                       placeholder="规格型号">
+                            </div>
+                            <div class="form-group">
+                                <label>单位*</label>
+                                <input name="data_company" id="data_company" class="form-control" placeholder="单位">
+                            </div>
+
+                            <div class="form-group">
+                                <label>数量*</label>
+                                <input name="data_count" id="data_count" class="form-control" placeholder="数量">
+                            </div>
+
+                            <div class="form-group">
+                                <label>单价(元)*</label>
+                                <input name="data_price" id="data_price" class="form-control" placeholder="单价(元)">
+                            </div>
+
+                            <div class="form-group">
+                                <label>金额(元)*</label>
+                                <input name="data_price2" id="data_price2" class="form-control" placeholder="金额(元)">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>使用日期</label>
+                                <input type="date" name="data_usedate" id="data_usedate" class="form-control"
+                                       placeholder="使用日期">
+                            </div>
+                            <div class="form-group">
+                                <label>验收负责人</label>
+                                <input name="data_person" id="data_person" class="form-control" placeholder="验收负责人">
+                            </div>
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input name="data_remark" id="data_remark" class="form-control" placeholder="备注">
+                            </div>
+                            <div class="form-group">
+                                <label>使用学期</label>
+                                <select name="term" class="form-control" id="term">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label id="examine_label">下级审核人*</label>
+                                <select name="examine" class="form-control" id="examine">
+                                </select>
+                            </div>
+                            <input type="hidden" name="data_type" value="0">
+                            <input type="hidden" name="creator" id="creator" value="">
+                            <input type="hidden" name="data_id" id="edit_data_id" value="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="submit_form_hc('添加')" id="submitHc">提交</button>
+                <button type="button" class="btn btn-danger" onclick="document.getElementById('formHc').reset();"
+                        id="resetButton">重置
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- cookies读写文件-->
+<script src="../../static/JS/Cookies.js"></script>
+<!-- jquery包 -->
+<script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
+<!-- excel 导出包-->
+<script src="../../static/JS/xlsx.core.min.js"></script>
+<!-- polyfill.min.js解决浏览器兼容性问题v6.26.0-->
+<script src="../../static/assets/hiprint/polyfill.min.js"></script>
+<!-- hiprint 核心js-->
+<script src="../../static/assets/hiprint/hiprint.bundle.js"></script>
+<!-- 调用浏览器打印窗口helper类，可自行替换-->
+<script src="../../static/assets/hiprint/plugins/jquery.hiwprint.js"></script>
+<!--datatable 插件 -->
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+<!-- 模态框依赖js文件 -->
+<script src="../../static/assets/js/bootstrap.min.js"></script>
+<script>
+    var examine = getCookie('user');
+
+    // 复选框全选或不全选
+    function checkAll() {
+        // 注意 用attr("checked")获取的属性不是bool值
+        var flag = $("#checkall").prop("checked");
+        $(":checkbox").prop("checked", flag);
+    }
+
+    // 打开添加、修改模态框
+    function openModel(id, check_1, flag) {
+        if (flag === "添加") {
+            $("#ModalLabel").text("添加耗材审核信息");
+            $("#submitHc").attr("onclick", "submit_form_hc('添加')");
+            $("#resetButton").removeClass("hidden");
+            $("#creator").val(examine); //设置创建人
+            $('#Modal').modal();
+            // 添加功能模态框获取下级审核人和学期
+            $.get("/get_examine/", function (data, status) {
+                //alert("数据: " + data + "\n状态: " + status);
+                var term = data[0]["term"];
+                // 去除之前添加过的学期选项
+                $("#term").children().remove();
+                $("#term").append("<option value=" + term + ">" + term + "</option>");
+                if (status == 'success' && data.length > 0) {
+                    // 去除之前添加过的下级审核人选项
+                    $("#examine").children().remove();
+                    // 获得数据后，添加选择项
+                    $("#examine").append("<option value=\"务必选择正确的下级审核人\">务必选择正确的下级审核人</option>")
+                    for (var i = 0; i < data.length; i++) {
+                        var text = data[i]["admin_name"];
+                        $("#examine").append("<option value=" + text + ">" + text + "</option>")
+                    }
+                }
+                // 获取数据失败，下级审核项变填空项
+                else {
+                    $("#examine").remove();
+                    $("#examine_label").after("<input name=\"examine\" id=\"examine\" class=\"form-control\" placeholder=\"务必填写正确的下级审核人\">");
                 }
             });
-            for (var i = 0; i < final_data.length; i++) {
-                final_data[i]['index'] = i;
-            }
-            console.log(final_data);
-            //获取页面数据并显示
-            var table = $('#dataTables-example').DataTable({
-                "data": final_data,
-                "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
-                    {
-                        "data": "data_id"
+        } else if (flag === "修改") {
+            if (check_1 === true) {
+                alert("不能修改审核信息！");
+            } else {
+                $("#ModalLabel").text("修改耗材审核信息");
+                $("#submitHc").attr("onclick", "submit_form_hc('修改')");
+                $("#resetButton").addClass("hidden");
+                document.getElementById('formHc').reset();
+                // 显示模态框
+                $('#Modal').modal();
+                $('#edit_data_id').val(id);
+                // 获取这一行的数据，显示到修改模态框
+                $.ajax({
+                    async: false, //同步
+                    url: '/edit_hc_creator/',
+                    data: {
+                        id: id
                     },
-                    {
-                        "data": "data_name"
-                    },
-                    {
-                        "data": "data_parameter"
-                    },
-                    {
-                        "data": "data_company"
-                    },
-                    {
-                        "data": "data_count"
-                    },
-                    {
-                        "data": "data_price"
-                    },
-                    {
-                        "data": "data_price2"
-                    },
-                    {
-                        "data": "data_usedate"
-                    },
-                    {
-                        "data": "data_person"
-                    },
-                    {
-                        "data": "term"
-                    },
-                    {
-                        "data": "data_remark"
-                    },
-                    {
-                        "data": "creator"
+                    type: "get",
+                    success: function (data) {
+                        if (data.length > 0) {
+                            $("#data_name").val(data[0].data_name);
+                            $("#data_company").val(data[0].data_company);
+                            $("#data_count").val(data[0].data_count);
+                            $("#data_parameter").val(data[0].data_parameter);
+                            $("#data_person").val(data[0].data_person);
+                            $("#data_price").val(data[0].data_price);
+                            $("#data_price2").val(data[0].data_price2);
+                            $("#data_remark").val(data[0].data_remark);
+                            $("#creator").val(data[0].creator);
+                            $("#data_usedate").val(data[0].data_usedate);
+                            var term = data[0]["term"];
+                            $("#term").children().remove();
+                            $("#term").append("<option value=" + term + ">" + term + "</option>");
+                            $("#examine").children().remove();
+                            $("#examine").append("<option value=" + data[0].examine + ">" + data[0].examine + "</option>")
+                        }
                     }
-                ],
-                "columnDefs": [{
+
+                });
+                // 刷新下级审核人列表
+                $.ajax({
+                    async: false, //同步
+                    url: '/get_examine/',
+                    data: {
+                        id: id
+                    },
+                    type: "get",
+                    success: function (data) {
+                        if (data.length > 0) {
+                            $("#examine").children().remove();
+                            for (var i = 0; i < data.length; i++) {
+                                var text = data[i]["admin_name"];
+                                if (text != $("#examine").text()) {
+                                    $("#examine").append("<option value=" + text + ">" + text + "</option>")
+                                }
+                            }
+                        }
+                        // 获取数据失败，下级审核项变填空项
+                        else {
+                            $("#examine").remove();
+                            $("#examine_label").after("<input name=\"examine\" id=\"examine\" class=\"form-control\" placeholder=\"务必填写正确的下级审核人\">");
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    // 检验后提交耗材表单(添加)
+    function submit_form_hc(flag) {
+        var data_name = $("#data_name").val(),
+            data_parameter = $("#data_parameter").val(),
+            data_company = $("#data_company").val(),
+            data_count = $("#data_count").val(),
+            data_price = $("#data_price").val(),
+            data_price2 = $("#data_price2").val(),
+            examine = $("#examine").val(),
+            data_type = $("input[name='data_type']").val(),
+            creator = $("#creator").val();
+        var test_list = [data_name, data_company, data_count, data_parameter, data_price, data_price2
+            , data_type, creator, examine];
+        for (var i = 0; i < test_list.length; i++) {
+            if (test_list[i] == "") {
+                alert("提交的信息中，*号项不能为空！");
+                return;
+            }
+        }
+        // ajax获取下级审核人成功或失败后，错误提交信息判断
+        if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
+            alert("请选择下级审核人！");
+            return;
+        }
+        if (flag === "添加") {
+            $.ajax({
+                async: false,
+                type: "post",
+                url: '/add_hc/',
+                contentType: "application/x-www-form-urlencoded",
+                data: $("#formHc").serialize(),
+                success: function (data) {
+                    if (data.message === true) {
+                        // 刷新当前页的表格数据
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                        document.getElementById('formHc').reset();// 清空表单
+                        $("#Modal").modal("hide") // 隐藏模态框
+                    }
+                }
+            })
+        } else if (flag === "修改") {
+            $.ajax({
+                async: false,
+                url: '/edit_hc_creator/',
+                method: 'post',
+                contentType: "application/x-www-form-urlencoded",
+                data: $("#formHc").serialize(),
+                success: function (data) {
+                    if (data.message === true) {
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                        document.getElementById('formHc').reset();// 清空表单
+                        $("#Modal").modal("hide") // 隐藏模态框
+                    }
+                }
+            })
+        }
+    }
+
+    // 删除
+    function delItem() {
+        var delStr = "";
+        var delItemLength = 0;
+        var flag = true;
+        $("[name='items']:checkbox").each(function () {
+            if ($(this).prop("checked")) {
+                var check_1 = $(this).attr("data-check_1")
+                if (check_1 == 'true') {
+                    flag = false;
+                    return;
+                }
+                delStr += $(this).data("id").replace(/'/g, "") + ',';
+                delItemLength += 1;
+            }
+        });
+        if (!flag) {
+            alert("不能删除已审核数据！");
+        } else if (delItemLength === 0) {
+            alert("请先选中删除项！");
+        } else if (confirm("确认要删除选中的" + delItemLength + "个数据吗？")) {
+            $.ajax({
+                type: 'post',
+                url: "/del_hc/",
+                data: {
+                    delStr: delStr
+                },
+                "async": false,
+                traditional: true,
+                dataType: "json",
+                success: function (data) {
+                    if (data.message === true) {
+                        alert(data.note);
+                        // 重绘表格
+                        $('#dataTables-example').dataTable().fnDraw(false);
+                    } else {
+                        alert("删除失败！")
+                    }
+                }
+            });
+        }
+    }
+
+    // 审核仪器
+    function examineItem() {
+        $("[name='items']:checkbox").each(function () {
+            if ($(this).prop("checked")) {
+                var check_1 = $(this).attr("data-check_1");
+                var data_id = $(this).attr("data-id");
+                var data_creator = $(this).attr("data-creator");
+                $.ajax({
+                    type: 'POST',
+                    url: "/commit_check1_hc/",
+                    data: {
+                        data_id: data_id,
+                        user_b: examine,
+                        user_a: data_creator,
+                        check_1: check_1
+                    },
+                    "async": false,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            // 重绘表格
+                            $('#dataTables-example').dataTable().fnDraw(false);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // 导出excel
+    function exportExcel() {
+        var table = $('#dataTables-example').DataTable();
+        // 隐藏0,15列
+        table.columns([0, 14]).visible(false);
+        let workbook = XLSX.utils.table_to_book(table.table().node());
+        XLSX.writeFile(workbook, '耗材设备学院审核表.xlsx');
+        // 显示0,15列
+        table.columns([0, 14]).visible(true);
+    }
+
+    // 打印Json配置模板
+    var customPrintJson = {
+        "panels": [{
+            "index": 0,
+            "paperType": "A4",
+            "height": 210,
+            "width": 297,
+            "paperHeader": 39,
+            "paperFooter": 442.5,
+            "printElements": [{
+                "options": {
+                    "left": 336,
+                    "top": 13.5,
+                    "height": 22.5,
+                    "width": 187.5,
+                    "title": "申请实验消耗材料表",
+                    "fontFamily": "SimSun",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                    "textAlign": "center",
+                    "textContentVerticalAlign": "middle"
+                }, "printElementType": {"type": "text"}
+            }, {
+                "options": {
+                    "left": 30,
+                    "top": 40.5,
+                    "height": 36,
+                    "width": 793.5,
+                    "textAlign": "center",
+                    "tableHeaderBackground": "#ffffff",
+                    "field": "table",
+                    "columns": [[{
+                        "title": "序号",
+                        "width": 31.241562547504543,
+                        "field": "data_id",
+                        "colspan": 1,
+                        "rowspan": 1
+                    }, {"title": "材料名称", "width": 90.50537375424712, "field": "data_name", "colspan": 1, "rowspan": 1},
+                        {
+                            "title": "规格型号",
+                            "width": 96.01631503785542,
+                            "field": "data_parameter",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "单位",
+                            "width": 37.839901890694975,
+                            "field": "data_company",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "数量",
+                            "width": 44.22181409723457,
+                            "field": "data_count",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "单价（元）",
+                            "width": 60.4376675746837,
+                            "field": "data_price",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "金额（元）",
+                            "width": 65.56497847645483,
+                            "field": "data_price2",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "使用日期",
+                            "width": 69.20612347609507,
+                            "field": "data_usedate",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "验收领用人",
+                            "width": 80.95322067801548,
+                            "field": "data_person",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {"title": "学期", "width": 50.59497034990438, "field": "term", "colspan": 1, "rowspan": 1}, {
+                            "title": "备注",
+                            "width": 112.41923057144236,
+                            "field": "data_remark",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }, {
+                            "title": "创建人",
+                            "width": 54.49884154586738,
+                            "field": "creator",
+                            "colspan": 1,
+                            "rowspan": 1
+                        }]]
+                }, "printElementType": {"title": "表格", "type": "tableCustom"}
+            }, {
+                "options": {"left": 669, "top": 550.5, "height": 15, "width": 147, "title": "学院、系（加盖公章）："},
+                "printElementType": {"type": "text"}
+            }, {
+                "options": {"left": 277.5, "top": 552, "height": 16.5, "width": 120, "title": "主管系主任（签字）："},
+                "printElementType": {"type": "text"}
+            }, {
+                "options": {"left": 483, "top": 552, "height": 18, "width": 120, "title": "申报人（签字）："},
+                "printElementType": {"type": "text"}
+            }, {
+                "options": {
+                    "left": 72,
+                    "top": 553.5,
+                    "height": 15,
+                    "width": 120,
+                    "title": "学院主管院士（签字）:",
+                    "fontFamily": "SimSun",
+                    "fontSize": 9
+                }, "printElementType": {"type": "text"}
+            }],
+            "paperNumberLeft": 811,
+            "paperNumberTop": 573,
+            "rotate": true
+        }]
+    };
+    // 打印的数据
+    var printData = {
+        table: []
+    };
+
+    // 打印当前数据
+    function printNow() {
+        var table = $('#dataTables-example').DataTable();
+        var tableData = [];
+        for (let i = 0; i < table.data().length; i++) {
+            let data = table.data()[i];
+            delete data.is_buy;
+            delete data.is_deposit;
+            delete data.check_2;
+            delete data.date;
+            delete data.admin;
+            delete data.examine;
+            if (data.check_1 === false) {
+                delete data.check_1;
+                tableData.push(data);
+            }
+        }
+        // 修改编号从1开始
+        for (let i = 0; i < tableData.length; i++) {
+            tableData[i].data_id = i + 1;
+        }
+        console.log(tableData);
+        printData.table = tableData;
+        hiprint.init();
+        var hiprintTemplate = new hiprint.PrintTemplate({template: customPrintJson});
+        hiprintTemplate.print(printData);
+    }
+
+
+    $(document).ready(function () {
+        //获取页面数据并显示
+        var table = $('#dataTables-example').DataTable({
+            "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "全部数据"]], // 更改显示记录数选项
+            "iDisplayLength": 25, // 默认显示的记录数
+            "pagingType": "full_numbers", // 页脚设置
+            "processing": true, // 处理中提示
+            "serverSide": true,// 服务器端分页
+            "orderable": true,// 允许排序
+            "searching": true,// 允许查询
+            "ajax": {
+                "type": "POST",
+                "url": "/get_examine_list_hc/",
+                "data": {examine_name: examine},
+                "dataSrc": "data" //从json数据中获取key为data的值
+            },
+            "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
+                {
+                    "data": null
+                },
+                {
+                    "data": "data_id"
+                },
+                {
+                    "data": "data_name"
+                },
+                {
+                    "data": "data_parameter"
+                },
+                {
+                    "data": "data_company"
+                },
+                {
+                    "data": "data_count"
+                },
+                {
+                    "data": "data_price"
+                },
+                {
+                    "data": "data_price2"
+                },
+                {
+                    "data": "data_usedate"
+                },
+                {
+                    "data": "data_person"
+                },
+                {
+                    "data": "term"
+                },
+                {
+                    "data": "data_remark"
+                },
+                {
+                    "data": "creator"
+                },
+                {
+                    "data": null
+                }
+            ],
+            "columnDefs": [
+                {
+                    "render": function (data, type, row, meta) {
+                        var html = '<input type="checkbox" name="items" data-id="' + row.data_id + '" data-check_1="' + row.check_1 + '" data-creator="' + row.creator + '"/>';
+                        return html;
+                    },
+                    "targets": 0,
+                    "orderable": false // 取消这一行的排序
+                },
+                {
                     // 定义操作列,######以下是重点########
-                    "targets": 12, //操作按钮目标列
-                    "data": "check_1",
+                    "targets": 13, //操作按钮目标列
                     "ordering": true,
                     "render": function (data, type, row) {
                         var text = "";
-                        if (data) {
+                        if (data["check_1"]) {
                             text = "已批准";
                         } else {
                             text = "未批准"
@@ -156,86 +682,50 @@
                         var html = "<div align='center' id='text'>" + text + "</div>";
                         return html;
                     }
-                }],
-                "createdRow": function (row, data, dataIndex) {
-                    if (data['check_1'] == true) {
-                        $(row).addClass('success');
-                    } else {
-                        $(row).addClass('danger');
-                    }
-                }
-            });
-            //单个行审核
-            $('#dataTables-example tbody').on('click', 'tr', function () {
-                var row_data = table.row(this).data();
-                var user_b = getCookie('user');
-                var user_a = row_data["creator"];
-                var i = row_data['index'];
-                //console.log(final_data[i]["check_1"]);
-                final_data[i]["check_1"] = !final_data[i]["check_1"];
-                var post_check = final_data[i]["check_1"];
-                console.log(post_check);
-                var return_code;
-                $.ajax({
-                    type: 'POST',
-                    url: "/commit_check1_hc/",
-                    data: {
-                        data_id: row_data["data_id"],
-                        user_b:user_b ,
-                        user_a:user_a ,
-                        check_1: post_check
+                },
+                {
+                    "render": function (data, type, row, meta) {
+                        var html = '<a href="javascript:void(0)" onclick="openModel(' + '\'' + row.data_id + '\'' + ',' + row.check_1 + ',\'修改\')">修改</a>';//加单引号
+                        return html;
                     },
-                    "async": false,
-                    dataType: "json",
-                    success: function (data) {
-                        if (data) alert('成功更改编号 ' + row_data['data_id'] + '的数据');
-                        return_code = data;
-                    }
-                });
-                if (return_code) {
-                    if (post_check) {
-                        $(this).removeClass('danger');
-                        $(this).addClass('success');
-                        $(this).find('#text').text('已批准');
-                    } else {
-                        $(this).removeClass('success');
-                        $(this).addClass('danger');
-                        $(this).find('#text').text('未批准');
-                    }
+                    "targets": 14
                 }
-            });
-            //一键全部审核
-            $('#checkAll').on('click', function () {
-                var id_array = [];
-                $('tr').children().each(function () {
-                    if($(this).text()=='未批准'){
-                        var user_b = getCookie('user');
-                        var user_a = $(this).parent().children().eq(11).text();
-                        var data_id = $(this).parent().children().first().text();
-                        $.ajax({
-                            type: 'POST',
-                            url: "/commit_check1_hc/",
-                            data: {
-                                data_id:data_id,
-                                user_b:user_b ,
-                                user_a:user_a ,
-                                check_1: 'true'
-                            },
-                            "async": false,
-                            dataType: "json",
-                            success: function (data) {
-                                if (data) id_array.push(data_id);
-                            }
-                        });
-                    }
-                });
-                if (id_array.length>0){
-                    alert('成功更改序号 ' + id_array + '的数据');
-                    location.reload();
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                if (data['check_1'] == true) {
+                    $(row).addClass('success');
+                } else {
+                    $(row).addClass('danger');
                 }
-            });
+            },
+            "language": {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            }
         });
-    </script>
+
+    });
+</script>
 </body>
 
 </html>

@@ -192,7 +192,6 @@
 <!-- 模态框依赖js文件 -->
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
-    var final_data;
     var creator = getCookie('user');
     // 设置用户值
     $('#creator').val(creator);
@@ -216,7 +215,7 @@
                     flag = false;
                     return;
                 }
-                delStr += $(this).data("id").replace(/'/g, "") + ',';
+                delStr += $(this).data("id");
                 delItemLength += 1;
             }
         });
@@ -253,7 +252,7 @@
         // 隐藏0,15列
         table.columns([0, 15]).visible(false);
         let workbook = XLSX.utils.table_to_book(table.table().node());
-        XLSX.writeFile(workbook, '耗材一级审核进度查看.xlsx');
+        XLSX.writeFile(workbook, '耗材一级审核进度表.xlsx');
         // 显示0,15列
         table.columns([0, 15]).visible(true);
     }
@@ -445,6 +444,7 @@
             $("#ModalLabel").text("添加耗材审核信息");
             $("#submitHc").attr("onclick", "submit_form_hc('添加')");
             $("#resetButton").removeClass("hidden");
+            document.getElementById('formHc').reset();
             $('#Modal').modal();
             // 添加功能模态框获取下级审核人和学期
             $.get("/get_examine/", function (data, status) {
@@ -537,7 +537,7 @@
         }
     }
 
-    // 检验后提交耗材表单(添加)
+    // 检验后提交耗材表单(添加、修改)
     function submit_form_hc(flag) {
         var data_name = $("#data_name").val(),
             data_parameter = $("#data_parameter").val(),
@@ -653,14 +653,15 @@
                 },
                 {
                     "data": "examine"
-                }, {
+                },
+                {
                     "data": null
                 }
             ],
             "columnDefs": [
                 {
                     "render": function (data, type, row, meta) {
-                        var html = '<input type="checkbox" name="items" data-id="' + '\'' + row.data_id + '\'' + '" data-check_1="' + row.check_1 + '"/>';
+                        var html = '<input type="checkbox" name="items" data-id="'  + row.data_id + '" data-check_1="' + row.check_1 + '"/>';
                         return html;
                     },
                     "targets": 0,
@@ -681,7 +682,6 @@
                 {
                     // 定义操作列,######以下是重点########
                     "targets": 14, //操作按钮目标列
-                    "data": "check_1",
                     "render": function (data, type, row) {
                         var text = "";
                         if (data.check_1) {

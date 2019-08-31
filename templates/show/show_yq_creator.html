@@ -201,6 +201,11 @@
 
     function openModel(id, check_1, flag) {
         if (flag === "添加") {
+            $("#ModalLabel").text("添加仪器审核信息");
+            $("#submitYq").attr("onclick", "submit_form_yq('添加')");
+            $("#resetButton").removeClass("hidden");
+            document.getElementById('formYq').reset();
+            $("#Modal").modal();
             $.get("/get_examine/", function (data, status) {
                 var term = data[0]["term"];
                 // 去除之前添加过的学期选项
@@ -222,10 +227,7 @@
                     $("#examine_label").after("<input name=\"examine\" class=\"form-control\" placeholder=\"务必填写正确的下级审核人\">");
                 }
             });
-            $("#ModalLabel").text("添加仪器审核信息");
-            $("#submitYq").attr("onclick", "submit_form_yq('添加')");
-            $("#resetButton").removeClass("hidden");
-            $("#Modal").modal();
+
         } else if (flag === "修改") {
             if (check_1 === true) {
                 alert("不能修改审核信息！");
@@ -336,7 +338,7 @@
                     flag = false;
                     return;
                 }
-                delStr += $(this).data("id").replace(/'/g, "") + ',';
+                delStr += $(this).data("id")+ ',';
                 delItemLength += 1;
             }
         });
@@ -373,7 +375,7 @@
         // 隐藏0,15列
         table.columns([0, 13]).visible(false);
         let workbook = XLSX.utils.table_to_book(table.table().node());
-        XLSX.writeFile(workbook, '耗材一级审核进度查看.xlsx');
+        XLSX.writeFile(workbook, '仪器一级审核进度表.xlsx');
         // 显示0,15列
         table.columns([0, 13]).visible(true);
     }
@@ -579,7 +581,7 @@
             "columnDefs": [
                 {
                     "render": function (data, type, row, meta) {
-                        var html = '<input type="checkbox" name="items" data-id="' + '\'' + row.data_id + '\'' + '" data-check_1="' + row.check_1 + '"/>';
+                        var html = '<input type="checkbox" name="items" data-id="' + row.data_id + '" data-check_1="' + row.check_1 + '"/>';
                         return html;
                     },
                     "targets": 0,
@@ -601,10 +603,9 @@
                 {
                     // 定义操作列,######以下是重点########
                     "targets": 12, //操作按钮目标列
-                    "data": "check_1",
                     "render": function (data, type, row) {
                         var text = "";
-                        if (data) {
+                        if (data["check_1"]) {
                             text = "已批准";
                         } else {
                             text = "未批准"

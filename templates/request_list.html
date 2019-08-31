@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../static/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="../static/assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="../static/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../static/assets/css/custom-styles.css" rel="stylesheet"/>
     <script src="../static/JS/Cookies.js"></script>
     <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
     <script src="../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
@@ -14,81 +14,83 @@
 </head>
 
 <body class="frame_body">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="page-header">
-                申请列表 <small>Responsive tables</small>
-            </h1>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            申请列表
+            <small>Responsive tables</small>
+        </h1>
     </div>
-    <!-- /. ROW  -->
+</div>
+<!-- /. ROW  -->
 
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Advanced Tables -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <style>
-                        .dataTable th {
-                            white-space: nowrap !important;
-                        }
-
-                        .div_full_private {
-                            width: 100%;
-                        }
-
-                        .xftb table tbody th:first-child td:first-child {
-                            width: 400px;
-                        }
-                    </style>
-                    <table class="table table-striped table-bordered table-hover div_full_private xftb" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th width="10%">申报序号</th>
-                                <th width="8%">申报者</th>
-                                <th width="7%">创建时间</th>
-                                <th width="7%">申报类型</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <!--End Advanced Tables -->
-        </div>
-    </div>
-    <script>
-        var final_data;
-        var user_b = getCookie('user');
-        $(document).ready(function () {
-            $.ajax({
-                type: 'POST',
-                url: "/get_request_list/",
-                data: {
-                    user_b: user_b
-                },
-                "async": false,
-                dataType: "json",
-                success: function (data) {
-                    final_data = data;
-                    console.log(final_data);
-                }
-            });
-            console.log(final_data);
-            var table = $('#dataTables-example').DataTable({
-                "data": final_data,
-                "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
-                    {
-                        "data": "id"
-                    },
-                    {
-                        "data": "A"
-                    },
-                    {
-                        "data": "date"
+<div class="row">
+    <div class="col-md-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <style>
+                    .dataTable th {
+                        white-space: nowrap !important;
                     }
-                ],
-                "columnDefs": [
-                    {
+
+                    .div_full_private {
+                        width: 100%;
+                    }
+
+                    .xftb table tbody th:first-child td:first-child {
+                        width: 400px;
+                    }
+                </style>
+                <table class="table table-striped table-bordered table-hover div_full_private xftb"
+                       id="dataTables-example">
+                    <thead>
+                    <tr>
+                        <th width="10%">申报序号</th>
+                        <th width="8%">申报者</th>
+                        <th width="7%">创建时间</th>
+                        <th width="7%">申报类型</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
+<script>
+    var final_data;
+    var user_b = getCookie('user');
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: "/get_request_list/",
+            data: {
+                user_b: user_b
+            },
+            "async": false,
+            dataType: "json",
+            success: function (data) {
+                final_data = data;
+                console.log(final_data);
+            }
+        });
+        console.log(final_data);
+        var table = $('#dataTables-example').DataTable({
+            "data": final_data,
+            "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
+                {
+                    "data": "id"
+                },
+                {
+                    "data": "A"
+                },
+                {
+                    "data": "date"
+                }
+            ],
+            "columnDefs": [
+                {
                     // 定义操作列,######以下是重点########
                     "targets": 3, //操作按钮目标列
                     "data": "type",
@@ -103,28 +105,51 @@
                         return html;
                     }
                 }],
-                "createdRow": function (row, data, dataIndex) {
-                    if (data['type'] == true) {
-                        $(row).addClass('warning');
-                    } else {
-                        $(row).addClass('info');
-                    }
+            "createdRow": function (row, data, dataIndex) {
+                if (data['type'] == true) {
+                    $(row).addClass('warning');
+                } else {
+                    $(row).addClass('info');
                 }
-            });
-
-            $('#dataTables-example tbody').on('click', 'tr', function () {
-                var data = table.row(this).data();
-                setCookie('user_a',data['A'],0.5)
-                if(data['type'] == true){
-                    window.location.href="/examine_yq1_single_view/";
+            },
+            "language": {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
                 }
-                else {
-                    window.location.href="/examine_hc1_single_view/";
-                }
-
-            });
+            }
         });
-    </script>
+
+        $('#dataTables-example tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            setCookie('user_a', data['A'], 0.5);
+            if (data['type'] == true) {
+                window.location.href = "/examine_yq1_single_view/";
+            } else {
+                window.location.href = "/examine_hc1_single_view/";
+            }
+
+        });
+    });
+</script>
 </body>
 
 </html>
