@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ea604c02-c393-42c8-b441-a62a5ecec1ad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jwc_examine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jwc_examine/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_commit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_commit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_get.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_hc_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_hc_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/request_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/request_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_hc_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_creator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_hc_examine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_examine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_creator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_examine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_examine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/views_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/commit/commit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commit/commit_user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/show/show_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_admin.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,97 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/check/check_hc_1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="598" column="5" lean-forward="true" selection-start-line="448" selection-start-column="3" selection-end-line="598" selection-end-column="5" />
-              <folding>
-                <element signature="e#18949#23940#0#HTML" />
-                <element signature="e#22252#23133#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="8" />
-              <folding>
-                <element signature="e#24#52#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_examine.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/check/check_yq_1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="610" column="9" lean-forward="true" selection-start-line="610" selection-start-column="9" selection-end-line="610" selection-end-column="9" />
-              <folding>
-                <element signature="e#16756#17074#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_creator.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="254" column="38" selection-start-line="254" selection-start-column="38" selection-end-line="254" selection-end-column="38" />
-              <folding>
-                <element signature="e#17713#17738#0#HTML" />
-                <element signature="e#17779#18550#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_examine.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="377" column="43" selection-start-line="377" selection-start-column="43" selection-end-line="377" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/views_commit.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/views_router.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="109">
+              <caret line="386" column="12" selection-start-line="386" selection-start-column="12" selection-end-line="386" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -146,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="428" column="31" lean-forward="true" selection-start-line="428" selection-start-column="31" selection-end-line="428" selection-end-column="31" />
+            <state relative-caret-position="1184">
+              <caret line="207" column="25" lean-forward="true" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
               <folding>
                 <element signature="e#24#60#0" expanded="true" />
                 <marker date="1567138272113" expanded="true" signature="18664:18720" ph="select Teach... TMBasicInfo" />
@@ -156,6 +62,103 @@
                 <marker date="1567138272113" expanded="true" signature="18988:19130" ph="select BDIns... BDStaffRoom" />
                 <marker date="1567138272113" expanded="true" signature="19071:19129" ph="select BDSta... TMBasicInfo" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="107" column="22" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="22" />
+              <folding>
+                <element signature="e#635#667#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="62" />
+              <folding>
+                <element signature="e#73#109#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="64" column="6" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+              <folding>
+                <element signature="e#24#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_admin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-877">
+              <caret line="227" column="39" lean-forward="true" selection-start-line="227" selection-start-column="39" selection-end-line="227" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#1;n#nav#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#1;n#nav#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3134#3281#0#HTML" />
+                <element signature="e#8278#9159#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/commit/commit_user.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-901">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_creator.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1265">
+              <caret line="604" column="39" selection-start-line="604" selection-start-column="39" selection-end-line="604" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#9067#9397#0#HTML" />
+                <element signature="e#29195#30076#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/check/check_yq_2_buy.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="259" column="32" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -174,36 +177,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add_hc</find>
-      <find>edit_yq_creator</find>
-      <find>submit_form_yq</find>
-      <find>submitYq</find>
-      <find>request_list/</find>
-      <find>Hc</find>
-      <find>examine_hc1_view</find>
-      <find>user_a</find>
-      <find>submit_form_hc</find>
-      <find>id=&quot;Creator</find>
-      <find>edit_hc_creator</find>
-      <find>creator</find>
-      <find>重置</find>
-      <find>data-check_1</find>
+      <find>show_yq_admin/</find>
+      <find>printNow</find>
+      <find>examine_hc2_view_deposit</find>
+      <find>deposit_examine</find>
+      <find>buy_examine</find>
+      <find>second_examine</find>
+      <find>expotrExcel</find>
+      <find>exportExcel</find>
+      <find>examine_hc2_view/</find>
+      <find>show_hc_admin/</find>
+      <find>show_hc_admin_deposit/</find>
+      <find>show_admin</find>
+      <find>commit</find>
+      <find>add_admin_view</find>
+      <find>commitcommit</find>
+      <find>add_admin_router</find>
+      <find>get_admin_detail</find>
       <find>openModel</find>
-      <find>get_examine_list_yq</find>
-      <find>get_examine_list_hc</find>
-      <find>formHc</find>
-      <find>formYq</find>
-      <find>del_hc</find>
-      <find>id</find>
-      <find>formhc</find>
-      <find>show_hc_examine</find>
-      <find>data-id</find>
-      <find>show_yq_examine</find>
-      <find>commit_check1_hc</find>
-      <find>yq</find>
-      <find>data_parameter</find>
-      <find>examine_yq1_view/</find>
-      <find>data_count</find>
+      <find>unit</find>
+      <find>rank</find>
+      <find>add_admin</find>
+      <find>commit_user</find>
+      <find>edit</find>
+      <find>dataTables-example</find>
+      <find>delete_admin</find>
+      <find>delItem</find>
+      <find>submit_form_admin</find>
+      <find>addAdmin</find>
+      <find>one</find>
+      <find>dataTable()</find>
     </findStrings>
     <replaceStrings>
       <replace>未审核</replace>
@@ -251,47 +254,45 @@
         <option value="$PROJECT_DIR$/templates/index_main.html" />
         <option value="$PROJECT_DIR$/utils/date_tool.py" />
         <option value="$PROJECT_DIR$/main_app/views_router.py" />
-        <option value="$PROJECT_DIR$/templates/show/show_yq_admin_buy.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_all.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_hc_2_deposit.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_yq_all.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_hc_2.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_yq_2.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
-        <option value="$PROJECT_DIR$/templates/commit/commit_user.html" />
         <option value="$PROJECT_DIR$/utils/model_to_dic.py" />
-        <option value="$PROJECT_DIR$/templates/show/show_admin.html" />
         <option value="$PROJECT_DIR$/static/JS/exportExcel.js" />
         <option value="$PROJECT_DIR$/static/JS/excel-gen.js" />
         <option value="$PROJECT_DIR$/templates/print_demo.html" />
         <option value="$PROJECT_DIR$/main_app/views_delete.py" />
         <option value="$PROJECT_DIR$/templates/commit/commit_hc.html" />
         <option value="$PROJECT_DIR$/templates/commit/commit_yq.html" />
-        <option value="$PROJECT_DIR$/Jwc_examine/urls.py" />
-        <option value="$PROJECT_DIR$/main_app/views_add.py" />
         <option value="$PROJECT_DIR$/templates/request_list.html" />
         <option value="$PROJECT_DIR$/main_app/views_get.py" />
         <option value="$PROJECT_DIR$/main_app/views_commit.py" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_creator.html" />
         <option value="$PROJECT_DIR$/templates/check/check_hc_1.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_1.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_creator.html" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_examine.html" />
         <option value="$PROJECT_DIR$/templates/show/show_hc_examine.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_hc_2_deposit.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_yq_2.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_hc_2.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_all.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_yq_all.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_yq_admin_buy.html" />
+        <option value="$PROJECT_DIR$/templates/commit/commit_user.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_creator.html" />
+        <option value="$PROJECT_DIR$/Jwc_examine/urls.py" />
+        <option value="$PROJECT_DIR$/main_app/views_add.py" />
+        <option value="$PROJECT_DIR$/templates/show/show_admin.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1550" />
-    <option name="height" value="840" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="2400" />
+    <option name="height" value="1288" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -656,7 +657,8 @@
       <workItem from="1567091370944" duration="57000" />
       <workItem from="1567091776508" duration="168000" />
       <workItem from="1567124590505" duration="14668000" />
-      <workItem from="1567213535329" duration="7799000" />
+      <workItem from="1567213535329" duration="17200000" />
+      <workItem from="1567317225438" duration="25853000" />
     </task>
     <servers />
   </component>
@@ -666,7 +668,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="389605000" />
+    <option name="totallyTimeSpent" value="424859000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -678,16 +680,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.22441365" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.49892932" visible="true" weight="0.18976545" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16487935" />
+      <window_info id="Structure" order="1" sideWeight="0.49892932" weight="0.18967828" />
       <window_info id="Favorites" order="2" sideWeight="0.5010707" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.16568916" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3530067" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5073314" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.30058652" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -706,17 +708,17 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32942432" />
       <window_info anchor="right" id="SciView" order="5" weight="0.3297587" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21648793" />
-      <window_info id="Structure" order="1" sideWeight="0.49892932" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13166311" />
+      <window_info id="Structure" order="1" sideWeight="0.49892932" weight="0.18976545" />
       <window_info id="Favorites" order="2" sideWeight="0.5010707" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3313783" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43108505" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5073314" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.48886415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -772,72 +774,72 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>59</line>
+          <line>72</line>
           <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>60</line>
+          <line>73</line>
           <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>61</line>
+          <line>74</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>62</line>
+          <line>75</line>
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>63</line>
+          <line>76</line>
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>64</line>
+          <line>77</line>
           <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>65</line>
+          <line>78</line>
           <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>66</line>
+          <line>79</line>
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>67</line>
+          <line>80</line>
           <option name="timeStamp" value="186" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>68</line>
+          <line>81</line>
           <option name="timeStamp" value="187" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>69</line>
+          <line>82</line>
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>70</line>
+          <line>83</line>
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>72</line>
+          <line>85</line>
           <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>73</line>
+          <line>86</line>
           <option name="timeStamp" value="191" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1162,27 +1164,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>162</line>
+          <line>175</line>
           <option name="timeStamp" value="316" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>160</line>
+          <line>173</line>
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>161</line>
+          <line>174</line>
           <option name="timeStamp" value="318" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>166</line>
+          <line>179</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>115</line>
+          <line>128</line>
           <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1247,12 +1249,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>34</line>
+          <line>45</line>
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
-          <line>35</line>
+          <line>46</line>
           <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1355,6 +1357,56 @@
           <line>606</line>
           <option name="timeStamp" value="442" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="443" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="444" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="445" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="446" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="447" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="448" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="449" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="450" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="451" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_app/views_add.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="452" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/templates/commit/commit_hc.html</url>
           <line>205</line>
@@ -1368,107 +1420,8 @@
     <SUITE FILE_PATH="coverage/Jwc_examine$date_tool.coverage" NAME="date_tool Coverage Results" MODIFIED="1566308794420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_all.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="30" column="67" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="264" column="7" selection-start-line="264" selection-start-column="7" selection-end-line="264" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/forms/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1430">
-          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/db/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="946" selection-start-line="946" selection-end-line="946" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python37/Lib/json/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="292" column="16" selection-start-line="292" selection-start-column="11" selection-end-line="292" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Jwc_examine/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/db/models/query_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1283">
-          <caret line="49" column="17" lean-forward="true" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/http/response.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="498" column="8" selection-start-line="498" selection-start-column="8" selection-end-line="498" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/db/models/query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="1008" column="35" selection-start-line="1008" selection-start-column="24" selection-end-line="1008" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/core/handlers/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="113" selection-start-line="113" selection-end-line="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Envs/Consumables/Lib/site-packages/django/views/generic/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/JS/xlsx.full.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="9" column="306" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="306" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/JS/xlsx.core.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/JS/Cookies.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2750">
-          <caret line="110" column="44" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/JS/exportExcel.js" />
     <entry file="file://$PROJECT_DIR$/static/JS/FileSaver.js" />
@@ -1485,13 +1438,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/commit/commit_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1621,78 +1567,194 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
+    <entry file="file://$PROJECT_DIR$/templates/check/check_yq_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="1440">
+          <caret line="610" column="9" selection-start-line="610" selection-start-column="9" selection-end-line="610" selection-end-column="9" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#16756#17074#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_examine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#73#109#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="650">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/index_main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1225">
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_router.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="550">
+          <caret line="55" column="76" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/views_commit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="135">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_yq_2_deposit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="856">
+          <caret line="138" column="83" selection-start-line="138" selection-start-column="83" selection-end-line="138" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_2_deposit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="134" column="87" selection-start-line="134" selection-start-column="87" selection-end-line="134" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_2_buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="136" column="87" selection-start-line="136" selection-start-column="87" selection-end-line="136" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_yq_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="139" column="83" selection-start-line="139" selection-start-column="83" selection-end-line="139" selection-end-column="83" />
+          <folding>
+            <element signature="e#6362#7243#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="181" column="25" selection-start-line="181" selection-start-column="19" selection-end-line="181" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="159" column="14" selection-start-line="159" selection-start-column="14" selection-end-line="159" selection-end-column="14" />
+          <folding>
+            <element signature="e#5227#6108#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="162" column="14" lean-forward="true" selection-start-line="137" selection-start-column="12" selection-end-line="162" selection-end-column="14" />
+          <folding>
+            <element signature="e#4216#5097#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#4438#5319#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="119" column="5" lean-forward="true" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-669">
+          <caret line="159" column="14" selection-start-line="159" selection-start-column="14" selection-end-line="159" selection-end-column="14" />
+          <folding>
+            <element signature="e#5218#6099#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-200">
+          <caret line="162" column="14" lean-forward="true" selection-start-line="137" selection-start-column="12" selection-end-line="162" selection-end-column="14" />
+          <folding>
+            <element signature="e#5045#5926#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_examine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/views_router.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="142">
+          <caret line="64" column="6" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
           <folding>
             <element signature="e#24#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check/check_yq_2_buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="259" column="32" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/check/check_hc_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="598" column="5" lean-forward="true" selection-start-line="448" selection-start-column="3" selection-end-line="598" selection-end-column="5" />
+        <state relative-caret-position="109">
+          <caret line="386" column="12" selection-start-line="386" selection-start-column="12" selection-end-line="386" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Jwc_examine/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="107" column="22" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="22" />
           <folding>
-            <element signature="e#18949#23940#0#HTML" />
-            <element signature="e#22252#23133#0#HTML" />
+            <element signature="e#635#667#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="428" column="31" lean-forward="true" selection-start-line="428" selection-start-column="31" selection-end-line="428" selection-end-column="31" />
+        <state relative-caret-position="1184">
+          <caret line="207" column="25" lean-forward="true" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
           <folding>
             <element signature="e#24#60#0" expanded="true" />
             <marker date="1567138272113" expanded="true" signature="18664:18720" ph="select Teach... TMBasicInfo" />
@@ -1704,45 +1766,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_creator.html">
+    <entry file="file://$PROJECT_DIR$/main_app/views_delete.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="377" column="43" selection-start-line="377" selection-start-column="43" selection-end-line="377" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/check/check_yq_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="610" column="9" lean-forward="true" selection-start-line="610" selection-start-column="9" selection-end-line="610" selection-end-column="9" />
+        <state relative-caret-position="87">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="62" />
           <folding>
-            <element signature="e#16756#17074#0#HTML" />
+            <element signature="e#73#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/show/show_hc_creator.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="254" column="38" selection-start-line="254" selection-start-column="38" selection-end-line="254" selection-end-column="38" />
+        <state relative-caret-position="-1265">
+          <caret line="604" column="39" selection-start-line="604" selection-start-column="39" selection-end-line="604" selection-end-column="39" />
           <folding>
-            <element signature="e#17713#17738#0#HTML" />
-            <element signature="e#17779#18550#0#HTML" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#9067#9397#0#HTML" />
+            <element signature="e#29195#30076#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_examine.html">
+    <entry file="file://$PROJECT_DIR$/main_app/views_add.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+        <state relative-caret-position="141">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_examine.html">
+    <entry file="file://$PROJECT_DIR$/templates/commit/commit_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        <state relative-caret-position="-901">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-877">
+          <caret line="227" column="39" lean-forward="true" selection-start-line="227" selection-start-column="39" selection-end-line="227" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#nav#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#1;n#nav#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3134#3281#0#HTML" />
+            <element signature="e#8278#9159#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
