@@ -5,14 +5,11 @@ import time
 import json
 
 from main_app import models
-import operator  # 用来判断两个列表是否相等
-import pymssql  # 引入SqlServer数据库操作
-
-from utils.execute_sql import execute_sql_11  # 引入操作11数据库方法
 
 
 # 创建admin用户
 def add_admin(request):
+    result_data = {}
     if request.method == 'POST':
         number = request.POST.get('number')  # 工号
         name = request.POST.get('name')     # 姓名
@@ -21,21 +18,37 @@ def add_admin(request):
         data = models.AdminForm.objects.filter(admin_teacherNo=number)
         # 判断用户是否已经添加过
         if data:
-            return render(request, 'commit/commit_user.html', {'script': "alert", 'wrong': "用户已经存在！"})
+            result_data["message"] = False
+            result_data["note"] = "用户已经存在！"
         # 没有添加过，创建用户
         else:
             models.AdminForm.objects.create(admin_name=name, admin_teacherNo=number, admin_rank =rank, admin_unit=unit)
-            return render(request, 'commit/commit_user.html',{'script': "alert", 'wrong': "添加用户成功！"} )
+            result_data["message"] = True
+            result_data["note"] = "添加用户成功！"
+    return JsonResponse(data=result_data, safe=False)
+
+
+def edit_admin(request):
+    data = {}
+    if request.is_ajax():
+        admin_id = request.POST.get('edit_adminId')  # 工号
+        rank = request.POST.get('rank')     # 用户等级
+        if models.AdminForm.objects.filter(admin_id=admin_id).update(admin_rank = rank):
+            data["message"] = True
+    return JsonResponse(data=data, safe=False)
 
 
 # 删除admin用户
 def del_admin(request):
+    result_data = {}
     if request.method == 'POST':
         delete_array = request.POST.get('delete_array')
-        delete_array = delete_array.split(',')  # 将字符串分割成数组
+        delete_array = list(filter(None, delete_array.split(',')))  # 将字符串分割成数组
         for id in delete_array:
             models.AdminForm.objects.filter(admin_id=id).delete()
-        return render(request, 'show/show_admin.html', {'script': "alert", 'wrong': '操作成功！删除%s个用户！'%len(delete_array)})
+        result_data["message"] = True
+        result_data["note"] = '操作成功！删除%s个用户！'%len(delete_array)
+    return JsonResponse(data=result_data, safe=False)
 
 
 # 添加申请列表(内部函数)

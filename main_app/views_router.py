@@ -27,11 +27,6 @@ def add_yq_view(request):
     return render(request, 'commit/commit_yq.html')
 
 
-#添加用户界面跳转
-def add_admin_view(request):
-    return render(request, 'commit/commit_user.html')
-
-
 def examine_hc_1_view(request):
     return render(request, 'check/check_hc_1.html')
 

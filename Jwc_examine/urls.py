@@ -66,6 +66,7 @@ urlpatterns = [
     path('excel_add_hc/', views_add.excel_commit_hc),  # excel导入耗材数据
     path('excel_add_yq/', views_add.excel_commit_yq),  # excel导入仪器数据
     path('add_admin/', views_add.add_admin),    #创建用户
+    path('edit_admin/', views_add.edit_admin),    #创建用户
     # HC
     path('get_examine_list_hc/', views_get.get_examine_list_hc),  # 得到一级审核表
     path('get_second_examine_list_hc/', views_get.get_second_examine_list_hc),  # 得到二级审核表
