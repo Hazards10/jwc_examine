@@ -7,11 +7,9 @@
     <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
     <link href="../../static/assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="../../static/assets/css/custom-styles.css" rel="stylesheet"/>
-    <script src="../../static/JS/Cookies.js"></script>
-    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
-    <script src="../../static/assets/js/bootstrap.min.js"></script>
+   <!-- hiprint -->
+    <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
+    <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
 </head>
 
 <body class="frame_body">
@@ -92,9 +90,33 @@
         <!--End Advanced Tables -->
     </div>
 </div>
+<!-- cookies读写文件-->
+<script src="../../static/JS/Cookies.js"></script>
+<!-- jquery包 -->
+<script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
+<!-- excel 导出包-->
+<script src="../../static/JS/xlsx.core.min.js"></script>
+<!-- polyfill.min.js解决浏览器兼容性问题v6.26.0-->
+<script src="../../static/assets/hiprint/polyfill.min.js"></script>
+<!-- hiprint 核心js-->
+<script src="../../static/assets/hiprint/hiprint.bundle.js"></script>
+<!-- 调用浏览器打印窗口helper类，可自行替换-->
+<script src="../../static/assets/hiprint/plugins/jquery.hiwprint.js"></script>
+<!--datatable 插件 -->
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+<!-- 模态框依赖js文件 -->
+<script src="../../static/assets/js/bootstrap.min.js"></script>
+
 <script>
     var final_data;
     //var examine = localStorage.getItem("user_login");
+    // 导出excel表
+    function exportExcel() {
+        var table = $('#dataTables-example').DataTable();
+        let workbook = XLSX.utils.table_to_book(table.table().node());
+        XLSX.writeFile(workbook, '教务处仪器初步审核结果表.xlsx');
+    }
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
@@ -110,6 +132,32 @@
         }
         console.log(final_data);
         var table = $('#dataTables-example').DataTable({
+            "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "全部数据"]], // 更改显示记录数选项
+            "pagingType": "full_numbers", // 页脚设置
+            "language": {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "显示 _MENU_ 项结果",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            },
             "data": final_data,
             "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
                 {
