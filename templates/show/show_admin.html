@@ -80,7 +80,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <form action="/add_admin/" method="post" id="addAdmin">
+                <form action="{% url 'users:add_admin' %}" method="post" id="addAdmin">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -107,7 +107,7 @@
                             <input type="hidden" name="edit_adminId" id="edit_adminId" value="">
                         </div>
                     </div>
-
+                    {% csrf_token %}
                 </form>
             </div>
             <div class="modal-footer">
@@ -130,6 +130,7 @@
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
     var final_data;
+
     // 打开模态框
     function openModel(id, flag) {
         if (flag === "添加") {
@@ -138,7 +139,7 @@
             $("#unit").parent().show();
             $("#name").parent().show();
             $("#resetButton").show();
-            $("#submitAdmin").attr('onclick',"submit_form_admin('添加')");
+            $("#submitAdmin").attr('onclick', "submit_form_admin('添加')");
             $('#Modal').modal();
             document.getElementById('addAdmin').reset();
         } else if (flag === "修改") {
@@ -147,39 +148,39 @@
             $("#unit").parent().hide();
             $("#name").parent().hide();
             $("#resetButton").hide();
-            $("#submitAdmin").attr('onclick',"submit_form_admin('修改')");
+            $("#submitAdmin").attr('onclick', "submit_form_admin('修改')");
             $('#Modal').modal();
             // 只触发一次事件，获取到该行数据
             $('#dataTables-example tbody').one('click', 'tr', function () {
-               var rowData = $('#dataTables-example').DataTable().row(this).data();
-               $("#edit_adminId").val(rowData.admin_id);// 设置admin_id
-               if (rowData.admin_rank==="普通老师"){
-                   $("#rank").children().remove();
-                   $("#rank").append("<option value=\"普通老师\">普通老师</option>" +
-                       "<option value=\"学院领导\">学院领导</option>" +
-                       " <option value=\"教务处老师\">教务处老师</option>")
-               }
-               else if(rowData.admin_rank==="学院领导"){
-                   $("#rank").children().remove();
-                   $("#rank").append("<option value=\"学院领导\">学院领导</option>"+
-                       "<option value=\"普通老师\">普通老师</option>" +
-                       " <option value=\"教务处老师\">教务处老师</option>")
-               }
-               else {
-                   $("#rank").children().remove();
-                   $("#rank").append( " <option value=\"教务处老师\">教务处老师</option>"+"<option value=\"普通老师\">普通老师</option>" +
-                       "<option value=\"学院领导\">学院领导</option>")
-               }
+                var rowData = $('#dataTables-example').DataTable().row(this).data();
+                $("#edit_adminId").val(rowData.id);// 设置admin_id
+                if (rowData.admin_rank === "普通老师") {
+                    $("#rank").children().remove();
+                    $("#rank").append("<option value=\"普通老师\">普通老师</option>" +
+                        "<option value=\"学院领导\">学院领导</option>" +
+                        " <option value=\"教务处老师\">教务处老师</option>")
+                } else if (rowData.admin_rank === "学院领导") {
+                    $("#rank").children().remove();
+                    $("#rank").append("<option value=\"学院领导\">学院领导</option>" +
+                        "<option value=\"普通老师\">普通老师</option>" +
+                        " <option value=\"教务处老师\">教务处老师</option>")
+                } else {
+                    $("#rank").children().remove();
+                    $("#rank").append(" <option value=\"教务处老师\">教务处老师</option>" + "<option value=\"普通老师\">普通老师</option>" +
+                        "<option value=\"学院领导\">学院领导</option>")
+                }
             });
         }
     }
 
     // 添加用户
     function submit_form_admin(flag) {
-        if(flag==="添加"){
+        if (flag === "添加") {
             $.ajax({
                 async: false,
-                url: '/add_admin/',
+                url: '{% url 'users:add_admin' %}',
+                // scrf验证
+                data: { csrfmiddlewaretoken: '{{ csrf_token  }}' },
                 method: 'post',
                 contentType: "application/x-www-form-urlencoded",
                 data: $("#addAdmin").serialize(),
@@ -187,14 +188,18 @@
                     if (data.message === true) {
                         location.reload();
                     }
+                    else if(data.message===false){
+                         $('#Modal').modal('hide');
+                        document.getElementById('addAdmin').reset();
+                        alert('该用户已经添加');
+                    }
                 }
             })
 
-        }
-        else if(flag==="修改"){
+        } else if (flag === "修改") {
             $.ajax({
                 async: false,
-                url: '/edit_admin/',
+                url: '{% url 'users:edit_admin' %}',
                 method: 'post',
                 contentType: "application/x-www-form-urlencoded",
                 data: $("#addAdmin").serialize(),
@@ -206,32 +211,33 @@
             })
         }
     }
-    
+
     function delItem() {
         var delStr = "";
         var delItemLength = 0;
-         $("[name='items']:checkbox").each(function () {
+        $("[name='items']:checkbox").each(function () {
             if ($(this).prop("checked")) {
-                delStr += $(this).data("id")+',';
+                delStr += $(this).data("id") + ',';
                 delItemLength += 1;
             }
         });
-         if(confirm("确认要删除选中的" + delItemLength + "个数据吗？")){
-             $.ajax({
-            type: 'POST',
-            url: "/delete_admin/",
-            "async": false,
-            contentType: "application/x-www-form-urlencoded",
-            data:{delete_array:delStr},
-            success: function (data) {
-                if(data.message===true){
-                    location.reload();
+        if (confirm("确认要删除选中的" + delItemLength + "个数据吗？")) {
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'users:del_admin' %}",
+                "async": false,
+                contentType: "application/x-www-form-urlencoded",
+                data: {delete_array: delStr,csrfmiddlewaretoken: '{{ csrf_token  }}'},
+                success: function (data) {
+                    if (data.message === true) {
+                        location.reload();
+                    }
                 }
-            }
-        });
-         }
+            });
+        }
 
     }
+
     // 复选框全选或不全选
     function checkAll() {
         // 注意 用attr("checked")获取的属性不是bool值
@@ -244,25 +250,28 @@
         $('#number').blur(function () {
             var number = $('#number').val();
             $('#note').text('');    //设置提示字为空
-            $.post("/get_admin_detail/", {number: number}, function (data, status) {
-                if (data.message === false) {
-                    $('#note').text(data.note);
-                } else if (status != 'success') {
-                    $('#note').text('请求失败，检查网络！');
-                } else {
-                    $('#name').val(data.TeacherName);
-                    $('#unit').val(data.InstituteName);
-                }
-            })
+            $.post("{% url 'users:get_teacher_info' %}",
+                {number: number, csrfmiddlewaretoken: '{{ csrf_token  }}'},
+                function (data, status) {
+                    if (data.message === false) {
+                        $('#note').text(data.note);
+                    } else if (status != 'success') {
+                        $('#note').text('请求失败，检查网络！');
+                    } else {
+                        $('#name').val(data.TeacherName);
+                        $('#unit').val(data.InstituteName);
+                    }
+                })
         });
         //获取用户列表
         $.ajax({
-            type: 'POST',
-            url: "/get_admin_all/",
+            type: 'GET',
+            url: "{% url 'users:show_all_admin' %}",
             "async": false,
             dataType: "json",
             success: function (data) {
                 final_data = data;
+                console.log(final_data);
             }
         });
         for (var i = 0; i < final_data.length; i++) {
@@ -309,7 +318,7 @@
                     "data": "admin_rank"
                 },
                 {
-                    "data": "admin_name"
+                    "data": "username"
                 },
                 {
                     "data": "admin_teacherNo"
@@ -324,14 +333,14 @@
             "columnDefs": [
                 {
                     "render": function (data, type, row, meta) {
-                        var html = '<input type="checkbox" name="items" data-id="' + row.admin_id + '"/>';
+                        var html = '<input type="checkbox" name="items" data-id="' + row.id + '"/>';
                         return html;
                     },
                     "targets": 0,
                     "orderable": false // 取消这一行的排序
                 }, {
                     "render": function (data, type, row, meta) {
-                        var html = '<a href="javascript:void(0)" onclick="openModel(' + row.admin_id + ',\'修改\')">修改</a>';//加单引号
+                        var html = '<a href="javascript:void(0)" onclick="openModel(' + row.id + ',\'修改\')">修改</a>';//加单引号
                         return html;
                     },
                     "targets": 7

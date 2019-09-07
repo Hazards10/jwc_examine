@@ -206,7 +206,7 @@
             $("#creator").val(examine);
             document.getElementById('formYq').reset();
             $("#Modal").modal();
-            $.get("/get_examine/", function (data, status) {
+            $.get("{% url 'users:get_examine' %}", function (data, status) {
                 var term = data[0]["term"];
                 // 去除之前添加过的学期选项
                 $("#term").children().remove();

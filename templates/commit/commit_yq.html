@@ -136,7 +136,7 @@
 <script>
         // 加载文档时，获取下级审核人列表
         $(document).ready(function () {
-        $.get("/get_examine/", function (data, status) {
+        $.get("{% url 'users:get_examine' %}", function (data, status) {
             //alert("数据: " + data + "\n状态: " + status);
             var term = data[0]["term"];
             $("#term").append("<option value=" + term + ">" + term +"</option>");

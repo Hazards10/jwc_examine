@@ -447,7 +447,7 @@
             document.getElementById('formHc').reset();
             $('#Modal').modal();
             // 添加功能模态框获取下级审核人和学期
-            $.get("/get_examine/", function (data, status) {
+            $.get("{% url 'users:get_examine' %}", function (data, status) {
                 //alert("数据: " + data + "\n状态: " + status);
                 var term = data[0]["term"];
                 // 去除之前添加过的学期选项
@@ -511,7 +511,7 @@
                 // 刷新下级审核人列表
                 $.ajax({
                     async: false, //同步
-                    url: '/get_examine/',
+                    url: '{% url 'users:get_examine' %}',
                     data: {
                         id: id
                     },

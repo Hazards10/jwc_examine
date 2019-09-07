@@ -14,18 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.conf.urls import url, include
 from django.views.static import serve
 from Jwc_examine.settings import MEDIA_ROOT
+from django.views.generic import TemplateView  # 引入模板视图，只返回模板
+
 from main_app import views_router, views_add, views_commit, views_get, views_login, views_delete
+from users.views import LogoutView, LoginView # 登录、退出视图
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/<path:path>', serve, {'document_root':MEDIA_ROOT}),   # 文件映射路径
     # 路由地址
-    path('', views_router.page_login),  # 登陆界面
-    path('index/', views_router.home),  # 首页
+    #path('', views_router.page_login),  # 登陆界面
+    path('', LoginView.as_view(),name="login"),
+    path('logout/', LogoutView.as_view(), name="logout"),
+    # path('index/', views_router.home),  # 首页
+    path('index/', TemplateView.as_view(template_name="index_main.html"), name="index"),  # 首页
+
     path('request_list/', views_router.apply_list),  # 请求列表
     # HC
     path('add_hc_view/', views_router.add_hc_view),  # 创建hc
@@ -65,8 +73,8 @@ urlpatterns = [
     path('edit_yq_creator/', views_get.GetEditYqCreator.as_view()),  # 获取或编辑一条hc数据(普通老师)
     path('excel_add_hc/', views_add.excel_commit_hc),  # excel导入耗材数据
     path('excel_add_yq/', views_add.excel_commit_yq),  # excel导入仪器数据
-    path('add_admin/', views_add.add_admin),    #创建用户
-    path('edit_admin/', views_add.edit_admin),    #创建用户
+    # path('add_admin/', views_add.add_admin),    # 创建用户
+    # path('edit_admin/', views_add.edit_admin),    # 修改用户等級
     # HC
     path('get_examine_list_hc/', views_get.get_examine_list_hc),  # 得到一级审核表
     path('get_second_examine_list_hc/', views_get.get_second_examine_list_hc),  # 得到二级审核表
@@ -101,13 +109,15 @@ urlpatterns = [
     path('show_check_all_yq_deposit/', views_get.show_check_all_yq_deposit),  # 显示通过学院领导审核过的入库结果 admin
 
     # 用户管理
-    path('show_admin/', views_router.show_admin_view),   # 显示用户
-    path('get_admin_all/',views_get.show_all_admin),    # 获取用户数据接口
-    path('add_admin_router/', views_router.add_admin_view),    # 跳转添加用户界面
-    path('get_admin_detail/', views_get.get_teacher_info),  # ajax 获取教师详细信息
-    path('delete_admin/', views_add.del_admin),     # 删除用户
+    # path('show_admin/', views_router.show_admin_view),   # 显示用户
+    # path('get_admin_all/',views_get.show_all_admin),    # 获取用户数据接口
+
+    # path('get_admin_detail/', views_get.get_teacher_info),  # ajax 获取教师详细信息
+    # path('delete_admin/', views_add.del_admin),     # 删除用户
 
     # 耗材、仪器ajax获取接口
-    path('get_examine/', views_get.get_examine),  # 获取耗材表单提交的下级审核人数据
+    #path('get_examine/', views_get.get_examine),  # 获取耗材表单提交的下级审核人数据
+    # 映射用户应用的url
+    url(r'^users/', include(('users.urls', 'users'), namespace="users"))
 
 ]

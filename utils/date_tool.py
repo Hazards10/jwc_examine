@@ -3,7 +3,6 @@ __author__ = '隋宇飞'
 __date__ = '2019/5/21  20:45'
 
 from datetime import datetime
-import time
 
 
 def get_term():

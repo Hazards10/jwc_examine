@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from django.views.generic.base import View  # django视图，继承后重载get、post方法
+from django.contrib.auth import authenticate, login, logout  # 自带的权限认证函数
+from django.http import JsonResponse, HttpResponseRedirect  # json返回响应，重定向响应
+
+
 from main_app import models
-from django.http import JsonResponse
-from main_app import views_add
+
 
 
 def login(request):
