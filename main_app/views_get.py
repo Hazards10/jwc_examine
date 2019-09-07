@@ -487,59 +487,6 @@ def show_check_all_yq_deposit(request):
         return JsonResponse(model_to_dic(data_info), safe=False)
 
 
-# 显示所有用户信息
-def show_all_admin(request):
-    if request.method == 'POST':
-        data_info = models.AdminForm.objects.all()
-        return JsonResponse(model_to_dic(data_info), safe=False)
-
-#################
-### AJAX 接口
-#################
-
-
-# ajax 获取教师详细信息
-def get_teacher_info(request):
-    if request.method == 'POST':
-        number = request.POST.get('number') # 工号
-        #   查询教师姓名
-        sql = "select TeacherName from TMBasicInfo where TeacherNo='%s'"%number
-        data_name = execute_sql_11(sql)
-        print('教师姓名',data_name,type(data_name))
-        #   如果查询到结果，继续查询所属单位
-        data = {}
-        if data_name:
-            sql = "select InstituteName from BDInstitute where BDInstituteID " \
-                "in( select BDInstituteID from BDStaffRoom where BDStaffRoomID " \
-                "in( select BDStaffRoomID from TMBasicInfo where TeacherNo='%s'))"%number
-            data_institute = execute_sql_11(sql)
-            if data_institute:
-                data = data_name[0]
-                data.update(data_institute[0])
-                return JsonResponse(data, safe=False)
-            else:
-                data = {'message': False, 'note': '查询不到该用户！'}
-                return JsonResponse(data, safe=False)
-        else:
-            data = {'message': False, 'note': '查询不到该用户！'}
-            return JsonResponse(data, safe=False)
-    else:
-        data = {'message':False, 'note':'查询不到该用户！'}
-        return JsonResponse(data, safe=False)
-
-
-# 获取耗材、仪器下级审核人和当前学期（学院领导）
-def get_examine(request):
-    if request.method == "GET":
-        examine = models.AdminForm.objects.filter(admin_rank="学院领导")
-        examine = model_to_dic(examine)
-        examine_list = []
-        for name in examine:
-            examine_list.append({"admin_name": name.get("admin_name"),
-                                 "term": get_term().get("now_term")})
-        return JsonResponse(examine_list, safe=False)
-
-
 # 普通老师 获取提交的一条数据，或编辑这条数据（耗材）
 class GetEditHcCreator(View):
     def get(self, request, *args, **kwargs):

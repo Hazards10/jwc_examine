@@ -2,9 +2,7 @@
 __author__ = '隋宇飞'
 __date__ = '2019/9/6  23:17'
 
-from django.conf.urls import url
 from django.urls import path, include
-from django.views.generic import TemplateView
 
 from . import views
 

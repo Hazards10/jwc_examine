@@ -73,8 +73,7 @@ urlpatterns = [
     path('edit_yq_creator/', views_get.GetEditYqCreator.as_view()),  # 获取或编辑一条hc数据(普通老师)
     path('excel_add_hc/', views_add.excel_commit_hc),  # excel导入耗材数据
     path('excel_add_yq/', views_add.excel_commit_yq),  # excel导入仪器数据
-    # path('add_admin/', views_add.add_admin),    # 创建用户
-    # path('edit_admin/', views_add.edit_admin),    # 修改用户等級
+
     # HC
     path('get_examine_list_hc/', views_get.get_examine_list_hc),  # 得到一级审核表
     path('get_second_examine_list_hc/', views_get.get_second_examine_list_hc),  # 得到二级审核表
@@ -108,15 +107,6 @@ urlpatterns = [
     path('show_check_all_yq_buy/', views_get.show_check_all_yq_buy),  # 显示通过学院领导审核过的购买结果 admin
     path('show_check_all_yq_deposit/', views_get.show_check_all_yq_deposit),  # 显示通过学院领导审核过的入库结果 admin
 
-    # 用户管理
-    # path('show_admin/', views_router.show_admin_view),   # 显示用户
-    # path('get_admin_all/',views_get.show_all_admin),    # 获取用户数据接口
-
-    # path('get_admin_detail/', views_get.get_teacher_info),  # ajax 获取教师详细信息
-    # path('delete_admin/', views_add.del_admin),     # 删除用户
-
-    # 耗材、仪器ajax获取接口
-    #path('get_examine/', views_get.get_examine),  # 获取耗材表单提交的下级审核人数据
     # 映射用户应用的url
     url(r'^users/', include(('users.urls', 'users'), namespace="users"))
 

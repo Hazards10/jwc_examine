@@ -108,8 +108,3 @@ def show_yq_admin_deposit(request):
     return render(request, 'show/show_yq_admin_deposit.html')
 
 
-#用户管理
-def show_admin_view(request):
-    return  render(request, 'show/show_admin.html')
-
-
