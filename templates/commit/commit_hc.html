@@ -4,24 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-     <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet" />
-    <script src="../../static/JS/Cookies.js"></script>
-    <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
-    <!--excel 读取js插件 -->
-    <script src="../../static/JS/xlsx.core.min.js"></script>
-    <script src="../../static/assets/js/bootstrap.min.js"></script>
+    <link href="../../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../../static/assets/css/custom-styles.css" rel="stylesheet"/>
+    <style>
+        .form-group span.required {
+            color: red;
+            font-size: 150%;
+        }
+    </style>
 </head>
-
 <body class="frame_body">
 <div class="row">
     <div class="col-md-12">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="javascript:void(0)">创建耗材审批申请</a>
                 </div>
@@ -29,43 +26,39 @@
         </nav>
     </div>
 </div>
-</div>
 <div class="panel panel-default">
     <div class="panel-body">
         <form action="/add_hc/" method="post" id="form_hc">
+            {% csrf_token %}
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label>材料名称*</label>
+                        <label>材料名称</label><span class="required">*</span>
                         <input name="data_name" class="form-control" placeholder="材料名称">
                     </div>
                     <div class="form-group">
-                        <label>规格型号*</label>
+                        <label>规格型号</label><span class="required">*</span>
                         <input name="data_parameter" class="form-control" placeholder="规格型号">
                     </div>
                     <div class="form-group">
-                        <label>单位*</label>
+                        <label>单位</label><span class="required">*</span>
                         <input name="data_company" class="form-control" placeholder="单位">
                     </div>
 
                     <div class="form-group">
-                        <label>数量*</label>
+                        <label>数量</label><span class="required">*</span>
                         <input name="data_count" class="form-control" placeholder="数量">
                     </div>
 
                     <div class="form-group">
-                        <label>单价(元)*</label>
+                        <label>单价(元)</label><span class="required">*</span>
                         <input name="data_price" class="form-control" placeholder="单价(元)">
                     </div>
 
                     <div class="form-group">
-                        <label>金额(元)*</label>
+                        <label>金额(元)</label><span class="required">*</span>
                         <input name="data_price2" class="form-control" placeholder="金额(元)">
                     </div>
-
-                </div>
-                <!-- /.col-lg-6 (nested) -->
-                <div class="col-lg-6">
                     <div class="form-group">
                         <label>使用日期</label>
                         <input type="date" name="data_usedate" class="form-control" placeholder="使用日期">
@@ -75,26 +68,52 @@
                         <input name="data_person" class="form-control" placeholder="验收负责人">
                     </div>
 
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label>备注</label>
                         <input name="data_remark" class="form-control" placeholder="备注">
                     </div>
                     <div class="form-group">
-                        <label>使用学期</label>
+                        <label>所属课程名称</label><span class="required">*</span>
+                        <input name="course_name" class="form-control" id="course_name" placeholder="所属课程名称">
+                    </div>
+                    <div class="form-group">
+                        <label>实验项目名称</label><span class="required">*</span>
+                        <input name="experiment_name" class="form-control" id="experiment_name" placeholder="实验项目名称">
+                    </div>
+                    <div class="form-group">
+                        <label>实验班级</label><span class="required">*</span>
+                        <input name="class_name" class="form-control" id="class_name" placeholder="实验班级">
+                    </div>
+                    <div class="form-group">
+                        <label>实验人数</label><span class="required">*</span>
+                        <input name="experiment_number" class="form-control" id="experiment_number" placeholder="实验人数">
+                    </div>
+                    <div class="form-group">
+                        <label>使用学期</label><span class="required">*</span>
                         <select name="term" class="form-control" id="term">
+                            {# 显示当前学期 #}
+                            <option value="{{ term }}">{{ term }}</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label id="examine_label">下级审核人*</label>
+                        <label id="examine_label">下级审核人</label><span class="required">*</span>
                         <select name="examine" class="form-control" id="examine">
+                            <option value="务必选择正确的下级审核人">务必选择正确的下级审核人</option>
+                            {#   渲染下级审核人列表    #}
+                            {% for examine in examines %}
+                                <option value="{{examine.username}}">{{examine.username}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <input type="hidden" name="data_type" value="0">
-                    <input type="hidden" name="creator" id="creator" value="0">
                     <div class="form-group">
                         <button type="button" class="btn btn-success btn-lg" onclick="submit_form_hc()">提交</button>
                         <button type="reset" class="btn btn-danger btn-lg">重置</button>
                     </div>
+
                 </div>
                 <!-- /.col-lg-6 (nested) -->
             </div>
@@ -116,7 +135,8 @@
                         <div class="modal-body" style="height: 100px;">
                             <input id="file" type="file" class="btn btn-primary">
                             <div class="col-md-7 col-md-offset-5" style="margin-top: 15px;">
-                                <a href="/media/耗材导入demo.xlsx" target="_blank" title="耗材导入Excel模板" textvalue="耗材导入Excel模板">不知道Excel导入格式？点击下载耗材导入模板</a>
+                                <a href="/media/耗材导入demo.xlsx" target="_blank" title="耗材导入Excel模板"
+                                   textvalue="耗材导入Excel模板">不知道Excel导入格式？点击下载耗材导入模板</a>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -133,29 +153,16 @@
     <!-- /.row (nested) -->
 </div>
 <!-- /.panel-body -->
-</div>
+
+<script src="../../static/JS/Cookies.js"></script>
+<script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+<!--excel 读取js插件 -->
+<script src="../../static/JS/xlsx.core.min.js"></script>
+<script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
-    // 加载文档时，获取下级审核人列表
-    $(document).ready(function () {
-        $.get("{% url 'users:get_examine' %}",function(data,status){
-			//alert("数据: " + data + "\n状态: " + status);
-            var term = data[0]["term"];
-            $("#term").append("<option value=" + term + ">" + term +"</option>");
-			if(status=='success'&&data.length>0){
-			    // 获得数据后，添加选择项
-			    $("#examine").append("<option value=\"务必选择正确的下级审核人\">务必选择正确的下级审核人</option>")
-			    for (var i=0; i<data.length; i++){
-			        var text = data[i]["admin_name"];
-			        $("#examine").append("<option value="+text+">"+text+"</option>")
-                }
-            }
-			// 获取数据失败，下级审核项变填空项
-			else {
-			    $("#examine").remove();
-			    $("#examine_label").after("<input name=\"examine\" id=\"examine\" class=\"form-control\" placeholder=\"务必填写正确的下级审核人\">");
-            }
-		});
-    });
+
     // 检验后提交表单
     function submit_form_hc() {
         var data_time = $("input[name='data_name']").val(),
@@ -164,31 +171,32 @@
             data_count = $("input[name='data_count']").val(),
             data_price = $("input[name='data_price']").val(),
             data_price2 = $("input[name='data_price2']").val(),
-            //data_usedate = $("input[name='data_usedate']").val(),
-            //data_person = $("input[name='data_person']").val(),
-            //data_remark = $("input[name='data_remark']").val(),
-            //term = $("select[name='term']").val(),
             examine = $("select[name='examine']").val(),
             data_type = $("input[name='data_type']").val(),
-            creator = $("input[name='creator']").val()
-        var test_list = [data_time,data_company,data_count,data_parameter,data_price,data_price2
-            ,data_type,creator,examine];
-        for (var i=0; i<test_list.length; i++){
-            if(test_list[i]==""){
+            course_name = $("#course_name").val(),
+            experiment_name = $("#experiment_name").val(),
+            class_name = $("#class_name").val(),
+            experiment_number =$("#experiment_number").val();
+        var test_list = [data_time, data_company, data_count, data_parameter, data_price, data_price2
+            , data_type, examine,course_name,experiment_name,class_name,experiment_number];
+        for (var i = 0; i < test_list.length; i++) {
+            if (test_list[i] == "") {
                 alert("提交的信息中，*号项不能为空！");
                 return;
             }
         }
         // ajax获取下级审核人成功或失败后，错误提交信息判断
-        if(examine=="务必选择正确的下级审核人"||examine=="务必填写正确的下级审核人"){
+        if (examine == "务必选择正确的下级审核人") {
             alert("请选择下级审核人！");
             return;
         }
         $("#form_hc").submit();
     }
+
     var creator = getCookie('user');
     $('#creator').val(creator);
     var excel_file;
+
     // 读取本地excel文件
     function readWorkbookFromLocalFile(file, callback) {
         var reader = new FileReader();
@@ -202,6 +210,7 @@
         };
         reader.readAsBinaryString(file);
     }
+
     // 读取excel工作簿
     function readWorkbook(workbook) {
         var sheetNames = workbook.SheetNames; // 工作表名称集合
@@ -209,14 +218,14 @@
         var data_json = XLSX.utils.sheet_to_json(worksheet);
         console.log(data_json);
         var colume_list = data_json[0];
-        var standard = ["计划编号","材料名称", "规格型号", "单位", "数量", "单价(元)", "金额(元)", "使用日期", "验收领用负责人", "使用学期", "备注", "下级审核人"];
+        var standard = ["计划编号", "材料名称", "规格型号", "单位", "数量", "单价(元)", "金额(元)", "使用日期", "验收领用负责人", "使用学期", "备注", "下级审核人"];
         var compare = true;
         // 检验excle格式
         for (var key in colume_list) {
             if (compare == true) {
                 for (var i = 0; i < standard.length; i++) {
                     compare = false;
-                    if (key ==standard[i]) {
+                    if (key == standard[i]) {
                         compare = true;
                         break;
                     }
@@ -241,8 +250,7 @@
                     if (data == "true") {
                         alert("导入成功");
                         $('#file').val('');
-                    }
-                    else {
+                    } else {
                         alert("导入失败");
                         $('#file').val('');
                     }
@@ -250,6 +258,7 @@
             });
         }
     }
+
     //监听上传文件变化，检查excle格式
     $(function () {
         document.getElementById('file').addEventListener('change', function (e) {
@@ -262,17 +271,17 @@
                 return;
             }
         });
-     });
+    });
+
     // 上传excel文件
     function upload_excel() {
-            if (excel_file==undefined)
-            {
-                alert('请选择要上传的excel文件！');
-                return;
-            }
-            readWorkbookFromLocalFile(excel_file, function (workbook) {
-                    readWorkbook(workbook);
-            });
+        if (excel_file == undefined) {
+            alert('请选择要上传的excel文件！');
+            return;
+        }
+        readWorkbookFromLocalFile(excel_file, function (workbook) {
+            readWorkbook(workbook);
+        });
     }
 
 </script>

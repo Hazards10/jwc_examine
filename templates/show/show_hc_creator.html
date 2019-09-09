@@ -22,6 +22,11 @@
         .xftb table tbody th:first-child td:first-child {
             width: 400px;
         }
+
+        .form-group span.required {
+            color: red;
+            font-size: 150%;
+        }
     </style>
 </head>
 
@@ -73,10 +78,16 @@
                         <th>使用日期</th>
                         <th>验收领用人</th>
                         <th>学期</th>
+                        <th>所属课程名称</th>
+                        <th>实验项目名称</th>
+                        <th>实验班级</th>
+                        <th>实验人数</th>
                         <th>备注</th>
                         <th>创建者</th>
                         <th>下级审核人</th>
                         <th>审核状态</th>
+                        <th>入库状态</th>
+                        <th>购买状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -101,39 +112,37 @@
             </div>
             <div class="modal-body">
                 <form id="formHc">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>材料名称*</label>
+                                <label>材料名称</label><span class="required">*</span>
                                 <input name="data_name" id="data_name" class="form-control" placeholder="材料名称">
                             </div>
                             <div class="form-group">
-                                <label>规格型号*</label>
+                                <label>规格型号</label><span class="required">*</span>
                                 <input name="data_parameter" id="data_parameter" class="form-control"
                                        placeholder="规格型号">
                             </div>
                             <div class="form-group">
-                                <label>单位*</label>
+                                <label>单位</label><span class="required">*</span>
                                 <input name="data_company" id="data_company" class="form-control" placeholder="单位">
                             </div>
 
                             <div class="form-group">
-                                <label>数量*</label>
+                                <label>数量</label><span class="required">*</span>
                                 <input name="data_count" id="data_count" class="form-control" placeholder="数量">
                             </div>
 
                             <div class="form-group">
-                                <label>单价(元)*</label>
+                                <label>单价(元)</label><span class="required">*</span>
                                 <input name="data_price" id="data_price" class="form-control" placeholder="单价(元)">
                             </div>
 
                             <div class="form-group">
-                                <label>金额(元)*</label>
+                                <label>金额(元)</label><span class="required">*</span>
                                 <input name="data_price2" id="data_price2" class="form-control" placeholder="金额(元)">
                             </div>
-
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>使用日期</label>
                                 <input type="date" name="data_usedate" id="data_usedate" class="form-control"
@@ -143,22 +152,41 @@
                                 <label>验收负责人</label>
                                 <input name="data_person" id="data_person" class="form-control" placeholder="验收负责人">
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>所属课程名称</label><span class="required">*</span>
+                                <input name="course_name" class="form-control" id="course_name" placeholder="所属课程名称">
+                            </div>
+                            <div class="form-group">
+                                <label>实验项目名称</label><span class="required">*</span>
+                                <input name="experiment_name" class="form-control" id="experiment_name"
+                                       placeholder="实验项目名称">
+                            </div>
+                            <div class="form-group">
+                                <label>实验班级</label><span class="required">*</span>
+                                <input name="class_name" class="form-control" id="class_name" placeholder="实验班级">
+                            </div>
+                            <div class="form-group">
+                                <label>实验人数</label><span class="required">*</span>
+                                <input name="experiment_number" class="form-control" id="experiment_number"
+                                       placeholder="实验人数">
+                            </div>
                             <div class="form-group">
                                 <label>备注</label>
                                 <input name="data_remark" id="data_remark" class="form-control" placeholder="备注">
                             </div>
                             <div class="form-group">
-                                <label>使用学期</label>
+                                <label>使用学期</label><span class="required">*</span>
                                 <select name="term" class="form-control" id="term">
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label id="examine_label">下级审核人*</label>
+                                <label id="examine_label">下级审核人</label><span class="required">*</span>
                                 <select name="examine" class="form-control" id="examine">
                                 </select>
                             </div>
                             <input type="hidden" name="data_type" value="0">
-                            <input type="hidden" name="creator" id="creator" value="0">
                             <input type="hidden" name="data_id" id="edit_data_id" value="">
                         </div>
                     </div>
@@ -174,8 +202,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -192,9 +218,6 @@
 <!-- 模态框依赖js文件 -->
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
-    var creator = getCookie('user');
-    // 设置用户值
-    $('#creator').val(creator);
 
     // 复选框全选或不全选
     function checkAll() {
@@ -228,7 +251,8 @@
                 type: 'post',
                 url: "/del_hc/",
                 data: {
-                    delStr: delStr
+                    delStr: delStr,
+                    csrfmiddlewaretoken: '{{ csrf_token  }}'
                 },
                 "async": false,
                 traditional: true,
@@ -497,8 +521,11 @@
                             $("#data_price").val(data[0].data_price);
                             $("#data_price2").val(data[0].data_price2);
                             $("#data_remark").val(data[0].data_remark);
-                            $("#Creator").val(creator);
                             $("#data_usedate").val(data[0].data_usedate);
+                            $("#experiment_name").val(data[0].experiment_name);
+                            $("#experiment_number").val(data[0].experiment_number);
+                            $("#class_name").val(data[0].class_name);
+                            $("#course_name").val(data[0].course_name);
                             var term = data[0]["term"];
                             $("#term").children().remove();
                             $("#term").append("<option value=" + term + ">" + term + "</option>");
@@ -547,9 +574,12 @@
             data_price2 = $("#data_price2").val(),
             examine = $("#examine").val(),
             data_type = $("input[name='data_type']").val(),
-            creator = $("#creator").val();
+            course_name = $("#course_name").val(),
+            experiment_name = $("#experiment_name").val(),
+            class_name = $("#class_name").val(),
+            experiment_number = $("#experiment_number").val();
         var test_list = [data_name, data_company, data_count, data_parameter, data_price, data_price2
-            , data_type, creator, examine];
+            , data_type, examine, class_name, course_name, experiment_name, experiment_number];
         for (var i = 0; i < test_list.length; i++) {
             if (test_list[i] == "") {
                 alert("提交的信息中，*号项不能为空！");
@@ -557,7 +587,7 @@
             }
         }
         // ajax获取下级审核人成功或失败后，错误提交信息判断
-        if (examine == "务必选择正确的下级审核人" || examine == "务必填写正确的下级审核人") {
+        if (examine == "务必选择正确的下级审核人") {
             alert("请选择下级审核人！");
             return;
         }
@@ -608,7 +638,7 @@
             "ajax": {
                 "type": "POST",
                 "url": "/show_check_hc_creator/",
-                "data": {creator: creator},
+                "data": {csrfmiddlewaretoken: '{{ csrf_token  }}'},
                 "dataSrc": "data" //从json数据中获取key为data的值
             },
             "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
@@ -646,6 +676,18 @@
                     "data": "term"
                 },
                 {
+                    "data": "course_name"
+                },
+                {
+                    "data": "experiment_name"
+                },
+                {
+                    "data": "class_name"
+                },
+                {
+                    "data": "experiment_number"
+                },
+                {
                     "data": "data_remark"
                 },
                 {
@@ -655,13 +697,22 @@
                     "data": "examine"
                 },
                 {
+                    "data": "check_1"
+                },
+                {
+                    "data": "is_deposit"
+                },
+                {
+                    "data": "is_buy"
+                },
+                {
                     "data": null
                 }
             ],
             "columnDefs": [
                 {
                     "render": function (data, type, row, meta) {
-                        var html = '<input type="checkbox" name="items" data-id="'  + row.data_id + '" data-check_1="' + row.check_1 + '"/>';
+                        var html = '<input type="checkbox" name="items" data-id="' + row.data_id + '" data-check_1="' + row.check_1 + '"/>';
                         return html;
                     },
                     "targets": 0,
@@ -672,7 +723,7 @@
                         var html = '<a href="javascript:void(0)" onclick="openModel(' + '\'' + row.data_id + '\'' + ',' + row.check_1 + ',\'修改\')">修改</a>';//加单引号
                         return html;
                     },
-                    "targets": 15
+                    "targets": 21
                 },
                 {
                     "searchable": false,
@@ -681,13 +732,41 @@
                 },
                 {
                     // 定义操作列,######以下是重点########
-                    "targets": 14, //操作按钮目标列
+                    "targets": 18, //操作按钮目标列
                     "render": function (data, type, row) {
                         var text = "";
-                        if (data.check_1) {
+                        if (data) {
                             text = "已批准";
                         } else {
                             text = "未批准"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+                {
+                    // 定义操作列,######以下是重点########
+                    "targets": 19, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已入库";
+                        } else {
+                            text = "未入库"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+                {
+                    // 定义操作列,######以下是重点########
+                    "targets": 20, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已购买";
+                        } else {
+                            text = "未购买"
                         }
                         var html = "<div align='center' id='text'>" + text + "</div>";
                         return html;
@@ -725,6 +804,7 @@
                 }
             }
         });
+
     });
 </script>
 </body>

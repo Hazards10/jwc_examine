@@ -89,8 +89,6 @@
         <!--End Advanced Tables -->
     </div>
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -108,7 +106,6 @@
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
     var final_data;
-    var admin = getCookie('user');
     // 导出excel表
     function exportExcel() {
         var table = $('#dataTables-example').DataTable();
@@ -121,7 +118,7 @@
             type: 'POST',
             url: "/get_second_examine_buy_list_yq/",
             data: {
-                admin_name: admin
+                csrfmiddlewaretoken: '{{ csrf_token  }}'
             },
             "async": false,
             dataType: "json",
@@ -227,14 +224,13 @@
             var i = row_data['index'];
             final_data[i]["is_buy"] = !final_data[i]["is_buy"];
             var post_check = final_data[i]["is_buy"];
-            var admin_name = getCookie('user');
             var return_code;
             $.ajax({
                 type: 'POST',
                 url: "/commit_check2_yq_buy/",
                 data: {
                     data_id: row_data["data_id"],
-                    admin_name: admin_name,
+                    csrfmiddlewaretoken: '{{ csrf_token  }}',
                     flag: post_check
                 },
                 "async": false,
@@ -261,14 +257,13 @@
             var id_array = [];
             $('tr').children().each(function () {
                 if ($(this).text() == '未购买') {
-                    var admin_name = getCookie('user');
                     var data_id = $(this).parent().children().first().text();
                     $.ajax({
                         type: 'POST',
                         url: "/commit_check2_yq_buy/",
                         data: {
                             data_id: data_id,
-                            admin_name: admin_name,
+                            csrfmiddlewaretoken: '{{ csrf_token  }}',
                             flag: 'true'
                         },
                         "async": false,

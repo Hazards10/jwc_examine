@@ -148,3 +148,7 @@ CACHES = {
 }
 APPEND_SLASH = False
 
+# session 设置
+SESSION_COOKIE_AGE = 60 * 60 * 60 * 24 * 7  # 设置过期时间为一周，默认为两周
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # 设置关闭浏览器时失效

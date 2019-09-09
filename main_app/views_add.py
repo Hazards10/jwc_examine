@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 import time
 import json
 
 from main_app import models
+from users.models import UserProfile
+from utils.date_tool import get_term
 
 
 # 添加申请列表(内部函数)
@@ -35,7 +38,7 @@ def add_yq(request):
         data_price2 = request.POST.get("data_price2")
         data_company2 = request.POST.get("data_company2")
         data_parameter = request.POST.get("data_parameter")
-        creator = request.POST.get("creator")
+        creator = json.loads(request.COOKIES.get("user"))
         examine = request.POST.get("examine")
         data_type = request.POST.get("data_type")
         # log添加
@@ -47,7 +50,9 @@ def add_yq(request):
         if request.is_ajax():
             return JsonResponse({"message": True}, safe=False)
         else:
-            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
+            examine = UserProfile.objects.filter(admin_rank="学院领导")
+            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功', "examines":
+                                                             examine, "term": get_term().get("now_term")})
 
 
 # 添加数据(耗材数据)
@@ -64,19 +69,28 @@ def add_hc(request):
         data_usedate = request.POST.get("data_usedate")
         data_person = request.POST.get("data_person")
         data_remark = request.POST.get("data_remark")
-        creator = request.POST.get("creator")
+        # 将cookies转换为中文
+        creator = json.loads(request.COOKIES.get("user"))
         examine = request.POST.get("examine")
         data_type = request.POST.get("data_type")
+        course_name = request.POST.get("course_name")
+        experiment_name = request.POST.get("experiment_name")
+        class_name = request.POST.get("class_name")
+        experiment_number = request.POST.get("experiment_number")
         # 日志添加
         add_log_self(creator, examine, data_type)
         models.CheckFormHC.objects.create(date=date, term=term, data_name=data_name, data_parameter=data_parameter,
                                           data_company=data_company, data_count=data_count, data_price=data_price,
                                           data_price2=data_price2, data_usedate=data_usedate, data_person=data_person,
-                                          data_remark=data_remark, creator=creator, examine=examine)
+                                          data_remark=data_remark, creator=creator, examine=examine, course_name=
+                                          course_name, experiment_name=experiment_name, class_name=class_name,
+                                          experiment_number=experiment_number)
         if request.is_ajax():
             return JsonResponse({"message": True}, safe=False)
         else:
-            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功'})
+            examine = UserProfile.objects.filter(admin_rank="学院领导")
+            return render(request, 'commit/commit_hc.html', {'script': "alert", 'wrong': '提交成功', "examines":
+                                                             examine, "term": get_term().get("now_term")})
 
 
 # excel导入hc

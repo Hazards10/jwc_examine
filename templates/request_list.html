@@ -7,10 +7,7 @@
     <link href="../static/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap.css" rel="stylesheet"/>
     <link href="../static/assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="../static/assets/css/custom-styles.css" rel="stylesheet"/>
-    <script src="../static/JS/Cookies.js"></script>
-    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
-    <script src="../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
+
 </head>
 
 <body class="frame_body">
@@ -18,7 +15,6 @@
     <div class="col-md-12">
         <h1 class="page-header">
             申请列表
-            <small>Responsive tables</small>
         </h1>
     </div>
 </div>
@@ -58,15 +54,17 @@
         <!--End Advanced Tables -->
     </div>
 </div>
+<script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+<script src="../static/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script src="../static/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap.js"></script>
 <script>
     var final_data;
-    var user_b = getCookie('user');
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: "/get_request_list/",
             data: {
-                user_b: user_b
+                csrfmiddlewaretoken: '{{ csrf_token  }}'
             },
             "async": false,
             dataType: "json",

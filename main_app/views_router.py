@@ -1,18 +1,6 @@
 from django.shortcuts import render
-from django.forms.models import model_to_dict
-from main_app import models
-from django.http import HttpResponse
-from django.http import JsonResponse
-import time
-from django.core.cache import cache
-
-
-def page_login(request):
-    return render(request, 'login.html')
-
-
-def home(request):
-    return render(request, 'index_main.html')
+from users.models import UserProfile
+from utils.date_tool import get_term
 
 
 def apply_list(request):
@@ -20,19 +8,33 @@ def apply_list(request):
 
 
 def add_hc_view(request):
-    return render(request, 'commit/commit_hc.html')
+    """
+    创建新耗材表页视图
+    :param request:
+    :return:
+    """
+    examine = UserProfile.objects.filter(admin_rank="学院领导")
+    return render(request, 'commit/commit_hc.html', {"examines": examine, "term": get_term().get("now_term") })
 
 
 def add_yq_view(request):
-    return render(request, 'commit/commit_yq.html')
+    """
+    创建新仪器表页视图
+    :param request:
+    :return:
+    """
+    examine = UserProfile.objects.filter(admin_rank="学院领导")
+    return render(request, 'commit/commit_yq.html', { "examines": examine, "term": get_term().get("now_term")})
 
 
 def examine_hc_1_view(request):
-    return render(request, 'check/check_hc_1.html')
+    examine = UserProfile.objects.filter(admin_rank="学院领导")
+    return render(request, 'check/check_hc_1.html', { "examines": examine, "term": get_term().get("now_term")})
 
 
 def examine_yq_1_view(request):
-    return render(request, 'check/check_yq_1.html')
+    examine = UserProfile.objects.filter(admin_rank="学院领导")
+    return render(request, 'check/check_yq_1.html', { "examines": examine, "term": get_term().get("now_term")})
 
 
 def examine_hc_1_single_view(request):

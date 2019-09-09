@@ -122,6 +122,7 @@
                 url: '/get_second_examine_deposit_list_hc/',
                 "async": false,
                 dataType: "json",
+                data:{ csrfmiddlewaretoken: '{{ csrf_token  }}' },
                 success: function (data) {
                     final_data = data;
                     console.log(final_data);
@@ -231,7 +232,7 @@
                 var i = row_data['index'];
                 final_data[i]['is_deposit'] = !final_data[i]['is_deposit'];
                 var post_check = final_data[i]['is_deposit'];
-                var admin_name = getCookie('user');
+
                 var return_code;
                 $.ajax({
                     type: 'POST',
@@ -239,7 +240,7 @@
                     data: {
                         data_id: row_data["data_id"],
                         flag: post_check,
-                        admin_name: admin_name
+                        csrfmiddlewaretoken: '{{ csrf_token  }}'
                     },
                     "async": false,
                     dataType: "json",
@@ -267,15 +268,15 @@
                 var id_array = [];
                 $('tr').children().each(function () {
                     if($(this).text()=='未入库'){
-                        var admin_name = getCookie('user');
+
                         var data_id = $(this).parent().children().first().text();
                         $.ajax({
                             type: 'POST',
                             url: '/commit_check2_hc_deposit/',
                             data: {
                                 data_id:data_id,
-                                admin_name:admin_name ,
-                                flag: 'true'
+                                flag: 'true',
+                                csrfmiddlewaretoken: '{{ csrf_token  }}'
                             },
                             "async": false,
                             dataType: "json",

@@ -1,3 +1,5 @@
+import json
+
 from main_app import models
 from django.http import JsonResponse
 from main_app import views_add
@@ -8,7 +10,7 @@ def commit_check1_hc(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         user_a = request.POST.get('user_a')
-        user_b = request.POST.get('user_b')
+        user_b =json.loads(request.COOKIES.get('user'))
         check_1 = request.POST.get('check_1')
         if check_1 == "true":
             models.CheckFormHC.objects.filter(data_id=index).update(check_1=False)
@@ -22,7 +24,7 @@ def commit_check1_hc(request):
 def commit_check1_yq(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
-        user_b = request.POST.get('user_b')
+        user_b = json.loads(request.COOKIES.get('user'))
         user_a = request.POST.get('user_a')
         check_1 = request.POST.get('check_1')
         if check_1 == "true":
@@ -38,7 +40,7 @@ def commit_check2_hc(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         check_2 = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if check_2 == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name
@@ -56,7 +58,7 @@ def commit_check2_hc_buy(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         is_buy = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if is_buy == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name
@@ -74,7 +76,7 @@ def commit_check2_hc_deposit(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         is_deposit = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if is_deposit == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name
@@ -92,7 +94,7 @@ def commit_check2_yq(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         check_2 = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if check_2 == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name
@@ -105,12 +107,13 @@ def commit_check2_yq(request):
             models.CheckFormYQ.objects.filter(data_id=index).update(**filter_dic)
         return JsonResponse("true", safe=False)
 
+
 # 第二级审核购买标记提交(HC)
 def commit_check2_yq_buy(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         is_buy = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if is_buy == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name
@@ -128,7 +131,7 @@ def commit_check2_yq_deposit(request):
     if request.is_ajax():
         index = request.POST.get('data_id')
         is_deposit = request.POST.get('flag')
-        admin_name = request.POST.get('admin_name')
+        admin_name = json.loads(request.COOKIES.get('user'))
         if is_deposit == "true":
             filter_dic = dict()
             filter_dic['admin'] = admin_name

@@ -80,6 +80,8 @@
                         <th>创建者</th>
                         <th>下级审核人</th>
                         <th>审核状态</th>
+                        <th>入库状态</th>
+                        <th>购买状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -104,6 +106,7 @@
             </div>
             <div class="modal-body">
                 <form id="formYq">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -153,7 +156,6 @@
                                 </select>
                             </div>
                             <input type="hidden" name="data_type" value="1">
-                            <input type="hidden" name="creator" id="creator" value="">
                             <input type="hidden" name="data_id" id="edit_data_id" value="">
                         </div>
                         <!-- /.col-lg-6 (nested) -->
@@ -170,8 +172,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -188,9 +188,6 @@
 <!-- 模态框依赖js文件 -->
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
-    var creator = getCookie('user');
-    // 设置用户值
-    $('#creator').val(creator);
 
     // 复选框全选或不全选
     function checkAll() {
@@ -278,10 +275,9 @@
             data_price2 = $("input[name='data_price2']").val(),
             data_company2 = $("input[name='data_company2']").val(),
             examine = $("select[name='examine']").val(),
-            data_type = $("input[name='data_type']").val(),
-            creator = $("input[name='creator']").val();
+            data_type = $("input[name='data_type']").val();
         var test_list = [data_name, data_parameter, data_company, data_count, data_price, data_price2, data_company2,
-            examine, data_type, creator];
+            examine, data_type];
         for (var i = 0; i < test_list.length; i++) {
             if (test_list[i] == "") {
                 alert("提交的信息中，*号项不能为空！");
@@ -507,6 +503,7 @@
             delete data.is_deposit;
             delete data.check_2;
             delete data.date;
+            data.data_parameter = data.data_parameter.substring(0,200);
             if (data.check_1 === true) {
                 data["check_1"] = "已审核"
             } else {
@@ -534,7 +531,7 @@
             "ajax": {
                 "type": "POST",
                 "url": "/show_check_yq_creator/",
-                "data": {creator: creator},
+                "data": { csrfmiddlewaretoken: '{{ csrf_token  }}'},
                 "dataSrc": "data" //从json数据中获取key为data的值
             },
             "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
@@ -575,6 +572,11 @@
                     "data": "examine"
                 },
                 {
+                    "data": "is_deposit"
+                },{
+                    "data": "is_buy"
+                },
+                {
                     "data": null
                 }
             ],
@@ -598,17 +600,45 @@
                         var html = '<a href="javascript:void(0)" onclick="openModel(' + '\'' + row.data_id + '\'' + ',' + row.check_1 + ',\'修改\')">修改</a>';//加单引号
                         return html;
                     },
-                    "targets": 13
+                    "targets": 15
                 },
                 {
                     // 定义操作列,######以下是重点########
                     "targets": 12, //操作按钮目标列
                     "render": function (data, type, row) {
                         var text = "";
-                        if (data["check_1"]) {
+                        if (data) {
                             text = "已批准";
                         } else {
                             text = "未批准"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+            {
+                    // 定义操作列,######以下是重点########
+                    "targets": 13, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已入库";
+                        } else {
+                            text = "未入库"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+                {
+                    // 定义操作列,######以下是重点########
+                    "targets": 14, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已购买";
+                        } else {
+                            text = "未购买"
                         }
                         var html = "<div align='center' id='text'>" + text + "</div>";
                         return html;

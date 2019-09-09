@@ -10,6 +10,24 @@
     <!-- hiprint -->
     <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
     <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
+    <style>
+        .dataTable th {
+            white-space: nowrap !important;
+        }
+
+        .div_full_private {
+            width: 100%;
+        }
+
+        .xftb table tbody th:first-child td:first-child {
+            width: 400px;
+        }
+
+        .form-group span.required {
+            color: red;
+            font-size: 150%;
+        }
+    </style>
 </head>
 
 <body class="frame_body">
@@ -42,7 +60,7 @@
         </nav>
     </div>
 </div>
-</div>
+
 
 <!-- /. ROW  -->
 
@@ -51,19 +69,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-body">
-                <style>
-                    .dataTable th {
-                        white-space: nowrap !important;
-                    }
 
-                    .div_full_private {
-                        width: 100%;
-                    }
-
-                    .xftb table tbody th:first-child td:first-child {
-                        width: 400px;
-                    }
-                </style>
                 <table class="table table-striped table-bordered table-hover div_full_private xftb"
                        id="dataTables-example">
                     <thead>
@@ -80,6 +86,8 @@
                         <th>学期</th>
                         <th>创建人</th>
                         <th>审核状态</th>
+                        <th>已入库状态</th>
+                        <th>已购买状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -104,29 +112,30 @@
             </div>
             <div class="modal-body">
                 <form id="formYq">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>设备名称*</label>
+                                <label>设备名称</label><span class="required">*</span>
                                 <input name="data_name" id="data_name" class="form-control" placeholder="设备名称">
                             </div>
                             <div class="form-group">
-                                <label>规格及技术参数*</label>
+                                <label>规格及技术参数</label><span class="required">*</span>
                                 <textarea class="form-control" name="data_parameter" id="data_parameter"
                                           placeholder="规格及技术参数"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>单位*</label>
+                                <label>单位</label><span class="required">*</span>
                                 <input name="data_company" id="data_company" class="form-control" placeholder="单位">
                             </div>
 
                             <div class="form-group">
-                                <label>数量*</label>
+                                <label>数量</label><span class="required">*</span>
                                 <input name="data_count" id="data_count" class="form-control" placeholder="数量">
                             </div>
 
                             <div class="form-group">
-                                <label>预算单价(万元)*</label>
+                                <label>预算单价(万元)</label><span class="required">*</span>
                                 <input name="data_price" id="data_price" class="form-control" placeholder="预算单价(万元)">
                             </div>
 
@@ -134,12 +143,12 @@
                         <!-- /.col-lg-6 (nested) -->
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>预算金额(万元)*</label>
+                                <label>预算金额(万元)</label><span class="required">*</span>
                                 <input name="data_price2" id="data_price2" class="form-control" placeholder="预算金额(万元)">
                             </div>
 
                             <div class="form-group">
-                                <label>使用单位*</label>
+                                <label>使用单位</label><span class="required">*</span>
                                 <input name="data_company2" id="data_company2" class="form-control" placeholder="使用单位">
                             </div>
                             <div class="form-group">
@@ -148,12 +157,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label id="examine_label">下级审核人*</label>
+                                <label id="examine_label">下级审核人</label><span class="required">*</span>
                                 <select name="examine" class="form-control" id="examine">
                                 </select>
                             </div>
                             <input type="hidden" name="data_type" value="1">
-                            <input type="hidden" name="creator" id="creator" value="">
                             <input type="hidden" name="data_id" id="edit_data_id" value="">
                         </div>
                         <!-- /.col-lg-6 (nested) -->
@@ -170,8 +178,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -189,8 +195,6 @@
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
 
-    var examine = getCookie('user');
-
     // 复选框全选或不全选
     function checkAll() {
         // 注意 用attr("checked")获取的属性不是bool值
@@ -203,7 +207,6 @@
             $("#ModalLabel").text("添加仪器审核信息");
             $("#submitYq").attr("onclick", "submit_form_yq('添加')");
             $("#resetButton").removeClass("hidden");
-            $("#creator").val(examine);
             document.getElementById('formYq').reset();
             $("#Modal").modal();
             $.get("{% url 'users:get_examine' %}", function (data, status) {
@@ -256,7 +259,6 @@
                             $("#data_price").val(data[0].data_price);
                             $("#data_price2").val(data[0].data_price2);
                             $("#data_company2").val(data[0].data_company2);
-                            $("#creator").val(data[0].creator);
                             var term = data[0]["term"];
                             $("#term").children().remove();
                             $("#term").append("<option value=" + term + ">" + term + "</option>");
@@ -278,10 +280,9 @@
             data_price = $("input[name='data_price']").val(),
             data_price2 = $("input[name='data_price2']").val(),
             data_company2 = $("input[name='data_company2']").val(),
-            examine = $("select[name='examine']").val(),
-            creator = $("#creator").val();
+            examine = $("select[name='examine']").val();
         var test_list = [data_name, data_parameter, data_company, data_count, data_price, data_price2, data_company2,
-            examine, creator];
+            examine];
         for (var i = 0; i < test_list.length; i++) {
             if (test_list[i] == "") {
                 alert("提交的信息中，*号项不能为空！");
@@ -333,7 +334,7 @@
         var flag = true;
         $("[name='items']:checkbox").each(function () {
             if ($(this).prop("checked")) {
-                var check_1 = $(this).attr("data-check_1")
+                var check_1 = $(this).attr("data-check_1");
                 if (check_1 == 'true') {
                     flag = false;
                     return;
@@ -351,7 +352,8 @@
                 type: 'post',
                 url: "/del_yq/",
                 data: {
-                    delStr: delStr
+                    delStr: delStr,
+                    csrfmiddlewaretoken: '{{ csrf_token  }}'
                 },
                 "async": false,
                 traditional: true,
@@ -381,9 +383,9 @@
                     url: "/commit_check1_yq/",
                     data: {
                         data_id: data_id,
-                        user_b: examine,
                         user_a: data_creator,
-                        check_1: check_1
+                        check_1: check_1,
+                        csrfmiddlewaretoken: '{{ csrf_token  }}'
                     },
                     "async": false,
                     dataType: "json",
@@ -401,12 +403,12 @@
     // 导出excel
     function exportExcel() {
         var table = $('#dataTables-example').DataTable();
-        // 隐藏0,15列
-        table.columns([0, 12]).visible(false);
+        // 隐藏0,14列
+        table.columns([0, 14]).visible(false);
         let workbook = XLSX.utils.table_to_book(table.table().node());
         XLSX.writeFile(workbook, '仪器设备学院审核.xlsx');
-        // 显示0,15列
-        table.columns([0, 12]).visible(true);
+        // 显示0,14列
+        table.columns([0, 14]).visible(true);
     }
 
     // 打印Json配置模板
@@ -445,13 +447,13 @@
                             "width": 793.5,
                             "textAlign": "center",
                             "tableHeaderBackground": "#ffffff",
-                            "field":"table",
+                            "field": "table",
                             "columns": [
                                 [
                                     {
                                         "title": "序号",
                                         "width": 34.3716824168552,
-                                        "field":"data_id",
+                                        "field": "data_id",
                                         "colspan": 1,
                                         "rowspan": 1
                                     },
@@ -464,14 +466,14 @@
                                     },
                                     {
                                         "title": "单位",
-                                        "field":"data_company",
+                                        "field": "data_company",
                                         "width": 47.88352658270338,
                                         "colspan": 1,
                                         "rowspan": 1
                                     },
                                     {
                                         "title": "数量",
-                                        "field":"data_count",
+                                        "field": "data_count",
                                         "width": 46.91356410149346,
                                         "colspan": 1,
                                         "rowspan": 1
@@ -514,7 +516,7 @@
                                     {
                                         "title": "创建人",
                                         "width": 59.91439383472381,
-                                        "field":"creator",
+                                        "field": "creator",
                                         "colspan": 1,
                                         "rowspan": 1
                                     }
@@ -629,7 +631,7 @@
             "ajax": {
                 "type": "POST",
                 "url": "/get_examine_list_yq/",
-                "data": {examine_name: examine},
+                "data": {csrfmiddlewaretoken: '{{ csrf_token  }}'},
                 "dataSrc": "data" //从json数据中获取key为data的值
             },
             "columns": [ //返回的json数据在这里填充，注意一定要与上面的<th>数量对应，否则排版出现扭曲
@@ -667,6 +669,15 @@
                     "data": "creator"
                 },
                 {
+                    "data": "check_1"
+                },
+                {
+                    "data": "is_deposit"
+                },
+                {
+                    "data": "is_buy"
+                },
+                {
                     "data": null
                 },
             ],
@@ -683,10 +694,38 @@
                     "targets": 11, //操作按钮目标列
                     "render": function (data, type, row) {
                         var text = "";
-                        if (data["check_1"]) {
+                        if (data) {
                             text = "已批准";
                         } else {
                             text = "未批准"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+                {
+                    // 定义操作列,######以下是重点########
+                    "targets": 12, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已入库";
+                        } else {
+                            text = "未入库"
+                        }
+                        var html = "<div align='center' id='text'>" + text + "</div>";
+                        return html;
+                    }
+                },
+                {
+                    // 定义操作列,######以下是重点########
+                    "targets": 13, //操作按钮目标列
+                    "render": function (data, type, row) {
+                        var text = "";
+                        if (data) {
+                            text = "已购买";
+                        } else {
+                            text = "未购买"
                         }
                         var html = "<div align='center' id='text'>" + text + "</div>";
                         return html;
@@ -696,7 +735,7 @@
                         var html = '<a href="javascript:void(0)" onclick="openModel(' + '\'' + row.data_id + '\'' + ',' + row.check_1 + ',\'修改\')">修改</a>';//加单引号
                         return html;
                     },
-                    "targets": 12
+                    "targets": 14
                 }],
             "createdRow": function (row, data, dataIndex) {
                 if (data['check_1'] == true) {

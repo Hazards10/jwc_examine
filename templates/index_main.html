@@ -20,24 +20,15 @@
 <div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                <span class="sr-only">实验耗材审批管理平台</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-gear"></i> <strong>&nbsp
                 &nbsp东北电力大学实验耗材审批管理平台</strong></a>
         </div>
         <div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user fa-lg"></span>用户
+                    <a href="{% url 'logout' %}" class="dropdown-toggle" >
+                        <span class="glyphicon glyphicon-log-out fa-lg"></span>退出
                     </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown"><a href="{% url 'logout' %}">退出登录</a></li>
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -48,7 +39,7 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 {#    普通老师显示操作项   #}
-                {% if request.user.is_authenticated and request.user.admin_rank == "学院老师" %}
+                {% if request.user.is_authenticated and request.user.admin_rank == "普通老师" %}
                     <li >
                         <a href="#" class="main-text2"><i class="fa fa-sitemap"></i><strong>创建新表<span
                                 class="fa arrow"></span></strong></a>

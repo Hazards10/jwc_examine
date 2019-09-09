@@ -20,18 +20,15 @@ from django.views.static import serve
 from Jwc_examine.settings import MEDIA_ROOT
 from django.views.generic import TemplateView  # 引入模板视图，只返回模板
 
-from main_app import views_router, views_add, views_commit, views_get, views_login, views_delete
+from main_app import views_router, views_add, views_commit, views_get, views_delete
 from users.views import LogoutView, LoginView # 登录、退出视图
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('media/<path:path>', serve, {'document_root':MEDIA_ROOT}),   # 文件映射路径
     # 路由地址
-    #path('', views_router.page_login),  # 登陆界面
-    path('', LoginView.as_view(),name="login"),
-    path('logout/', LogoutView.as_view(), name="logout"),
-    # path('index/', views_router.home),  # 首页
+    path('', LoginView.as_view(),name="login"),  # 登录路由
+    path('logout/', LogoutView.as_view(), name="logout"),  # 退出登录
     path('index/', TemplateView.as_view(template_name="index_main.html"), name="index"),  # 首页
 
     path('request_list/', views_router.apply_list),  # 请求列表
@@ -63,7 +60,6 @@ urlpatterns = [
     path('show_yq_admin_deposit/', views_router.show_yq_admin_deposit),  #显示教务处审核入库结果（结果）
 
     # 操作地址
-    path('login/', views_login.login),  # 登陆验证
     path('get_request_list/', views_get.get_sender),  # 得到请求列表
     path('add_hc/', views_add.add_hc),  # 创建hc
     path('add_yq/', views_add.add_yq),  # 创建yq

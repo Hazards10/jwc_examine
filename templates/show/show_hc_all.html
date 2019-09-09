@@ -92,8 +92,6 @@
         <!--End Advanced Tables -->
     </div>
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -125,6 +123,7 @@
             url: "/show_check_all_hc/",
             "async": false,
             dataType: "json",
+            data:{csrfmiddlewaretoken: '{{ csrf_token  }}'},
             success: function (data) {
                 final_data = data;
                 console.log(final_data);

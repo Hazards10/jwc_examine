@@ -91,8 +91,7 @@
             <!--End Advanced Tables -->
         </div>
     </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
+
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -124,6 +123,7 @@
                 url: '/get_second_examine_buy_list_hc/',
                 "async": false,
                 dataType: "json",
+                data:{ csrfmiddlewaretoken: '{{ csrf_token  }}' },
                 success: function (data) {
                     final_data = data;
                     console.log(final_data);
@@ -233,7 +233,6 @@
                 var i = row_data['index'];
                 final_data[i]['is_buy'] = !final_data[i]['is_buy'];
                 var post_check = final_data[i]['is_buy'];
-                var admin_name = getCookie('user');
                 var return_code;
                 $.ajax({
                     type: 'POST',
@@ -241,7 +240,7 @@
                     data: {
                         data_id: row_data["data_id"],
                         flag: post_check,
-                        admin_name: admin_name
+                        csrfmiddlewaretoken: '{{ csrf_token  }}'
                     },
                     "async": false,
                     dataType: "json",
@@ -269,15 +268,14 @@
                 var id_array = [];
                 $('tr').children().each(function () {
                     if($(this).text()=='未购买'){
-                        var admin_name = getCookie('user');
                         var data_id = $(this).parent().children().first().text();
                         $.ajax({
                             type: 'POST',
                             url: '/commit_check2_hc_buy/',
                             data: {
                                 data_id:data_id,
-                                admin_name:admin_name ,
-                                flag: 'true'
+                                flag: 'true',
+                                csrfmiddlewaretoken: '{{ csrf_token  }}'
                             },
                             "async": false,
                             dataType: "json",

@@ -123,6 +123,7 @@
             type: 'POST',
             url: "/show_check_all_yq_buy/",
             "async": false,
+            data:{csrfmiddlewaretoken: '{{ csrf_token  }}'},
             dataType: "json",
             success: function (data) {
                 final_data = data;

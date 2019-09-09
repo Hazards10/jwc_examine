@@ -4,17 +4,16 @@ from django.db.models import Q # 用于model复杂条件查询
 from django.views.generic.base import View # django视图view，继承他可以重构get、post方法
 
 import time
+import json
 
 from main_app import models     # 引入项目中的模型表
-from utils.execute_sql import  execute_sql_11   # 引入连接11数据库的方法
-from utils.date_tool import get_term
 from utils.model_to_dic import model_to_dic
 
 
 # 得到通用申请列表
 def get_sender(request):
     if request.is_ajax():
-        user_b = request.POST.get('user_b')
+        user_b = json.loads(request.COOKIES.get('user'))
         data_info = models.Log.objects.filter(B=user_b)
         return JsonResponse(model_to_dic(data_info), safe=False)
 
@@ -67,7 +66,7 @@ def get_pass2_list_yq(request):
 def get_examine_list_hc(request):
     result = {}
     if request.is_ajax():
-        examine_name = request.POST.get('examine_name')
+        examine_name = json.loads(request.COOKIES.get('user'))
         # 过滤数据
         all_result = models.CheckFormHC.objects.filter(examine=examine_name)
         # 数据条数
@@ -125,7 +124,7 @@ def get_examine_list_hc(request):
 def get_examine_list_yq(request):
     result = {}
     if request.is_ajax():
-        examine_name = request.POST.get('examine_name')
+        examine_name = json.loads(request.COOKIES.get('user'))
         # 过滤数据
         all_result = models.CheckFormYQ.objects.filter(examine=examine_name)
         # 数据条数
@@ -209,6 +208,7 @@ def get_second_examine_list_hc(request):
         check_data = models.CheckFormHC.objects.filter(check_1=True)
         return JsonResponse(model_to_dic(check_data), safe=False)
 
+
 # 得到第二级购买待审核（HC）
 def get_second_examine_buy_list_hc(request):
     if request.is_ajax():
@@ -291,9 +291,9 @@ def get_final_single_list_yq(request):
 def show_check_hc_creator(request):
     result = {}
     if request.is_ajax():
-        creator_name = request.POST.get("creator")
+        creator_name = json.loads(request.COOKIES.get("user"))
         # 过滤数据
-        all_result = models.CheckFormHC.objects.filter(creator = creator_name)
+        all_result = models.CheckFormHC.objects.filter(creator=creator_name)
         # 数据条数
         recordsTotal = all_result.count()
         recordsFiltered = recordsTotal
@@ -348,7 +348,7 @@ def show_check_hc_creator(request):
 # 显示学院审核过的审核表(HC) for examine
 def show_check_hc_examine(request):
     if request.is_ajax():
-        examine_name = request.POST.get("examine_name")
+        examine_name = json.loads(request.COOKIES.get("user"))
         filter_dic = dict()
         filter_dic['examine'] = examine_name
         filter_dic['check_1'] = True
@@ -360,7 +360,7 @@ def show_check_hc_examine(request):
 def show_check_yq_creator(request):
     result = {}
     if request.is_ajax():
-        creator_name = request.POST.get("creator")
+        creator_name = json.loads(request.COOKIES.get("user"))
         # 过滤数据
         all_result = models.CheckFormYQ.objects.filter(creator=creator_name)
         # 数据条数
@@ -417,7 +417,7 @@ def show_check_yq_creator(request):
 # 显示学院审核过的审核表(YQ) for examine
 def show_check_yq_examine(request):
     if request.is_ajax():
-        examine_name = request.POST.get("examine_name")
+        examine_name = json.loads(request.COOKIES.get("user"))
         filter_dic = dict()
         filter_dic['examine'] = examine_name
         filter_dic['check_1'] = True
@@ -510,14 +510,19 @@ class GetEditHcCreator(View):
             data_usedate = request.POST.get("data_usedate")
             data_person = request.POST.get("data_person")
             data_remark = request.POST.get("data_remark")
-            creator = request.POST.get("creator")
+            creator = json.loads(request.COOKIES.get("user"))
             examine = request.POST.get("examine")
             data_id = request.POST.get("data_id")
+            course_name = request.POST.get("course_name")
+            experiment_name = request.POST.get("experiment_name")
+            class_name = request.POST.get("class_name")
+            experiment_number = request.POST.get("experiment_number")
             models.CheckFormHC.objects.filter(data_id=data_id).update(term=term, data_name=data_name,
                     data_parameter=data_parameter, data_company=data_company, data_count=data_count,
                     data_person=data_person, data_price=data_price, data_price2=data_price2, data_usedate=data_usedate,
                     data_remark=data_remark,creator=creator,examine=examine,
-                    date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))
+                    date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time())), course_name=course_name,
+                    experiment_name=experiment_name, class_name=class_name, experiment_number=experiment_number
                     )
             data["message"] = True
         return JsonResponse(data=data, safe=False)
@@ -541,15 +546,16 @@ class GetEditYqCreator(View):
             data_name = request.POST.get("data_name")
             data_parameter = request.POST.get("data_parameter")
             data_company = request.POST.get("data_company")
+            data_company2 = request.POST.get("data_company2")
             data_count = request.POST.get("data_count")
             data_price = request.POST.get("data_price")
             data_price2 = request.POST.get("data_price2")
-            creator = request.POST.get("creator")
+            creator = json.loads(request.COOKIES.get("user"))
             examine = request.POST.get("examine")
             models.CheckFormYQ.objects.filter(data_id=data_id).update(term=term, data_name=data_name,
                     data_parameter=data_parameter, data_company=data_company, data_count=data_count,
                     data_price=data_price, data_price2=data_price2, creator=creator,examine=examine,
-                    date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))
+                    date=time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time())), data_company2=data_company2
                      )
             data["message"] = True
         return JsonResponse(data=data, safe=False)

@@ -72,6 +72,8 @@
                         <th>创建者</th>
                         <th>学院审核者</th>
                         <th>审核状态</th>
+                        <th>入库状态</th>
+                        <th>购买状态</th>
                     </tr>
                     </thead>
                 </table>
@@ -99,7 +101,6 @@
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
     var final_data;
-    var examine_name = getCookie('user');
     // 导出excel
     function exportExcel() {
         var table = $('#dataTables-example').DataTable();
@@ -115,7 +116,7 @@
             type: 'POST',
             url: "/show_check_yq_examine/",
             data: {
-                examine_name: examine_name
+                csrfmiddlewaretoken: '{{ csrf_token  }}'
             },
             "async": false,
             dataType: "json",
@@ -163,6 +164,15 @@
                 },
                 {
                     "data": "examine"
+                },
+                {
+                    "data": "check_1"
+                },
+                {
+                    "data": "is_deposit"
+                },
+                {
+                    "data": "is_buy"
                 }
             ],
             "columnDefs": [{
@@ -175,6 +185,34 @@
                         text = "已批准";
                     } else {
                         text = "未批准"
+                    }
+                    var html = "<div align='center' id='text'>" + text + "</div>";
+                    return html;
+                }
+            },{
+                // 定义操作列,######以下是重点########
+                "targets": 12, //操作按钮目标列
+                "data": "is_deposit",
+                "render": function (data, type, row) {
+                    var text = "";
+                    if (data) {
+                        text = "已入库";
+                    } else {
+                        text = "未入库"
+                    }
+                    var html = "<div align='center' id='text'>" + text + "</div>";
+                    return html;
+                }
+            },{
+                // 定义操作列,######以下是重点########
+                "targets": 13, //操作按钮目标列
+                "data": "is_buy",
+                "render": function (data, type, row) {
+                    var text = "";
+                    if (data) {
+                        text = "已购买";
+                    } else {
+                        text = "未购买"
                     }
                     var html = "<div align='center' id='text'>" + text + "</div>";
                     return html;

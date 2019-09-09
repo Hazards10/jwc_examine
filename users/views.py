@@ -37,8 +37,8 @@ class LoginView(View):
                 login(request, user)
                 response = HttpResponseRedirect(reverse('index')) #  跳转url地址
                 # django cookies存中文会报错，用json模块处理
-                response.set_cookie("user", json.dumps(user.username))
-                response.set_cookie("rank", json.dumps(user.admin_rank))
+                response.set_cookie("user", json.dumps(user.username), max_age=60 * 60 * 60* 24 * 7)  # cookie一周过期
+                response.set_cookie("rank", json.dumps(user.admin_rank), max_age=60 * 60 * 60* 24 * 7)
                 return response
             else:
                 return render(request, 'login.html', {
@@ -140,7 +140,7 @@ def get_examine(request):
     if request.method == "GET":
         examine = UserProfile.objects.filter(admin_rank="学院领导")
         examine = model_to_dic(examine)
-        for name in examine:
-            examine_list.append({"admin_name": name.get("admin_name"),
+        for user in examine:
+            examine_list.append({"admin_name": user.get("username"),
                                  "term": get_term().get("now_term")})
     return JsonResponse(examine_list, safe=False)

@@ -10,7 +10,19 @@
     <!-- hiprint -->
     <link href="../../static/assets/hiprint/css/hiprint.css" rel="stylesheet">
     <link href="../../static/assets/hiprint/css/print-lock.css" rel="stylesheet">
+    <style>
+        .dataTable th {
+            white-space: nowrap !important;
+        }
 
+        .div_full_private {
+            width: 100%;
+        }
+
+        .xftb table tbody th:first-child td:first-child {
+            width: 400px;
+        }
+    </style>
 </head>
 
 <body class="frame_body">
@@ -36,19 +48,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-body">
-                <style>
-                    .dataTable th {
-                        white-space: nowrap !important;
-                    }
 
-                    .div_full_private {
-                        width: 100%;
-                    }
-
-                    .xftb table tbody th:first-child td:first-child {
-                        width: 400px;
-                    }
-                </style>
                 <table class="table table-striped table-bordered table-hover div_full_private xftb"
                        id="dataTables-example">
                     <thead>
@@ -63,10 +63,16 @@
                         <th>使用日期</th>
                         <th>验收领用人</th>
                         <th>学期</th>
+                        <th>所属课程名称</th>
+                        <th>实验项目名称</th>
+                        <th>实验班级</th>
+                        <th>实验人数</th>
                         <th>备注</th>
                         <th>创建者</th>
                         <th>学院审核者</th>
                         <th>审核状态</th>
+                        <th>入库状态</th>
+                        <th>购买状态</th>
                     </tr>
                     </thead>
                 </table>
@@ -75,8 +81,6 @@
         <!--End Advanced Tables -->
     </div>
 </div>
-<!-- cookies读写文件-->
-<script src="../../static/JS/Cookies.js"></script>
 <!-- jquery包 -->
 <script src="../../static/assets/js/jquery-3.3.1.min.js"></script>
 <!-- excel 导出包-->
@@ -93,23 +97,19 @@
 <!-- 模态框依赖js文件 -->
 <script src="../../static/assets/js/bootstrap.min.js"></script>
 <script>
-    var examine_name = getCookie('user');
     // 导出excel
     function exportExcel() {
         var table = $('#dataTables-example').DataTable();
-        // 隐藏0,15列
-        // table.columns([0, 12]).visible(false);
         let workbook = XLSX.utils.table_to_book(table.table().node());
-         XLSX.writeFile(workbook, '学院耗材已审核表.xlsx');
-        // 显示0,15列
-        //table.columns([0, 12]).visible(true);
+        XLSX.writeFile(workbook, '学院耗材已审核表.xlsx');
     }
+
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: "/show_check_hc_examine/",
             data: {
-                examine_name: examine_name
+                csrfmiddlewaretoken: '{{ csrf_token  }}'
             },
             "async": false,
             dataType: "json",
@@ -156,6 +156,18 @@
                     "data": "term"
                 },
                 {
+                    "data": "course_name"
+                },
+                {
+                    "data": "experiment_name"
+                },
+                {
+                    "data": "class_name"
+                },
+                {
+                    "data": "experiment_number"
+                },
+                {
                     "data": "data_remark"
                 },
                 {
@@ -163,11 +175,21 @@
                 },
                 {
                     "data": "examine"
+                },
+                {
+                    "data": "check_1"
+                },
+                {
+                    "data": "is_deposit"
+                },
+                {
+                    "data": "is_buy"
                 }
+
             ],
             "columnDefs": [{
                 // 定义操作列,######以下是重点########
-                "targets": 13, //操作按钮目标列
+                "targets": 14, //操作按钮目标列
                 "data": "check_1",
                 "render": function (data, type, row) {
                     var text = "";
@@ -175,6 +197,34 @@
                         text = "已批准";
                     } else {
                         text = "未批准"
+                    }
+                    var html = "<div align='center' id='text'>" + text + "</div>";
+                    return html;
+                }
+            },{
+                // 定义操作列,######以下是重点########
+                "targets": 15, //操作按钮目标列
+                "data": "is_deposit",
+                "render": function (data, type, row) {
+                    var text = "";
+                    if (data) {
+                        text = "已入库";
+                    } else {
+                        text = "未入库"
+                    }
+                    var html = "<div align='center' id='text'>" + text + "</div>";
+                    return html;
+                }
+            },{
+                // 定义操作列,######以下是重点########
+                "targets": 16, //操作按钮目标列
+                "data": "is_buy",
+                "render": function (data, type, row) {
+                    var text = "";
+                    if (data) {
+                        text = "已购买";
+                    } else {
+                        text = "未购买"
                     }
                     var html = "<div align='center' id='text'>" + text + "</div>";
                     return html;
