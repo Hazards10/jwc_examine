@@ -2,40 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea604c02-c393-42c8-b441-a62a5ecec1ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwc_examine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jwc_examine/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jwc_examine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jwc_examine/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_add.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_add.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_commit.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_commit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_get.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/views_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/views_router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_hc_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_hc_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_hc_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_hc_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_hc_2_deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_hc_2_deposit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_1_single.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_1_single.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commit/commit_hc.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commit/commit_hc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/commit/commit_yq.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/commit/commit_yq.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index_main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/request_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/request_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/show/show_hc_all.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_hc_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_creator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_hc_examine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_hc_examine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_admin_buy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_admin_buy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_all.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_creator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_creator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/show/show_yq_examine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/show/show_yq_examine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,11 +71,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="52" column="15" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="485" selection-start-line="485" selection-end-line="485" />
+            <state relative-caret-position="134">
+              <caret line="451" selection-start-line="451" selection-end-line="451" />
               <folding>
                 <element signature="e#24#60#0" expanded="true" />
               </folding>
@@ -114,28 +93,57 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_buy.html">
+        <entry file="file://$PROJECT_DIR$/templates/check/check_hc_1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="125" column="60" selection-start-line="125" selection-start-column="60" selection-end-line="125" selection-end-column="60" />
+            <state relative-caret-position="64">
+              <caret line="593" column="57" selection-start-line="593" selection-start-column="57" selection-end-line="593" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_all.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="124" column="12" lean-forward="true" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="60" />
+            <state relative-caret-position="105">
+              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="38" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4544#11273#0#HTML" />
+                <element signature="e#4534#4559#0#HTML" />
+                <element signature="e#11373#12036#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/show/show_yq_all.html">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="818">
-              <caret line="119" column="36" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="36" />
+            <state relative-caret-position="275">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4217#10960#0#HTML" />
+                <element signature="e#10996#11021#0#HTML" />
+                <element signature="e#11048#11663#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_buy.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4218#10961#0#HTML" />
+                <element signature="e#10997#11022#0#HTML" />
+                <element signature="e#11049#11664#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -257,7 +265,6 @@
         <option value="$PROJECT_DIR$/templates/show/show_hc_creator.html" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_creator.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_1.html" />
-        <option value="$PROJECT_DIR$/templates/check/check_hc_1.html" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_examine.html" />
         <option value="$PROJECT_DIR$/templates/show/show_hc_examine.html" />
         <option value="$PROJECT_DIR$/templates/check/check_hc_2.html" />
@@ -267,13 +274,14 @@
         <option value="$PROJECT_DIR$/templates/check/check_yq_2_deposit.html" />
         <option value="$PROJECT_DIR$/templates/check/check_hc_2_buy.html" />
         <option value="$PROJECT_DIR$/templates/check/check_yq_2_buy.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_all.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" />
-        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" />
         <option value="$PROJECT_DIR$/main_app/views_commit.py" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_all.html" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html" />
         <option value="$PROJECT_DIR$/templates/show/show_yq_admin_buy.html" />
+        <option value="$PROJECT_DIR$/templates/check/check_hc_1.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_all.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html" />
+        <option value="$PROJECT_DIR$/templates/show/show_hc_admin_buy.html" />
       </list>
     </option>
   </component>
@@ -647,7 +655,7 @@
       <workItem from="1567905096139" duration="10369000" />
       <workItem from="1567996037712" duration="5725000" />
       <workItem from="1568007555523" duration="9831000" />
-      <workItem from="1568031874021" duration="6652000" />
+      <workItem from="1568031874021" duration="9333000" />
     </task>
     <servers />
   </component>
@@ -657,7 +665,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="519193000" />
+    <option name="totallyTimeSpent" value="521874000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -670,7 +678,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24396783" />
       <window_info id="Structure" order="1" sideWeight="0.49892932" visible="true" weight="0.18967828" />
@@ -678,7 +685,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32844576" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.36859688" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.45014662" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4398827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -1511,13 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Jwc_examine/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -1612,13 +1612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="89" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/show/show_yq_examine.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1189">
@@ -1705,24 +1698,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_buy.html">
+    <entry file="file://$PROJECT_DIR$/main_app/views_commit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
-          <caret line="62" column="17" lean-forward="true" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html">
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_buy.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2245">
-          <caret line="128" column="23" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="23" />
+        <state relative-caret-position="118">
+          <caret line="125" column="60" selection-start-line="125" selection-start-column="60" selection-end-line="125" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_all.html">
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2295">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+        <state relative-caret-position="118">
+          <caret line="124" column="12" lean-forward="true" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="818">
+          <caret line="119" column="36" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1736,38 +1736,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/views_commit.py">
+    <entry file="file://$PROJECT_DIR$/main_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="171">
+          <caret line="52" column="15" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_all.html">
+    <entry file="file://$PROJECT_DIR$/templates/check/check_hc_1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="818">
-          <caret line="119" column="36" selection-start-line="119" selection-start-column="19" selection-end-line="119" selection-end-column="36" />
+        <state relative-caret-position="64">
+          <caret line="593" column="57" selection-start-line="593" selection-start-column="57" selection-end-line="593" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_deposit.html">
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_all.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="124" column="12" lean-forward="true" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="60" />
+        <state relative-caret-position="105">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4544#11273#0#HTML" />
+            <element signature="e#4534#4559#0#HTML" />
+            <element signature="e#11373#12036#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/show/show_yq_admin_buy.html">
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_deposit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="125" column="60" selection-start-line="125" selection-start-column="60" selection-end-line="125" selection-end-column="60" />
+        <state relative-caret-position="275">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4217#10960#0#HTML" />
+            <element signature="e#10996#11021#0#HTML" />
+            <element signature="e#11048#11663#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/show/show_hc_admin_buy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4218#10961#0#HTML" />
+            <element signature="e#10997#11022#0#HTML" />
+            <element signature="e#11049#11664#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/views_get.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="485" selection-start-line="485" selection-end-line="485" />
+        <state relative-caret-position="134">
+          <caret line="451" selection-start-line="451" selection-end-line="451" />
           <folding>
             <element signature="e#24#60#0" expanded="true" />
           </folding>
