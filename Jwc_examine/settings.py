@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app.apps.MainAppConfig',
     'users.apps.UsersConfig',  # 用户相关
+    'analyse.apps.AnalyseConfig'  # 数据分析相关
 ]
 
 MIDDLEWARE = [

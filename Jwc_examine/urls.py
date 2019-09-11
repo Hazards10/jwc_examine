@@ -104,6 +104,8 @@ urlpatterns = [
     path('show_check_all_yq_deposit/', views_get.show_check_all_yq_deposit),  # 显示通过学院领导审核过的入库结果 admin
 
     # 映射用户应用的url
-    url(r'^users/', include(('users.urls', 'users'), namespace="users"))
+    url(r'^users/', include(('users.urls', 'users'), namespace="users")),
+    # 映射数据分析应用的url
+    url(r'^analyse/', include(('analyse.urls', 'analyse'), namespace="analyse"))
 
 ]
